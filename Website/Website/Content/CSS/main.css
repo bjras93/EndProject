@@ -1,10 +1,13 @@
 @import 'https://fonts.googleapis.com/css?family=Open+Sans|Roboto';
-html, body, div, p {
+html, body {
+  height: 100%; }
+
+html, body, div, p, h1, h2, h3, h4, h5, h6 {
   box-sizing: border-box;
   padding: 0;
   margin: 0; }
 
-.right, .type-1 .tile {
+.right, .btn, .type-1 .tile {
   float: right; }
 
 .left, .type-1, .type-2, .type-2 .tile {
@@ -16,7 +19,7 @@ html, body, div, p {
 .hide {
   display: none; }
 
-.ib, .container, .type-1, .type-2, .tile span {
+.ib, .container, .type-1, .type-2, .tile span, .login a {
   display: inline-block; }
 
 .b1 {
@@ -27,6 +30,9 @@ html, body, div, p {
 
 .g1 {
   background: #16A085; }
+
+.g1-o6 {
+  background: rgba(22, 160, 133, 0.6); }
 
 .g2 {
   background: #1ABC9C; }
@@ -51,6 +57,18 @@ html, body, div, p {
 
 .yt {
   color: #E52727; }
+
+.ggl {
+  background-color: #D34836;
+  color: #fff; }
+
+.twt {
+  background-color: #55ACEE;
+  color: #fff; }
+
+.fb {
+  background-color: #3B5998;
+  color: #fff; }
 
 body, html {
   font-size: 12pt;
@@ -124,6 +142,17 @@ body {
 .container {
   margin: 0 15%;
   width: 70%; }
+
+.content {
+  width: 100%;
+  padding: 15px; }
+
+.btn {
+  margin: 5px 0;
+  padding: 15px;
+  min-width: 250px;
+  text-align: center;
+  clear: both; }
 
 .type-1 {
   width: 100%; }

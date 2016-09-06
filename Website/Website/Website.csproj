@@ -195,11 +195,11 @@
     <Compile Include="App_Start\IdentityConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
+    <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\DietsController.cs" />
     <Compile Include="Controllers\FitnessController.cs" />
     <Compile Include="Controllers\HealthController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Controllers\ProfileController.cs" />
     <Compile Include="Controllers\VideosController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -214,6 +214,7 @@
     <Content Include="Content\fonts\icomoon.svg" />
     <Content Include="Content\img\web\pexels-photo.jpg" />
     <Content Include="Content\JS\layout\menu.js" />
+    <Content Include="Content\JS\layout\overlay.js" />
     <Content Include="Content\JS\plugins\jquery-3.1.0.min.js" />
     <Content Include="Content\JS\main.js" />
     <Content Include="Content\JS\plugins\jquery-ui.min.js" />
@@ -276,7 +277,16 @@
     <Content Include="Views\Diets\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Views\Profile\Index.cshtml" />
+    <Content Include="Views\Account\Index.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Account\Details.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Account\Signup.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Account\Login.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

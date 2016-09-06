@@ -195,7 +195,12 @@
     <Compile Include="App_Start\IdentityConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
+    <Compile Include="Controllers\DietsController.cs" />
+    <Compile Include="Controllers\FitnessController.cs" />
+    <Compile Include="Controllers\HealthController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\ProfileController.cs" />
+    <Compile Include="Controllers\VideosController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -205,8 +210,13 @@
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\CSS\main.css" />
+    <Content Include="Content\fonts\icomoon.svg" />
     <Content Include="Content\img\web\pexels-photo.jpg" />
+    <Content Include="Content\JS\layout\menu.js" />
+    <Content Include="Content\JS\plugins\jquery-3.1.0.min.js" />
     <Content Include="Content\JS\main.js" />
+    <Content Include="Content\JS\plugins\jquery-ui.min.js" />
     <Content Include="Global.asax" />
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
@@ -224,10 +234,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Content\CSS\" />
     <Folder Include="Content\img\user\" />
-    <Folder Include="Content\JS\Menu\" />
-    <Folder Include="Content\SCSS\fonts\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
@@ -241,6 +248,35 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\SCSS\styles\design.scss" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Content\SCSS\styles\font.scss" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Content\SCSS\styles\resets.scss" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Content\SCSS\styles\colors.scss" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Content\fonts\icomoon.eot" />
+    <Content Include="Content\fonts\icomoon.ttf" />
+    <Content Include="Content\fonts\icomoon.woff" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Videos\Index.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Fitness\Index.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Health\Index.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Diets\Index.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Profile\Index.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

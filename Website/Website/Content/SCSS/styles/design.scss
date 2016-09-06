@@ -1,3 +1,51 @@
 ﻿body {
-    background: url('../../img/web/pexels-photo.jpg');
+    background: url('../img/web/pexels-photo.jpg');
+    background-size:cover;
+}
+.container {
+    @extend .ib;
+    margin: 0 15%;
+    width: 70%;
+}
+.type-1 {
+    @extend .ib;
+    @extend .left;
+    width: 100%;
+    .tile {
+    width: 20%;
+    height: 160px;
+    @extend .right;
+    }
+}
+.type-1:after {
+    @extend .clear;
+}
+.type-2 {
+    @extend .left;
+    @extend .ib;
+    width: 100%;
+    .tile {
+    width: 20%;
+    height: 160px;
+    @extend .left;
+    }
+}
+.type-2:after {
+    @extend .clear;
+}
+.tile {
+    cursor: pointer;
+    text-align:center;
+    span {
+        margin-top: 20%;
+        @extend .ib;
+        font-size: 4em;
+    }
+}
+.mood {
+    width: 60%;
+    float:left;
+    .tile {
+        width: 33.33%;
+    }
 }

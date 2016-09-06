@@ -4,6 +4,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@ViewBag.Title - End Project</title>
+    <link href="~/Content/CSS/main.css" rel="stylesheet" />
 </head>
 <body>
     <div class="navbar navbar-inverse navbar-fixed-top">
@@ -17,13 +18,13 @@
             </div>
         </div>
     </div>
-    <div class="">
+    <div class="container">
         @RenderBody()
         
-        <footer>
-            <p>&copy; @DateTime.Now.Year </p>
-        </footer>
     </div>
-
+    <script src="~/Content/JS/plugins/jquery-3.1.0.min.js"></script>
+    <script src="~/Content/JS/plugins/jquery-ui.min.js"></script>
+    <script src="~/Content/JS/layout/menu.js"></script>
+    <script src="~/Content/JS/main.js"></script>
 </body>
 </html>

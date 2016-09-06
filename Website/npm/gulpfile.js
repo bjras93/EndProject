@@ -3,20 +3,15 @@ var gulp = require('gulp'),
     sass = require('gulp-sass'),
     concat = require('gulp-concat');
 
-gulp.task('scripts', function() {
-  return gulp.src(['./lib/file3.js', './lib/file1.js', './lib/file2.js'])
-    .pipe(concat('all.js'))
-    .pipe(gulp.dest('./dist/'));
+gulp.task('sass', function () {
+  return gulp.src('../Website/Content/SCSS/main.scss')
+    .pipe(sass().on('error', sass.logError))
+    .pipe(gulp.dest('../Website/Content/css'));
 });
 
-gulp.task('sass', function () {
-  return gulp.src('./sass/**/*.scss')
-    .pipe(sass().on('error', sass.logError))
-    .pipe(gulp.dest('./css'));
-})
-
 gulp.task('watch', function() {
-  gulp.watch(['scripts', 'styles']);
+gulp.watch('../Website/Content/SCSS/**', ['sass']);
+gulp.watch(['../Website/Content/js/**','!../Website/Content/js/plugin' ], ['script']);
 });
 
 gulp.task('default', ['watch']);

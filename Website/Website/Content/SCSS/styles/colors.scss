@@ -1,0 +1,46 @@
+﻿$base: #333;
+$w: #fff;
+$blu-1: #2C3E50;
+$blu-2: #34495E;
+$gre-1: #16A085;
+$gre-2: #1ABC9C;
+$gre-3: #96D4BF;
+$gre-4: #639C89;
+$red-1: #F57979;
+$happy: #00AF5E;
+$sad: #CEB3A8;
+$indifferent: #D4E8D6;
+$yt: #E52727;
+.b1 {
+    background: $blu-1;
+}
+.b2 {
+    background: $blu-2;
+}
+.g1 {
+    background: $gre-1;
+}
+.g2 {
+    background: $gre-2;
+}
+.g3 {
+    background: $gre-3;
+}
+.g4 {
+    background: $gre-4;
+}
+.r1 {
+    background: $red-1;
+}
+.s {
+    background: $sad;
+}
+.h {
+    background: $happy;
+}
+.i {
+    background: $indifferent;
+}
+.yt { 
+    color: $yt;
+}

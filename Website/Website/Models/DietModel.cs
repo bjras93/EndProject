@@ -1,6 +1,6 @@
 ﻿using System.Web.Mvc;
 
-namespace Website.Models
+namespace YouGo.Models
 {
     public class DietModel
     {

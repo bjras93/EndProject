@@ -1,4 +1,4 @@
-﻿namespace Website.Models
+﻿namespace YouGo.Models
 {
     public class FitnessModel
     {

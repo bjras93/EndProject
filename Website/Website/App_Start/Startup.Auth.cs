@@ -9,11 +9,12 @@ using Microsoft.Owin.Security.Facebook;
 using System.Net.Http;
 using System.Threading.Tasks;
 using System.Threading;
-using Website.Models;
+using YouGo.Models;
 using Microsoft.Owin.Security;
 using Microsoft.Owin.Security.Twitter;
+using System.Security.Claims;
 
-namespace Website
+namespace YouGo
 {
     public partial class Startup
     {
@@ -64,20 +65,20 @@ namespace Website
                     "B13EC36903F8BF4701D498261A0802EF63642BC3" //DigiCert High Assurance EV Root CA
                 })
             });
+
             var facebookOptions = new FacebookAuthenticationOptions()
             {
-                AppId = "1639996696261913",
-                AppSecret = "0f2f3b9d4dc5b02ae02adb8600b46bb5",
+                AppId = "101084843685007",
+                AppSecret = "7ee5880cef2e1e2c683096bbad2f50bb",
                 BackchannelHttpHandler = new FacebookBackChannelHandler(),
                 UserInformationEndpoint = "https://graph.facebook.com/v2.4/me?fields=id,name,email,first_name,last_name,location"
             };
-
-
+            facebookOptions.Scope.Add("email");
             app.UseFacebookAuthentication(facebookOptions);
             var googleOptions = new GoogleOAuth2AuthenticationOptions()
             {
-                ClientId = "671932568731-um3vd5l6domqd1u521phcmsfrosvso5r.apps.googleusercontent.com",
-                ClientSecret = "wAMyU_vqx6GYNlETg-3NE42N",
+                ClientId = "445435275990-e8rav71f2lvbfjm3ar2nmkj7v89in6ga.apps.googleusercontent.com",
+                ClientSecret = "BBdUH8xBRJAy4pn000VFN_SV",
                 Provider = new GoogleOAuth2AuthenticationProvider()
             };
             googleOptions.Scope.Add("email");
@@ -85,6 +86,7 @@ namespace Website
             app.UseGoogleAuthentication(googleOptions);
 
         }
+        
         public class FacebookBackChannelHandler : HttpClientHandler
         {
             protected override async Task<HttpResponseMessage> SendAsync(HttpRequestMessage request, CancellationToken cancellationToken)

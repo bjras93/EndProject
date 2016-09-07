@@ -4,10 +4,11 @@ using System.Web.Mvc;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
-using Website.Models;
+using YouGo.Models;
 using System.Linq;
+using Facebook;
 
-namespace Website.Controllers
+namespace YouGo.Controllers
 {
     public class AccountController : Controller
     {
@@ -23,10 +24,6 @@ namespace Website.Controllers
             return View();
         }
         public ActionResult Signup()
-        {
-            return View();
-        }
-        public ActionResult Login()
         {
             return View();
         }

@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
-namespace Website.Models
+namespace YouGo.Models
 {
     public class ExternalLoginConfirmationViewModel
     {

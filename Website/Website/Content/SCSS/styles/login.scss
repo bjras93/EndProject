@@ -1,5 +1,5 @@
 ﻿.login {
-    a {
-        @extend .ib;        
-    }
+    a, button {
+        @extend .ib; 
+    }    
 }

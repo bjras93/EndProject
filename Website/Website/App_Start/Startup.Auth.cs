@@ -5,7 +5,13 @@ using Microsoft.Owin;
 using Microsoft.Owin.Security.Cookies;
 using Microsoft.Owin.Security.Google;
 using Owin;
+using Microsoft.Owin.Security.Facebook;
+using System.Net.Http;
+using System.Threading.Tasks;
+using System.Threading;
 using Website.Models;
+using Microsoft.Owin.Security;
+using Microsoft.Owin.Security.Twitter;
 
 namespace Website
 {
@@ -34,7 +40,7 @@ namespace Website
                         validateInterval: TimeSpan.FromMinutes(30),
                         regenerateIdentity: (manager, user) => user.GenerateUserIdentityAsync(manager))
                 }
-            });            
+            });
             app.UseExternalSignInCookie(DefaultAuthenticationTypes.ExternalCookie);
 
             // Enables the application to temporarily store user information when they are verifying the second factor in the two-factor authentication process.
@@ -44,25 +50,52 @@ namespace Website
             // Once you check this option, your second step of verification during the login process will be remembered on the device where you logged in from.
             // This is similar to the RememberMe option when you log in.
             app.UseTwoFactorRememberBrowserCookie(DefaultAuthenticationTypes.TwoFactorRememberBrowserCookie);
+            app.UseTwitterAuthentication(new TwitterAuthenticationOptions
+            {
+                ConsumerKey = "pZkJr52u928Iyebh0LqqxTU2q",
+                ConsumerSecret = "su90u7cco21uzWvJGl2cLTLYzJN7rnhzculIFTyESrB1qHnyHT",
+                BackchannelCertificateValidator = new CertificateSubjectKeyIdentifierValidator(new[]
+                {
+                    "A5EF0B11CEC04103A34A659048B21CE0572D7D47", // VeriSign Class 3 Secure Server CA - G2
+                    "0D445C165344C1827E1D20AB25F40163D8BE79A5", // VeriSign Class 3 Secure Server CA - G3
+                    "7FD365A7C2DDECBBF03009F34339FA02AF333133", // VeriSign Class 3 Public Primary Certification Authority - G5
+                    "39A55D933676616E73A761DFA16A7E59CDE66FAD", // Symantec Class 3 Secure Server CA - G4
+                    "5168FF90AF0207753CCCD9656462A212B859723B", //DigiCert SHA2 High Assurance Server C‎A 
+                    "B13EC36903F8BF4701D498261A0802EF63642BC3" //DigiCert High Assurance EV Root CA
+                })
+            });
+            var facebookOptions = new FacebookAuthenticationOptions()
+            {
+                AppId = "1639996696261913",
+                AppSecret = "0f2f3b9d4dc5b02ae02adb8600b46bb5",
+                BackchannelHttpHandler = new FacebookBackChannelHandler(),
+                UserInformationEndpoint = "https://graph.facebook.com/v2.4/me?fields=id,name,email,first_name,last_name,location"
+            };
 
-            // Uncomment the following lines to enable logging in with third party login providers
-            //app.UseMicrosoftAccountAuthentication(
-            //    clientId: "",
-            //    clientSecret: "");
 
-            //app.UseTwitterAuthentication(
-            //   consumerKey: "",
-            //   consumerSecret: "");
+            app.UseFacebookAuthentication(facebookOptions);
+            var googleOptions = new GoogleOAuth2AuthenticationOptions()
+            {
+                ClientId = "671932568731-um3vd5l6domqd1u521phcmsfrosvso5r.apps.googleusercontent.com",
+                ClientSecret = "wAMyU_vqx6GYNlETg-3NE42N",
+                Provider = new GoogleOAuth2AuthenticationProvider()
+            };
+            googleOptions.Scope.Add("email");
 
-            //app.UseFacebookAuthentication(
-            //   appId: "",
-            //   appSecret: "");
+            app.UseGoogleAuthentication(googleOptions);
 
-            //app.UseGoogleAuthentication(new GoogleOAuth2AuthenticationOptions()
-            //{
-            //    ClientId = "",
-            //    ClientSecret = ""
-            //});
+        }
+        public class FacebookBackChannelHandler : HttpClientHandler
+        {
+            protected override async Task<HttpResponseMessage> SendAsync(HttpRequestMessage request, CancellationToken cancellationToken)
+            {
+                if (!request.RequestUri.AbsolutePath.Contains("/oauth"))
+                {
+                    request.RequestUri = new Uri(request.RequestUri.AbsoluteUri.Replace("?access_token", "&access_token"));
+                }
+
+                return await base.SendAsync(request, cancellationToken);
+            }
         }
     }
 }

@@ -1,16 +1,14 @@
-﻿@{
+﻿@using Website.Models
+@model LoginViewModel
+@{
     ViewBag.Title = "Welcome";
 }
 <div class="login">
-    @Html.ActionLink("Signup", "Signup", "Account", null, new { @class = "btn " })
+    @Html.ActionLink("Signup", "Signup", "Account", null, new { @class = "btn bsignup" })
+    @Html.Partial("~/Views/Shared/_ExternalLogin.cshtml", new ExternalLoginListViewModel { ReturnUrl = ViewBag.ReturnUrl })
 
-    @Html.ActionLink("Facebook", "Login", "Account", null, new { @class = "btn fb" })
 
-    @Html.ActionLink("Google", "Login", "Account", null, new { @class = "btn ggl" })
-
-    @Html.ActionLink("Twitter", "Login", "Account", null, new { @class = "btn twt" })
-
-    @Html.ActionLink("Login", "Login", "Account", null, new { @class = "btn " })
+    @Html.ActionLink("Login", "Login", "Account", null, new { @class = "btn blogin" })
 </div>
 
 <script src="~/Content/JS/layout/overlay.js"></script>

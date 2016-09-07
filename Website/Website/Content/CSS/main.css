@@ -2,10 +2,13 @@
 html, body {
   height: 100%; }
 
-html, body, div, p, h1, h2, h3, h4, h5, h6 {
+html, body, div, p, h1, h2, h3, h4, h5, h6, button, a, li, ul {
   box-sizing: border-box;
   padding: 0;
   margin: 0; }
+
+button {
+  border: none; }
 
 .right, .btn, .type-1 .tile {
   float: right; }
@@ -19,7 +22,7 @@ html, body, div, p, h1, h2, h3, h4, h5, h6 {
 .hide {
   display: none; }
 
-.ib, .container, .type-1, .type-2, .tile span, .login a {
+.ib, .container, .type-1, .type-2, .tile span, .login a, .login button, .account-details li span {
   display: inline-block; }
 
 .b1 {
@@ -58,19 +61,27 @@ html, body, div, p, h1, h2, h3, h4, h5, h6 {
 .yt {
   color: #E52727; }
 
-.ggl {
+.Google {
   background-color: #D34836;
   color: #fff; }
 
-.twt {
+.Twitter {
   background-color: #55ACEE;
   color: #fff; }
 
-.fb {
+.Facebook {
   background-color: #3B5998;
   color: #fff; }
 
-body, html {
+.bsignup {
+  background-color: #16A085;
+  color: #fff; }
+
+.blogin {
+  background-color: #1ABC9C;
+  color: #fff; }
+
+body, html, button {
   font-size: 12pt;
   font-family: 'Roboto', 'Open Sans', Verdana, Calibri, sans-serif;
   color: #333; }
@@ -178,3 +189,23 @@ body {
   float: left; }
   .mood .tile {
     width: 33.33%; }
+
+.account-menu {
+  float: left;
+  width: 20%; }
+  .account-menu li {
+    list-style: none; }
+
+.account-details {
+  width: 80%;
+  float: right; }
+  .account-details li {
+    list-style: none;
+    margin: 10px 0; }
+    .account-details li span:first-child {
+      font-weight: bold; }
+    .account-details li span {
+      color: #fff;
+      width: 33%; }
+      .account-details li span a {
+        color: #fff; }

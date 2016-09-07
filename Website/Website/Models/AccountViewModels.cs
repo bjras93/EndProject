@@ -8,6 +8,15 @@ namespace Website.Models
         [Required]
         [Display(Name = "Email")]
         public string Email { get; set; }
+
+        [Display(Name = "Name")]
+        public string Name { get; set; }
+
+        [Display(Name = "Height")]
+        public string Height { get; set; }
+
+        [Display(Name = "Weight")]
+        public string Weight { get; set; }
     }
 
     public class ExternalLoginListViewModel

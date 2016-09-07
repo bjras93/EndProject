@@ -156,6 +156,7 @@ body {
 
 .content {
   width: 100%;
+  min-height: 350px;
   padding: 15px; }
 
 .btn {
@@ -190,11 +191,21 @@ body {
   .mood .tile {
     width: 33.33%; }
 
+.logo {
+  padding: 15px; }
+  .logo a {
+    font-size: 34pt;
+    font-weight: bold;
+    color: #fff; }
+
 .account-menu {
   float: left;
   width: 20%; }
   .account-menu li {
     list-style: none; }
+    .account-menu li a {
+      font-weight: bold;
+      color: #fff; }
 
 .account-details {
   width: 80%;
@@ -209,3 +220,6 @@ body {
       width: 33%; }
       .account-details li span a {
         color: #fff; }
+
+.account-goals li {
+  list-style: none; }

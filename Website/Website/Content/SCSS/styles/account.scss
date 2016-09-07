@@ -3,6 +3,10 @@
     width: 20%;
     li {
         list-style: none;
+        a {
+            font-weight: bold;
+            color: $w;
+        }
     }
 }
 .account-details {
@@ -22,5 +26,10 @@
                 color: $w;
             }
         }
+    }
+}
+.account-goals {
+    li {
+        list-style: none;
     }
 }

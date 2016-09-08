@@ -2,7 +2,7 @@
 html, body {
   height: 100%; }
 
-html, body, div, p, h1, h2, h3, h4, h5, h6, button, a, li, ul {
+html, body, div, p, h1, h2, h3, h4, h5, h6, button, a, li, ul, input {
   box-sizing: border-box;
   padding: 0;
   margin: 0; }
@@ -10,7 +10,7 @@ html, body, div, p, h1, h2, h3, h4, h5, h6, button, a, li, ul {
 button {
   border: none; }
 
-.right, .btn, .type-1 .tile {
+.right, .type-1 .tile, .login a, .login button {
   float: right; }
 
 .left, .type-1, .type-2, .type-2 .tile {
@@ -22,7 +22,7 @@ button {
 .hide {
   display: none; }
 
-.ib, .container, .type-1, .type-2, .tile span, .login a, .login button, .account-details li span {
+.ib, .container, .type-1, .type-2, .tile span, .login a, .login button, .account-details li span, .create-diet {
   display: inline-block; }
 
 .b1 {
@@ -159,6 +159,14 @@ body {
   min-height: 350px;
   padding: 15px; }
 
+.text-danger {
+  color: #F57979; }
+
+.ipt {
+  margin: 5px 0;
+  padding: 15px;
+  min-width: 250px; }
+
 .btn {
   margin: 5px 0;
   padding: 15px;
@@ -223,3 +231,29 @@ body {
 
 .account-goals li {
   list-style: none; }
+
+.diet {
+  background-color: #16A085;
+  color: #fff;
+  padding: 15px; }
+
+.add-diet {
+  position: absolute;
+  right: 30px;
+  bottom: 25px;
+  border-radius: 50px;
+  padding: 18px 25px;
+  color: #fff;
+  font-size: 1.4em;
+  background-color: #F57979;
+  cursor: pointer; }
+
+.period {
+  color: #fff;
+  background-color: #16A085;
+  padding: 15px; }
+  .period a {
+    color: #fff; }
+  .period .plan {
+    background-color: #1ABC9C;
+    padding: 15px; }

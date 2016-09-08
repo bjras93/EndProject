@@ -20,3 +20,12 @@ C:\Users\bjoe0771\Desktop\Website\Website\Website\obj\Debug\Website.dll
 C:\Users\bjoe0771\Desktop\Website\Website\Website\obj\Debug\Website.pdb
 C:\Users\bjoe0771\Desktop\Website\Website\Website\bin\Facebook.dll
 C:\Users\bjoe0771\Desktop\Website\Website\Website\bin\Facebook.xml
+C:\Users\bjoe0771\Desktop\Website\Website\Website\obj\Debug\YouGo.csprojResolveAssemblyReference.cache
+C:\Users\bjoe0771\Desktop\Website\Website\Website\bin\System.Net.Http.Formatting.dll
+C:\Users\bjoe0771\Desktop\Website\Website\Website\bin\System.Web.Http.dll
+C:\Users\bjoe0771\Desktop\Website\Website\Website\bin\System.Web.Http.WebHost.dll
+C:\Users\bjoe0771\Desktop\Website\Website\Website\bin\System.Net.Http.Formatting.xml
+C:\Users\bjoe0771\Desktop\Website\Website\Website\bin\System.Web.Http.xml
+C:\Users\bjoe0771\Desktop\Website\Website\Website\bin\System.Web.Http.WebHost.xml
+C:\Users\bjoe0771\Desktop\Website\Website\Website\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+C:\Users\bjoe0771\Desktop\Website\Website\Website\obj\Debug\YouGo.Migrations.Yougo.resources

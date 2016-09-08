@@ -5,16 +5,19 @@ namespace YouGo.Models
 {
     public class ExternalLoginConfirmationViewModel
     {
-        [Required]
+        [Required(ErrorMessage = "You forgot to fill out your name")]
         [Display(Name = "Email")]
         public string Email { get; set; }
-
+        
+        [Required(ErrorMessage = "You forgot to fill out your name")]
         [Display(Name = "Name")]
         public string Name { get; set; }
 
+        [Required(ErrorMessage = "You forgot to fill out your height")]
         [Display(Name = "Height")]
         public string Height { get; set; }
 
+        [Required(ErrorMessage = "You forgot to fill out your weight")]
         [Display(Name = "Weight")]
         public string Weight { get; set; }
     }
@@ -47,14 +50,7 @@ namespace YouGo.Models
 
         public bool RememberMe { get; set; }
     }
-
-    public class ForgotViewModel
-    {
-        [Required]
-        [Display(Name = "Email")]
-        public string Email { get; set; }
-    }
-
+    
     public class LoginViewModel
     {
         [Required]
@@ -66,9 +62,6 @@ namespace YouGo.Models
         [DataType(DataType.Password)]
         [Display(Name = "Password")]
         public string Password { get; set; }
-
-        [Display(Name = "Remember me?")]
-        public bool RememberMe { get; set; }
     }
 
     public class RegisterViewModel
@@ -89,33 +82,5 @@ namespace YouGo.Models
         [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
         public string ConfirmPassword { get; set; }
     }
-
-    public class ResetPasswordViewModel
-    {
-        [Required]
-        [EmailAddress]
-        [Display(Name = "Email")]
-        public string Email { get; set; }
-
-        [Required]
-        [StringLength(100, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 6)]
-        [DataType(DataType.Password)]
-        [Display(Name = "Password")]
-        public string Password { get; set; }
-
-        [DataType(DataType.Password)]
-        [Display(Name = "Confirm password")]
-        [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
-        public string ConfirmPassword { get; set; }
-
-        public string Code { get; set; }
-    }
-
-    public class ForgotPasswordViewModel
-    {
-        [Required]
-        [EmailAddress]
-        [Display(Name = "Email")]
-        public string Email { get; set; }
-    }
+    
 }

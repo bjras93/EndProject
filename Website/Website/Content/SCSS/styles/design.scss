@@ -1,4 +1,5 @@
 ﻿$spd: 15px;
+$smg: 5px 0;
 $smw: 250px;
 body {
     background: url('../img/web/pexels-photo.jpg');
@@ -14,12 +15,19 @@ body {
     min-height: 350px;
     padding: 15px;
 }
+.text-danger {
+    color: $red-1;
+}
+.ipt {
+    margin: $smg;
+    padding: $spd;
+    min-width: $smw;
+}
 .btn {
-    margin: 5px 0;
+    margin: $smg;
     padding: $spd;
     min-width: $smw;
     text-align:center;
-    @extend .right;
     clear:both;
 }
 .type-1 {

@@ -1,5 +1,6 @@
 ﻿@{
     ViewBag.Title = "Profile";
+    var user = YouGo.Models.UserViewModel.GetCurrentUser();
 }
 <div class="content g2">
     <div class="account-menu">
@@ -23,7 +24,7 @@
                     Name
                 </span>
                 <span>
-                    Placeholder
+                    @user.Name
                 </span>
                 <span>
                     <a href="">
@@ -36,20 +37,7 @@
                     E-mail
                 </span>
                 <span>
-                    Placeholder
-                </span>
-                <span>
-                    <a href="">
-                        Edit
-                    </a>
-                </span>
-            </li>
-            <li>
-                <span>
-                    Height
-                </span>
-                <span>
-                    Placeholder
+                    @user.Email
                 </span>
                 <span>
                     <a href="">
@@ -62,7 +50,20 @@
                     Weight
                 </span>
                 <span>
-                    Placeholder
+                    @user.Weight kg
+                </span>
+                <span>
+                    <a href="">
+                        Edit
+                    </a>
+                </span>
+            </li>
+            <li>
+                <span>
+                    Height
+                </span>
+                <span>
+                    @user.Height cm
                 </span>
                 <span>
                     <a href="">

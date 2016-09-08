@@ -4,8 +4,17 @@ namespace YouGo.Controllers
 {
     public class DietsController : Controller
     {
-        // GET: Diets
+        
         public ActionResult Index()
+        {
+            return View();
+        }
+        public ActionResult Create()
+        {
+            return View();
+        }
+
+        public ActionResult Edit(int ID)
         {
             return View();
         }

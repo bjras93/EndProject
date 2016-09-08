@@ -22,7 +22,7 @@ button {
 .hide {
   display: none; }
 
-.ib, .container, .type-1, .type-2, .tile span, .login a, .login button, .account-details li span, .create-diet {
+.ib, .container, .type-1, .type-2, .tile span, .login a, .login button, .account-details li span, #modal, .create-diet, .days, .weeks {
   display: inline-block; }
 
 .b1 {
@@ -148,7 +148,8 @@ a {
 
 body {
   background: url("../img/web/pexels-photo.jpg");
-  background-size: cover; }
+  background-size: cover;
+  background-attachment: fixed; }
 
 .container {
   margin: 0 15%;
@@ -158,6 +159,9 @@ body {
   width: 100%;
   min-height: 350px;
   padding: 15px; }
+
+.stop-scroll {
+  overflow: hidden; }
 
 .text-danger {
   color: #F57979; }
@@ -232,6 +236,20 @@ body {
 .account-goals li {
   list-style: none; }
 
+.modal-overlay {
+  display: none;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  top: 0;
+  left: 0;
+  padding: 50px 15%; }
+
+#modal {
+  background-color: #1ABC9C;
+  padding: 15px; }
+
 .diet {
   background-color: #16A085;
   color: #fff;
@@ -255,5 +273,15 @@ body {
   .period a {
     color: #fff; }
   .period .plan {
-    background-color: #1ABC9C;
-    padding: 15px; }
+    background-color: #1ABC9C; }
+
+.days {
+  width: 100%;
+  padding: 15px;
+  background-color: #96D4BF; }
+
+.weeks {
+  padding: 15px; }
+
+.pnl {
+  padding: 15px; }

@@ -7,6 +7,6 @@ namespace YouGo.Models
         public DbSet<DietModel> Diet { get; set; }
         public DbSet<FitnessModel> Fitness { get; set; }
         public DbSet<LikeModel> Heart { get; set; }
-        public DbSet<FoodModel> Meals { get; set; }
+        public DbSet<FoodModel> Food { get; set; }
     }
 }

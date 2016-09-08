@@ -18,5 +18,11 @@ namespace YouGo.Controllers
         {
             return View();
         }
+        [HttpGet]
+        public ActionResult AddNewFood()
+        {
+
+        return PartialView();
+        }
     }
 }

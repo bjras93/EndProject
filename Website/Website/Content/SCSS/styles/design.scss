@@ -4,6 +4,7 @@ $smw: 250px;
 body {
     background: url('../img/web/pexels-photo.jpg');
     background-size:cover;
+    background-attachment: fixed;
 }
 .container {
     @extend .ib;
@@ -14,6 +15,9 @@ body {
     width: 100%;
     min-height: 350px;
     padding: 15px;
+}
+.stop-scroll {
+    overflow: hidden;
 }
 .text-danger {
     color: $red-1;

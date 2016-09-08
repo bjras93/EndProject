@@ -29,3 +29,4 @@ C:\Users\bjoe0771\Desktop\Website\Website\Website\bin\System.Web.Http.xml
 C:\Users\bjoe0771\Desktop\Website\Website\Website\bin\System.Web.Http.WebHost.xml
 C:\Users\bjoe0771\Desktop\Website\Website\Website\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
 C:\Users\bjoe0771\Desktop\Website\Website\Website\obj\Debug\YouGo.Migrations.Yougo.resources
+C:\Users\bjoe0771\Desktop\Website\Website\Website\obj\Debug\YouGo.Migrations.Foodupdate.resources

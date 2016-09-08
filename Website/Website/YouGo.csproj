@@ -214,6 +214,7 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\ApiControllers\DietApiController.cs" />
+    <Compile Include="Controllers\ApiControllers\FoodApiController.cs" />
     <Compile Include="Controllers\DietsController.cs" />
     <Compile Include="Controllers\FitnessController.cs" />
     <Compile Include="Controllers\HealthController.cs" />
@@ -229,6 +230,10 @@
     <Compile Include="Migrations\201609080957568_Yougo.cs" />
     <Compile Include="Migrations\201609080957568_Yougo.Designer.cs">
       <DependentUpon>201609080957568_Yougo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201609082013149_Foodupdate.cs" />
+    <Compile Include="Migrations\201609082013149_Foodupdate.Designer.cs">
+      <DependentUpon>201609082013149_Foodupdate.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -322,6 +327,7 @@
     <Content Include="Content\img\web\pexels-photo.jpg" />
     <Content Include="Content\JS\layout\diet.js" />
     <Content Include="Content\JS\layout\menu.js" />
+    <Content Include="Content\JS\layout\modal.js" />
     <Content Include="Content\JS\layout\overlay.js" />
     <Content Include="Content\JS\plugins\angular.min.js" />
     <Content Include="Content\JS\plugins\jquery-3.1.0.min.js" />
@@ -420,6 +426,9 @@
     <EmbeddedResource Include="Migrations\201609080957568_Yougo.resx">
       <DependentUpon>201609080957568_Yougo.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201609082013149_Foodupdate.resx">
+      <DependentUpon>201609082013149_Foodupdate.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Account\ExternalLoginConfirmation.cshtml" />
@@ -429,6 +438,12 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Diets\Create.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Diets\AddNewFood.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Content\SCSS\styles\modal.scss" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

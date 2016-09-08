@@ -26,6 +26,18 @@
     padding: $spd;
     .plan {
         background-color: $gre-2;
-        padding: $spd;
     }
+}
+.days {
+    width:100%;
+    padding: $spd;
+    @extend .ib;
+    background-color: $gre-3;
+}
+.weeks {
+    padding: $spd;
+    @extend .ib;
+}
+.pnl {
+    padding: $spd;
 }

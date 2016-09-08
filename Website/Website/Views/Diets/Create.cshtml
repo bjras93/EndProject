@@ -1,6 +1,6 @@
 ﻿@model YouGo.Models.DietModel
 
-@{ 
+@{
     ViewBag.Title = "Create your own diet";
     var user = YouGo.Models.UserViewModel.GetCurrentUser();
 }
@@ -10,7 +10,7 @@
             <form name="myForm">
                 <input type="hidden" id="UserId" name="UserId" value="@user.Id.Replace("-", "")" />
                 <div class="">
-                    <input name="Title" class="ipt" placeholder="Title" required ng-model="Title" />
+                    <input name="Title" ng-model="Title" class="ipt" type="text" placeholder="Title" />
                     <div ng-if="!myForm.Title.$valid && isClicked">
                         <div>This field is required</div>
                     </div>
@@ -33,45 +33,85 @@
         </div>
 
     </div>
-
+    
     <div class="create-diet" ng-controller="dietGetCtrl">
+
         <div class="period hide">
+            
             <h3>{{Data.Title}}</h3><br />
-            <div ng-repeat="plan in plans" class="plan">
-                Plan {{$index +1}}
-                <div>
-                    <input type="text" data-no="{{$index + 1}}" placeholder="Title ex.: Day 1, Week 1" class="ipt" />
-                </div>
-                <div>
-                    <input type="text" data-no="{{$index + 1}}" placeholder="Edible" class="ipt" />
-                </div>
-                <div>
-                    <input type="text" data-no="{{$index + 1}}" placeholder="Amount" class="ipt" />
-                </div>
+            
+            <div ng-repeat="w in week" class="plan">
 
-                <div class="edible" ng-repeat="edible in plans[$index].edibles">
-                    <div>
-                        <input type="text" data-no="{{$index + 1}}" placeholder="Edible" class="ipt" />
-                    </div>
-                    <div>
-                        <input type="text" data-no="{{$index + 1}}" placeholder="Amount" class="ipt" />
-                    </div>
-                </div>
+                <div ng-init="weekInit=$index"></div>
+                <a ng-click="weekClick(w.no);" href="" class="weeks">Uge {{w.no}}</a>
+                <div ng-class="wC.indexOf(w.no) > -1 ? '' : 'hide'" ng-repeat="day in w.days">
+                    <a ng-click="dayClick(day.day + ',' + w.no);" class="days" href="">{{day.day}}</a>
+                    <div ng-class="dC.indexOf(day.day + ',' + w.no) > -1 ? '' : 'hide'" class="pnl">
+                        <div ng-repeat="meal in day.meals">
+                        <h4>{{meal.name}}</h4>
+                            <div>
+                                <div ng-init="mealInit=$index"></div>
+                                <div>
+                                    <input ng-keypress="pressed = true" type="text" ng-model="edibleS" placeholder="Edible" class="ipt" />
+                                    <div ng-if="pressed && edibleS !== ''" ng-repeat="food in allFood | filter:edibleS">
+                                        <a  ng-hide="cEdible" href="">{{food.Name}}</a>
+                                        <a ng-click="setMeasure(food.Gram, mealInit, weekInit); cEdible = true;" ng-if="food.Gram" href="">Gram</a>
+                                        <a ng-click="setMeasure(food.Pieces, mealInit, weekInit); cEdible = true;"  ng-if="food.Pieces" href="">Pieces</a>
+                                        <a ng-click="setMeasure(food.Milliliter, mealInit, weekInit); cEdible = true;"  ng-if="food.Milliliter" href="">Milliliter</a>
+                                    </div>
+                                </div>
+                                <div>
+                                    <input type="text" ng-model="measureEdible" placeholder="Amount" class="ipt" />
+                                    <div ng-if="measureEdible != null" ng-model="am.amountS[mealInit + '' + weekInit + '']">
+                                        {{am.amountS[mealInit + '' + weekInit + ''] * measureEdible}} Kcal
+                                    </div>
+                                </div>
+                                <div class="edible" ng-repeat="edible in week[w.no-1].days[weekDays.indexOf(day.day)].meals[meal.no].edibles">
+                                    <div ng-init="edibleInit=$index"></div>
+                                    <div>
+                                        <input ng-keypress="pressedL = true" type="text" placeholder="Edible" ng-model="edibleSL" class="ipt" />
+                                    </div>
+                                    <div ng-if="pressedL && edibleSL !== ''" ng-repeat="food in allFood | filter:edibleSL">
+                                        <a ng-hide="cFood" href="">{{food.Name}}</a>
 
-                <div>
-                    <a ng-click="addEdible($index);" class="btn ib" href="">Add more edibles</a>
+                                        <a ng-click="setMeasure(food.Gram, mealInit, weekInit,edibleInit); cFood = true;" ng-if="food.Gram" href="">Gram</a>
+                                        <a ng-click="setMeasure(food.Pieces, mealInit, weekInit,edibleInit); cFood = true;" ng-if="food.Pieces" href="">Pieces</a>
+                                        <a ng-click="setMeasure(food.Milliliter, mealInit, weekInit,edibleInit); cFood = true;" ng-if="food.Milliliter" href="">Milliliter</a>
+                                    </div>
+                                    <div>
+                                        
+                                        <input type="text"placeholder="Amount" ng-model="measurement" class="ipt" />
+                                        <div ng-if="measurement != null" ng-model="am.amountSL[mealInit + '' + weekInit + '' + edibleInit + '']">
+                                            {{am.amountSL[mealInit + '' + weekInit + '' + edibleInit + ''] * measurement}} Kcal
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div>
+                                    <a ng-click="addEdible(day.day, w.no, meal.no);" class="btn ib" href="">Add more edibles</a>
+                                </div>
+                            </div>
+                        </div>                        
+                    </div>
                 </div>
             </div>
             <br />
+            
             <div>
-                <a ng-click="addPlan();" class="btn ib" href="">Add another plan</a>
+                <a ng-click="addWeek();" class="btn ib" href="">Add another week</a>
             </div>
 
             <div>
                 <a class="btn ib" href="">Finish</a>
+                <a class="btn ib" data-url="@Url.Action("AddNewFood")" id="open-modal" href="">Open modal</a>
+                <div class="modal-overlay">
+                    <div id="modal">
+
+                    </div>
+                </div>
             </div>
         </div>
     </div>
 </div>
-    <script src="~/Content/JS/plugins/angular.min.js"></script>
-    <script src="~/Content/JS/layout/diet.js"></script>
+<script src="~/Content/JS/plugins/angular.min.js"></script>
+<script src="~/Content/JS/layout/diet.js"></script>

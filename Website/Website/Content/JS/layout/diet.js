@@ -2,10 +2,10 @@
 
 var diet = {
     init: function () {
-        diet.post();
-        diet.get();
+        diet.pageOne();
+        diet.pageTwo();
     },
-    post: function () {
+    pageOne: function () {
         app.controller('dietPostCtrl', ['$scope', '$http', function ($scope, $http) {
             $scope.isClicked = false;
 
@@ -29,19 +29,44 @@ var diet = {
             }
         }]);
     },
-    get: function () {
-
+    pageTwo: function () {
         app.controller('dietGetCtrl', ['$scope', '$http', function ($scope, $http) {
             var loc = location.href,
-                id = loc.split('?id=')[1];
+                id = loc.split('?id=')[1],
+                api = 'http://local.yougo.dk/api/',
+                currentW = 1,
+                days = [],
+                meals = [],
+                weekDay = [];
            
-            $scope.collectData = function () {
+            $scope.searches = {
+                searchEdibles: {
+
+                },
+                foodSearch: {
+
+                }
             }
+            $scope.allFood = [];            
+            $scope.week = [];
+            $scope.dC = ["Monday,1"];
+            $scope.wC = [1];
+            $scope.amountS = [];
+            $scope.amountSL = [];
+            $scope.weekDays = [];
+            $scope.searches.foodSearch = [];
+            $scope.hideResult = function (foodSearch, show) {
+                $scope.searches.foodSearch[foodSearch] = show;
+            }
+
+            
+
+            // Load 
             if (id != undefined) {
                 var p = id.split('&p=1')[0];
                 var getDiet = {
                     method: 'GET',
-                    url: 'http://local.yougo.dk/api/DietApi/GetDiet?id=' + p
+                    url: api + 'DietApi/GetDiet?id=' + p
                 }
                 $http(getDiet).then(function (data) {
                     if (loc.split('&p=')[1] == 1) {
@@ -56,39 +81,60 @@ var diet = {
                         $scope.Data = data.data;
                     }
                 });
-                $scope.allFood = [];
-                var getFood = {
-                    method: 'GET',
-                    url: 'http://local.yougo.dk/api/FoodApi'
+                // Search edibles
+                $scope.clearFood = function() {
+                    $scope.allFood = "";
                 }
+                $scope.$watch('searches.searchEdibles', function (newVal, oldVal) 
+                {
 
-                $http(getFood).then(function (data) {
-                    for (var i = 0; i < data.data.length; i++){
-                        $scope.allFood.push(data.data[i]);
+                    $scope.setId = function (sId) {
+                        $scope.sId = sId;
                     }
-                    console.log($scope.allFood);
+                    console.log($scope.sId)
+                    if (newVal != oldVal && newVal[$scope.sId] != "")
+                    {
+                        $http({
+                            method: 'GET',
+                            url: api + 'EdiblesApi/FindByName?s=' + newVal[$scope.sId]
+                        }).then(function (data) {
+                            $scope.allFood = data.data;
+                        });
+                    }
+                    else {
+                        $scope.allFood = [];
+                    }
+                    
+                }, 400);
+
+                $http({ method: 'GET', url: api + 'DaysApi/GetDays' }).then(function (data) {
+                    weekDay = data.data;
+
+                    for (var i = 0; i < weekDay.length; i++) {
+                        days.push({
+                            id: weekDay[i].Id,
+                            day: weekDay[i].Name,
+                            edibles: '',
+                            calories: '',
+                            meals: []
+                        });
+
+                    }
+                    $http({ method: 'GET', url: api + 'MealsApi/GetMeals' }).then(function (data) {
+                        meals = data.data;
+                        for (var i = 0; i < days.length; i++) {
+                            for (var m = 0; m < meals.length; m++) {
+                                $scope.amountS.push(m + ',' + i);
+                                days[i].meals.push({
+                                    name: meals[m].Name,
+                                    no: m,
+                                    edibles: []
+                                });
+                            }
+                        }
+                    });
                 });
                 // Add
-                var weekDay = new Array(7),
-                    meals = new Array(4);
-                weekDay[0] = "Monday";
-                weekDay[1] = "Tuesday";
-                weekDay[2] = "Wednesday";
-                weekDay[3] = "Thursday";
-                weekDay[4] = "Friday";
-                weekDay[5] = "Saturday";
-                weekDay[6] = "Sunday";
-                meals[0] = "Breakfast";
-                meals[1] = "Lunch";
-                meals[2] = "Dinner";
-                meals[3] = "Snack";
-                $scope.weekDays = weekDay;
-                var currentW = 1;
-                var days = [];
-                var mealsEach = [];
-                $scope.week = [];
-                $scope.dC = ["Monday,1"];
-                $scope.wC = [1];
 
                 $scope.weekClick = function (d) {
                     hide(d, $scope.wC, this);
@@ -105,15 +151,6 @@ var diet = {
                         scope.push(d);
                     }
                 };
-                for (var i = 0; i < weekDay.length; i++) {
-                    days.push({
-                        day: weekDay[i],
-                        edible: '',
-                        calories: '',
-                        meals: []
-                    })
-                    
-                }
                 
                 $scope.week.push({
                     no: currentW,
@@ -129,28 +166,14 @@ var diet = {
                     });
                 }
 
-                $scope.amountS = [];
-                $scope.amountSL = [];
-                for (var i = 0; i < days.length; i++) {
-                    for (var m = 0; m < meals.length; m++) {
-                        $scope.amountS.push(m + ',' + i);
-                        days[i].meals.push({
-                            name: meals[m],
-                            no: m,
-                            edibles: []
-                        });
-                    }
-                }
-                $scope.setMeasure = function (measure, index, pIndex, aEdible) {
+                
+                $scope.setCalories = function (calories, Ids) {
+                    $scope.am.amountS[Ids] = calories;
                     
-                    if (aEdible == null) {
-                        $scope.am.amountS[index + '' + pIndex] = measure;
-                    }
-                    else {
-                        $scope.am.amountSL[index + '' + pIndex + '' + aEdible + ''] = measure;
-                        console.log(index + '' + pIndex + '' + aEdible + '')
-
-                    }
+                }
+                $scope.setFoodId = function(foodId, mealIndex, weekIndex, dayIndex)
+                {
+                    $scope.foodId = 'w' + weekIndex + '_m' + mealIndex + '_d' + dayIndex + '_f' + foodId;
                 }
                 $scope.am = {
                     amountS: {
@@ -160,9 +183,9 @@ var diet = {
                     }
                 }
                 $scope.addEdible = function (day, week, meal) {
-                    $scope.week[0].days[weekDay.indexOf(day)].meals[meal].edibles.push({
-                        edible: '',
-                        amount: ''                        
+                    $scope.week[week - 1].days[day.id - 1].meals[meal].edibles.push({
+                        name: '',
+                        calories: ''
                     });
                 }
                 

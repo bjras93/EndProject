@@ -8,5 +8,8 @@ namespace YouGo.Models
         public DbSet<FitnessModel> Fitness { get; set; }
         public DbSet<LikeModel> Heart { get; set; }
         public DbSet<FoodModel> Food { get; set; }
+        public DbSet<MealsModel> Meals { get; set; }
+        public DbSet<DaysModel> Days { get; set; }
+        public DbSet<MealCollectionModel> MealCollection { get; set; }
     }
 }

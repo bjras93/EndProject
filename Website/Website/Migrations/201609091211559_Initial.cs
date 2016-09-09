@@ -1,9 +1,9 @@
-namespace YouGo.Migrations
+namespace Website.Migrations
 {
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class YouGo_Start : DbMigration
+    public partial class Initial : DbMigration
     {
         public override void Up()
         {
@@ -11,16 +11,15 @@ namespace YouGo.Migrations
                 "dbo.DietModels",
                 c => new
                     {
-                        ID = c.String(nullable: false, maxLength: 128),
-                        Title = c.String(),
+                        Id = c.String(nullable: false, maxLength: 128),
+                        Title = c.String(nullable: false),
+                        Description = c.String(nullable: false),
                         User = c.String(),
-                        Hearts = c.Int(nullable: false),
-                        Description = c.String(),
-                        Days = c.Int(nullable: false),
-                        Meals = c.Int(nullable: false),
+                        Likes = c.Int(nullable: false),
+                        Weeks = c.Int(nullable: false),
                         Img = c.String(),
                     })
-                .PrimaryKey(t => t.ID);
+                .PrimaryKey(t => t.Id);
             
             CreateTable(
                 "dbo.FitnessModels",
@@ -39,23 +38,22 @@ namespace YouGo.Migrations
                 .Index(t => t.DietID);
             
             CreateTable(
-                "dbo.LikeModels",
-                c => new
-                    {
-                        ID = c.String(nullable: false, maxLength: 128),
-                        UserId = c.String(),
-                        ItemId = c.String(),
-                    })
-                .PrimaryKey(t => t.ID);
-            
-            CreateTable(
                 "dbo.FoodModels",
                 c => new
                     {
                         Id = c.String(nullable: false, maxLength: 128),
                         Name = c.String(),
-                        Calories = c.Int(nullable: false),
-                        Measurement = c.String(),
+                        Gram = c.Int(nullable: false),
+                    })
+                .PrimaryKey(t => t.Id);
+            
+            CreateTable(
+                "dbo.LikeModels",
+                c => new
+                    {
+                        Id = c.String(nullable: false, maxLength: 128),
+                        UserId = c.String(),
+                        ItemId = c.String(),
                     })
                 .PrimaryKey(t => t.Id);
             
@@ -65,8 +63,8 @@ namespace YouGo.Migrations
         {
             DropForeignKey("dbo.FitnessModels", "DietID", "dbo.DietModels");
             DropIndex("dbo.FitnessModels", new[] { "DietID" });
-            DropTable("dbo.FoodModels");
             DropTable("dbo.LikeModels");
+            DropTable("dbo.FoodModels");
             DropTable("dbo.FitnessModels");
             DropTable("dbo.DietModels");
         }

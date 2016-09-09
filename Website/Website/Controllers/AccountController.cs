@@ -21,7 +21,11 @@ namespace YouGo.Controllers
         }
         public ActionResult Details()
         {
-            return View();
+            if (Request.IsAuthenticated)
+            {
+                return View();
+            }
+            return RedirectToAction("../Account/Index");
         }
         public ActionResult Signup()
         {

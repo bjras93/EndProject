@@ -7,7 +7,11 @@ namespace YouGo.Controllers
         // GET: Health
         public ActionResult Index()
         {
-            return View();
+            if (Request.IsAuthenticated)
+            {
+                return View();
+            }
+            return RedirectToAction("../Account/Index");
         }
     }
 }

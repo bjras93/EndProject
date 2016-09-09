@@ -3,7 +3,7 @@ using System.Linq;
 using System.Web.Http;
 using YouGo.Models;
 
-namespace Website.Controllers.ApiControllers
+namespace YouGo.Controllers.ApiControllers
 {
     public class FoodApiController : ApiController
     {

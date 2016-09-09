@@ -1,4 +1,4 @@
-namespace YouGo.Migrations
+namespace Website.Migrations
 {
     using System;
     using System.Data.Entity;
@@ -9,7 +9,7 @@ namespace YouGo.Migrations
     {
         public Configuration()
         {
-            AutomaticMigrationsEnabled = false;
+            AutomaticMigrationsEnabled = true;
         }
 
         protected override void Seed(YouGo.Models.DefaultConnection context)

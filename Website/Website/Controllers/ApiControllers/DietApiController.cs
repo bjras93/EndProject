@@ -5,7 +5,7 @@ using System.Linq;
 using System.Web.Http;
 using YouGo.Models;
 
-namespace Website.Controllers.ApiControllers
+namespace YouGo.Controllers.ApiControllers
 {
     public class DietApiController : ApiController
     {
@@ -35,7 +35,7 @@ namespace Website.Controllers.ApiControllers
             dynamic json = jsonData;
             var user = UserViewModel.GetCurrentUser();
 
-            dm.ID = Guid.NewGuid().ToString();
+            dm.Id = Guid.NewGuid().ToString();
             dm.User = user.Id;
             dm.Title = json.title.ToString();
             dm.Description = json.description.ToString();
@@ -50,7 +50,7 @@ namespace Website.Controllers.ApiControllers
 
             db.Diet.Add(dm);
             db.SaveChanges();
-            return Ok(dm.ID);
+            return Ok(dm.Id);
         }
     }
 }

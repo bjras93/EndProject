@@ -1,6 +1,6 @@
 ﻿using System.Web.Http;
 
-namespace Website
+namespace YouGo
 {
     public static class WebApiConfig
     {

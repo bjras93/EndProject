@@ -14,8 +14,6 @@ C:\Users\bjoe0771\Desktop\Website\Website\Website\bin\roslyn\VBCSCompiler.exe.co
 C:\Users\bjoe0771\Desktop\Website\Website\Website\bin\Website.dll.config
 C:\Users\bjoe0771\Desktop\Website\Website\Website\bin\Website.dll
 C:\Users\bjoe0771\Desktop\Website\Website\Website\bin\Website.pdb
-C:\Users\bjoe0771\Desktop\Website\Website\Website\obj\Debug\YouGo.Migrations.YouGo_Start.resources
-C:\Users\bjoe0771\Desktop\Website\Website\Website\obj\Debug\YouGo.csproj.GenerateResource.Cache
 C:\Users\bjoe0771\Desktop\Website\Website\Website\obj\Debug\Website.dll
 C:\Users\bjoe0771\Desktop\Website\Website\Website\obj\Debug\Website.pdb
 C:\Users\bjoe0771\Desktop\Website\Website\Website\bin\Facebook.dll
@@ -28,5 +26,7 @@ C:\Users\bjoe0771\Desktop\Website\Website\Website\bin\System.Net.Http.Formatting
 C:\Users\bjoe0771\Desktop\Website\Website\Website\bin\System.Web.Http.xml
 C:\Users\bjoe0771\Desktop\Website\Website\Website\bin\System.Web.Http.WebHost.xml
 C:\Users\bjoe0771\Desktop\Website\Website\Website\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
-C:\Users\bjoe0771\Desktop\Website\Website\Website\obj\Debug\YouGo.Migrations.Yougo.resources
-C:\Users\bjoe0771\Desktop\Website\Website\Website\obj\Debug\YouGo.Migrations.Foodupdate.resources
+C:\Users\bjoe0771\Desktop\Website\Website\Website\obj\Debug\Website.Migrations.Initial.resources
+C:\Users\bjoe0771\Desktop\Website\Website\Website\obj\Debug\YouGo.csproj.GenerateResource.Cache
+C:\Users\bjoe0771\Desktop\Website\Website\Website\obj\Debug\Website.Migrations.MealDays.resources
+C:\Users\bjoe0771\Desktop\Website\Website\Website\obj\Debug\Website.Migrations.MealCollection.resources

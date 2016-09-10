@@ -285,3 +285,19 @@ body {
 
 .pnl {
   padding: 15px; }
+
+.autocomplete {
+  padding: 0;
+  margin-top: -5px;
+  position: absolute; }
+  .autocomplete a {
+    background-color: #fff;
+    display: block;
+    padding: 15px;
+    min-width: 100%;
+    color: #333;
+    outline: none; }
+    .autocomplete a:hover {
+      background-color: #8ecfff; }
+  .autocomplete .autocomplete-selected {
+    background-color: #8ecfff; }

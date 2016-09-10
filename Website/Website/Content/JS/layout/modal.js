@@ -1,9 +1,10 @@
 ﻿var modal = {
     init: function () {
-        modal.run($('#open-modal'), $('#modal'));
+        
+        modal.run('.open-modal', $('#modal'));
     },
     run: function (click, target) {
-            click.on('click', function(e){
+        $(document).on('click', click, function (e) {
                 $.get($(this).data('url'), function(data) {
                     target.html(data);
 
@@ -25,6 +26,43 @@
                 });
             });
         
+    },
+    addFood: function () {
+        var url = 'http://local.yougo.dk/api/FoodApi/AddFood',
+            name = $('#edible_name'),
+            edible = $('#edible_calories');
+        if (name.val() != '' && edible.val() != '') {
+            $.ajax({
+                type: 'POST',
+                url: url,
+                data: JSON.stringify({ Name: $('#edible_name').val(), Calories: $('#edible_calories').val() }),
+                contentType: "application/json"
+            });
+            hideModal();
+        }
+        else {           
+            if(name.val() == '')
+            {
+                name.next().show();
+                console.log(name);
+            }
+            else {
+                name.next().hide();
+            }
+            if(edible.val() == '')
+            {
+                edible.next().show();
+            }
+            else {
+                edible.next().hide();
+            }
+        }
+
+        var hideModal = function () {
+
+            $('.modal-overlay').hide();
+            $('#modal').html();
+        }
     }
 }
 modal.init();

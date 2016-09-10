@@ -238,6 +238,18 @@
     <Compile Include="Migrations\201609091650014_MealCollection.Designer.cs">
       <DependentUpon>201609091650014_MealCollection.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201609100612002_Upd.cs" />
+    <Compile Include="Migrations\201609100612002_Upd.Designer.cs">
+      <DependentUpon>201609100612002_Upd.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201609100634290_MealCollection1.cs" />
+    <Compile Include="Migrations\201609100634290_MealCollection1.Designer.cs">
+      <DependentUpon>201609100634290_MealCollection1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201609100727169_edibleADd.cs" />
+    <Compile Include="Migrations\201609100727169_edibleADd.Designer.cs">
+      <DependentUpon>201609100727169_edibleADd.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Account\AccountViewModels.cs" />
     <Compile Include="Models\Diet\DaysModel.cs" />
@@ -454,6 +466,18 @@
     <EmbeddedResource Include="Migrations\201609091650014_MealCollection.resx">
       <DependentUpon>201609091650014_MealCollection.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201609100612002_Upd.resx">
+      <DependentUpon>201609100612002_Upd.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201609100634290_MealCollection1.resx">
+      <DependentUpon>201609100634290_MealCollection1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201609100727169_edibleADd.resx">
+      <DependentUpon>201609100727169_edibleADd.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Content\SCSS\styles\autocomplete.scss" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

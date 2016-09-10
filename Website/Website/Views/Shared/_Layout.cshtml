@@ -6,6 +6,7 @@
     <title>@ViewBag.Title - YouGo</title>
 
     <link href="~/Content/CSS/main.css" rel="stylesheet" />
+    @Scripts.Render("~/bundles/plugins")
 </head>
 <body>
     <div class="overlay">
@@ -21,7 +22,6 @@
             @RenderBody()
         </div>
     </div>
-    @Scripts.Render("~/bundles/plugins")
     <script src="~/Content/JS/layout/menu.js"></script>
     <script src="~/Content/JS/main.js"></script>
     <script src="~/Content/JS/layout/modal.js"></script>

@@ -8,7 +8,6 @@
 
 <div ng-app="yougo">
 
-    <input type="hidden" name="Id" value="@Model.Id" />
     <div class="create-diet" ng-controller="dietPostCtrl">
         <div class="diet">
             <form name="myForm">
@@ -37,10 +36,12 @@
         </div>
 
     </div>
-@using (Html.BeginForm("Create", "Diets", FormMethod.Post))
-{
-    <div class="create-diet" ng-controller="dietGetCtrl">
-        
+    @using (Html.BeginForm("Create", "Diets", FormMethod.Post))
+    {
+
+        <input type="hidden" name="Id" value="@Model.Id" />
+        <div class="create-diet" ng-controller="dietGetCtrl">
+
             <div class="period hide">
 
                 <h3>{{Data.Title}}</h3><br />
@@ -54,47 +55,50 @@
                         <div ng-class="dC.indexOf(day.day + ',' + w.no) > -1 ? '' : 'hide'" class="pnl">
                             <div ng-repeat="meal in day.meals">
                                 <h4>{{meal.name}}</h4>
+                                <!-- Edible first repeater-->
+                                <div ng-init="mealInit=$index"></div>
+                                <div ng-init="Ids = 'w' + (weekInit +1) + '_m' + (mealInit +1) + '_d' + day.id"></div>
+
+                                <input autocomplete="off" ng-model-options="{ debounce: 100}" type="text" ng-model="searches.searchEdibles[Ids + '_e' + 0]" id="{{'selected' + Ids + '_e' + 0}}" ng-keypress="results('result' + Ids + '_e' + 0);hideResult(Ids + '_e' + 0, false); setId(Ids + '_e' + 0);" ng-keydown="selectResult($event, allFood, 'selected' + Ids + '_e'); autoHide('autocomplete' + Ids + '_e' + 0, false);" name="name_{{Ids + '_e' + 0}}" placeholder="Edible" class="ipt" />
+                                
+                                <div class="autocomplete" id="{{'autocomplete' + Ids + '_e' + 0}}" ng-if="searches.searchEdibles[Ids + '_e' + 0].length > 0">
+                                    <div ng-repeat="food in allFood">
+                                        <a class="{{result.autoComplete['selected' + Ids + '_e' + $index] ? 'autocomplete-selected' : ''}}" ng-keydown="selectResult($event, allFood, 'selected' + Ids + '_e');" id="{{'selected' +Ids + '_e' + ($index+1)}}" ng-click="setCalories(food.Calories, Ids + '_e' + 0); autoHide('autocomplete' + Ids + '_e' + 0, true); setFoodId(food.Id, Ids + '_e' + 0);searches.searchEdibles[Ids + '_e' + 0] = food.Name; " href="">{{food.Name}}</a>
+                                    </div>
+                                    <div class="hide" id="{{'result' + Ids + '_e' + 0}}">
+                                        <a class="open-modal {{result.autoComplete['selected' + Ids + '_e' + 0 + '_i'] ? 'autocomplete-selected' : ''}}" data-url="@Url.Action("AddNewFood")" ng-keydown="selectResult($event, allFood,  'selected' + Ids + '_e');" id="{{'selected' +Ids + '_e' + 1}}" href="">Could not find {{searches.searchEdibles[Ids + '_e' + 0]}} do you wish to create it?</a>
+                                    </div>
+
+                                </div>
+
+                                <input type="hidden" name="foodId_{{foodName}}" value="{{foodId}}" />
+                                <input type="text" ng-model="measureEdible" placeholder="Amount" name="amount_{{Ids + '_e' + 0}}" class="ipt" />
+                                <div ng-if="measureEdible != null" ng-model="am.amountS[Ids + '_e' + 0]">
+                                    {{(am.amountS[Ids + '_e' + 0] /100)* measureEdible}} kcal
+                                </div>
+                                <!-- Edible second repeater-->
+                                <div class="edible" ng-repeat="edible in day.meals[mealInit].edibles">
+                                    <div ng-init="edibleInit=($index +2)"></div>
+
+                                    <input autocomplete="off" ng-model-options="{ debounce: 200}" type="text" ng-model="searches.searchEdibles[Ids + '_e' + edibleInit]" id="{{'selected' + Ids + '_e' + edibleInit + '_i' + 0}}" ng-keypress="results('result' + Ids + '_e' + edibleInit);hideResult(Ids + '_e' + edibleInit, false); setId(Ids + '_e' + edibleInit);"  ng-keydown="selectResult($event, allFood, 'selected' + Ids + '_e' + edibleInit + '_i'); autoHide('autocomplete' + Ids + '_e' + edibleInit, false);" name="name_{{Ids + '_e' + edibleInit}}" placeholder="Edible" class="ipt" />
+
+                                    <div class="autocomplete" id="{{'autocomplete' + Ids + '_e' + edibleInit}}" ng-if="searches.searchEdibles[Ids + '_e' + edibleInit].length > 0">
+                                        <div ng-repeat="food in allFood">
+                                            <a class="{{result.autoComplete['selected' + Ids + '_e' + edibleInit + '_i' + $index] ? 'autocomplete-selected' : ''}}" ng-keydown="selectResult($event, allFood, 'selected' + Ids + '_e' + edibleInit + '_i');" id="{{'selected' + Ids + '_e' + edibleInit + '_i' + ($index+1)}}" ng-click="setCalories(food.Calories, Ids + '_e' + edibleInit);autoHide('autocomplete' + Ids + '_e' + edibleInit, true); setFoodId(food.Id, Ids + '_e' + edibleInit); searches.searchEdibles[Ids + '_e' + edibleInit] = food.Name;" href="">{{food.Name}}</a>
+                                        </div>
+                                        <div ng-if="allFood.length == 0 && searches.searchEdibles[Ids + '_e' + edibleInit] != null && searches.searchEdibles[Ids + '_e' + edibleInit] != ''">
+                                            <a class="open-modal {{result.autoComplete['selected' + Ids + '_e' + edibleInit + '_i' + 1] ? 'autocomplete-selected' : ''}}" data-url="@Url.Action("AddNewFood")" ng-keydown="selectResult($event, allFood, 'selected' + Ids + '_e' + edibleInit + '_i');" id="{{'selected' + Ids + '_e' + edibleInit + '_i' + 1}}" href="">Could not find {{searches.searchEdibles[Ids + '_e' + edibleInit]}} do you wish to create it?</a>
+                                        </div>
+                                    </div>
+                                    <input type="hidden" name="foodId_{{foodName}}" value="{{foodId}}" />
+                                    <input type="text" placeholder="Amount" ng-model="measurement" class="ipt" name="amount_{{Ids + '_e' + edibleInit}}" />
+                                    <div ng-if="measurement != null" ng-model="am.amountS[Ids + '_e' + edibleInit]">
+                                        {{(am.amountS[Ids + '_e' + edibleInit] /100)* measurement}} kcal
+                                    </div>
+                                </div>
+
                                 <div>
-                                    <!-- Edible first repeater-->
-                                    <div ng-init="mealInit=$index"></div>
-                                    <div ng-init="Ids = 'w' + (weekInit +1) + '_m' + (mealInit +1) + '_d' + day.id"></div>
-                                    <div>
-                                        <input ng-model-options="{ debounce: 200}" type="text" ng-model="searches.searchEdibles[Ids + '_e' + 1]" ng-keypress="hideResult(Ids + '_e' + 1, false); setId(Ids + '_e' + 1);" name="name_{{Ids + '_e' + 1}}" placeholder="Edible" class="ipt" />                                    
-                                       
-                                        <div ng-hide="searches.searchEdibles[Ids + '_e' + 1] == null" ng-repeat="food in allFood">
-                                            <a ng-click="setCalories(food.Gram, Ids + '_e' + 1); clearFood(); setFoodId(food.Id, mealInit, weekInit, day.id); searches.searchEdibles[Ids + '_e' + 1] = food.Name;hideResult(Ids + '_e' + 1, true);" ng-hide="searches.foodSearch[Ids + '_e' + 1]"  href="">{{food.Name}}</a>
-                                           
-                                        </div>
-                                    </div>
-                                    <div>
-                                        <input type="hidden"  name="foodId_{{foodId}}" />
-                                        <input type="text" ng-model="measureEdible" placeholder="Amount" name="amount_{{Ids + '_e' + 1}}" class="ipt" />
-                                        <div ng-if="measureEdible != null" ng-model="am.amountS[Ids + '_e' + 1]">
-                                            
-                                            {{am.amountS[Ids + '_e' + 1] * measureEdible}} kcal
-                                        </div>
-                                    </div>
-                                    <!-- Edible second repeater-->
-                                    <div class="edible" ng-repeat="edible in day.meals[mealInit].edibles">
-                                        <div ng-init="edibleInit=$index +2"></div>
-                                        <div>
-                                            <input  ng-model-options="{ debounce: 200}" type="text" ng-model="searches.searchEdibles[Ids + '_e' + edibleInit]" ng-keypress="hideResult(Ids + '_e' + edibleInit, false);setId(Ids + '_e' + edibleInit);" name="name_{{Ids + '_e' + edibleInit}}" placeholder="Edible" class="ipt" />
-                                        </div>
-                                        <div ng-hide="searches.searchEdibles[Ids + '_e' + edibleInit] == null" ng-repeat="food in allFood">
-                                            <a ng-click="setCalories(food.Gram, Ids + '_e' + edibleInit); clearFood(); setFoodId(food.Id, mealInit, weekInit, day.id); searches.searchEdibles[Ids + '_e' + edibleInit] = food.Name; hideResult(Ids + '_e' + edibleInit, true)" ng-hide="searches.foodSearch[Ids + '_e' + edibleInit]" href="">{{food.Name}}</a>
-                                        </div>
-                                        <div>
-
-                                            <input type="text" placeholder="Amount" ng-model="measurement" class="ipt" name="amount_{{Ids}}" />
-                                            <div ng-if="measurement != null" ng-model="am.amountS[Ids + '_e' + edibleInit]">
-                                                {{am.amountS[Ids + '_e' + edibleInit] * measurement}} kcal
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div>
-                                        <a ng-click="addEdible(day, w.no, meal.no);" class="btn ib" href="">Add more edibles</a>
-                                    </div>
+                                    <a ng-click="addEdible(day, w.no, meal.no);" class="btn ib" href="">Add more edibles</a>
                                 </div>
                             </div>
                         </div>
@@ -106,15 +110,14 @@
 
 
                 <input class="" type="submit" value="Finish">
-                <a class="btn ib" data-url="@Url.Action("AddNewFood")" id="open-modal" href="">Open modal</a>
                 <div class="modal-overlay">
                     <div id="modal">
 
                     </div>
                 </div>
             </div>
-    </div>
-}
+        </div>
+    }
 </div>
 
 <script src="~/Content/JS/plugins/angular.min.js"></script>

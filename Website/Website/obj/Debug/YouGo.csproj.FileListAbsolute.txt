@@ -30,3 +30,6 @@ C:\Users\bjoe0771\Desktop\Website\Website\Website\obj\Debug\Website.Migrations.I
 C:\Users\bjoe0771\Desktop\Website\Website\Website\obj\Debug\YouGo.csproj.GenerateResource.Cache
 C:\Users\bjoe0771\Desktop\Website\Website\Website\obj\Debug\Website.Migrations.MealDays.resources
 C:\Users\bjoe0771\Desktop\Website\Website\Website\obj\Debug\Website.Migrations.MealCollection.resources
+C:\Users\bjoe0771\Desktop\Website\Website\Website\obj\Debug\Website.Migrations.Upd.resources
+C:\Users\bjoe0771\Desktop\Website\Website\Website\obj\Debug\Website.Migrations.MealCollection1.resources
+C:\Users\bjoe0771\Desktop\Website\Website\Website\obj\Debug\Website.Migrations.edibleADd.resources

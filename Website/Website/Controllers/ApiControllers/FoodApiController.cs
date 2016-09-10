@@ -1,4 +1,6 @@
-﻿using System.Collections.Generic;
+﻿using Newtonsoft.Json.Linq;
+using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Web.Http;
 using YouGo.Models;
@@ -23,6 +25,21 @@ namespace YouGo.Controllers.ApiControllers
             }
 
             return Ok(food);
+        }
+        [HttpPost]
+        public IHttpActionResult AddFood(JObject jData)
+        {
+            dynamic json = jData;
+            string name = json.Name;
+            string calories = json.Calories;
+            FoodModel fm = new FoodModel();
+            fm.Id = Guid.NewGuid().ToString();
+            fm.Calories = int.Parse(calories);
+            fm.Name = name;
+
+            db.Food.Add(fm);
+            db.SaveChanges();
+            return Ok();
         }
 
     }

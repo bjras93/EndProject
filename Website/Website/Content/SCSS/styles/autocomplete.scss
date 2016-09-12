@@ -1,22 +1,33 @@
-﻿.autocomplete {
-    padding: 0;
-    margin-top: -5px;
-        position:absolute;
+﻿.autocomplete-container {
+    position: relative;
 
-    a {
-        background-color: $w;
-        display:block;
-        padding: $spd;
-        min-width: 100%;
-        color: #333;
-        outline:none;
-        &:hover {
-        background-color: rgb(142, 207, 255);
+    .autocomplete {
+        padding: 0;
+        margin-top: -5px;
+        position: absolute;
+        width: 100%;
 
+        div:first-child a {
+            border-top: 1px solid rgb(230,230,230);
         }
-    }
 
-    .autocomplete-selected {
-        background-color: rgb(142, 207, 255);
+        a {
+            background-color: $w;
+            display: block;
+            padding: $spd;
+            min-width: 100%;
+            color: #333;
+            outline: none;
+            border: 1px solid rgb(230,230,230);
+            border-top: none;
+
+            &:hover {
+                background-color: rgb(142, 207, 255);
+            }
+        }
+
+        .autocomplete-selected {
+            background-color: rgb(142, 207, 255);
+        }
     }
 }

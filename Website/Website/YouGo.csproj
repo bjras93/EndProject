@@ -250,6 +250,10 @@
     <Compile Include="Migrations\201609100727169_edibleADd.Designer.cs">
       <DependentUpon>201609100727169_edibleADd.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201609102202075_DayDiets.cs" />
+    <Compile Include="Migrations\201609102202075_DayDiets.Designer.cs">
+      <DependentUpon>201609102202075_DayDiets.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Account\AccountViewModels.cs" />
     <Compile Include="Models\Diet\DaysModel.cs" />
@@ -475,9 +479,15 @@
     <EmbeddedResource Include="Migrations\201609100727169_edibleADd.resx">
       <DependentUpon>201609100727169_edibleADd.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201609102202075_DayDiets.resx">
+      <DependentUpon>201609102202075_DayDiets.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\SCSS\styles\autocomplete.scss" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Diets\_AddMeals.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

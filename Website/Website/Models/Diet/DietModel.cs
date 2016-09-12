@@ -15,7 +15,5 @@
         public int Likes { get; set; }
         public int Weeks { get; set; }
         public string Img { get; set; }
-        public IEnumerable<DaysModel> Days { get; set; }
-        public IEnumerable<MealsModel> Meals { get; set; }
     }
 }

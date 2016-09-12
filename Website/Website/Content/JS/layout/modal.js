@@ -5,9 +5,10 @@
     },
     run: function (click, target) {
         $(document).on('click', click, function (e) {
-                $.get($(this).data('url'), function(data) {
+            var sStr = $(this).data('url').split('_')[1];
+            $.get($(this).data('url').split('_')[0], function (data) {
                     target.html(data);
-
+                    $('#edible_name').val(sStr);
                 });
                 e.stopPropagation();
                 var loc = window.scrollY;
@@ -28,6 +29,11 @@
         
     },
     addFood: function () {
+        var hideModal = function () {
+
+            $('.modal-overlay').hide();
+            $('#modal').html();
+        }
         var url = 'http://local.yougo.dk/api/FoodApi/AddFood',
             name = $('#edible_name'),
             edible = $('#edible_calories');
@@ -58,11 +64,7 @@
             }
         }
 
-        var hideModal = function () {
-
-            $('.modal-overlay').hide();
-            $('#modal').html();
-        }
+        
     }
 }
 modal.init();

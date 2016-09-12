@@ -3,11 +3,16 @@
     color: $w;
     padding: $spd;
 }
+
 .create-diet {
+    width: 50%;
     @extend .ib;
-}
-.add-diet{
-    position:absolute;
+    .ipt {
+        width:100%;
+    }
+    
+.add-diet {
+    position: absolute;
     right: 30px;
     bottom: 25px;
     border-radius: 50px;
@@ -15,29 +20,74 @@
     color: $w;
     font-size: 1.4em;
     background-color: $red-1;
-    cursor:pointer;
+    cursor: pointer;
 }
+
 .period {
     color: $w;
-    a{ 
+    background-color: $gre-2;
+    h3 {
+        padding: $spd 0 0 $spd;
+    }
+    a {
         color: $w;
     }
-    background-color: $gre-1;
-    padding: $spd;
-    .plan {
-        background-color: $gre-2;
+    input {
+        width:100%;
     }
 }
+
 .days {
-    width:100%;
+    width: 100%;
     padding: $spd;
     @extend .ib;
-    background-color: $gre-3;
+    background-color: $gre-1;
+    border: 1px solid rgba(133,133,133,0.2);
+    border-bottom: none;
+}
+.meals {
+    margin-bottom: 20px;
 }
 .weeks {
     padding: $spd;
+    width: 100%;
     @extend .ib;
+    background: $gre-4;
 }
+.week {
+    background:$gre-2;
+}
+
 .pnl {
     padding: $spd;
+}
+
+.diet-schedule {
+    ul {
+        li {
+            list-style: none;
+            margin: 5px 0;
+        }
+
+        margin-bottom: $spd;
+        .day {
+            margin-bottom: 10px;
+        }
+        .meal {
+            ul {
+                margin-bottom: $spd;
+            }
+        }
+    }
+}
+.btn {
+    border: 1px solid rgba(133,133,133,0.2);
+    border-bottom:0;
+    margin: 0;
+
+}
+.add-more {
+    background: $gre-1;
+}
+
 }

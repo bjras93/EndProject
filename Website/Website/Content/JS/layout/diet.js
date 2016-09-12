@@ -69,7 +69,10 @@ var diet = {
             $scope.hideResult = function (foodSearch, show) {
                 $scope.searches.foodSearch[foodSearch] = show;
             }
-            
+            // Search edibles
+            $scope.clearFood = function () {
+                $scope.allFood = [];
+            }
             // Load 
             if (id != undefined) {
                 var p = id.split('&p=1')[0];
@@ -90,19 +93,14 @@ var diet = {
                         $scope.Data = data.data;
                     }
                 });
-                
-                // Search edibles
-                $scope.clearFood = function () {
-                    $scope.allFood = [];
-                }
+
                 $('body').on('click', function (e) {
-                    
+
                     $('.autocomplete').hide();
 
                 });
                 $scope.$watch('searches.searchEdibles', function (newVal, oldVal) {
-                                       
-                    
+
                     $('.autocomplete').on('mouseenter', function () {
                         $(this).children().each(function () {
                             $(this).children().each(function () {
@@ -110,33 +108,37 @@ var diet = {
                             })
                         });
                     });
-                    if ($('.autocomplete').width() < $('#selected0').outerWidth()) {
-                        $('.autocomplete').css('width', $('#selected0').outerWidth())
-                    }
+
                     $scope.setId = function (sId) {
                         $scope.sId = sId;
                     }
-                    if (newVal != oldVal && newVal[$scope.sId] != "") {
+                    if (newVal != oldVal && newVal[$scope.sId] != "" && newVal[$scope.sId].length == 2) {
+
                         $http({
                             method: 'GET',
                             url: api + 'EdiblesApi/FindByName?s=' + newVal[$scope.sId]
                         }).then(function (data) {
-                            $scope.results = function (i) {
-                                if (data.data.length == 0) {
-                                    $('#' + i).removeClass('hide');
-                                }
-                                else {
-                                    if (!$('#' + i).hasClass('hide')) {
-                                        $('#' + i).addClass('hide');
 
-                                    }
-                                }
-                            }
                             $scope.allFood = data.data;
                         });
                     }
-                    else {
-                        $scope.allFood = [];
+                    var f = false;
+                    $scope.results = function (i, str) {
+                        for (var s = 0; $scope.allFood.length > s; s++) {
+                            if ($scope.allFood[s].Name == str) {
+                                f = true;
+                            }
+                        }
+                        if (!f) {
+                            $('#' + i).removeClass('hide');
+                        }
+                        else {
+                            if (!$('#' + i).hasClass('hide')) {
+                                $('#' + i).addClass('hide');
+
+                            }
+                        }
+
                     }
 
                 }, 400);
@@ -152,7 +154,7 @@ var diet = {
                             calories: '',
                             meals: []
                         });
-                        
+
                     }
                     $http({ method: 'GET', url: api + 'MealsApi/GetMeals' }).then(function (data) {
                         meals = data.data;
@@ -170,72 +172,88 @@ var diet = {
                 });
                 // Add
                 var clicked = 0;
-                $scope.selectResult = function (e, list, sId) {
+                $scope.selectResult = function (e, list, sId, str) {
+                    var notFound = '';
                     if (list.length != 0 && list.length >= clicked) {
                         if (e.keyCode == '13') {
-
-
                             $scope.result.autoComplete[sId + (clicked - 1)] = false;
-
                             clicked = 0;
-
                         }
-                        if (e.keyCode == '38' && clicked != 0) {
+                        if (e.keyCode == '38') {
+                            for (var s = 0; s < list.length; s++) {
+                                if (list[s].Name != str) {
+                                    notFound = sId.replace('selected', 'selected_');
+                                }
+                            }
                             e.preventDefault();
                             // up arrow
+                            if (clicked != 0 && !$scope.result.autoComplete[notFound + 0]) {
+                                clicked = clicked - 1;
+                                $('#' + sId + clicked).focus();
+                                $scope.result.autoComplete[sId + (clicked - 1)] = true;
+                                $scope.result.autoComplete[sId + clicked] = false;
+                            }
+                            else {
+                                $scope.result.autoComplete[notFound + 0] = false;
+                                $scope.result.autoComplete[sId + (clicked - 1)] = true;
+                                $('#' + sId).focus();
+                            }
+                            if (clicked == 0) {
+                                $('#' + sId).focus();
 
-                            clicked = clicked - 1;
-                            $(sId + clicked).focus();
-                            $scope.result.selected[sId + clicked] = true
-                            $scope.result.autoComplete[sId + (clicked - 1)] = true;
-                            $scope.result.autoComplete[sId + clicked] = false;
-
-
-                        }
-                    }
-
-                    if (list.length != 0 && list.length > clicked) {
-                        if (e.keyCode == '40') {
-                            e.preventDefault();
-                            // down arrow
-                            $scope.result.autoComplete[sId + (clicked - 1)] = false;
-                            $scope.result.autoComplete[sId + clicked] = true;
-                            $scope.result.selected[sId + clicked] = true;
-                            if (clicked > 0) {
-                                $scope.result.autoComplete[sId + clicked - 1] = false;
                             }
 
-                            clicked++;
-                            $('#' + sId + clicked).focus();
+
+                        }
+
+                        if (e.keyCode == '40') {
+                            for (var s = 0; s < list.length; s++) {
+                                if (list[s].Name != str) {
+                                    notFound = sId.replace('selected', 'selected_');
+                                }
+                            }
+                            e.preventDefault();
+                            // down arrow
+                            if (list.length > clicked) {
+                                $scope.result.autoComplete[sId + (clicked - 1)] = false;
+                                $scope.result.autoComplete[sId + clicked] = true;
+
+                                clicked++;
+                                $('#' + sId + clicked).focus();
+                            }
+                            else {
+                                $scope.result.autoComplete[sId + (clicked - 1)] = false;
+                                $scope.result.autoComplete[notFound + 0] = true;
+                                $('#' + notFound + 0).focus();
+                            }
+
+                        }
+                    }
+                    if (list.length == 0) {
+                        notFound = sId.replace('selected', 'selected_');
+                        if (e.keyCode == '38') {
+                            e.preventDefault();
+                            $scope.result.autoComplete[notFound + 0] = false;
+                            $('#' + sId).focus();
+
+                        }
+                        if (e.keyCode == '40') {
+                            e.preventDefault();
+                            $scope.result.autoComplete[notFound + 0] = true;
+                            $('#' + notFound + 0).focus();
                         }
 
                     }
-                    else {
-                        if (e.keyCode == '38' && clicked != 0) {
-                            e.preventDefault();
-                            // up arrow
-
-                            clicked = clicked - 1;
-                            $('#selected' + clicked).focus();
-                            $scope.result.autoComplete[sId+ (clicked + 1)] = false;
 
 
-                        }
-                        if(e.keyCode == '40' && clicked < 1)
-                        {
-                            clicked++;
-                            e.preventDefault();
-                            $scope.result.autoComplete[sId + clicked] = true;
-                            $('#selected_' + clicked).focus();
-                            
-                        }
-                    }
+
 
 
                 }
 
 
                 $scope.autoHide = function (i, b) {
+
                     if (b) {
                         $('#' + i).hide();
                     }
@@ -279,9 +297,9 @@ var diet = {
                     $scope.am.amountS[Ids] = calories;
 
                 }
-                $scope.setFoodId = function (foodId, Ids) {
-                    $scope.foodName = Ids;
-                    $scope.foodId = foodId;
+                $scope.setFoodId = function (Ids, foodId) {
+                    $('#' + Ids).val(foodId);
+
                 }
                 $scope.am = {
                     amountS: {

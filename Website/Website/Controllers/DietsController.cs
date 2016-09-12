@@ -20,15 +20,22 @@ namespace YouGo.Controllers
         }
         public ActionResult Create(string id)
         {
-
             if (Request.IsAuthenticated)
             {
-                return View(db.Diet.Find(id));
+                if (!string.IsNullOrEmpty(id))
+                {
+                    return View(db.Diet.Find(id));
+                }
+                else
+                {
+                    return View();
+                }
             }
+
             return RedirectToAction("../Account/Index");
         }
         [HttpPost, ValidateInput(false)]
-        public ActionResult Create()
+        public ActionResult CreateDiet()
         {
             var formData = Request.Form.AllKeys.ToList();
 
@@ -56,42 +63,33 @@ namespace YouGo.Controllers
                             mcm.Id = Guid.NewGuid().ToString();
                             mcm.WeekNo = week;
                             mcm.Meal = meal;
+                            mcm.Day = day;
                             mcm.DietId = dietId;
                             mcm.Edible = edible;
 
                         }
                         if (key.StartsWith("amount_"))
                         {
-
                             mcm.Amount = value[0];
-
-
                         }
                         if (key.StartsWith("foodId_"))
                         {
-
-                            mcm.FoodId = value[1];
+                            mcm.FoodId = value[0];
                         }
                         if (!string.IsNullOrEmpty(mcm.FoodId) && !string.IsNullOrEmpty(mcm.Amount))
                         {
-                            //if (!string.IsNullOrEmpty(dietId))
-                            //{
-                            //    db.Entry(mcm).State = System.Data.Entity.EntityState.Modified;
-                            //    db.SaveChanges();
-                            //}
-
-
                             db.MealCollection.Add(mcm);
                             db.SaveChanges();
 
+                            mcm = new MealCollectionModel();
                         }
                     }
 
-                    
+
                 }
-                
+
             }
-            return View();
+            return View("Diets/Details/" + dietId);
         }
 
         public ActionResult Details(string ID)
@@ -99,7 +97,17 @@ namespace YouGo.Controllers
             if (Request.IsAuthenticated)
             {
                 DietModel dm = new DietModel();
+                IEnumerable<MealCollectionModel> mcm = db.MealCollection.ToList().Where(x => x.DietId == dm.Id);
+                IEnumerable<FoodModel> fm = db.Food.ToList();
+                IEnumerable<DaysModel> dsm = db.Days.ToList();
+                IEnumerable<MealsModel> mm = db.Meals.ToList();
+
                 dm = db.Diet.Find(ID);
+
+                ViewBag.Dm = dsm;
+                ViewBag.Fm = fm;
+                ViewBag.Mcm = mcm;
+                ViewBag.Mm = mm;
                 return View(dm);
             }
             return RedirectToAction("../Account/Index");

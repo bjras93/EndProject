@@ -26,13 +26,19 @@ body {
     margin: $smg;
     padding: $spd;
     min-width: $smw;
+    box-sizing: border-box;
+    outline:none;
 }
 .btn {
+    display:block;
     margin: $smg;
     padding: $spd;
     min-width: $smw;
     text-align:center;
     clear:both;
+    background-color: $gre-2;
+    color: $w;
+    box-sizing: border-box;
 }
 .type-1 {
     @extend .ib;

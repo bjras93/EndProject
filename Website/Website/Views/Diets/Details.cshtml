@@ -1,6 +1,51 @@
 ﻿@model YouGo.Models.DietModel
-@{ 
+@using YouGo.Models;
+@{
     ViewBag.Title = Model.Title;
+    IEnumerable<MealCollectionModel> mcm = (IEnumerable<MealCollectionModel>)ViewBag.Mcm;
+    IEnumerable<FoodModel> fm = (IEnumerable<FoodModel>)ViewBag.Fm;
+    IEnumerable<DaysModel> dm = (IEnumerable<DaysModel>)ViewBag.Dm;
+    IEnumerable<MealsModel> mm = (IEnumerable<MealsModel>)ViewBag.Mm;
 }
+<div class="content g1">
+    <h3>@Model.Title</h3>
+    <div class="description">
+        @Model.Description
+    </div>
+    <div class="diet-schedule">
+        @{
 
-@Model.Title
+            foreach (var d in dm)
+            {
+                if (mcm.Where(x => x.Day == d.Id).Any())
+                {
+                    <ul>
+                        <li class="day"><h3>@d.Name</h3></li>
+                        @foreach (var m in mm)
+                        {
+                            if (mcm.Where(x => x.Meal == int.Parse(m.Id)).Any())
+                            {
+                                <li class="meal">
+                                    <h4>@m.Name</h4>
+                                    <ul>
+                                        @foreach (var mc in mcm.Where(x => x.Meal == int.Parse(m.Id) && x.Day == d.Id))
+                                        {
+                                            foreach (var f in fm.Where(x => x.Id == mc.FoodId))
+                                            {
+
+                                                <li class="food"><span>@f.Name</span> <span>@((Convert.ToDecimal(mc.Amount) * (Convert.ToDecimal(f.Calories) / 100)).ToString("##")) kcal</span></li>
+
+                                            }
+                                        }
+                                    </ul>
+                                </li>
+                            }
+
+                        }
+                    </ul>
+
+                }
+            }
+        }
+    </div>
+</div>

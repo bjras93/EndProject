@@ -34,7 +34,7 @@
             $('.modal-overlay').hide();
             $('#modal').html();
         }
-        var url = 'http://dev.lifestruct.dk/api/FoodApi/AddFood',
+        var url = 'http://lifestruct.dk/api/FoodApi/AddFood',
             name = $('#edible_name'),
             edible = $('#edible_calories');
         if (name.val() != '' && edible.val() != '') {

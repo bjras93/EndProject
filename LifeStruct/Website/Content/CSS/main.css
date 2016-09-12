@@ -1,0 +1,352 @@
+@import 'https://fonts.googleapis.com/css?family=Open+Sans|Roboto';
+html, body {
+  height: 100%; }
+
+html, body, div, p, h1, h2, h3, h4, h5, h6, button, a, li, ul, input {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0; }
+
+button, input {
+  border: none; }
+
+button, input[type="submit"] {
+  cursor: pointer; }
+
+.right, .type-1 .tile, .login a, .login button {
+  float: right; }
+
+.left, .type-1, .type-2, .type-2 .tile {
+  float: left; }
+
+.clear, .type-1:after, .type-2:after {
+  clear: both; }
+
+.hide {
+  display: none; }
+
+.ib, .container, .type-1, .type-2, .tile span, .login a, .login button, .account-details li span, #modal, .create-diet, .create-diet .days, .create-diet .weeks {
+  display: inline-block; }
+
+.b1 {
+  background: #2C3E50; }
+
+.b2 {
+  background: #34495E;
+  color: #fff; }
+
+.g1 {
+  background: #16A085;
+  color: #fff; }
+
+.g1-o6 {
+  background: rgba(22, 160, 133, 0.6);
+  color: #fff; }
+
+.g2 {
+  background: #1ABC9C;
+  color: #fff; }
+
+.g3 {
+  background: #96D4BF;
+  color: #fff; }
+
+.g4 {
+  background: #639C89;
+  color: #fff; }
+
+.r1 {
+  background: #F57979;
+  color: #fff; }
+
+.s {
+  background: #CEB3A8; }
+
+.h {
+  background: #00AF5E; }
+
+.i {
+  background: #D4E8D6; }
+
+.yt {
+  color: #E52727; }
+
+.Google {
+  background-color: #D34836 !important;
+  color: #fff; }
+
+.Twitter {
+  background-color: #55ACEE !important;
+  color: #fff; }
+
+.Facebook {
+  background-color: #3B5998 !important;
+  color: #fff; }
+
+.bsignup {
+  background-color: #16A085;
+  color: #fff; }
+
+.blogin {
+  background-color: #1ABC9C;
+  color: #fff; }
+
+body, html, button, input {
+  font-size: 12pt;
+  font-family: 'Roboto', 'Open Sans', Verdana, Calibri, sans-serif;
+  color: #333; }
+
+a {
+  color: #333;
+  text-decoration: none; }
+
+@font-face {
+  font-family: 'icomoon';
+  src: url("../fonts/icomoon.eot?87335t");
+  src: url("../fonts/icomoon.eot?87335t#iefix") format("embedded-opentype"), url("../fonts/icomoon.ttf?87335t") format("truetype"), url("../fonts/icomoon.woff?87335t") format("woff"), url("../fonts/icomoon.svg?87335t#icomoon") format("svg");
+  font-weight: normal;
+  font-style: normal; }
+
+[class^="icon-"], [class*=" icon-"] {
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: 'icomoon' !important;
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale; }
+
+.icon-food:before {
+  content: "\e900"; }
+
+.icon-lunch:before {
+  content: "\e900"; }
+
+.icon-soup:before {
+  content: "\e900"; }
+
+.icon-sad-face:before {
+  content: "\e901"; }
+
+.icon-smiling-face:before {
+  content: "\e902"; }
+
+.icon-neutral-face:before {
+  content: "\e903"; }
+
+.icon-sports-shoe:before {
+  content: "\e904"; }
+
+.icon-play:before {
+  content: "\e912"; }
+
+.icon-user:before {
+  content: "\e971"; }
+
+.icon-pie-chart:before {
+  content: "\e99a"; }
+
+.icon-heart:before {
+  content: "\e9da"; }
+
+.icon-share2:before {
+  content: "\ea82"; }
+
+body {
+  background: url("../img/web/pexels-photo.jpg");
+  background-size: cover;
+  background-attachment: fixed; }
+
+.container {
+  margin: 0 15%;
+  width: 70%; }
+
+.content {
+  width: 100%;
+  min-height: 350px;
+  padding: 15px; }
+
+.stop-scroll {
+  overflow: hidden; }
+
+.text-danger {
+  color: #F57979; }
+
+.ipt {
+  margin: 5px 0;
+  padding: 15px;
+  min-width: 250px;
+  box-sizing: border-box;
+  outline: none; }
+
+.btn {
+  display: block;
+  margin: 5px 0;
+  padding: 15px;
+  min-width: 250px;
+  text-align: center;
+  clear: both;
+  background-color: #1ABC9C;
+  color: #fff;
+  box-sizing: border-box; }
+
+.type-1 {
+  width: 100%; }
+  .type-1 .tile {
+    width: 20%;
+    height: 160px; }
+
+.type-2 {
+  width: 100%; }
+  .type-2 .tile {
+    width: 20%;
+    height: 160px; }
+
+.tile {
+  cursor: pointer;
+  text-align: center; }
+  .tile span {
+    margin-top: 20%;
+    font-size: 4em; }
+
+.mood {
+  width: 60%;
+  float: left; }
+  .mood .tile {
+    width: 33.33%; }
+
+.logo {
+  padding: 15px; }
+  .logo a {
+    font-size: 34pt;
+    font-weight: bold;
+    color: #fff; }
+
+.account-menu {
+  float: left;
+  width: 20%; }
+  .account-menu li {
+    list-style: none; }
+    .account-menu li a {
+      font-weight: bold;
+      color: #fff; }
+
+.account-details {
+  width: 80%;
+  float: right; }
+  .account-details li {
+    list-style: none;
+    margin: 10px 0; }
+    .account-details li span:first-child {
+      font-weight: bold; }
+    .account-details li span {
+      color: #fff;
+      width: 33%; }
+      .account-details li span a {
+        color: #fff; }
+
+.account-goals li {
+  list-style: none; }
+
+.modal-overlay {
+  display: none;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  top: 0;
+  left: 0;
+  padding: 50px 15%; }
+
+#modal {
+  background-color: #16A085;
+  padding: 15px; }
+
+.diet {
+  background-color: #16A085;
+  color: #fff;
+  padding: 15px; }
+
+.create-diet {
+  width: 50%; }
+  .create-diet .ipt {
+    width: 100%; }
+  .create-diet .period {
+    color: #fff;
+    background-color: #1ABC9C; }
+    .create-diet .period h3 {
+      padding: 15px 0 0 15px; }
+    .create-diet .period a {
+      color: #fff; }
+    .create-diet .period input {
+      width: 100%; }
+  .create-diet .days {
+    width: 100%;
+    padding: 15px;
+    background-color: #16A085;
+    border: 1px solid rgba(133, 133, 133, 0.2);
+    border-bottom: none; }
+  .create-diet .meals {
+    margin-bottom: 20px; }
+  .create-diet .weeks {
+    padding: 15px;
+    width: 100%;
+    background: #639C89; }
+  .create-diet .week {
+    background: #1ABC9C; }
+  .create-diet .pnl {
+    padding: 15px; }
+  .create-diet .btn {
+    border: 1px solid rgba(133, 133, 133, 0.2);
+    border-bottom: 0;
+    margin: 0; }
+  .create-diet .add-more {
+    background: #16A085; }
+
+.add-diet {
+  position: absolute;
+  right: 30px;
+  bottom: 25px;
+  border-radius: 50px;
+  padding: 18px 25px;
+  color: #fff;
+  font-size: 1.4em;
+  background-color: #F57979;
+  cursor: pointer; }
+
+.diet-schedule ul {
+  margin-bottom: 15px; }
+  .diet-schedule ul li {
+    list-style: none;
+    margin: 5px 0; }
+  .diet-schedule ul .day {
+    margin-bottom: 10px; }
+  .diet-schedule ul .meal ul {
+    margin-bottom: 15px; }
+
+.autocomplete-container {
+  position: relative; }
+  .autocomplete-container .autocomplete {
+    padding: 0;
+    margin-top: -5px;
+    position: absolute;
+    width: 100%; }
+    .autocomplete-container .autocomplete div:first-child a {
+      border-top: 1px solid #e6e6e6; }
+    .autocomplete-container .autocomplete a {
+      background-color: #fff;
+      display: block;
+      padding: 15px;
+      min-width: 100%;
+      color: #333;
+      outline: none;
+      border: 1px solid #e6e6e6;
+      border-top: none; }
+      .autocomplete-container .autocomplete a:hover {
+        background-color: #8ecfff; }
+    .autocomplete-container .autocomplete .autocomplete-selected {
+      background-color: #8ecfff; }

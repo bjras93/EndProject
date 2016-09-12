@@ -1,0 +1,84 @@
+﻿$spd: 15px;
+$smg: 5px 0;
+$smw: 250px;
+body {
+    background: url('../img/web/pexels-photo.jpg');
+    background-size:cover;
+    background-attachment: fixed;
+}
+.container {
+    @extend .ib;
+    margin: 0 15%;
+    width: 70%;
+}
+.content {
+    width: 100%;
+    min-height: 350px;
+    padding: 15px;
+}
+.stop-scroll {
+    overflow: hidden;
+}
+.text-danger {
+    color: $red-1;
+}
+.ipt {
+    margin: $smg;
+    padding: $spd;
+    min-width: $smw;
+    box-sizing: border-box;
+    outline:none;
+}
+.btn {
+    display:block;
+    margin: $smg;
+    padding: $spd;
+    min-width: $smw;
+    text-align:center;
+    clear:both;
+    background-color: $gre-2;
+    color: $w;
+    box-sizing: border-box;
+}
+.type-1 {
+    @extend .ib;
+    @extend .left;
+    width: 100%;
+    .tile {
+    width: 20%;
+    height: 160px;
+    @extend .right;
+    }
+}
+.type-1:after {
+    @extend .clear;
+}
+.type-2 {
+    @extend .left;
+    @extend .ib;
+    width: 100%;
+    .tile {
+    width: 20%;
+    height: 160px;
+    @extend .left;
+    }
+}
+.type-2:after {
+    @extend .clear;
+}
+.tile {
+    cursor: pointer;
+    text-align:center;
+    span {
+        margin-top: 20%;
+        @extend .ib;
+        font-size: 4em;
+    }
+}
+.mood {
+    width: 60%;
+    float:left;
+    .tile {
+        width: 33.33%;
+    }
+}

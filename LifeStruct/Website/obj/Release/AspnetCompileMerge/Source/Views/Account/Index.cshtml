@@ -1,0 +1,17 @@
+﻿@using LifeStruct.Models
+@model LoginViewModel
+@{
+    ViewBag.Title = "Welcome";
+}
+<div class="login">
+    @Html.ActionLink("Signup", "Signup", "Account", null, new { @class = "btn bsignup" })
+    @Html.Partial("~/Views/Shared/_ExternalLogin.cshtml", new ExternalLoginListViewModel { ReturnUrl = ViewBag.ReturnUrl })
+
+
+    @Html.ActionLink("Login", "Login", "Account", null, new { @class = "btn blogin" })
+</div>
+
+<script src="~/Content/JS/layout/overlay.js"></script>
+<script>
+    overlay.init('g1-o6');
+</script>

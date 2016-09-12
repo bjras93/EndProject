@@ -1,0 +1,82 @@
+﻿$base: #333;
+$w: #fff;
+$blu-1: #2C3E50;
+$blu-2: #34495E;
+$gre-1: #16A085;
+$g1-o6:rgba(22,160,133,0.6);
+$gre-2: #1ABC9C;
+$gre-3: #96D4BF;
+$gre-4: #639C89;
+$red-1: #F57979;
+$happy: #00AF5E;
+$sad: #CEB3A8;
+$indifferent: #D4E8D6;
+$fb: #3B5998;
+$ggl: #D34836;
+$twt: #55ACEE;
+$yt: #E52727;
+.b1 {
+    background: $blu-1;
+}
+.b2 {
+    background: $blu-2;
+    color: $w;
+}
+.g1 {
+    background: $gre-1;
+    color: $w;
+}
+.g1-o6 {
+    background: $g1-o6;
+    color: $w;
+}
+.g2 {
+    background: $gre-2;
+    color: $w;
+}
+.g3 {
+    background: $gre-3;
+    color: $w;
+}
+.g4 {
+    background: $gre-4;
+    color: $w;
+}
+.r1 {
+    background: $red-1;
+    color: $w;
+}
+.s {
+    background: $sad;
+}
+.h {
+    background: $happy;
+}
+.i {
+    background: $indifferent;
+}
+.yt { 
+    color: $yt;
+}
+.Google {
+    background-color: $ggl !important;
+    color: $w;
+}
+.Twitter {
+    background-color: $twt !important;
+    color: $w;
+}
+.Facebook {
+    background-color: $fb !important;
+    color: $w;
+}
+.bsignup {
+    background-color: $gre-1;
+    color: $w;
+
+}
+.blogin {
+    background-color: $gre-2;
+    color: $w;
+
+}

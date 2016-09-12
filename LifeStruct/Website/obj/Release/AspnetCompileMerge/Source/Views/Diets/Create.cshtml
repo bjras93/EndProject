@@ -1,0 +1,46 @@
+﻿@model LifeStruct.Models.DietModel
+
+@{
+    ViewBag.Title = "Create your own diet";
+    var user = LifeStruct.Models.UserViewModel.GetCurrentUser();
+}
+
+
+<div ng-app="LifeStruct">
+
+    <div class="create-diet" ng-controller="dietPostCtrl">
+        <div class="diet">
+            <form name="myForm">
+                <input type="hidden" id="UserId" name="UserId" value="@user.Id.Replace("-", "")" />
+                <div class="">
+                    <input name="Title" ng-model="Title" class="ipt" type="text" placeholder="Title" />
+                    <div ng-if="!myForm.Title.$valid && isClicked">
+                        <div>This field is required</div>
+                    </div>
+                </div>
+                <div class="">
+                    <textarea name="Description" placeholder="Description" required class="ipt" ng-model="Description"></textarea>
+                    <div ng-if="!myForm.Description.$valid && isClicked">
+                        <div>This field is required</div>
+                    </div>
+                </div>
+                <div class="">
+                    <label class="btn ib" for="upl">Upload image</label>
+                    <input ng-model="Img" type="file" class="hide" id="upl" />
+                </div>
+                <div>
+                    <a ng-click="newDiet();" href="" class="btn ib blogin">Next</a>
+                </div>
+
+            </form>
+        </div>
+    </div>
+
+    @if (Model != null)
+    {
+        @Html.Partial("_AddMeals", Model)
+    }
+</div>
+
+<script src="~/Content/JS/plugins/angular.min.js"></script>
+<script src="~/Content/JS/layout/diet.js"></script>

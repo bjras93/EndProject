@@ -1,0 +1,29 @@
+﻿html, body {
+    height: 100%;
+}
+html, body, div, p, h1, h2, h3, h4, h5, h6, button, a, li, ul, input {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+button, input {
+    border: none;
+}
+button, input[type="submit"] {
+    cursor:pointer;
+}
+.right { 
+    float: right;
+}
+.left {
+    float: left;
+}
+.clear {
+    clear: both;
+}
+.hide {
+    display: none;
+}
+.ib {
+    display:inline-block;
+}

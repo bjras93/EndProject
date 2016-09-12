@@ -1,0 +1,22 @@
+﻿@model IEnumerable<LifeStruct.Models.DietModel>
+@{
+    ViewBag.Title = "Diet";
+}
+<div class="content g1">
+    @{
+        foreach (var diet in Model)
+        {
+            <div class="diet-overview">
+                <h3>
+                    @Html.ActionLink(diet.Title, string.Format("Details/{0}", diet.Id))
+
+                </h3>
+                <div class="description">
+                    @diet.Description
+                </div>
+            </div>
+        }
+    }
+</div>
+
+@Html.ActionLink("+", "Create", null, new { @class = "add-diet" })

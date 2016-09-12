@@ -1,0 +1,35 @@
+﻿.account-menu {
+    float:left;
+    width: 20%;
+    li {
+        list-style: none;
+        a {
+            font-weight: bold;
+            color: $w;
+        }
+    }
+}
+.account-details {
+    width: 80%;
+    float:right;
+    li {
+        list-style: none;
+        margin: 10px 0;
+        span:first-child {
+            font-weight:bold;
+        }
+        span {
+            color: $w;
+            @extend .ib;
+            width:33%;
+            a {
+                color: $w;
+            }
+        }
+    }
+}
+.account-goals {
+    li {
+        list-style: none;
+    }
+}

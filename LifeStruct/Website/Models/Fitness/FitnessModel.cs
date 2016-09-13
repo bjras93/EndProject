@@ -1,14 +1,12 @@
 ﻿namespace LifeStruct.Models
 {
+    using System.ComponentModel.DataAnnotations;
     public class FitnessModel
     {
         public string Id { get; set; }
-        public int Day { get; set; }
-        public int Meal { get; set; }
-        public string mealId { get; set; }
-        public int Calories { get; set; }
-        public int Edible { get; set; }
-        public string DietID { get; set; }
-        public virtual DietModel Diet { get; set; }
+        [Required(ErrorMessage = "You forgot to fill out Title")]
+        public string Title { get; set; }
+        [Required(ErrorMessage = "You forgot to fill out Description")]
+        public string Description { get; set; }
     }
 }

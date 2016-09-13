@@ -10,6 +10,8 @@ namespace LifeStruct.Models
         public DbSet<FoodModel> Food { get; set; }
         public DbSet<MealsModel> Meals { get; set; }
         public DbSet<DaysModel> Days { get; set; }
+        public DbSet<ExerciseModel> Exercise { get; set; }
+        public DbSet<ScheduleModel> Schedule { get; set; }
         public DbSet<MealCollectionModel> MealCollection { get; set; }
     }
 }

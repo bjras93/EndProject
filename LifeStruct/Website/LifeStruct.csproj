@@ -215,6 +215,7 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\ApiControllers\DietApiController.cs" />
     <Compile Include="Controllers\ApiControllers\EdiblesApiController.cs" />
+    <Compile Include="Controllers\ApiControllers\ExerciseApiController.cs" />
     <Compile Include="Controllers\ApiControllers\FoodApiController.cs" />
     <Compile Include="Controllers\ApiControllers\DaysApiController.cs" />
     <Compile Include="Controllers\ApiControllers\MealsApiController.cs" />
@@ -254,6 +255,22 @@
     <Compile Include="Migrations\201609102202075_DayDiets.Designer.cs">
       <DependentUpon>201609102202075_DayDiets.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201609130728434_FitnessAdd.cs" />
+    <Compile Include="Migrations\201609130728434_FitnessAdd.Designer.cs">
+      <DependentUpon>201609130728434_FitnessAdd.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201609130734408_UpdateFitness1.cs" />
+    <Compile Include="Migrations\201609130734408_UpdateFitness1.Designer.cs">
+      <DependentUpon>201609130734408_UpdateFitness1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201609130825322_UpdateFitness2.cs" />
+    <Compile Include="Migrations\201609130825322_UpdateFitness2.Designer.cs">
+      <DependentUpon>201609130825322_UpdateFitness2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201609131036024_CalInt.cs" />
+    <Compile Include="Migrations\201609131036024_CalInt.Designer.cs">
+      <DependentUpon>201609131036024_CalInt.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Account\AccountViewModels.cs" />
     <Compile Include="Models\Diet\DaysModel.cs" />
@@ -261,8 +278,10 @@
     <Compile Include="Models\Diet\DietModel.cs" />
     <Compile Include="Models\Diet\MealCollectionModel.cs" />
     <Compile Include="Models\Diet\MealsModel.cs" />
+    <Compile Include="Models\Fitness\ExerciseModel.cs" />
     <Compile Include="Models\Fitness\FitnessModel.cs" />
     <Compile Include="Models\Diet\FoodModel.cs" />
+    <Compile Include="Models\Fitness\ScheduleModel.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\Account\LikeModel.cs" />
     <Compile Include="Models\Account\UserViewModel.cs" />
@@ -320,6 +339,7 @@
     <Content Include="Content\fonts\icomoon.svg" />
     <Content Include="Content\img\web\pexels-photo.jpg" />
     <Content Include="Content\JS\layout\diet.js" />
+    <Content Include="Content\JS\layout\fitness.js" />
     <Content Include="Content\JS\layout\menu.js" />
     <Content Include="Content\JS\layout\modal.js" />
     <Content Include="Content\JS\layout\overlay.js" />
@@ -424,7 +444,7 @@
     <Content Include="Views\Diets\Create.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Views\Diets\AddNewFood.cshtml" />
+    <Content Include="Views\Shared\_AddNewFood.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\SCSS\styles\modal.scss" />
@@ -454,15 +474,31 @@
     <EmbeddedResource Include="Migrations\201609102202075_DayDiets.resx">
       <DependentUpon>201609102202075_DayDiets.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201609130728434_FitnessAdd.resx">
+      <DependentUpon>201609130728434_FitnessAdd.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201609130734408_UpdateFitness1.resx">
+      <DependentUpon>201609130734408_UpdateFitness1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201609130825322_UpdateFitness2.resx">
+      <DependentUpon>201609130825322_UpdateFitness2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201609131036024_CalInt.resx">
+      <DependentUpon>201609131036024_CalInt.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\SCSS\styles\autocomplete.scss" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Views\Diets\_AddMeals.cshtml" />
+    <Content Include="Views\Shared\_AddMeals.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Properties\PublishProfiles\LifeStruct.pubxml" />
+    <Content Include="Views\Fitness\Create.cshtml" />
+    <Content Include="Views\Fitness\Edit.cshtml" />
+    <Content Include="Views\Shared\_ScheduleExist.cshtml" />
+    <Content Include="Views\Shared\_AddNewExercise.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

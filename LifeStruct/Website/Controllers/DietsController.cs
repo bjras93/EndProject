@@ -123,10 +123,10 @@ namespace LifeStruct.Controllers
             return RedirectToAction("../Account/Index");
         }
         [HttpGet]
-        public ActionResult AddNewFood()
+        public ActionResult _AddNewFood()
         {
 
-            return PartialView();
+            return PartialView("~/Views/Shared/_AddNewFood.cshtml");
         }
     }
 }

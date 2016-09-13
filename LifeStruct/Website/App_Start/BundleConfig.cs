@@ -9,6 +9,7 @@ namespace LifeStruct
         {
             bundles.Add(new ScriptBundle("~/bundles/plugins").Include(
                 "~/Content/JS/plugins/jquery-3.1.0.min.js",
+                "~/Content/JS/plugins/angular.min.js",
                 "~/Content/JS/plugins/jquery-ui.min.js"
                 ));
         }

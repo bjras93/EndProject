@@ -1,4 +1,5 @@
 ﻿var app = angular.module('LifeStruct', []);
+var api = 'http://' + location.host + '/api/';
 
 var diet = {
     init: function () {
@@ -14,7 +15,7 @@ var diet = {
                 if ($scope.myForm.$valid) {
                     var postDiet = {
                         method: 'POST',
-                        url: 'http://dev.lifestruct.dk/api/DietApi',
+                        url:  api + 'DietApi',
                         data: JSON.stringify({ title: $scope.Title, description: $scope.Description, img: $scope.Img })
                     }
                     $http(postDiet).then(function (data) {
@@ -33,7 +34,6 @@ var diet = {
         app.controller('dietGetCtrl', ['$scope', '$http', '$document', function ($scope, $http, $document) {
             var loc = location.href,
                 id = loc.split('?id=')[1],
-                api = 'http://dev.lifestruct.dk/api/',
                 currentW = 1,
                 days = [],
                 meals = [],
@@ -94,11 +94,6 @@ var diet = {
                     }
                 });
 
-                $('body').on('click', function (e) {
-
-                    $('.autocomplete').hide();
-
-                });
                 $scope.$watch('searches.searchEdibles', function (newVal, oldVal) {
 
                     $('.autocomplete').on('mouseenter', function () {

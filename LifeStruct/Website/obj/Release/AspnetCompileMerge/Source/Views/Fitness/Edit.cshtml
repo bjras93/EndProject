@@ -1,0 +1,68 @@
+﻿@model LifeStruct.Models.FitnessModel
+@{
+    ViewBag.Title = "Edit workout schedule";
+}
+<div class="content">
+    <div class="fitness fitness-edit">
+        @using (Html.BeginForm("Edit", "Fitness", FormMethod.Post))
+        {
+            @Html.HiddenFor(x => x.Id)
+            if (ViewBag.Schedule != null)
+            {
+                @Html.Partial("~/Views/Shared/_ScheduleExist.cshtml", Model)
+            }
+            else
+            {
+                <div ng-app="LifeStruct" ng-controller="FitnessCtrl" class="schedule">
+                    <div class="exercise-add" ng-repeat="exercise in exercises">
+                        <div ng-init="eIndex = ($index+1)"></div>
+                        <ul>
+                            <li>
+                                <select class="ipt" name="s_day_e{{eIndex}}" ng-model="eList.exercise['s_day_e' + eIndex]" value="Day" type="text">
+                                    @foreach (var day in ViewBag.Days)
+                                    {
+                                        <option value="@day.Id">@day.Name</option>
+                                    }
+                                </select>
+                            </li>
+                            <li>
+                                <input autocomplete="off" ng-click="" ng-keyup="showAc($event); sExercise('s_exercise_e' + eIndex, 'notFound_' + eIndex);" onkeydown="keyDown(event);" ng-model="eList.exercise['s_exercise_e' + eIndex]" class="ipt" name="s_exercise_e{{eIndex}}" placeholder="Exercise" type="text" />
+                                <div class="autocomplete-container">
+                                    <div class="autocomplete" ng-if="eList.exercise['s_exercise_e' + eIndex].length > 0">
+                                        <div  class="results" ng-repeat="result in exerciseCollection = (allExercises | filter: eList.exercise['s_exercise_e' + eIndex]) | limitTo: 5 ">
+                                            <div ng-if="exerciseCollection.length > 0">
+                                                <div ng-init="rIndex = ($index+1)"></div>
+                                                <a ng-click="setCalories($event, eIndex, rIndex); eList.exercise['s_exercise_e' + eIndex] = result.Name;" onkeydown="keyDown(event);" data-val="{{result.Calories}}" href="">{{result.Name}}</a>
+                                            </div>
+                                        </div>
+                                        <a data-url="@(Url.Action("_AddNewExercise"))" data-content="{{eList.exercise['s_exercise_e' + eIndex]}}" onkeydown="keyDown(event);" ng-click="$event.preventDefault();" class="open-modal hide" id="{{'notFound_' + eIndex}}" href="">
+                                            Could not find {{eList.exercise['s_exercise_e' + eIndex]}} would you like to add it?
+                                        </a>
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <input id="s_calories_e{{eIndex}}" ng-model="eList.exercise['s_calories_e' + eIndex]" name="s_calories_e{{eIndex}}" type="hidden" />
+                                <input class="ipt" ng-model="eList.exercise['s_interval_e' + eIndex]" name="s_interval_e{{eIndex}}" placeholder="Interval" type="text" />
+                                <div ng-if="eList.exercise['s_interval_e' + eIndex].length > 0">
+                                    {{(eList.exercise['s_calories_e' + eIndex] / 60) * eList.exercise['s_interval_e' + eIndex]}}
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                    <a ng-click="addExercise($event);" href="">Add another day</a>
+                    <input value="Create schedule" type="submit" class="btn" />
+                </div>
+            }
+        }
+
+        <div class="modal-overlay">
+            <div id="modal">
+
+            </div>
+        </div>
+    </div>
+</div>
+<script src="~/Content/JS/layout/autocomplete.js"></script>
+<script src="~/Content/JS/layout/fitness.js"></script>
+<script>fitness.schedule(); autocomplete.init(); </script>

@@ -1,0 +1,22 @@
+﻿@{
+    ViewBag.Title = "Create workout schedule";
+}
+
+<div class="content">
+    <div class="fitness fitness-create">
+        @using (Html.BeginForm("Create", "Fitness", FormMethod.Post))
+        {
+            <ul>
+                <li>
+                    <input type="text" class="ipt" name="f_title" placeholder="Title" />
+                </li>
+                <li>
+                    <textarea class="ipt" name="f_description" placeholder="Description"></textarea>
+                </li>
+                <li>
+                    <input class="btn" type="submit" value="Next" />
+                </li>
+            </ul>
+        }
+    </div>
+</div>

@@ -32,3 +32,9 @@ E:\Projects\LifeStruct\LifeStruct\Website\obj\Release\Website.Migrations.DayDiet
 E:\Projects\LifeStruct\LifeStruct\Website\obj\Release\LifeStruct.csproj.GenerateResource.Cache
 E:\Projects\LifeStruct\LifeStruct\Website\obj\Release\Website.dll
 E:\Projects\LifeStruct\LifeStruct\Website\obj\Release\Website.pdb
+E:\Projects\LifeStruct\LifeStruct\Website\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+E:\Projects\LifeStruct\LifeStruct\Website\obj\Release\LifeStruct.csprojResolveAssemblyReference.cache
+E:\Projects\LifeStruct\LifeStruct\Website\obj\Release\Website.Migrations.FitnessAdd.resources
+E:\Projects\LifeStruct\LifeStruct\Website\obj\Release\Website.Migrations.UpdateFitness1.resources
+E:\Projects\LifeStruct\LifeStruct\Website\obj\Release\Website.Migrations.UpdateFitness2.resources
+E:\Projects\LifeStruct\LifeStruct\Website\obj\Release\Website.Migrations.CalInt.resources

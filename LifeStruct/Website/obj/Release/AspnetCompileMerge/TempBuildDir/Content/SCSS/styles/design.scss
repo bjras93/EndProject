@@ -19,6 +19,18 @@ body {
 .stop-scroll {
     overflow: hidden;
 }
+.add {
+    
+    position: absolute;
+    right: 30px;
+    bottom: 25px;
+    border-radius: 50px;
+    padding: 18px 25px;
+    color: $w;
+    font-size: 1.4em;
+    background-color: $red-1;
+    cursor: pointer;
+}
 .text-danger {
     color: $red-1;
 }

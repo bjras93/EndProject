@@ -30,7 +30,7 @@
                                         <a class="{{result.autoComplete['selected' + Ids + '_e' + 0 + '_sI' + $index] ? 'autocomplete-selected' : ''}}" ng-keydown="selectResult($event, allFood | filter:searches.searchEdibles[Ids + '_e' + 0], 'selected' + Ids + '_e' + 0 + '_sI',searches.searchEdibles[Ids + '_e' + 0]);" id="{{'selected' +Ids + '_e' + 0 + '_sI' + ($index+1)}}" ng-click="setCalories(food.Calories, Ids + '_e' + 0); autoHide('autocomplete' + Ids + '_e' + 0, true); setFoodId('foodId_' + Ids + '_e' + 1, food.Id);searches.searchEdibles[Ids + '_e' + 0] = food.Name; " href="">{{food.Name}}</a>
                                     </div>
                                     <div class="hide" id="{{'result' + Ids + '_e' + 0}}">
-                                        <a class="open-modal {{result.autoComplete['selected_' + Ids + '_e' + 0 + '_sI' + 0] ? 'autocomplete-selected' : ''}}" data-url="@(Url.Action("AddNewFood"))_{{searches.searchEdibles[Ids + '_e' + 0]}}" ng-keydown="selectResult($event, allFood | filter:searches.searchEdibles[Ids + '_e' + 0],  'selected' + Ids + '_e' + 0 + '_sI',searches.searchEdibles[Ids + '_e' + 0]);" id="{{'selected_' +Ids + '_e' + 0 + '_sI' + 0}}" href="">Could not find {{searches.searchEdibles[Ids + '_e' + 0]}} do you wish to create it?</a>
+                                        <a class="open-modal {{result.autoComplete['selected_' + Ids + '_e' + 0 + '_sI' + 0] ? 'autocomplete-selected' : ''}}" data-url="@(Url.Action("_AddNewFood"))" data-content="{{searches.searchEdibles[Ids + '_e' + 0]}}" ng-keydown="selectResult($event, allFood | filter:searches.searchEdibles[Ids + '_e' + 0],  'selected' + Ids + '_e' + 0 + '_sI',searches.searchEdibles[Ids + '_e' + 0]);" id="{{'selected_' +Ids + '_e' + 0 + '_sI' + 0}}" href="">Could not find {{searches.searchEdibles[Ids + '_e' + 0]}} do you wish to create it?</a>
                                     </div>
 
                                 </div>
@@ -51,7 +51,7 @@
                                             <a class="{{result.autoComplete['selected' + Ids + '_e' + edibleInit + '_sI' + $index] ? 'autocomplete-selected' : ''}}" ng-keydown="selectResult($event, allFood | filter:searches.searchEdibles[Ids + '_e' + 0], 'selected' + Ids + '_e' + edibleInit + '_sI',searches.searchEdibles[Ids + '_e' + edibleInit]);" id="{{'selected' +Ids + '_e' + edibleInit + '_sI' + ($index+1)}}" ng-click="setCalories(food.Calories, Ids + '_e' + edibleInit); autoHide('autocomplete' + Ids + '_e' + 0, true); setFoodId('foodId_' + Ids + '_e' + (edibleInit+1), food.Id);searches.searchEdibles[Ids + '_e' + edibleInit] = food.Name; " href="">{{food.Name}}</a>
                                         </div>
                                         <div class="hide" id="{{'result' + Ids + '_e' + edibleInit}}">
-                                            <a class="open-modal {{result.autoComplete['selected_' + Ids + '_e' + edibleInit + '_sI' + 0] ? 'autocomplete-selected' : ''}}" data-url="@(Url.Action("AddNewFood"))_{{searches.searchEdibles[Ids + '_e' + edibleInit]}}" ng-keydown="selectResult($event, allFood | filter:searches.searchEdibles[Ids + '_e' + 0],  'selected' + Ids + '_e' + edibleInit + '_sI',searches.searchEdibles[Ids + '_e' + edibleInit]);" id="{{'selected_' +Ids + '_e' + edibleInit + '_sI' + 0}}" href="">Could not find {{searches.searchEdibles[Ids + '_e' + edibleInit]}} do you wish to create it?</a>
+                                            <a class="open-modal {{result.autoComplete['selected_' + Ids + '_e' + edibleInit + '_sI' + 0] ? 'autocomplete-selected' : ''}}" data-url="@(Url.Action("_AddNewFood"))" data-content="{{searches.searchEdibles[Ids + '_e' + edibleInit]}}" ng-keydown="selectResult($event, allFood | filter:searches.searchEdibles[Ids + '_e' + 0],  'selected' + Ids + '_e' + edibleInit + '_sI',searches.searchEdibles[Ids + '_e' + edibleInit]);" id="{{'selected_' +Ids + '_e' + edibleInit + '_sI' + 0}}" href="">Could not find {{searches.searchEdibles[Ids + '_e' + edibleInit]}} do you wish to create it?</a>
                                         </div>
                                     </div>
                                 </div>
@@ -82,3 +82,7 @@
         </div>
     </div>
 }
+<script src="~/Content/JS/layout/autocomplete.js"></script>
+<script>
+    autocomplete.init();
+</script>

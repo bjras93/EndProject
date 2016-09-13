@@ -72,15 +72,15 @@ button, input[type="submit"] {
   color: #E52727; }
 
 .Google {
-  background-color: #D34836;
+  background-color: #D34836 !important;
   color: #fff; }
 
 .Twitter {
-  background-color: #55ACEE;
+  background-color: #55ACEE !important;
   color: #fff; }
 
 .Facebook {
-  background-color: #3B5998;
+  background-color: #3B5998 !important;
   color: #fff; }
 
 .bsignup {
@@ -91,7 +91,7 @@ button, input[type="submit"] {
   background-color: #1ABC9C;
   color: #fff; }
 
-body, html, button, input {
+body, html, button, input, textarea {
   font-size: 12pt;
   font-family: 'Roboto', 'Open Sans', Verdana, Calibri, sans-serif;
   color: #333; }
@@ -172,6 +172,17 @@ body {
 
 .stop-scroll {
   overflow: hidden; }
+
+.add {
+  position: absolute;
+  right: 30px;
+  bottom: 25px;
+  border-radius: 50px;
+  padding: 18px 25px;
+  color: #fff;
+  font-size: 1.4em;
+  background-color: #F57979;
+  cursor: pointer; }
 
 .text-danger {
   color: #F57979; }
@@ -306,17 +317,6 @@ body {
     margin: 0; }
   .create-diet .add-more {
     background: #16A085; }
-
-.add-diet {
-  position: absolute;
-  right: 30px;
-  bottom: 25px;
-  border-radius: 50px;
-  padding: 18px 25px;
-  color: #fff;
-  font-size: 1.4em;
-  background-color: #F57979;
-  cursor: pointer; }
 
 .diet-schedule ul {
   margin-bottom: 15px; }

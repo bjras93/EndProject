@@ -16,6 +16,9 @@ var fitness = {
                 interval: ''
             }];
             $scope.allExercises = [];
+            $scope.showAc = function (event) {
+                $(event.target).parent('.autocomplete').show();
+            }
             $scope.sExercise = function (eId, sStr) {
                 var search = $scope.eList.exercise[eId];
                 if (search != undefined) {

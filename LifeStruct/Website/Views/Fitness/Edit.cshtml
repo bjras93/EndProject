@@ -26,16 +26,16 @@
                                 </select>
                             </li>
                             <li>
-                                <input ng-keyup="sExercise('s_exercise_e' + eIndex, 'notFound_' + eIndex);" ng-keydown="autocomplete.keyDown();" ng-model="eList.exercise['s_exercise_e' + eIndex]" class="ipt" name="s_exercise_e{{eIndex}}" placeholder="Exercise" type="text" />
+                                <input autocomplete="off" ng-click="" ng-keyup="showAc($event); sExercise('s_exercise_e' + eIndex, 'notFound_' + eIndex);" onkeydown="keyDown(event);" ng-model="eList.exercise['s_exercise_e' + eIndex]" class="ipt" name="s_exercise_e{{eIndex}}" placeholder="Exercise" type="text" />
                                 <div class="autocomplete-container">
                                     <div class="autocomplete" ng-if="eList.exercise['s_exercise_e' + eIndex].length > 0">
-                                        <div ng-repeat="result in exerciseCollection = (allExercises | filter: eList.exercise['s_exercise_e' + eIndex]) | limitTo: 5 ">
+                                        <div  class="results" ng-repeat="result in exerciseCollection = (allExercises | filter: eList.exercise['s_exercise_e' + eIndex]) | limitTo: 5 ">
                                             <div ng-if="exerciseCollection.length > 0">
                                                 <div ng-init="rIndex = ($index+1)"></div>
-                                                <a ng-click="setCalories($event, eIndex, rIndex); eList.exercise['s_exercise_e' + eIndex] = result.Name;" data-val="{{result.Calories}}" href="">{{result.Name}}</a>
+                                                <a ng-click="setCalories($event, eIndex, rIndex); eList.exercise['s_exercise_e' + eIndex] = result.Name;" onkeydown="keyDown(event);" data-val="{{result.Calories}}" href="">{{result.Name}}</a>
                                             </div>
                                         </div>
-                                        <a data-url="@(Url.Action("_AddNewExercise"))" data-content="{{eList.exercise['s_exercise_e' + eIndex]}}" ng-click="$event.preventDefault();" class="open-modal hide" id="{{'notFound_' + eIndex}}" href="">
+                                        <a data-url="@(Url.Action("_AddNewExercise"))" data-content="{{eList.exercise['s_exercise_e' + eIndex]}}" onkeydown="keyDown(event);" ng-click="$event.preventDefault();" class="open-modal hide" id="{{'notFound_' + eIndex}}" href="">
                                             Could not find {{eList.exercise['s_exercise_e' + eIndex]}} would you like to add it?
                                         </a>
                                     </div>

@@ -338,6 +338,7 @@
     <Content Include="Content\CSS\main.css" />
     <Content Include="Content\fonts\icomoon.svg" />
     <Content Include="Content\img\web\pexels-photo.jpg" />
+    <Content Include="Content\JS\layout\autocomplete.js" />
     <Content Include="Content\JS\layout\diet.js" />
     <Content Include="Content\JS\layout\fitness.js" />
     <Content Include="Content\JS\layout\menu.js" />

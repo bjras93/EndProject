@@ -26,7 +26,7 @@
                                 </select>
                             </li>
                             <li>
-                                <input ng-keyup="sExercise('s_exercise_e' + eIndex, 'notFound_' + eIndex);" ng-model="eList.exercise['s_exercise_e' + eIndex]" class="ipt" name="s_exercise_e{{eIndex}}" placeholder="Exercise" type="text" />
+                                <input ng-keyup="sExercise('s_exercise_e' + eIndex, 'notFound_' + eIndex);" ng-keydown="autocomplete.keyDown();" ng-model="eList.exercise['s_exercise_e' + eIndex]" class="ipt" name="s_exercise_e{{eIndex}}" placeholder="Exercise" type="text" />
                                 <div class="autocomplete-container">
                                     <div class="autocomplete" ng-if="eList.exercise['s_exercise_e' + eIndex].length > 0">
                                         <div ng-repeat="result in exerciseCollection = (allExercises | filter: eList.exercise['s_exercise_e' + eIndex]) | limitTo: 5 ">
@@ -65,4 +65,4 @@
 </div>
 <script src="~/Content/JS/layout/autocomplete.js"></script>
 <script src="~/Content/JS/layout/fitness.js"></script>
-<script>fitness.schedule(); autocomplete.init();</script>
+<script>fitness.schedule(); autocomplete.init(); </script>

@@ -1,7 +1,6 @@
 ﻿var api = 'http://' + location.host + '/api/';
 var modal = {
     init: function () {
-        console.log(api)
         modal.run('.open-modal', $('#modal'));
     },
     run: function (click, target) {

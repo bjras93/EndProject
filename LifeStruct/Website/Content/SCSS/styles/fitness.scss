@@ -4,14 +4,14 @@
     padding: $spd;
     background: $gre-2;
 
+    ul {
+        li {
+            list-style: none;
+        }
+    }
+
     .exercise-add {
         margin-bottom: 30px;
-
-        ul {
-            li {
-                list-style: none;
-            }
-        }
     }
 
     .add-day {
@@ -36,5 +36,11 @@
     input, select {
         width: 100%;
         margin: 10px 0;
+    }
+    .mce-panel {
+        background-color: $w;
+    }
+    .mce-btn {
+        background-color: $w;
     }
 }

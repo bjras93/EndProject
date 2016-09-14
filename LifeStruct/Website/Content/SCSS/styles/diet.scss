@@ -2,6 +2,13 @@
     background-color: $gre-1;
     color: $w;
     padding: $spd;
+    
+    .mce-panel {
+        background-color: $w;
+    }
+    .mce-btn {
+        background-color: $w;
+    }
 }
 
 .create-diet {

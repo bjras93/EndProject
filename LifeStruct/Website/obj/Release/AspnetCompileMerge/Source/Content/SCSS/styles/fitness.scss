@@ -1,0 +1,40 @@
+﻿.fitness {
+    width: 50%;
+    display: inline-block;
+    padding: $spd;
+    background: $gre-2;
+
+    .exercise-add {
+        margin-bottom: 30px;
+
+        ul {
+            li {
+                list-style: none;
+            }
+        }
+    }
+
+    .add-day {
+        display: inline-block;
+        background-color: $gre-1;
+        border-radius: 5px;
+        color: $w;
+        padding: 5px $spd;
+        margin-bottom: 30px;
+    }
+
+    .autocomplete-container {
+        .autocomplete {
+            margin-top: -10px;
+        }
+    }
+
+    .fit-gre {
+        background-color: $gre-1;
+    }
+
+    input, select {
+        width: 100%;
+        margin: 10px 0;
+    }
+}

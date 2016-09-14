@@ -7,6 +7,9 @@
 
     <link href="~/Content/CSS/main.css" rel="stylesheet" />
     @Scripts.Render("~/bundles/plugins")
+    <script>
+        tinymce.init({ selector: '.tinymce', menu: 'none', toolbar: 'bold italic underline | bullist numlist | outdent indent' });
+    </script>
 </head>
 <body>
     <div class="overlay">

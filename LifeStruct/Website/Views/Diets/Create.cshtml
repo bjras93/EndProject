@@ -19,14 +19,15 @@
                     </div>
                 </div>
                 <div class="">
-                    <textarea name="Description" placeholder="Description" required class="ipt" ng-model="Description"></textarea>
+                    <textarea name="Description" placeholder="Description" required class="ipt tinymce" ng-model="Description"></textarea>
                     <div ng-if="!myForm.Description.$valid && isClicked">
                         <div>This field is required</div>
                     </div>
                 </div>
                 <div class="">
                     <label class="btn ib" for="upl">Upload image</label>
-                    <input ng-model="Img" type="file" class="hide" id="upl" />
+                    <input ng-model="Img" type="file" accept="image/.png,.jpg,.gif" class="hide" id="upl" />
+                    <div id="pic"></div>
                 </div>
                 <div>
                     <a ng-click="newDiet();" href="" class="btn ib blogin">Next</a>
@@ -43,3 +44,4 @@
 </div>
 
 <script src="~/Content/JS/layout/diet.js"></script>
+<script src="~/Content/JS/layout/fileupload.js"></script>

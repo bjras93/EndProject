@@ -12,8 +12,12 @@ var fitness = {
                 exercise: []
             };
             $scope.exercises = [{
+                id: '',
                 exercise: '',
-                interval: ''
+                interval: '',
+                exerciseId: '',
+                day: '',
+                calories: ''
             }];
             $scope.allExercises = [];
             $scope.showAc = function (event) {
@@ -47,14 +51,36 @@ var fitness = {
                     }
                 }
             }
+            $scope.getSchedule = function (fId) {
+                var eNames = [];
+                $http({
+                    method: 'GET',
+                    url: api + 'ScheduleApi/FindById?id=' + fId
+                }).then(function (data) {
+                    $scope.exercises = [];
+                    for (var i = 0; i < data.data.length; i++) {
+                        $scope.exercises.push({ id: data.data[i].Id, exercise: '', interval: data.data[i].Time, exerciseId: data.data[i].ExerciseId, day: data.data[i].Day, calories: '' });
+                    
+                        $http({
+                            method: 'GET',
+                            url: api + 'ExerciseApi/FindById?id=' + data.data[i].ExerciseId
+                        }).then(function (eData) {
+                            for (var e = 0; e < $scope.exercises.length; e++) {
+                                $scope.exercises[e].exercise = eData.data.Name;
+                                $scope.exercises[e].calories = eData.data.Calories;
+                            }
+                        });
+                        console.log($scope.exercises)
+                    }
+                });
+            }
             $scope.setCalories = function (event, eIndex, rIndex) {
-                console.log()
-                var calInput = '#s_calories_e' + eIndex,
-                    calories = event.target.getAttribute('data-val');
+                var calories = event.target.getAttribute('data-val')
+                exerciseId = event.target.getAttribute('data-id');
                 $scope.eList.exercise['s_calories_e' + eIndex] = calories;
-                
+                $scope.eList.exercise['s_exerciseId_e' + eIndex] = exerciseId;
 
-               
+
             }
             $scope.addExercise = function (e) {
                 e.preventDefault();

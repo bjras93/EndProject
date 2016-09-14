@@ -345,6 +345,7 @@
     <Content Include="Content\img\web\pexels-photo.jpg" />
     <Content Include="Content\JS\layout\autocomplete.js" />
     <Content Include="Content\JS\layout\diet.js" />
+    <Content Include="Content\JS\layout\fileupload.js" />
     <Content Include="Content\JS\layout\fitness.js" />
     <Content Include="Content\JS\layout\menu.js" />
     <Content Include="Content\JS\layout\modal.js" />
@@ -353,6 +354,17 @@
     <Content Include="Content\JS\plugins\jquery-3.1.0.min.js" />
     <Content Include="Content\JS\main.js" />
     <Content Include="Content\JS\plugins\jquery-ui.min.js" />
+    <Content Include="Content\JS\plugins\skins\lightgray\content.inline.min.css" />
+    <Content Include="Content\JS\plugins\skins\lightgray\content.min.css" />
+    <Content Include="Content\JS\plugins\skins\lightgray\fonts\tinymce-small.svg" />
+    <Content Include="Content\JS\plugins\skins\lightgray\fonts\tinymce.svg" />
+    <Content Include="Content\JS\plugins\skins\lightgray\img\anchor.gif" />
+    <Content Include="Content\JS\plugins\skins\lightgray\img\loader.gif" />
+    <Content Include="Content\JS\plugins\skins\lightgray\img\object.gif" />
+    <Content Include="Content\JS\plugins\skins\lightgray\img\trans.gif" />
+    <Content Include="Content\JS\plugins\skins\lightgray\skin.ie7.min.css" />
+    <Content Include="Content\JS\plugins\skins\lightgray\skin.min.css" />
+    <Content Include="Content\JS\plugins\tinymce.min.js" />
     <Content Include="Global.asax" />
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
@@ -371,6 +383,7 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Content\img\user\" />
+    <Folder Include="Content\JS\plugins\themes\" />
     <Folder Include="Views\MealCollection\" />
   </ItemGroup>
   <ItemGroup>
@@ -503,6 +516,13 @@
     <Content Include="Views\Shared\_AddMeals.cshtml" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\SCSS\styles\fitness.scss" />
+    <Content Include="Content\JS\plugins\skins\lightgray\fonts\tinymce-small.eot" />
+    <Content Include="Content\JS\plugins\skins\lightgray\fonts\tinymce-small.ttf" />
+    <Content Include="Content\JS\plugins\skins\lightgray\fonts\tinymce-small.woff" />
+    <Content Include="Content\JS\plugins\skins\lightgray\fonts\tinymce.eot" />
+    <Content Include="Content\JS\plugins\skins\lightgray\fonts\tinymce.ttf" />
+    <Content Include="Content\JS\plugins\skins\lightgray\fonts\tinymce.woff" />
     <None Include="Properties\PublishProfiles\LifeStruct.pubxml" />
     <Content Include="Views\Fitness\Create.cshtml" />
     <Content Include="Views\Fitness\Edit.cshtml" />

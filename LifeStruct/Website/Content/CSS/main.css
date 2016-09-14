@@ -284,6 +284,10 @@ body {
   background-color: #16A085;
   color: #fff;
   padding: 15px; }
+  .diet .mce-panel {
+    background-color: #fff; }
+  .diet .mce-btn {
+    background-color: #fff; }
 
 .create-diet {
   width: 50%; }
@@ -336,10 +340,10 @@ body {
   display: inline-block;
   padding: 15px;
   background: #1ABC9C; }
+  .fitness ul li {
+    list-style: none; }
   .fitness .exercise-add {
     margin-bottom: 30px; }
-    .fitness .exercise-add ul li {
-      list-style: none; }
   .fitness .add-day {
     display: inline-block;
     background-color: #16A085;
@@ -354,6 +358,10 @@ body {
   .fitness input, .fitness select {
     width: 100%;
     margin: 10px 0; }
+  .fitness .mce-panel {
+    background-color: #fff; }
+  .fitness .mce-btn {
+    background-color: #fff; }
 
 .autocomplete-container {
   position: relative; }

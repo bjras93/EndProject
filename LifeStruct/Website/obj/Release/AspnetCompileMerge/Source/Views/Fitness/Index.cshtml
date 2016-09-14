@@ -1,9 +1,30 @@
-﻿@{
+﻿@using LifeStruct.Models;
+@model IEnumerable<FitnessModel>
+@{
+    var user = UserViewModel.GetCurrentUser();
     ViewBag.Title = "Fitness";
 }
 <div class="content g2">
     <div class="fitness fitness-index">
+        @{
+            if (Model != null)
+            {
+                foreach (var f in Model)
+                {
+                <div>
 
+                    <h3>@Html.ActionLink(f.Title, string.Format("Details/{0}", f.Id))</h3>
+                    @f.Description
+                </div>
+                    if (user.Id == f.UserId)
+                    {
+                    <div>
+                        <a href="../Fitness/@string.Format("Edit/{0}", f.Id)"><span href="" class="icon-pencil"></span></a>
+                    </div>
+                        }
+                    }
+                }
+            }
     </div>
 </div>
 @Html.ActionLink("+", "Create", null, new { @class = "add add-fitness" })

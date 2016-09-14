@@ -91,7 +91,7 @@ button, input[type="submit"] {
   background-color: #1ABC9C;
   color: #fff; }
 
-body, html, button, input, textarea {
+body, html, button, input, textarea, select, option {
   font-size: 12pt;
   font-family: 'Roboto', 'Open Sans', Verdana, Calibri, sans-serif;
   color: #333; }
@@ -140,6 +140,9 @@ a {
 
 .icon-sports-shoe:before {
   content: "\e904"; }
+
+.icon-pencil:before {
+  content: "\e905"; }
 
 .icon-play:before {
   content: "\e912"; }
@@ -327,6 +330,30 @@ body {
     margin-bottom: 10px; }
   .diet-schedule ul .meal ul {
     margin-bottom: 15px; }
+
+.fitness {
+  width: 50%;
+  display: inline-block;
+  padding: 15px;
+  background: #1ABC9C; }
+  .fitness .exercise-add {
+    margin-bottom: 30px; }
+    .fitness .exercise-add ul li {
+      list-style: none; }
+  .fitness .add-day {
+    display: inline-block;
+    background-color: #16A085;
+    border-radius: 5px;
+    color: #fff;
+    padding: 5px 15px;
+    margin-bottom: 30px; }
+  .fitness .autocomplete-container .autocomplete {
+    margin-top: -10px; }
+  .fitness .fit-gre {
+    background-color: #16A085; }
+  .fitness input, .fitness select {
+    width: 100%;
+    margin: 10px 0; }
 
 .autocomplete-container {
   position: relative; }

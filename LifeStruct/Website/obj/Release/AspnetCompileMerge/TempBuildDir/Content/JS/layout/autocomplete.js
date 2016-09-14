@@ -5,7 +5,7 @@ anchors = [],
 autocomplete = {
     init: function () {
         $('body').on('click', function (e) {
-            if (ac == '' && ac != e.target) {
+            if (ac == '') {
                 ac = e.target;
             }
             else {

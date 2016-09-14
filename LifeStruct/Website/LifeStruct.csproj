@@ -215,6 +215,7 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\ApiControllers\DietApiController.cs" />
     <Compile Include="Controllers\ApiControllers\EdiblesApiController.cs" />
+    <Compile Include="Controllers\ApiControllers\ScheduleApiController.cs" />
     <Compile Include="Controllers\ApiControllers\ExerciseApiController.cs" />
     <Compile Include="Controllers\ApiControllers\FoodApiController.cs" />
     <Compile Include="Controllers\ApiControllers\DaysApiController.cs" />
@@ -270,6 +271,10 @@
     <Compile Include="Migrations\201609131036024_CalInt.cs" />
     <Compile Include="Migrations\201609131036024_CalInt.Designer.cs">
       <DependentUpon>201609131036024_CalInt.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201609140824320_UserFitness.cs" />
+    <Compile Include="Migrations\201609140824320_UserFitness.Designer.cs">
+      <DependentUpon>201609140824320_UserFitness.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Account\AccountViewModels.cs" />
@@ -487,6 +492,9 @@
     <EmbeddedResource Include="Migrations\201609131036024_CalInt.resx">
       <DependentUpon>201609131036024_CalInt.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201609140824320_UserFitness.resx">
+      <DependentUpon>201609140824320_UserFitness.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\SCSS\styles\autocomplete.scss" />
@@ -500,6 +508,7 @@
     <Content Include="Views\Fitness\Edit.cshtml" />
     <Content Include="Views\Shared\_ScheduleExist.cshtml" />
     <Content Include="Views\Shared\_AddNewExercise.cshtml" />
+    <Content Include="Views\Fitness\Details.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

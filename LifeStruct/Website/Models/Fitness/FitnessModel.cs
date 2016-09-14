@@ -8,5 +8,6 @@
         public string Title { get; set; }
         [Required(ErrorMessage = "You forgot to fill out Description")]
         public string Description { get; set; }
+        public string UserId { get; set; }
     }
 }

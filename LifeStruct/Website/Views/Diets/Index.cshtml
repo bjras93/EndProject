@@ -1,12 +1,15 @@
-﻿@model IEnumerable<LifeStruct.Models.DietModel>
+﻿@using LifeStruct.Models;
+@model IEnumerable<DietModel>
 @{
+    var user = UserViewModel.GetCurrentUser();
     ViewBag.Title = "Diet";
 }
+@Html.ActionLink("Return", "Index", "Home", null, new { @class = "return"})
 <div class="content g1">
     @{
         foreach (var diet in Model)
         {
-            <div class="diet-overview">
+            <div class="overview diet-overview">
                 <h3>
                     @Html.ActionLink(diet.Title, string.Format("Details/{0}", diet.Id))
 
@@ -14,9 +17,21 @@
                 <div class="description">
                     @diet.Description
                 </div>
+                <div class="user-section">
+                    @if (user.Id == diet.User)
+                    {
+                        <a href="../Fitness/@string.Format("Edit/{0}", diet.Id)"><span href="" class="icon-pencil"></span></a>
+                        <p>Author: You</p>
+                    }
+                    else
+                    {
+                        <p>Author: @UserViewModel.GetUser(diet.User).Name</p>
+                    }
+                </div>
             </div>
         }
     }
+    <div class="clear"></div>
 </div>
 
-@Html.ActionLink("+", "Create", null, new { @class = "add-diet" })
+@Html.ActionLink("+", "Create", null, new { @class = "add add-diet" })

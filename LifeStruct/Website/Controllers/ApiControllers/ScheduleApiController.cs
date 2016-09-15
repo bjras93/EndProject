@@ -7,6 +7,7 @@
     public class ScheduleApiController : ApiController
     {
         DefaultConnection db = new DefaultConnection();
+        [Route(Name = "api/ScheduleApi/FindById")]
         [HttpGet]
         public IEnumerable<ScheduleModel> FindById(string Id)
         {
@@ -14,6 +15,5 @@
 
             return result;
         }
-
     }
 }

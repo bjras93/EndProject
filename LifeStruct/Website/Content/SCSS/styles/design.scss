@@ -94,3 +94,41 @@ body {
         width: 33.33%;
     }
 }
+.user-section {
+    padding: $spd 0;
+}
+.return {
+    display:inline-block;
+    padding: 5px $spd;
+    background-color: $gre-1;
+    color: $w;
+    margin: 10px 0;
+    border-radius: 5px;
+}
+.overview {
+    min-height: 200px;
+    width: 49.5%;
+    margin-right: 0.5%;
+    margin-bottom: 0.5%;
+    float:left;
+    padding: $spd;
+    background-color: rgb(32,170,143);
+    h3{
+      margin-bottom: $spd;
+    }
+    a {        
+      color: $w;
+    }
+    .description {
+        min-height: 100px;
+    }
+    .user-section {
+        a {
+            display:inline-block;
+            margin-right: 15px;
+        }
+        p {
+            display:inline-block;
+        }
+    }
+}

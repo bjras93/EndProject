@@ -18,17 +18,27 @@ namespace LifeStruct.Controllers
             }
             return RedirectToAction("../Account/Index");
         }
-        public ActionResult Create(string id)
+        public ActionResult Create()
         {
             if (Request.IsAuthenticated)
             {
-                if (!string.IsNullOrEmpty(id))
+                
+                    return View();
+            }
+
+            return RedirectToAction("../Account/Index");
+        }
+        public ActionResult Edit(string id)
+        {
+            if (Request.IsAuthenticated)
+            {
+                if (!string.IsNullOrEmpty(id) && db.Diet.Find(id) != null)
                 {
                     return View(db.Diet.Find(id));
                 }
                 else
                 {
-                    return View();
+                    return RedirectToAction("../Diets/Create");
                 }
             }
 
@@ -112,16 +122,7 @@ namespace LifeStruct.Controllers
             }
             return RedirectToAction("../Account/Index");
         }
-
-
-        public ActionResult Edit(int ID)
-        {
-            if (Request.IsAuthenticated)
-            {
-                return View();
-            }
-            return RedirectToAction("../Account/Index");
-        }
+                
         [HttpGet]
         public ActionResult _AddNewFood()
         {

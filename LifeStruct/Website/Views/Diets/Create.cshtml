@@ -36,12 +36,10 @@
             </form>
         </div>
     </div>
-
-    @if (Model != null)
-    {
-        @Html.Partial("_AddMeals", Model)
-    }
 </div>
 
 <script src="~/Content/JS/layout/diet.js"></script>
 <script src="~/Content/JS/layout/fileupload.js"></script>
+<script>
+    diet.pageOne();
+</script>

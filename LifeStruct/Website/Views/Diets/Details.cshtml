@@ -45,21 +45,21 @@
                                         {
                                             if (d.Id == mc.Day && Convert.ToInt32(m.Id) == mc.Meal)
                                             {
-                                               
-                                                    for (var i = 0; i < previous.Count(); i++)
+
+                                                for (var i = 0; i < previous.Count(); i++)
+                                                {
+                                                    if (string.Compare(previous[i], mc.Food, false) != 0)
                                                     {
-                                                        if (string.Compare(previous[i], mc.Food, false) != 0)
-                                                        {
-                                                            previous.Add(mc.Food + "," + mc.Calories);
-                                                            <p>
-                                                                @previous[i].Split(',')[0]
-                                                            </p>
+                                                        previous.Add(mc.Food + "," + mc.Calories);
+                                                        <p>
+                                                            @previous[i].Split(',')[0]
+                                                        </p>
                                                             <p>
                                                                 @previous[i].Split(',')[1] kcal
                                                             </p>
-                                                        }
                                                     }
-                                                
+                                                }
+
                                             }
                                         }
                                     </td>

@@ -82,22 +82,13 @@ var diet = {
             }
             // Load 
 
+            console.log($('#dietId').val())
             var getDiet = {
                 method: 'GET',
                 url: api + 'DietApi/GetDiet?id=' + dietId
             }
             $http(getDiet).then(function (data) {
-                if (loc.split('&p=')[1] == 1) {
-                    $('.create-diet').children().each(function (i) {
-                        if (i != 1) {
-                            $(this).hide();
-                        }
-                        else {
-                            $(this).show();
-                        }
-                    });
-                    $scope.Data = data.data;
-                }
+                $scope.Data = data.data;
             });
 
             $scope.$watch('searches.searchEdibles', function (newVal, oldVal) {

@@ -76,6 +76,12 @@
     .add-more {
         background: $gre-1;
     }
+    .information {
+        margin: 50px 0;
+    }
+    .description-btn {
+        background-color: $gre-1;
+    }
 }
 
 .add-diet {
@@ -91,18 +97,39 @@
         thead {
             background-color: $gre-2;
         }
+
         td, th {
-            padding: $spd  15px $spd 15px;
+            padding: $spd 15px $spd 15px;
             vertical-align: text-top;
         }
+
         tr {
-                td {
-                    background-color: $gre-3;
-                    border: 2px solid $gre-1;
-            &:first-child {
-                    background-color:$gre-2;
-                    }
+            td {
+                background-color: $gre-3;
+                border: 2px solid $gre-1;
+                padding: 0;
+
+                &:first-child {
+                    background-color: $gre-2;
+                    padding: $spd 15px $spd 15px;
                 }
+            }
+        }
+
+        table {
+            tr {
+                td {
+                    padding: $spd 25px $spd 25px;
+                    border: none;
+                    border-bottom: 1px solid $gre-1;
+                    border-right: 2px solid $gre-1;
+                &:first-child {
+                    background-color: $gre-3;
+                    padding: $spd 15px $spd 15px;
+                    border-right: 1px solid $gre-1;
+                }
+                }
+            }
         }
     }
 }

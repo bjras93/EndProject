@@ -355,6 +355,10 @@ body {
     margin: 0; }
   .create-diet .add-more {
     background: #16A085; }
+  .create-diet .information {
+    margin: 50px 0; }
+  .create-diet .description-btn {
+    background-color: #16A085; }
 
 .diet-schedule table {
   text-align: left;
@@ -367,9 +371,20 @@ body {
     vertical-align: text-top; }
   .diet-schedule table tr td {
     background-color: #96D4BF;
-    border: 2px solid #16A085; }
+    border: 2px solid #16A085;
+    padding: 0; }
     .diet-schedule table tr td:first-child {
-      background-color: #1ABC9C; }
+      background-color: #1ABC9C;
+      padding: 15px 15px 15px 15px; }
+  .diet-schedule table table tr td {
+    padding: 15px 25px 15px 25px;
+    border: none;
+    border-bottom: 1px solid #16A085;
+    border-right: 2px solid #16A085; }
+    .diet-schedule table table tr td:first-child {
+      background-color: #96D4BF;
+      padding: 15px 15px 15px 15px;
+      border-right: 1px solid #16A085; }
 
 .fitness {
   display: inline-block;

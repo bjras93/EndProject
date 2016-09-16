@@ -365,6 +365,7 @@
     <Content Include="Content\JS\plugins\skins\lightgray\img\trans.gif" />
     <Content Include="Content\JS\plugins\skins\lightgray\skin.ie7.min.css" />
     <Content Include="Content\JS\plugins\skins\lightgray\skin.min.css" />
+    <Content Include="Content\JS\plugins\tinymce-ui.min.js" />
     <Content Include="Content\JS\plugins\tinymce.min.js" />
     <Content Include="Global.asax" />
     <Content Include="ApplicationInsights.config">

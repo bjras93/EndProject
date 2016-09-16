@@ -3,14 +3,18 @@
 <div ng-app="LifeStruct">
     @using (Html.BeginForm("CreateDiet", "Diets", FormMethod.Post))
     {
-
         <input type="hidden" id="dietId" name="Id" value="@Model.Id" />
         <div class="create-diet" ng-controller="dietGetCtrl">
 
             <div class="period">
+                <div class="information">
+                    <h3>Title: {{Data.Title}}</h3><br />
 
-                <h3>{{Data.Title}}</h3><br />
-
+                    <a class="btn description-btn" ng-click="hideNxt($event, '.description');" href="">Open description</a>
+                    <div class="description hide">
+                        <textarea class="tinymce">@Model.Description</textarea>
+                    </div>
+                </div>
                 <div ng-repeat="week in weeks" class="plan">
 
                     <a ng-click="hideNxt($event, '.week');" href="" class="weeks">{{week.text + week.no}}</a>
@@ -66,12 +70,13 @@
                                             </div>
                                         </div>
                                         <input type="hidden" id="foodId_{{eIds}}" name="foodId_{{eIds}}" value="{{edible.foodId}}" />
-                                        <input type="number" ng-keydown="noCal(diet.calories, eIds);" ng-model="measureEdible[eIds]" placeholder="Amount" name="amount_{{eIds}}" ng-value="edible.amount" class="ipt" />
+                                        <input type="number" ng-keydown="noCal(edible.calories, eIds);" ng-model="measureEdible[eIds]" placeholder="Amount" name="amount_{{eIds}}" ng-value="edible.amount" class="ipt" />
                                         <input type="hidden" ng-init="calc.edibleCalories[eIds] = edible.calories" ng-value="edible.calories" />  
                                         <div ng-if="measureEdible[eIds] != null" ng-model="am.amountS[eIds]">
                                             {{((calc.edibleCalories[eIds] /100)* measureEdible[eIds] | number: 0).replace(',', '.')}} kcal
                                         </div>
                                         <div ng-if="measureEdible[eIds] == null && edible.amount != ''">
+
                                             {{((edible.calories /100)* edible.amount | number: 0).replace(',', '.')}} kcal
                                         </div>
 

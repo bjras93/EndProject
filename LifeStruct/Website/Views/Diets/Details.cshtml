@@ -2,7 +2,6 @@
 @using LifeStruct.Controllers;
 @{
     ViewBag.Title = Model.Title;
-    List<string> previous = new List<string>();
 
 }
 <div class="content g1">
@@ -41,27 +40,30 @@
                                 if (Model.MealCollection.Where(x => x.Meal == Convert.ToInt32(m.Id)).Count() > 0)
                                 {
                                     <td>
-                                        @foreach (var mc in Model.MealCollection)
-                                        {
-                                            if (d.Id == mc.Day && Convert.ToInt32(m.Id) == mc.Meal)
+                                        <table>
+                                            @foreach (var mc in Model.MealCollection)
                                             {
-
-                                                for (var i = 0; i < previous.Count(); i++)
+                                                if (d.Id == mc.Day && Convert.ToInt32(m.Id) == mc.Meal)
                                                 {
-                                                    if (string.Compare(previous[i], mc.Food, false) != 0)
-                                                    {
-                                                        previous.Add(mc.Food + "," + mc.Calories);
-                                                        <p>
-                                                            @previous[i].Split(',')[0]
-                                                        </p>
+                                                    <tr>
+                                                        <td>
                                                             <p>
-                                                                @previous[i].Split(',')[1] kcal
+                                                                @mc.Food
                                                             </p>
-                                                    }
-                                                }
+                                                        </td>
+                                                        <td>
+                                                            <p>
+                                                                @mc.Amount gram
+                                                            </p>
+                                                            <p>
+                                                                @((Convert.ToDouble(mc.Calories) / 100) * Convert.ToDouble(mc.Amount)) kcal
+                                                            </p>
+                                                        </td>
+                                                    </tr>
 
+                                                }
                                             }
-                                        }
+                                        </table>
                                     </td>
                                 }
                             }

@@ -131,10 +131,6 @@ namespace LifeStruct.Controllers
                     var fDb = db.Food.Find(mcm.FoodId);
                     dv.MealCollection.Add(new MealCollectionView { Amount = mcm.Amount, Day = mcm.Day, Food = fDb.Name, Calories = fDb.Calories, Meal = mcm.Meal, Week = mcm.WeekNo });
                 }
-                foreach(var dMcm in dv.MealCollection)
-                {
-
-                }
                 
                 return View(dv);
             }

@@ -2,10 +2,11 @@
     background-color: $gre-1;
     color: $w;
     padding: $spd;
-    
+
     .mce-panel {
         background-color: $w;
     }
+
     .mce-btn {
         background-color: $w;
     }
@@ -14,79 +15,94 @@
 .create-diet {
     width: 50%;
     @extend .ib;
+
     .ipt {
-        width:100%;
+        width: 100%;
     }
-    
 
-.period {
-    color: $w;
-    background-color: $gre-2;
-    h3 {
-        padding: $spd 0 0 $spd;
-    }
-    a {
+
+    .period {
         color: $w;
+        background-color: $gre-2;
+
+        h3 {
+            padding: $spd 0 0 $spd;
+        }
+
+        a {
+            color: $w;
+        }
+
+        input {
+            width: 100%;
+        }
     }
-    input {
-        width:100%;
+
+    .days {
+        width: 100%;
+        padding: $spd;
+        @extend .ib;
+        background-color: $gre-1;
+        border: 1px solid rgba(133,133,133,0.2);
+        border-bottom: none;
+    }
+
+    .meals {
+        margin-bottom: 20px;
+    }
+
+    .weeks {
+        padding: $spd;
+        width: 100%;
+        @extend .ib;
+        background: $gre-4;
+    }
+
+    .week {
+        background: $gre-2;
+    }
+
+    .pnl {
+        padding: $spd;
+    }
+
+
+    .btn {
+        border: 1px solid rgba(133,133,133,0.2);
+        border-bottom: 0;
+        margin: 0;
+    }
+
+    .add-more {
+        background: $gre-1;
     }
 }
 
-.days {
-    width: 100%;
-    padding: $spd;
-    @extend .ib;
-    background-color: $gre-1;
-    border: 1px solid rgba(133,133,133,0.2);
-    border-bottom: none;
-}
-.meals {
-    margin-bottom: 20px;
-}
-.weeks {
-    padding: $spd;
-    width: 100%;
-    @extend .ib;
-    background: $gre-4;
-}
-.week {
-    background:$gre-2;
-}
-
-.pnl {
-    padding: $spd;
-}
-
-
-.btn {
-    border: 1px solid rgba(133,133,133,0.2);
-    border-bottom:0;
-    margin: 0;
-
-}
-.add-more {
-    background: $gre-1;
-}
-
-}
 .add-diet {
 }
-.diet-schedule {
-    ul {
-        li {
-            list-style: none;
-            margin: 5px 0;
-        }
 
-        margin-bottom: $spd;
-        .day {
-            margin-bottom: 10px;
+.diet-schedule {
+    table {
+        text-align: left;
+        border-collapse: collapse;
+        border-spacing: 0;
+
+
+        thead {
+            background-color: $gre-2;
         }
-        .meal {
-            ul {
-                margin-bottom: $spd;
-            }
+        td, th {
+            padding: $spd  15px $spd 15px;
+            vertical-align: text-top;
+        }
+        tr {
+                td {
+                    background-color: $gre-3;
+                    border: 2px solid $gre-1;
+            &:first-child {
+                    background-color:$gre-2;
+                    }
+                }
         }
     }
 }

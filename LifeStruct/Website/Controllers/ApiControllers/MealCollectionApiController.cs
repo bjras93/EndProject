@@ -12,8 +12,33 @@
         public IEnumerable<MealCollectionModel> FindByDietId(string Id)
         {
             var result = db.MealCollection.Where(x => x.DietId == Id);
-
+            
             return result;
         }
+
+
+        [Route("api/MealCollectionApi/GetCollection")]
+        [HttpGet]
+        public Diet GetCollection(string dietId)
+        {
+            var d = new Diet();
+            d.MealCollection = db.MealCollection.Where(x => x.DietId == dietId);
+            d.Food = new List<string>();
+
+            foreach(var mc in d.MealCollection)
+            {
+                var fDb = db.Food.Find(mc.FoodId);
+                d.Food.Add(fDb.Name + "," + fDb.Calories);
+            }
+            return d;
+           
+        }
     }
+
+    public class Diet
+    {
+        public IEnumerable<MealCollectionModel> MealCollection { get; set; }
+        public List<string> Food { get; set; }
+    }
+
 }

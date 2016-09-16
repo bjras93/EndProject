@@ -136,8 +136,6 @@ var diet = {
                 }
 
             }, 400);
-            var foodList = [];
-            var foodListed = [];
             $http({ method: 'GET', url: api + 'DaysApi/GetDays' }).then(function (data) {
                 weekDay = data.data;
 
@@ -163,62 +161,37 @@ var diet = {
                         $scope.days.push(weekDay[i].Name + ',' + 1)
                     }
                 }).then(function () {
-                    $http({ method: 'GET', url: api + 'MealCollectionApi/FindByDietId?id=' + dietId }).then(function (data) {
-                        var all = data.data,
-                            eI = '',
-                            ediblesI = '',
-                            eNum = 0;
-
-
-                        for (var i = 0; i < all.length; i++) {
-                            eI = $scope.dietData.findIndex(x=> x.day == all[i].Day && x.week == all[i].WeekNo && x.edible == all[i].Edible && x.meal == all[i].Meal);
-                            if (eI > -1) {
-                                $scope.dietData[eI].amount = all[i].Amount;
-                                $scope.dietData[eI].day = all[i].Day;
-                                $scope.dietData[eI].week = all[i].WeekNo;
-                                $scope.dietData[eI].edible = all[i].Edible;
-                                $scope.dietData[eI].meal = all[i].Meal;
-                                $scope.dietData[eI].foodId = all[i].FoodId;
-                                $http({ method: 'GET', url: api + 'FoodAPi/GetFood?id=' + all[i].FoodId }).then(function (fData) {
-                                    $scope.dietData[eI].calories = fData.data.Calories;
-                                    $scope.dietData[eI].name = fData.data.Name;
-                                });
-
+                    $http({ method: 'GET', url: api + 'MealCollectionApi/GetCollection?dietId=' + dietId }).then(function (data) {
+                        var mc = data.data.MealCollection,
+                            f = data.data.Food;
+                        for (var i = 0; i < mc.length; i++) {
+                            var dIndex = $scope.dietData.findIndex(x => x.week == mc[i].WeekNo && x.day == mc[i].Day && x.meal == mc[i].Meal);
+                            console.log(mc[i])
+                            if (mc[i].Edible == 1) {
+                                $scope.dietData[dIndex].id = mc[i].Id;
+                                $scope.dietData[dIndex].name = f[i].split(',')[0];
+                                $scope.dietData[dIndex].calories = f[i].split(',')[1];
+                                $scope.dietData[dIndex].week = mc[i].WeekNo;
+                                $scope.dietData[dIndex].day = mc[i].Day;
+                                $scope.dietData[dIndex].edible = mc[i].Edible;
+                                $scope.dietData[dIndex].meal = mc[i].Meal;
+                                $scope.dietData[dIndex].amount = mc[i].Amount;
+                                $scope.dietData[dIndex].foodId = mc[i].FoodId;
                             }
-                        }
-                        var index
-                        for (var i = 0; i < all.length; i++)
-                        {
-                            if (all[i].Edible > 1)
-                            {
-                                $http({ method: 'GET', url: api + 'FoodAPi/GetFood?id=' + all[i].FoodId }).then(function (fData) {
-                                    var aIn = '';
-                                    var dIn = '';
-                                    for (var i = 0; i < $scope.dietData.length; i++)
-                                    {
-                                        aIn = all.findIndex(x => x.Day == $scope.dietData[i].day && x.WeekNo == $scope.dietData[i].week && x.Meal == $scope.dietData[i].meal);
-                                        console.log($scope.dietData[i].meal)
-                                         if (aIn > -1)
-                                         {
-                                                 $scope.dietData[i].edibles.push({
-                                                     amount: all[aIn].Amount,
-                                                     day: all[aIn].Day,
-                                                     week: all[aIn].WeekNo,
-                                                     edible: all[aIn].Edible,
-                                                     meal: all[aIn].Meal,
-                                                     foodId: all[aIn].foodId,
-                                                     calories: fData.data.Calories,
-                                                     name: fData.data.Name
-
-
-                                                 });
-                                             console.log($scope.dietData[i])
-                                        }
-                                    }
+                            else {
+                                $scope.dietData[dIndex].edibles.push({
+                                    id: mc[i].Id,
+                                    name: f[i].split(',')[0],
+                                    calories: f[i].split(',')[1],
+                                    week: mc[i].WeekNo,
+                                    day: mc[i].Day,
+                                    edible: mc[i].Edible,
+                                    meal: mc[i].Meal,
+                                    amount: mc[i].Amount,
+                                    foodId: mc[i].FoodId,
                                 });
-
-                               
                             }
+
                         }
                     });
                 });
@@ -266,9 +239,9 @@ var diet = {
                 $scope.calc.edibleCalories[Ids] = calories;
 
             }
-            $scope.noCal = function (calories) {
+            $scope.noCal = function (calories, Ids) {
                 if (calories != '') {
-                    edibleCalories[Ids] = calories;
+                    $scope.calc.edibleCalories[Ids] = calories;
                 }
 
             }
@@ -283,7 +256,7 @@ var diet = {
 
                 }
             }
-            $scope.addEdible = function (i) {
+            $scope.addEdible = function (i, m) {
                 var ids = i.match(/\d/g);
                 console.log(ids)
                 var index = $scope.dietData.findIndex(x => x.day == ids[2] && x.week == ids[0] && x.meal == ids[1]);
@@ -293,12 +266,13 @@ var diet = {
                         calories: '',
                         week: ids[0],
                         day: ids[2],
-                        edible: ids[3],
-                        meal: ids[1] + 1,
+                        edible: $scope.dietData[index].edibles.length +1,
+                        meal: ids[1],
                         amount: '',
                         foodId: '',
 
                     });
+                    console.log($scope.dietData[index].edibles)
                 }
             }
 

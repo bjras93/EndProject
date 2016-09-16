@@ -356,15 +356,20 @@ body {
   .create-diet .add-more {
     background: #16A085; }
 
-.diet-schedule ul {
-  margin-bottom: 15px; }
-  .diet-schedule ul li {
-    list-style: none;
-    margin: 5px 0; }
-  .diet-schedule ul .day {
-    margin-bottom: 10px; }
-  .diet-schedule ul .meal ul {
-    margin-bottom: 15px; }
+.diet-schedule table {
+  text-align: left;
+  border-collapse: collapse;
+  border-spacing: 0; }
+  .diet-schedule table thead {
+    background-color: #1ABC9C; }
+  .diet-schedule table td, .diet-schedule table th {
+    padding: 15px 15px 15px 15px;
+    vertical-align: text-top; }
+  .diet-schedule table tr td {
+    background-color: #96D4BF;
+    border: 2px solid #16A085; }
+    .diet-schedule table tr td:first-child {
+      background-color: #1ABC9C; }
 
 .fitness {
   display: inline-block;

@@ -23,6 +23,7 @@
                                     <!-- Edible first repeater-->
 
                                     <div ng-init="Ids = 'w' + diet.week + '_m' + diet.meal + '_d' + diet.day + '_e' + 1"></div>
+                                    <input name="{{'collectionId_' + Ids}}" ng-value="diet.id" type="hidden">
 
                                     <input autocomplete="off" type="text" ng-model="searches.searchEdibles[Ids]" id="{{'selected' + Ids + '_sI'}}" ng-keypress="hideResult(Ids, false); setId(Ids);" ng-keyup="results('result' + Ids, searches.searchEdibles[Ids]);" onkeydown="keyDown(event);" name="name_{{Ids}}" ng-value="diet.name" placeholder="Edible" class="ipt" />
                                     <div class="autocomplete-container">
@@ -36,8 +37,8 @@
 
                                         </div>
                                     </div>
-                                    <input type="hidden" id="foodId_{{Ids}}" name="foodId_{{Ids}}" value="{{foodId}}" />
-                                    <input type="number" ng-keydown="noCal(diet.calories);" ng-model="measureEdible[Ids]" placeholder="Amount" name="amount_{{Ids}}" ng-value="diet.amount" class="ipt" />
+                                    <input type="hidden" id="foodId_{{Ids}}" name="foodId_{{Ids}}" value="{{diet.foodId}}" />
+                                    <input type="number" ng-keydown="noCal(diet.calories, Ids);" ng-model="measureEdible[Ids]" placeholder="Amount" name="amount_{{Ids}}" ng-value="diet.amount" class="ipt" />
                                     <input type="hidden" ng-model="calc.edibleCalories[Ids]" ng-value="diet.calories" /> 
                                     <div ng-if="measureEdible[Ids] != null" ng-model="am.amountS[Ids]">
                                         {{((calc.edibleCalories[Ids] /100)* measureEdible[Ids] | number: 0).replace(',', '.')}} kcal
@@ -51,8 +52,8 @@
                                     <!-- Second repeater -->
                                     <div ng-repeat="edible in diet.edibles">
                                         <div ng-init="eIds = 'w' + diet.week + '_m' + diet.meal + '_d' + diet.day + '_e' + ($index +2)"></div>
-
-                                        <input autocomplete="off" type="text" ng-model="searches.searchEdibles[eIds]" id="{{'selected' + eIds + '_sI'}}" ng-keypress="hideResult(eIds, false); setId(eIds);" ng-keyup="results('result' + eIds, searches.searchEdibles[eIds]);" onkeydown="keyDown(event);" name="name_{{eIds}}" ng-value="edible.name" placeholder="Edible" class="ipt" />
+                                        <input name="{{'collectionId_' + eIds}}" ng-value="edible.id" type="hidden">
+                                        <input autocomplete="off" type="text" ng-model="searches.searchEdibles[eIds]" id="{{'selected' + eIds + '_sI'}}" ng-keypress="hideResult(eIds, false);" ng-keydown="setId(eIds);" ng-keyup="results('result' + eIds, searches.searchEdibles[eIds]);" onkeydown="keyDown(event); " name="name_{{eIds}}" ng-value="edible.name" placeholder="Edible" class="ipt" />
                                         <div class="autocomplete-container">
                                             <div class="autocomplete" id="{{'autocomplete' + eIds}}" ng-if="searches.searchEdibles[eIds].length > 0">
                                                 <div ng-repeat="food in allFood | filter:searches.searchEdibles[eIds] | limitTo: 5 | orderBy: 'Name.length'">
@@ -64,8 +65,8 @@
 
                                             </div>
                                         </div>
-                                        <input type="hidden" id="foodId_{{eIds}}" name="foodId_{{eIds}}" value="{{foodId}}" />
-                                        <input type="number" ng-keydown="noCal(diet.calories);" ng-model="measureEdible[eIds]" placeholder="Amount" name="amount_{{eIds}}" ng-value="edible.amount" class="ipt" />
+                                        <input type="hidden" id="foodId_{{eIds}}" name="foodId_{{eIds}}" value="{{edible.foodId}}" />
+                                        <input type="number" ng-keydown="noCal(diet.calories, eIds);" ng-model="measureEdible[eIds]" placeholder="Amount" name="amount_{{eIds}}" ng-value="edible.amount" class="ipt" />
                                         <input type="hidden" ng-init="calc.edibleCalories[eIds] = edible.calories" ng-value="edible.calories" />  
                                         <div ng-if="measureEdible[eIds] != null" ng-model="am.amountS[eIds]">
                                             {{((calc.edibleCalories[eIds] /100)* measureEdible[eIds] | number: 0).replace(',', '.')}} kcal
@@ -76,7 +77,7 @@
 
                                     </div>
                                     <div>
-                                        <a ng-click="addEdible(Ids);" class="btn ib add-more" href="">Add more edibles</a>
+                                        <a ng-click="addEdible(Ids, edibleIndex);" class="btn ib add-more" href="">Add more edibles</a>
                                     </div>
                                 </div>
                             </div>

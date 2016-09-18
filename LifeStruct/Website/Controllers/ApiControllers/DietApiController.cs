@@ -37,6 +37,7 @@ namespace LifeStruct.Controllers.ApiControllers
 
             dm.Id = Guid.NewGuid().ToString();
             dm.User = user.Id;
+            dm.Author = user.Name;
             dm.Title = json.title.ToString();
             dm.Description = json.description.ToString();
             if (json.img != null)

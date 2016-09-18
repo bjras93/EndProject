@@ -25,7 +25,7 @@ button, input[type="submit"] {
 .hide {
   display: none; }
 
-.ib, .container, .type-1, .type-2, .tile span, .login a, .login button, .account-details li span, #modal, .create-diet, .create-diet .days, .create-diet .weeks {
+.ib, .container, .type-1, .type-2, .tile span, .login a, .login button, .account-details li span, #modal, .create-diet, .create-diet .days, .create-diet .week-container .weeks {
   display: inline-block; }
 
 .b1 {
@@ -171,21 +171,36 @@ body {
 .content {
   width: 100%;
   min-height: 350px;
-  padding: 15px; }
+  padding: 15px;
+  float: left; }
 
 .stop-scroll {
   overflow: hidden; }
 
 .add {
-  position: absolute;
-  right: 30px;
-  bottom: 25px;
+  position: fixed;
+  right: 50px;
+  bottom: -100px;
   border-radius: 50px;
-  padding: 18px 25px;
+  padding: 18px 35px;
   color: #fff;
-  font-size: 1.4em;
+  font-size: 3em;
   background-color: #F57979;
-  cursor: pointer; }
+  cursor: pointer;
+  animation: bummer 1.5s;
+  animation-fill-mode: forwards; }
+
+@keyframes bummer {
+  20% {
+    bottom: 70px; }
+  40% {
+    bottom: 20px; }
+  60% {
+    bottom: 70px; }
+  80% {
+    bottom: 45px; }
+  100% {
+    bottom: 70px; } }
 
 .text-danger {
   color: #F57979; }
@@ -242,7 +257,8 @@ body {
   background-color: #16A085;
   color: #fff;
   margin: 10px 0;
-  border-radius: 5px; }
+  border-radius: 5px;
+  float: left; }
 
 .overview {
   min-height: 200px;
@@ -321,44 +337,93 @@ body {
     background-color: #fff; }
 
 .create-diet {
-  width: 50%; }
+  width: 100%; }
   .create-diet .ipt {
     width: 100%; }
   .create-diet .period {
     color: #fff;
-    background-color: #1ABC9C; }
-    .create-diet .period h3 {
-      padding: 15px 0 0 15px; }
+    background-color: #16A085; }
     .create-diet .period a {
-      color: #fff; }
+      color: #333; }
     .create-diet .period input {
       width: 100%; }
   .create-diet .days {
     width: 100%;
     padding: 15px;
-    background-color: #16A085;
+    background-color: #93EBD9;
     border: 1px solid rgba(133, 133, 133, 0.2);
     border-bottom: none; }
   .create-diet .meals {
     margin-bottom: 20px; }
-  .create-diet .weeks {
-    padding: 15px;
-    width: 100%;
-    background: #639C89; }
-  .create-diet .week {
-    background: #1ABC9C; }
+  .create-diet .week-container {
+    width: 48%;
+    float: right;
+    padding-top: 20px;
+    margin-right: 1%;
+    margin-bottom: 1%; }
+    .create-diet .week-container .weeks {
+      padding: 15px;
+      width: 100%;
+      background: #42C1A8; }
+    .create-diet .week-container .week {
+      background: #1ABC9C; }
   .create-diet .pnl {
-    padding: 15px; }
+    padding: 15px;
+    background-color: #CAF9F0;
+    color: #333; }
+    .create-diet .pnl a {
+      color: #333; }
   .create-diet .btn {
     border: 1px solid rgba(133, 133, 133, 0.2);
     border-bottom: 0;
-    margin: 0; }
+    margin: 0;
+    color: #333; }
   .create-diet .add-more {
-    background: #16A085; }
+    border: none;
+    background: #93EBD9; }
   .create-diet .information {
-    margin: 50px 0; }
+    width: 48%;
+    float: left;
+    padding: 15px;
+    position: relative; }
+    .create-diet .information .img-edit {
+      margin-top: 15px;
+      position: relative; }
+      .create-diet .information .img-edit img {
+        width: 100%; }
+      .create-diet .information .img-edit label {
+        background-color: rgba(154, 109, 99, 0.61);
+        box-sizing: border-box;
+        cursor: pointer;
+        display: none;
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        left: 0;
+        top: 0;
+        padding-top: 25%;
+        text-align: center;
+        color: #fff; }
+      .create-diet .information .img-edit:hover label {
+        display: block; }
+  .create-diet .picture {
+    width: 48%;
+    float: right;
+    padding: 15px; }
+    .create-diet .picture .btn {
+      margin: 5px 0; }
+    .create-diet .picture img {
+      max-height: 200px; }
   .create-diet .description-btn {
     background-color: #16A085; }
+  .create-diet .mce-panel {
+    background-color: #fff; }
+  .create-diet .mce-btn {
+    background-color: #fff; }
+
+.diet-search {
+  float: right;
+  border: 1px solid #bebebe; }
 
 .diet-schedule table {
   text-align: left;
@@ -385,6 +450,16 @@ body {
       background-color: #96D4BF;
       padding: 15px 15px 15px 15px;
       border-right: 1px solid #16A085; }
+
+.diet-information {
+  max-width: 750px;
+  margin-bottom: 30px; }
+  .diet-information img {
+    display: block;
+    width: 100%; }
+  .diet-information .description {
+    background-color: #fff;
+    padding: 15px; }
 
 .fitness {
   display: inline-block;

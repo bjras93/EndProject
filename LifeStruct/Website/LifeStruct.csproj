@@ -221,6 +221,7 @@
     <Compile Include="Controllers\ApiControllers\FoodApiController.cs" />
     <Compile Include="Controllers\ApiControllers\DaysApiController.cs" />
     <Compile Include="Controllers\ApiControllers\MealsApiController.cs" />
+    <Compile Include="Controllers\ApiControllers\UserApiController.cs" />
     <Compile Include="Controllers\DietsController.cs" />
     <Compile Include="Controllers\FitnessController.cs" />
     <Compile Include="Controllers\HealthController.cs" />
@@ -276,6 +277,14 @@
     <Compile Include="Migrations\201609140824320_UserFitness.cs" />
     <Compile Include="Migrations\201609140824320_UserFitness.Designer.cs">
       <DependentUpon>201609140824320_UserFitness.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201609171248084_Tags-Name.cs" />
+    <Compile Include="Migrations\201609171248084_Tags-Name.Designer.cs">
+      <DependentUpon>201609171248084_Tags-Name.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201609171249429_Author.cs" />
+    <Compile Include="Migrations\201609171249429_Author.Designer.cs">
+      <DependentUpon>201609171249429_Author.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Account\AccountViewModels.cs" />
@@ -342,6 +351,7 @@
     <Content Include="bin\Website.dll" />
     <Content Include="bin\Website.pdb" />
     <Content Include="Content\CSS\main.css" />
+    <Content Include="Content\CSS\ng-tags-input.min.css" />
     <Content Include="Content\fonts\icomoon.svg" />
     <Content Include="Content\img\web\pexels-photo.jpg" />
     <Content Include="Content\JS\layout\autocomplete.js" />
@@ -351,10 +361,12 @@
     <Content Include="Content\JS\layout\menu.js" />
     <Content Include="Content\JS\layout\modal.js" />
     <Content Include="Content\JS\layout\overlay.js" />
+    <Content Include="Content\JS\plugins\angular-sanitize.min.js" />
     <Content Include="Content\JS\plugins\angular.min.js" />
     <Content Include="Content\JS\plugins\jquery-3.1.0.min.js" />
     <Content Include="Content\JS\main.js" />
     <Content Include="Content\JS\plugins\jquery-ui.min.js" />
+    <Content Include="Content\JS\plugins\ng-tags-input.min.js" />
     <Content Include="Content\JS\plugins\skins\lightgray\content.inline.min.css" />
     <Content Include="Content\JS\plugins\skins\lightgray\content.min.css" />
     <Content Include="Content\JS\plugins\skins\lightgray\fonts\tinymce-small.svg" />
@@ -365,7 +377,8 @@
     <Content Include="Content\JS\plugins\skins\lightgray\img\trans.gif" />
     <Content Include="Content\JS\plugins\skins\lightgray\skin.ie7.min.css" />
     <Content Include="Content\JS\plugins\skins\lightgray\skin.min.css" />
-    <Content Include="Content\JS\plugins\tinymce-ui.min.js" />
+    <Content Include="Content\JS\plugins\themes\inlite\theme.min.js" />
+    <Content Include="Content\JS\plugins\themes\modern\theme.min.js" />
     <Content Include="Content\JS\plugins\tinymce.min.js" />
     <Content Include="Global.asax" />
     <Content Include="ApplicationInsights.config">
@@ -385,7 +398,6 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Content\img\user\" />
-    <Folder Include="Content\JS\plugins\themes\" />
     <Folder Include="Views\MealCollection\" />
   </ItemGroup>
   <ItemGroup>
@@ -509,6 +521,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201609140824320_UserFitness.resx">
       <DependentUpon>201609140824320_UserFitness.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201609171248084_Tags-Name.resx">
+      <DependentUpon>201609171248084_Tags-Name.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201609171249429_Author.resx">
+      <DependentUpon>201609171249429_Author.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

@@ -1,22 +1,42 @@
-﻿@model IEnumerable<LifeStruct.Models.DietModel>
+﻿@using LifeStruct.Models;
+@model IEnumerable<DietModel>
 @{
+    var user = UserViewModel.GetCurrentUser();
     ViewBag.Title = "Diet";
 }
-<div class="content g1">
-    @{
-        foreach (var diet in Model)
-        {
-            <div class="diet-overview">
-                <h3>
-                    @Html.ActionLink(diet.Title, string.Format("Details/{0}", diet.Id))
+@Html.ActionLink("Return", "Index", "Home", null, new { @class = "return"})
+<div ng-app="LifeStruct" ng-controller="dietIndexCtrl">
+    <input type="text" class="ipt diet-search" ng-model="searchDiets" placeholder="Search diets" />
+    <div class="content g1 left">
+        @{
+            <div class="diets" ng-repeat="diets in dietData | limitTo: 20 | filter :searchDiets">
+                <div class="overview diet-overview">
+                    <div ng-if="diets.Img != ''">
+                        <img src="~/Content/img/user/{{'sm-' +diets.Img}}" style="width:100%; height: 200px;" />
+                    </div>
+                    <h3>
+                        <a href="/Diets/Details/{{diets.Id}}">{{diets.Title}}</a>
+                    </h3>
+                    <div class="description" ng-bind-html="diets.Description">
+                    </div>
+                    <div class="user-section">
+                        <input type="hidden" ng-init="currentUser = '@user.Id'" />
+                        <div ng-if="currentUser == diets.User">
+                            <a href="../Diets/Edit/{{diets.Id}}"><span href="" class="icon-pencil"></span></a>
+                            <p>Author: You</p>
+                        </div>
+                        <div ng-if="currentUser != diets.User">
+                            <p>Author: {{diets.Author}}</p>
+                        </div>
 
-                </h3>
-                <div class="description">
-                    @diet.Description
+                    </div>
                 </div>
             </div>
-        }
-    }
-</div>
 
-@Html.ActionLink("+", "Create", null, new { @class = "add-diet" })
+        }
+        <div class="clear"></div>
+    </div>
+</div>
+<script src="~/Content/JS/layout/diet.js"></script>
+<script>diet.indexPage();</script>
+@Html.ActionLink("+", "Create", null, new { @class = "add add-diet" })

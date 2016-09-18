@@ -11,12 +11,20 @@
                     <input type="text" class="ipt" name="f_title" placeholder="Title" />
                 </li>
                 <li>
-                    <textarea class="ipt" name="f_description" placeholder="Description"></textarea>
+                    <textarea class="tinymce" name="f_description" placeholder="Description"></textarea>
                 </li>
                 <li>
-                    <input class="btn" type="submit" value="Next" />
+                    <label class="btn ib" for="upl">Upload image</label>
+                    <input onchange="fileupload.upl(this, event);" accept="image/.png,.jpg,.gif" type="file" class="hide" id="upl" />
+                    <div id="pic"></div>
+                </li>
+                <li>
+                    <input class="btn fit-gre" type="submit" value="Next" />
                 </li>
             </ul>
         }
     </div>
 </div>
+<script src="~/Content/JS/layout/fileupload.js"></script>
+<script>
+</script>

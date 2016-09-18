@@ -114,3 +114,5 @@ E:\Projects\LifeStruct\LifeStruct\Website\obj\Debug\Website.Migrations.UpdateFit
 E:\Projects\LifeStruct\LifeStruct\Website\obj\Debug\Website.Migrations.CalInt.resources
 C:\Users\bjoe0771\Desktop\Website\LifeStruct\Website\obj\Debug\Website.Migrations.UserFitness.resources
 E:\Projects\LifeStruct\LifeStruct\Website\obj\Debug\Website.Migrations.UserFitness.resources
+E:\Projects\LifeStruct\LifeStruct\Website\obj\Debug\Website.Migrations.TagsName.resources
+E:\Projects\LifeStruct\LifeStruct\Website\obj\Debug\Website.Migrations.Author.resources

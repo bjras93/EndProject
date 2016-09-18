@@ -5,11 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@ViewBag.Title - LifeStruct</title>
 
-    <link href="~/Content/CSS/main.css" rel="stylesheet" />
-    @Scripts.Render("~/bundles/plugins")
+        @Scripts.Render("~/bundles/plugins")
+        <script src="~/Content/JS/plugins/tinymce.min.js"></script>
     <script>
-        tinymce.init({ selector: '.tinymce', menu: 'none', toolbar: 'bold italic underline | bullist numlist | outdent indent' });
+        tinymce.init({ selector: '.tinymce', menu: 'none', toolbar: 'bold italic underline | bullist numlist | outdent indent', font_formats: 'Roboto' });
     </script>
+    <link href="~/Content/CSS/main.css" rel="stylesheet" />
+    <link href="~/Content/CSS/ng-tags-input.min.css" rel="stylesheet" />
 </head>
 <body>
     <div class="overlay">

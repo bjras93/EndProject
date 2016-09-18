@@ -20,7 +20,6 @@ namespace LifeStruct.Models
 
             return user;
         }
-
         public List<string> BmiCalc(string Height, string Weight)
         {
 

@@ -13,24 +13,19 @@
 }
 
 .create-diet {
-    width: 50%;
+    width: 100%;
     @extend .ib;
 
     .ipt {
         width: 100%;
     }
 
-
     .period {
         color: $w;
-        background-color: $gre-2;
-
-        h3 {
-            padding: $spd 0 0 $spd;
-        }
+        background-color: $gre-1;
 
         a {
-            color: $w;
+            color: #333;
         }
 
         input {
@@ -42,7 +37,7 @@
         width: 100%;
         padding: $spd;
         @extend .ib;
-        background-color: $gre-1;
+        background-color:#93EBD9;
         border: 1px solid rgba(133,133,133,0.2);
         border-bottom: none;
     }
@@ -50,20 +45,30 @@
     .meals {
         margin-bottom: 20px;
     }
-
+    .week-container {      
+        width: 48%;
+        float:right;
+        padding-top: ($spd+5);
+        margin-right: 1%;
+        margin-bottom: 1%;
     .weeks {
         padding: $spd;
         width: 100%;
         @extend .ib;
-        background: $gre-4;
+        background: #42C1A8;
     }
 
     .week {
         background: $gre-2;
     }
-
+    }
     .pnl {
         padding: $spd;
+        background-color:#CAF9F0;        
+        color: #333;
+        a{            
+        color: #333;
+        }
     }
 
 
@@ -71,22 +76,76 @@
         border: 1px solid rgba(133,133,133,0.2);
         border-bottom: 0;
         margin: 0;
+        color:#333;
     }
 
     .add-more {
-        background: $gre-1;
+        border: none;
+        background: #93EBD9;
     }
     .information {
-        margin: 50px 0;
+        width:48%;
+        float:left;
+        padding:15px;
+        position:relative;
+        
+       
+.img-edit {
+    margin-top: 15px;
+    position:relative;
+            img {
+            width:100%;
+        }
+        label{
+            background-color: rgba(154, 109, 99, 0.61);
+            box-sizing:border-box;
+            cursor:pointer;
+            display:none;
+            position:absolute;
+            width: 100%;
+            height: 100%;
+            left:0;
+            top:0;
+            padding-top: 25%;
+            text-align:center;
+            color: $w;
+
+        }
+        &:hover {
+            label {
+                display:block;
+            }
+        }
+        }
+    } 
+    .picture {
+        width: 48%;
+        float:right;
+        padding: $spd;
+        .btn {
+            margin: 5px 0;
+        }
+        img{
+            max-height: 200px;
+        }
     }
     .description-btn {
         background-color: $gre-1;
     }
+    
+    .mce-panel {
+        background-color: $w;
+    }
+    .mce-btn {
+        background-color: $w;
+    }
 }
-
 .add-diet {
 }
-
+.diet-search {
+    float:right;
+    border: 1px solid rgb(190,190,190);
+}
 .diet-schedule {
     table {
         text-align: left;
@@ -131,5 +190,17 @@
                 }
             }
         }
+    }
+}
+.diet-information {
+    max-width: 750px;
+    margin-bottom: 30px;
+    img {
+        display:block;
+        width: 100%;
+    }
+    .description {
+        background-color: $w;
+        padding: $spd;
     }
 }

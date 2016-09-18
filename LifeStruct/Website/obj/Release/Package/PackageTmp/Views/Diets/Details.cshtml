@@ -1,51 +1,85 @@
-﻿@model LifeStruct.Models.DietModel
-@using LifeStruct.Models;
+﻿@model DietView
+@using LifeStruct.Controllers;
 @{
     ViewBag.Title = Model.Title;
-    IEnumerable<MealCollectionModel> mcm = (IEnumerable<MealCollectionModel>)ViewBag.Mcm;
-    IEnumerable<FoodModel> fm = (IEnumerable<FoodModel>)ViewBag.Fm;
-    IEnumerable<DaysModel> dm = (IEnumerable<DaysModel>)ViewBag.Dm;
-    IEnumerable<MealsModel> mm = (IEnumerable<MealsModel>)ViewBag.Mm;
+
 }
-<div class="content g1">
-    <h3>@Model.Title</h3>
-    <div class="description">
-        @Model.Description
-    </div>
-    <div class="diet-schedule">
-        @{
+@Html.ActionLink("Return", "Index", "Diets", null, new { @class = "return" })
 
-            foreach (var d in dm)
-            {
-                if (mcm.Where(x => x.Day == d.Id).Any())
-                {
-                    <ul>
-                        <li class="day"><h3>@d.Name</h3></li>
-                        @foreach (var m in mm)
+    <div class="diet-information">
+        <img src="~/Content/img/user/@Model.Img" />
+
+        <div class="description">
+            <h3>@Model.Title</h3>
+            @Html.Raw(Model.Description)
+        </div>
+    </div>
+    @if (Model.MealCollection.Count() > 0)
+    {
+        <div class="diet-schedule">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Day</th>
+                        @foreach (var m in Model.Meals)
                         {
-                            if (mcm.Where(x => x.Meal == int.Parse(m.Id)).Any())
+                            if (Model.MealCollection.Where(x => x.Meal == Convert.ToInt32(m.Id)).Count() > 0)
                             {
-                                <li class="meal">
-                                    <h4>@m.Name</h4>
-                                    <ul>
-                                        @foreach (var mc in mcm.Where(x => x.Meal == int.Parse(m.Id) && x.Day == d.Id))
-                                        {
-                                            foreach (var f in fm.Where(x => x.Id == mc.FoodId))
-                                            {
-
-                                                <li class="food"><span>@f.Name</span> <span>@((Convert.ToDecimal(mc.Amount) * (Convert.ToDecimal(f.Calories) / 100)).ToString("##")) kcal</span></li>
-
-                                            }
-                                        }
-                                    </ul>
-                                </li>
+                                <th>@m.Name</th>
                             }
-
                         }
-                    </ul>
 
-                }
-            }
-        }
-    </div>
-</div>
+                    </tr>
+                </thead>
+                <tbody>
+
+                    @foreach (var d in Model.Days)
+                {
+                    if (Model.MealCollection.Where(x => x.Day == Convert.ToInt32(d.Id)).Count() > 0)
+                    {
+
+                            <tr>
+                                <td>
+                                    @d.Name
+                                </td>
+                                @foreach (var m in Model.Meals)
+                                {
+                                    if (Model.MealCollection.Where(x => x.Meal == Convert.ToInt32(m.Id)).Count() > 0)
+                                    {
+                                        <td>
+                                            <table>
+                                                @foreach (var mc in Model.MealCollection)
+                                                {
+                                                    if (d.Id == mc.Day && Convert.ToInt32(m.Id) == mc.Meal)
+                                                    {
+                                                        <tr>
+                                                            <td>
+                                                                <p>
+                                                                    @mc.Food
+                                                                </p>
+                                                            </td>
+                                                            <td>
+                                                                <p>
+                                                                    @mc.Amount gram
+                                                                </p>
+                                                                <p>
+                                                                    @((Convert.ToDouble(mc.Calories) / 100) * Convert.ToDouble(mc.Amount)) kcal
+                                                                </p>
+                                                            </td>
+                                                        </tr>
+
+                                                    }
+                                                }
+                                            </table>
+                                        </td>
+                                    }
+                                }
+                            </tr>
+                        }
+                    }
+
+
+                </tbody>
+            </table>
+        </div>
+    }

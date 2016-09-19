@@ -116,3 +116,8 @@ C:\Users\bjoe0771\Desktop\Website\LifeStruct\Website\obj\Debug\Website.Migration
 E:\Projects\LifeStruct\LifeStruct\Website\obj\Debug\Website.Migrations.UserFitness.resources
 E:\Projects\LifeStruct\LifeStruct\Website\obj\Debug\Website.Migrations.TagsName.resources
 E:\Projects\LifeStruct\LifeStruct\Website\obj\Debug\Website.Migrations.Author.resources
+C:\Users\bjoe0771\Desktop\Website\LifeStruct\Website\obj\Debug\Website.Migrations.TagsName.resources
+C:\Users\bjoe0771\Desktop\Website\LifeStruct\Website\obj\Debug\Website.Migrations.Author.resources
+C:\Users\bjoe0771\Desktop\Website\LifeStruct\Website\obj\Debug\Website.Migrations.Like.resources
+C:\Users\bjoe0771\Desktop\Website\LifeStruct\Website\obj\Debug\Website.Migrations.UserIdString.resources
+C:\Users\bjoe0771\Desktop\Website\LifeStruct\Website\obj\Debug\Website.Migrations.FitnessLike.resources

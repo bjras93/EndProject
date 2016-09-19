@@ -4,6 +4,7 @@
     {
         public string Id { get; set; }
         public string UserId { get; set; }
-        public string ItemId { get; set; }
+        public int Type { get; set; }
+        public string TypeId { get; set; }
     }
 }

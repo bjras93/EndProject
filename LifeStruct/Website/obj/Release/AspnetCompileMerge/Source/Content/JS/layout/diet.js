@@ -8,7 +8,7 @@ var diet = {
         app.controller('dietPostCtrl', ['$scope', '$http', function ($scope, $http) {
             $scope.isClicked = false;
             $scope.tags = [];
-           
+
         }]);
     },
     pageTwo: function () {
@@ -17,7 +17,6 @@ var diet = {
                 id = loc.split('?id=')[1],
                 currentW = 1,
                 dietId = $('#dietId').val();
-
             $scope.searches = {
                 searchEdibles: {
 
@@ -34,11 +33,22 @@ var diet = {
 
                 }
             }
+            $scope.setValue = {
+                calories: {
+
+                }
+            }
             $scope.calc = {
                 edibleCalories: {
 
                 },
                 measureEdible: {
+
+                },
+                calories: {
+
+                },
+                days: {
 
                 }
             }
@@ -163,6 +173,7 @@ var diet = {
                     });
                 });
             });
+
             $scope.autoHide = function (i, b) {
 
                 if (b) {
@@ -174,7 +185,6 @@ var diet = {
                 }
             }
             $scope.hideNxt = function (event, child) {
-                console.log($(event.target).next())
                 $(event.target).next().toggleClass('hide');
             }
 
@@ -233,7 +243,7 @@ var diet = {
                         calories: '',
                         week: ids[0],
                         day: ids[2],
-                        edible: $scope.dietData[index].edibles.length +1,
+                        edible: $scope.dietData[index].edibles.length + 2,
                         meal: ids[1],
                         amount: '',
                         foodId: '',
@@ -241,13 +251,131 @@ var diet = {
                     });
                 }
             }
+            var prevIndex = -1;
+            var prevCal = 0;
+            var prevIds = '';
+            var days = 7;
+            $scope.obj = [];
+            $scope.$watch('dietData', function (oldValue, newValue) {
+
+                for (var i = 0; i < $scope.dietData.length; i++) {
+                    var Ids = 'w' + $scope.dietData[i].week + '_m' + $scope.dietData[i].meal + '_d' + $scope.dietData[i].day + '_e' + $scope.dietData[i].edible;
+                    var idIndex = $scope.obj.findIndex(x=> x.id == Ids);
+                    if ($scope.dietData[i].calories != undefined && $scope.dietData[i].calories != null && $scope.dietData[i].calories != '' && idIndex == -1) {
+                        $scope.obj.push({ cal: $scope.dietData[i].calories, amount: $scope.dietData[i].amount, index: i, id: Ids, prevCal: ($scope.dietData[i].calories / 100) * $scope.dietData[i].amount });
+                    }
+                }
+            }, true);
+            $scope.$watch('obj', function (oldVal, newVal) {
+                var total = 0;
+                var week = 0;
+                var meal = 0;
+                var day = 0;
+                var edible = 0;
+                for (var i = 0; i < $scope.obj.length; i++) {
+                    var d = $scope.obj[i];
+                    var split = $scope.obj[i].id.split('_');
+                    week = split[0].replace('w', '');
+                    meal = split[1].replace('m', '');
+                    day = split[2].replace('d', '');
+                    edible = split[3].replace('e', '');
+
+                }
+                $scope.calc.days[0] = 0;
+                $scope.calc.days[1] = 0;
+                $scope.calc.days[2] = 0;
+                $scope.calc.days[3] = 0;
+                $scope.calc.days[4] = 0;
+                $scope.calc.days[5] = 0;
+                $scope.calc.days[6] = 0;
+                for (var i = 0; i < 7; i++) {
+                    $scope.calc.calories[0 + '_' + i] = 0;
+                    $scope.calc.calories[1 + '_' + i] = 0;
+                    $scope.calc.calories[2 + '_' + i] = 0;
+                    $scope.calc.calories[3 + '_' + i] = 0;
+                }
+                for (var i = 0; i < $scope.dietData.length; i++)
+                {
+                    var s = $scope.dietData[i];
+                    var indexObj = $scope.obj.findIndex(x => x.id == 'w' + s.week + '_m' + s.meal + '_d' + s.day + '_e' + s.edible)
+                    if (indexObj > -1)
+                    {
+                        $scope.calc.days[s.day -1] += ($scope.obj[indexObj].cal / 100) * $scope.obj[indexObj].amount;
+                    }
+                    for (var e = 0; e < $scope.dietData[i].edibles.length; e++)
+                    {
+                        var edi = s.edibles[e];
+                        console.log(edi)
+                        var indexObj = $scope.obj.findIndex(x => x.id == 'w' + edi.week + '_m' + edi.meal + '_d' + edi.day + '_e' + edi.edible)
+                        $scope.calc.days[edi.day - 1] += ($scope.obj[indexObj].cal / 100) * $scope.obj[indexObj].amount;
+                    }
+                    for (var m = 0; m < 4; m++)
+                    {
+                        if (s.meal == (m+1)) {
+                            console.log(m + '_' + (s.day -1))
+                            var iObj = $scope.obj.findIndex(x => x.id == 'w' + s.week + '_m' + (m + 1) + '_d' + s.day + '_e' + s.edible)
+                            if (iObj > -1) {
+                                $scope.calc.calories[m + '_' + (s.day - 1)] += ($scope.obj[iObj].cal / 100) * $scope.obj[iObj].amount;
+                            }
+
+                            for (var e = 0; e < $scope.dietData[i].edibles.length; e++) {
+                                var edi = s.edibles[e];
+                                var indexObj = $scope.obj.findIndex(x => x.id == 'w' + edi.week + '_m' + edi.meal + '_d' + edi.day + '_e' + edi.edible)
+                                $scope.calc.calories[m + '_' + (s.day - 1)] += ($scope.obj[indexObj].cal / 100) * $scope.obj[indexObj].amount;
+                            }
+                        }
+                    }
+                }
+
+                //for (var w = 0; w < week; w++) {
+                //    for (var da = 0; da < 7; da++) {
+                //            $scope.calc.days[da] = 0;
+                //        for (var m = 0; m < 4; m++) {
+                //            for (var e = 0; e < edible; e++) {
+                //                var indexObj = $scope.obj.findIndex(x => x.id == 'w' + (w + 1) + '_m' + (m + 1) + '_d' + (da + 1) + '_e' + (e + 1));
+                //                if (indexObj > -1) {
+                //                    $scope.calc.days[da] += ($scope.obj[indexObj].cal / 100) * $scope.obj[indexObj].amount;
+                //                }
+                //            }
+                //        }
+                //    }
+                //}
 
 
+            }, true);
+            $scope.calCalc = function (calories, amount, index, Ids) {
+                var idIndex = $scope.obj.findIndex(x=> x.id == Ids);
+                if (isNaN($scope.calc.calories[index])) {
+                    $scope.calc.calories[index] = 0;
+                }
+                if (amount != undefined && calories != undefined) {
+                    if (idIndex == -1) {
+                        $scope.obj.push({ cal: calories, amount: amount, index: index, id: Ids, prevCal: 0 })
+                    }
+                    else {
+                        $scope.obj[idIndex].cal = calories;
+                        $scope.obj[idIndex].amount = amount;
+                        var calAdd = ($scope.obj[idIndex].cal / 100) * $scope.obj[idIndex].amount;
+                        $scope.obj[idIndex].prevCal = calAdd;
+
+                    }
+                }
+                else {
+
+                    if (idIndex > -1) {
+                        $scope.obj[idIndex].cal = 0;
+                        $scope.obj[idIndex].amount = 0;
+                    }
+                    if (amount == null && calories != undefined && idIndex != -1) {
+                        $scope.obj[idIndex].prevCal = 0;
+                    }
+                }
+            }
         }]);
 
     },
     indexPage: function () {
-        
+
         app.controller('dietIndexCtrl', ['$scope', '$http', function ($scope, $http) {
             $scope.dietData = [];
             $scope.user = '';
@@ -256,8 +384,7 @@ var diet = {
                 $scope.dietData = data.data;
             });
             $scope.users = function (uId, index) {
-                if(uId != '')
-                {
+                if (uId != '') {
                     $http({ method: 'GET', url: api + 'UserApi/GetById?Id=' + uId }).then(function (data) {
                         $scope.user = data.data.Name;
                     });

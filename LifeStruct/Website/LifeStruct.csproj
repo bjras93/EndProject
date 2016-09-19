@@ -353,6 +353,8 @@
     <Content Include="Content\CSS\main.css" />
     <Content Include="Content\CSS\ng-tags-input.min.css" />
     <Content Include="Content\fonts\icomoon.svg" />
+    <Content Include="Content\img\user\5375c643-062c-43b1-86a7-43792a912abalegion %281%29.jpg" />
+    <Content Include="Content\img\user\sm-5375c643-062c-43b1-86a7-43792a912abalegion %281%29.jpg" />
     <Content Include="Content\img\web\pexels-photo.jpg" />
     <Content Include="Content\JS\layout\autocomplete.js" />
     <Content Include="Content\JS\layout\diet.js" />
@@ -397,7 +399,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Content\img\user\" />
     <Folder Include="Views\MealCollection\" />
   </ItemGroup>
   <ItemGroup>

@@ -392,6 +392,8 @@ body {
       .create-diet .information .img-edit img {
         width: 100%; }
       .create-diet .information .img-edit label {
+        background-color: rgba(154, 109, 99, 0.61);
+        box-sizing: border-box;
         cursor: pointer;
         display: none;
         position: absolute;

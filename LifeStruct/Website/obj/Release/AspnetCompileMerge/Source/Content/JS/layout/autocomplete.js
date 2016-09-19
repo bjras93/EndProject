@@ -5,17 +5,16 @@ anchors = [],
 autocomplete = {
     init: function () {
         $('body').on('click', function (e) {
-            if (ac == '') {
+            if ($(e.target).next().hasClass('autocomplete-container')) {
                 ac = e.target;
             }
-            else {
-                $(ac).next().find('.autocomplete').hide()
-                if (clicks != 0) {
-                    $(anchors[clicks - 1].anchor).removeClass('autocomplete-selected');
-                }
-                ac = '';
-                clicks = 0;
+            $(ac).next().find('.autocomplete').hide()
+            if (clicks != 0) {
+                $(anchors[clicks - 1].anchor).removeClass('autocomplete-selected');
             }
+            fEvent = '';
+            clicks = 0;
+
             if ($(e.target).next().hasClass('autocomplete-container')) {
                 $(ac).next().find('.autocomplete').show()
             }
@@ -25,14 +24,15 @@ autocomplete = {
 }
 var keyDown = function (event) {
     anchors = []
-    if (fEvent == '' && fEvent != event.target) {
+    if (fEvent == '') {
         fEvent = event.target;
     }
     $(fEvent).next().find('a').each(function () {
         anchors.push({ anchor: this })
     });
     if (event.keyCode == 13) {
-        $(anchors[clicks-1].anchor).removeClass('autocomplete-selected');
+        $(anchors[clicks - 1].anchor).removeClass('autocomplete-selected');
+        fEvent = '';
         clicks = 0;
     }
     if (event.keyCode == 38) {

@@ -161,7 +161,7 @@ namespace LifeStruct.Controllers
                 {
                     return View("ExternalLoginFailure");
                 }
-                var user = new ApplicationUser { UserName = model.Email, Email = model.Email, Name = model.Name, Height = model.Height, Weight = model.Weight };
+                var user = new ApplicationUser { UserName = model.Email, Email = model.Email, Name = model.Name, Height = model.Height, Weight = model.Weight, DietId = "", FitnessId = "" };
                 var result = await UserManager.CreateAsync(user);
                 if (result.Succeeded)
                 {

@@ -280,6 +280,9 @@ body {
   .overview .user-section p {
     display: inline-block; }
 
+.liked span {
+  color: #F57979; }
+
 .logo {
   padding: 15px; }
   .logo a {
@@ -342,7 +345,7 @@ body {
     width: 100%; }
   .create-diet .period {
     color: #fff;
-    background-color: #16A085; }
+    background-color: #5ad29b; }
     .create-diet .period a {
       color: #333; }
     .create-diet .period input {
@@ -350,7 +353,7 @@ body {
   .create-diet .days {
     width: 100%;
     padding: 15px;
-    background-color: #93EBD9;
+    background-color: #F4B350;
     border: 1px solid rgba(133, 133, 133, 0.2);
     border-bottom: none; }
   .create-diet .meals {
@@ -364,12 +367,12 @@ body {
     .create-diet .week-container .weeks {
       padding: 15px;
       width: 100%;
-      background: #42C1A8; }
+      background: #EB974E; }
     .create-diet .week-container .week {
       background: #1ABC9C; }
   .create-diet .pnl {
     padding: 15px;
-    background-color: #CAF9F0;
+    background-color: #FDE3A7;
     color: #333; }
     .create-diet .pnl a {
       color: #333; }
@@ -380,7 +383,9 @@ body {
     color: #333; }
   .create-diet .add-more {
     border: none;
-    background: #93EBD9; }
+    background: #EB974E; }
+  .create-diet .add-week {
+    background: #EB974E; }
   .create-diet .information {
     width: 48%;
     float: left;
@@ -460,6 +465,9 @@ body {
   .diet-information .description {
     background-color: #fff;
     padding: 15px; }
+
+.diet-overview .description {
+  height: 150px; }
 
 .fitness {
   display: inline-block;

@@ -12,6 +12,8 @@ namespace LifeStruct.Models
         public string Name { get; set; }
         public string Height { get; set; }
         public string Weight { get; set; }
+        public string DietId { get; set; }
+        public string FitnessId { get; set; }
 
         public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<ApplicationUser> manager)
         {

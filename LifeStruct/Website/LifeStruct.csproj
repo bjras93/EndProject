@@ -215,6 +215,7 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\ApiControllers\DietApiController.cs" />
     <Compile Include="Controllers\ApiControllers\EdiblesApiController.cs" />
+    <Compile Include="Controllers\ApiControllers\LikeApiController.cs" />
     <Compile Include="Controllers\ApiControllers\MealCollectionApiController.cs" />
     <Compile Include="Controllers\ApiControllers\ScheduleApiController.cs" />
     <Compile Include="Controllers\ApiControllers\ExerciseApiController.cs" />
@@ -286,6 +287,18 @@
     <Compile Include="Migrations\201609171249429_Author.Designer.cs">
       <DependentUpon>201609171249429_Author.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201609190754084_Like.cs" />
+    <Compile Include="Migrations\201609190754084_Like.Designer.cs">
+      <DependentUpon>201609190754084_Like.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201609190801492_UserIdString.cs" />
+    <Compile Include="Migrations\201609190801492_UserIdString.Designer.cs">
+      <DependentUpon>201609190801492_UserIdString.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201609190818501_FitnessLike.cs" />
+    <Compile Include="Migrations\201609190818501_FitnessLike.Designer.cs">
+      <DependentUpon>201609190818501_FitnessLike.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Account\AccountViewModels.cs" />
     <Compile Include="Models\Diet\DaysModel.cs" />
@@ -297,8 +310,8 @@
     <Compile Include="Models\Fitness\FitnessModel.cs" />
     <Compile Include="Models\Diet\FoodModel.cs" />
     <Compile Include="Models\Fitness\ScheduleModel.cs" />
+    <Compile Include="Models\LikeModel.cs" />
     <Compile Include="Models\IdentityModels.cs" />
-    <Compile Include="Models\Account\LikeModel.cs" />
     <Compile Include="Models\Account\UserViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
@@ -361,6 +374,7 @@
     <Content Include="Content\JS\layout\menu.js" />
     <Content Include="Content\JS\layout\modal.js" />
     <Content Include="Content\JS\layout\overlay.js" />
+    <Content Include="Content\JS\layout\readmore.js" />
     <Content Include="Content\JS\plugins\angular-sanitize.min.js" />
     <Content Include="Content\JS\plugins\angular.min.js" />
     <Content Include="Content\JS\plugins\jquery-3.1.0.min.js" />
@@ -527,6 +541,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201609171249429_Author.resx">
       <DependentUpon>201609171249429_Author.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201609190754084_Like.resx">
+      <DependentUpon>201609190754084_Like.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201609190801492_UserIdString.resx">
+      <DependentUpon>201609190801492_UserIdString.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201609190818501_FitnessLike.resx">
+      <DependentUpon>201609190818501_FitnessLike.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

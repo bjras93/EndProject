@@ -160,3 +160,11 @@ body {
     color: $red-1;
     }
 }
+.selected {
+    .icon-food {
+        display:none;
+    }
+    .icon-checkmark {
+        display:block;
+    }
+}

@@ -156,6 +156,9 @@ a {
 .icon-heart:before {
   content: "\e9da"; }
 
+.icon-checkmark:before {
+  content: "\ea10"; }
+
 .icon-share2:before {
   content: "\ea82"; }
 
@@ -282,6 +285,12 @@ body {
 
 .liked span {
   color: #F57979; }
+
+.selected .icon-food {
+  display: none; }
+
+.selected .icon-checkmark {
+  display: block; }
 
 .logo {
   padding: 15px; }

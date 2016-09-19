@@ -395,9 +395,9 @@ var diet = {
             }
             $scope.selectDiet = function (dietId, uId) {
                 $http({ method: 'POST', url: api + 'UserApi/SetDiet', data: JSON.stringify({ uId: uId, dId: dietId, type: 1 }), contentType: "application/json" }).then(function (data) {
-                    $scope.userDiet[dietId] = uId;
+                    $scope.selected = data.data.DietId;
                 });
-
+                $scope.selected = '';
             }
         }]);
     }

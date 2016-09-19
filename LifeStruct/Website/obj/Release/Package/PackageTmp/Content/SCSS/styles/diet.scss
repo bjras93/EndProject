@@ -22,7 +22,7 @@
 
     .period {
         color: $w;
-        background-color: $gre-1;
+        background-color: $gre-5;
 
         a {
             color: #333;
@@ -37,7 +37,7 @@
         width: 100%;
         padding: $spd;
         @extend .ib;
-        background-color:#93EBD9;
+        background-color:$orange-2;
         border: 1px solid rgba(133,133,133,0.2);
         border-bottom: none;
     }
@@ -55,7 +55,7 @@
         padding: $spd;
         width: 100%;
         @extend .ib;
-        background: #42C1A8;
+        background: $orange-1;
     }
 
     .week {
@@ -64,7 +64,7 @@
     }
     .pnl {
         padding: $spd;
-        background-color:#CAF9F0;        
+        background-color:$orange-3;        
         color: #333;
         a{            
         color: #333;
@@ -81,7 +81,10 @@
 
     .add-more {
         border: none;
-        background: #93EBD9;
+        background: $orange-1;
+    }
+    .add-week {
+        background: $orange-1;
     }
     .information {
         width:48%;
@@ -202,5 +205,10 @@
     .description {
         background-color: $w;
         padding: $spd;
+    }
+}
+.diet-overview {
+    .description {
+        height: 150px;
     }
 }

@@ -82,3 +82,6 @@ C:\Users\bjoe0771\Desktop\Website\LifeStruct\Website\obj\Release\Website.pdb
 E:\Projects\LifeStruct\LifeStruct\Website\obj\Release\Website.Migrations.UserFitness.resources
 E:\Projects\LifeStruct\LifeStruct\Website\obj\Release\Website.Migrations.TagsName.resources
 E:\Projects\LifeStruct\LifeStruct\Website\obj\Release\Website.Migrations.Author.resources
+E:\Projects\LifeStruct\LifeStruct\Website\obj\Release\Website.Migrations.Like.resources
+E:\Projects\LifeStruct\LifeStruct\Website\obj\Release\Website.Migrations.UserIdString.resources
+E:\Projects\LifeStruct\LifeStruct\Website\obj\Release\Website.Migrations.FitnessLike.resources

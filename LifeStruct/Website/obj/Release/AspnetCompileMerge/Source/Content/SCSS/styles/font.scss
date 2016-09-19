@@ -20,7 +20,6 @@ a {
   font-style: normal;
 }
 
-
 [class^="icon-"], [class*=" icon-"] {
   /* use !important to prevent issues with browser extensions that change fonts */
   font-family: 'icomoon' !important;
@@ -72,6 +71,10 @@ a {
 .icon-heart:before {
   content: "\e9da";
 }
+.icon-checkmark:before {
+  content: "\ea10";
+}
 .icon-share2:before {
   content: "\ea82";
 }
+

@@ -25,83 +25,84 @@
                 </div>
                 <div class="week-container">
                     <div ng-repeat="week in weeks" class="plan">
-
+                        <div ng-init="weekIndex = $index"></div>
                         <a ng-click="hideNxt($event, '.week');" href="" class="weeks">{{week.text + week.no}}</a>
                         <div class="week">
                             <div ng-repeat="day in days">
-                                <div ng-init="weekIndex = $index"></div>
-                                <a ng-click="hideNxt($event, '.pnl');" class="days" href="">{{day.split(',')[0]}}<span ng-if="calc.days[weekIndex] != 0" class="right">{{(calc.days[weekIndex] | number: 0).replace(',', '.')}} kcal</span></a>
+                                <div ng-init="dayIndex = $index"></div>
+                                <a ng-click="hideNxt($event, '.pnl');" class="days" href="">{{day.split(',')[0]}}<span ng-if="calc.days[weekIndex + '_' + dayIndex] != 0 && calc.days[weekIndex + '_' + dayIndex] != undefined" class="right">{{(calc.days[weekIndex + '_' + dayIndex] | number: 0).replace(',', '.')}} kcal</span></a>
                                 <div ng-class="day == days[0] ? '' : 'hide'" class="pnl">
-                                    <div ng-repeat="diet in dietData | filter: edible" ng-if="days[diet.day -1] == day" class="meals">
-                                        <div ng-init="dietIndex = $index"></div>
-                                        <a ng-click="hideNxt($event, '.week');" href="">{{meals[diet.meal -1]}} <span class="right" ng-if="calc.calories[dietIndex + '_' + weekIndex] != 0">{{(calc.calories[dietIndex + '_' + weekIndex] | number: 0).replace(',', '.')}} kcal</span></a>                                        
-                                        <!-- Edible first repeater-->
-                                        <div class="meal hide">
-                                            <div ng-init="Ids = 'w' + diet.week + '_m' + diet.meal + '_d' + diet.day + '_e' + 1"></div>
-                                            <input name="{{'collectionId_' + Ids}}" ng-value="diet.id" type="hidden">
-                                            <div ng-init="calCalc(calc.edibleCalories[Ids], measureEdible[Ids], dietIndex, Ids);"></div>
-                                            <input autocomplete="off" type="text" ng-model="searches.searchEdibles[Ids]" id="{{'selected' + Ids + '_sI'}}" ng-keypress="hideResult(Ids, false); setId(Ids);" ng-keyup="results('result' + Ids, searches.searchEdibles[Ids]);" onkeydown="keyDown(event);" name="name_{{Ids}}" ng-value="diet.name" placeholder="Edible" class="ipt" />
-                                            <div class="autocomplete-container">
-                                                <div class="autocomplete" id="{{'autocomplete' + Ids}}" ng-if="searches.searchEdibles[Ids].length > 0">
-                                                    <div ng-repeat="food in allFood | filter:searches.searchEdibles[Ids] | limitTo: 5 | orderBy: 'Name.length'">
-                                                        <a class="{{result.autoComplete['selected' + Ids + '_sI' + $index] ? 'autocomplete-selected' : ''}}" onkeydown="keyDown(event);" id="{{'selected' +Ids + '_sI' + ($index+1)}}" ng-click="setCalories(food.Calories, Ids); autoHide('autocomplete' + Ids, true); setFoodId('foodId_' + Ids, food.Id);searches.searchEdibles[Ids] = food.Name; " href="">{{food.Name}}</a>
-                                                    </div>
-                                                    <div class="hide" id="{{'result' + Ids}}">
-                                                        <a class="open-modal {{result.autoComplete['selected_' + Ids + '_sI' + 0] ? 'autocomplete-selected' : ''}}" data-url="@(Url.Action("_AddNewFood"))" data-content="{{searches.searchEdibles[Ids]}}" onkeydown="keyDown(event);" id="{{'selected_' +Ids + '_sI' + 0}}" href="">Could not find {{searches.searchEdibles[Ids]}} do you wish to create it?</a>
-                                                    </div>
-
-                                                </div>
-                                            </div>
-                                            <input type="hidden" id="foodId_{{Ids}}" name="foodId_{{Ids}}" value="{{diet.foodId}}" />
-                                            <input type="number" ng-keydown="noCal(diet.calories, Ids); " ng-keyup="calCalc(calc.edibleCalories[Ids], measureEdible[Ids],dietIndex, Ids);" ng-model="measureEdible[Ids]" placeholder="Amount" name="amount_{{Ids}}" ng-value="diet.amount" class="ipt" />
-                                            <input type="hidden" ng-model="calc.edibleCalories[Ids]" ng-value="diet.calories" />
-                                            <div ng-if="measureEdible[Ids] != null" ng-model="am.amountS[Ids]">
-                                                {{((calc.edibleCalories[Ids] /100)* measureEdible[Ids] | number: 0).replace(',', '.')}} kcal
-                                            </div>
-                                            <div ng-if="measureEdible[Ids] == null && diet.amount != ''">
-                                                {{((diet.calories /100)* diet.amount | number: 0).replace(',', '.')}} kcal
-                                            </div>
-
-
-                                            <!-- Second repeater -->
-                                            <div ng-repeat="edible in diet.edibles">
-                                                <div ng-init="eIds = 'w' + diet.week + '_m' + diet.meal + '_d' + diet.day + '_e' + ($index +2)"></div>
-                                                <div ng-init="calCalc(calc.edibleCalories[eIds], measureEdible[eIds], dietIndex, eIds);"></div>
-                                                <input name="{{'collectionId_' + eIds}}" ng-value="edible.id" type="hidden">
-                                                <input autocomplete="off" type="text" ng-model="searches.searchEdibles[eIds]" id="{{'selected' + eIds + '_sI'}}" ng-keypress="hideResult(eIds, false);" ng-keydown="setId(eIds);" ng-keyup="results('result' + eIds, searches.searchEdibles[eIds]);" onkeydown="keyDown(event); " name="name_{{eIds}}" ng-value="edible.name" placeholder="Edible" class="ipt" />
+                                    <div ng-repeat="diet in dietData | filter: edible" ng-if="days[diet.day -1] == day && week.no == diet.week" class="meals">
+                                        
+                                            <div ng-init="mealIndex = diet.meal"></div>
+                                            <a ng-click="hideNxt($event, '.week');" href="">{{meals[diet.meal -1]}} <span class="right" ng-if="calc.calories[mealIndex + '_' + weekIndex + '_' + dayIndex] != 0 && calc.calories[mealIndex + '_' + weekIndex + '_' + dayIndex] != undefined">{{(calc.calories[mealIndex + '_' + weekIndex + '_' + dayIndex] | number: 0).replace(',', '.')}} kcal</span></a>
+                                            <!-- Edible first repeater-->
+                                            <div class="meal hide">
+                                                <div ng-init="Ids = 'w' + week.no + '_m' + diet.meal + '_d' + diet.day + '_e' + 1"></div>
+                                                <input name="{{'collectionId_' + Ids}}" ng-value="diet.id" type="hidden">
+                                                <div ng-init="calCalc(calc.edibleCalories[Ids], measureEdible[Ids], dietIndex, Ids);"></div>
+                                                <input autocomplete="off" type="text" ng-model="searches.searchEdibles[Ids]" id="{{'selected' + Ids + '_sI'}}" ng-keypress="hideResult(Ids, false); setId(Ids);" ng-keyup="results('result' + Ids, searches.searchEdibles[Ids]);" onkeydown="keyDown(event);" name="name_{{Ids}}" ng-value="diet.name" placeholder="Edible" class="ipt" />
                                                 <div class="autocomplete-container">
-                                                    <div class="autocomplete" id="{{'autocomplete' + eIds}}" ng-if="searches.searchEdibles[eIds].length > 0">
-                                                        <div ng-repeat="food in allFood | filter:searches.searchEdibles[eIds] | limitTo: 5 | orderBy: 'Name.length'">
-                                                            <a class="{{result.autoComplete['selected' + eIds + '_sI' + $index] ? 'autocomplete-selected' : ''}}" onkeydown="keyDown(event);" id="{{'selected' +eIds + '_sI' + ($index+1)}}" ng-click="setCalories(food.Calories, eIds); autoHide('autocomplete' + eIds, true); setFoodId('foodId_' + eIds, food.Id);searches.searchEdibles[eIds] = food.Name; " href="">{{food.Name}}</a>
+                                                    <div class="autocomplete" id="{{'autocomplete' + Ids}}" ng-if="searches.searchEdibles[Ids].length > 0">
+                                                        <div ng-repeat="food in allFood | filter:searches.searchEdibles[Ids] | limitTo: 5 | orderBy: 'Name.length'">
+                                                            <a class="{{result.autoComplete['selected' + Ids + '_sI' + $index] ? 'autocomplete-selected' : ''}}" onkeydown="keyDown(event);" id="{{'selected' +Ids + '_sI' + ($index+1)}}" ng-click="setCalories(food.Calories, Ids); autoHide('autocomplete' + Ids, true); setFoodId('foodId_' + Ids, food.Id);searches.searchEdibles[Ids] = food.Name; " href="">{{food.Name}}</a>
                                                         </div>
-                                                        <div class="hide" id="{{'result' + eIds}}">
-                                                            <a class="open-modal {{result.autoComplete['selected_' + eIds + '_sI' + 0] ? 'autocomplete-selected' : ''}}" data-url="@(Url.Action("_AddNewFood"))" data-content="{{searches.searchEdibles[eIds]}}" onkeydown="keyDown(event);" id="{{'selected_' + eIds + '_sI' + 0}}" href="">Could not find {{searches.searchEdibles[eIds]}} do you wish to create it?</a>
+                                                        <div class="hide" id="{{'result' + Ids}}">
+                                                            <a class="open-modal {{result.autoComplete['selected_' + Ids + '_sI' + 0] ? 'autocomplete-selected' : ''}}" data-url="@(Url.Action("_AddNewFood"))" data-content="{{searches.searchEdibles[Ids]}}" onkeydown="keyDown(event);" id="{{'selected_' +Ids + '_sI' + 0}}" href="">Could not find {{searches.searchEdibles[Ids]}} do you wish to create it?</a>
                                                         </div>
 
                                                     </div>
                                                 </div>
-                                                <input type="hidden" id="foodId_{{eIds}}" name="foodId_{{eIds}}" value="{{edible.foodId}}" />
-                                                <input type="number" ng-keydown="noCal(edible.calories, eIds);" ng-keyup="calCalc(calc.edibleCalories[eIds], measureEdible[eIds],dietIndex, eIds);" ng-model="measureEdible[eIds]" placeholder="Amount" name="amount_{{eIds}}" ng-value="edible.amount" class="ipt" />
-                                                <input type="hidden" ng-init="calc.edibleCalories[eIds] = edible.calories" ng-value="edible.calories" />
-                                                <div ng-if="measureEdible[eIds] != null" ng-model="am.amountS[eIds]">
-                                                    {{((calc.edibleCalories[eIds] /100)* measureEdible[eIds] | number: 0).replace(',', '.')}} kcal
+                                                <input type="hidden" id="foodId_{{Ids}}" name="foodId_{{Ids}}" value="{{diet.foodId}}" />
+                                                <input type="number" ng-keydown="noCal(diet.calories, Ids); " ng-keyup="calCalc(calc.edibleCalories[Ids], measureEdible[Ids],dietIndex, Ids);" ng-model="measureEdible[Ids]" placeholder="Amount" name="amount_{{Ids}}" ng-value="diet.amount" class="ipt" />
+                                                <input type="hidden" ng-model="calc.edibleCalories[Ids]" ng-value="diet.calories" />
+                                                <div ng-if="measureEdible[Ids] != null" ng-model="am.amountS[Ids]">
+                                                    {{((calc.edibleCalories[Ids] /100)* measureEdible[Ids] | number: 0).replace(',', '.')}} kcal
                                                 </div>
-                                                <div ng-if="measureEdible[eIds] == null && edible.amount != ''">
-
-                                                    {{((edible.calories /100)* edible.amount | number: 0).replace(',', '.')}} kcal
+                                                <div ng-if="measureEdible[Ids] == null && diet.amount != ''">
+                                                    {{((diet.calories /100)* diet.amount | number: 0).replace(',', '.')}} kcal
                                                 </div>
 
+
+                                                <!-- Second repeater -->
+                                                <div ng-repeat="edible in diet.edibles">
+                                                    <div ng-init="eIds = 'w' + week.no + '_m' + diet.meal + '_d' + diet.day + '_e' + ($index +2)"></div>
+                                                    <div ng-init="calCalc(calc.edibleCalories[eIds], measureEdible[eIds], dietIndex, eIds);"></div>
+                                                    <input name="{{'collectionId_' + eIds}}" ng-value="edible.id" type="hidden">
+                                                    <input autocomplete="off" type="text" ng-model="searches.searchEdibles[eIds]" id="{{'selected' + eIds + '_sI'}}" ng-keypress="hideResult(eIds, false);" ng-keydown="setId(eIds);" ng-keyup="results('result' + eIds, searches.searchEdibles[eIds]);" onkeydown="keyDown(event); " name="name_{{eIds}}" ng-value="edible.name" placeholder="Edible" class="ipt" />
+                                                    <div class="autocomplete-container">
+                                                        <div class="autocomplete" id="{{'autocomplete' + eIds}}" ng-if="searches.searchEdibles[eIds].length > 0">
+                                                            <div ng-repeat="food in allFood | filter:searches.searchEdibles[eIds] | limitTo: 5 | orderBy: 'Name.length'">
+                                                                <a class="{{result.autoComplete['selected' + eIds + '_sI' + $index] ? 'autocomplete-selected' : ''}}" onkeydown="keyDown(event);" id="{{'selected' +eIds + '_sI' + ($index+1)}}" ng-click="setCalories(food.Calories, eIds); autoHide('autocomplete' + eIds, true); setFoodId('foodId_' + eIds, food.Id);searches.searchEdibles[eIds] = food.Name; " href="">{{food.Name}}</a>
+                                                            </div>
+                                                            <div class="hide" id="{{'result' + eIds}}">
+                                                                <a class="open-modal {{result.autoComplete['selected_' + eIds + '_sI' + 0] ? 'autocomplete-selected' : ''}}" data-url="@(Url.Action("_AddNewFood"))" data-content="{{searches.searchEdibles[eIds]}}" onkeydown="keyDown(event);" id="{{'selected_' + eIds + '_sI' + 0}}" href="">Could not find {{searches.searchEdibles[eIds]}} do you wish to create it?</a>
+                                                            </div>
+
+                                                        </div>
+                                                    </div>
+                                                    <input type="hidden" id="foodId_{{eIds}}" name="foodId_{{eIds}}" value="{{edible.foodId}}" />
+                                                    <input type="number" ng-keydown="noCal(edible.calories, eIds);" ng-keyup="calCalc(calc.edibleCalories[eIds], measureEdible[eIds],dietIndex, eIds);" ng-model="measureEdible[eIds]" placeholder="Amount" name="amount_{{eIds}}" ng-value="edible.amount" class="ipt" />
+                                                    <input type="hidden" ng-init="calc.edibleCalories[eIds] = edible.calories" ng-value="edible.calories" />
+                                                    <div ng-if="measureEdible[eIds] != null" ng-model="am.amountS[eIds]">
+                                                        {{((calc.edibleCalories[eIds] /100)* measureEdible[eIds] | number: 0).replace(',', '.')}} kcal
+                                                    </div>
+                                                    <div ng-if="measureEdible[eIds] == null && edible.amount != ''">
+
+                                                        {{((edible.calories /100)* edible.amount | number: 0).replace(',', '.')}} kcal
+                                                    </div>
+
+                                                </div>
+                                                <div>
+                                                    <a ng-click="addEdible(Ids, edibleIndex);" class="btn ib add-more" href="">Add more edibles</a>
+                                                </div>
                                             </div>
-                                            <div>
-                                                <a ng-click="addEdible(Ids, edibleIndex);" class="btn ib add-more" href="">Add more edibles</a>
-                                            </div>
-                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <a ng-click="addWeek();" class="btn ib" href="">Add another week</a>
+                    <a ng-click="addWeek();" class="btn ib add-week" href="">Add another week</a>
                 </div>
 
 

@@ -9,6 +9,7 @@
     <input type="text" class="ipt diet-search" ng-model="searchDiets" placeholder="Search diets" />
     <div class="content g1 left">
         @{
+            <input type="hidden" ng-init="selected = '@user.DietId'" />
             <div class="diets" ng-repeat="diets in dietData | limitTo: 20 | filter :searchDiets | orderBy: '-Likes'">
                 <div class="overview diet-overview">
                     <div ng-if="diets.Img != ''">
@@ -21,17 +22,17 @@
                         <span ng-bind-html="diets.Description.length > 400 ? (diets.Description | limitTo: 400) + '...' : diets.Description"></span>
                     </div>
                     <div class="user-section">
-                        <input type="hidden" ng-init="currentUser = '@user.Id'" />   
-                        <input type="hidden" ng-init="getLikes('@user.Id', diets.Id);" />                     
+                        <input type="hidden" ng-init="currentUser = '@user.Id'" />                           
+                        <input type="hidden" ng-init="getLikes('@user.Id', diets.Id);" />         
                         <div ng-if="currentUser == diets.User">                            
                             <a ng-click="like(diets.Id);" ng-class="currentUser == l.liked[diets.Id] ? 'liked' : ''" href=""><span class="icon-heart"></span></a>
-                            <a ng-click="selectDiet(diets.Id, '@user.Id')" ng-class="currentUser == userDiet[diets.Id] ? 'selected' :'' " href=""><span class="icon-food"></span></a>
+                            <a ng-click="selectDiet(diets.Id, '@user.Id')" ng-class="selected == diets.Id ? 'selected' : ''" href=""><span class="icon-food"></span><span class="icon-checkmark hide"></span></a>
                             <a href="../Diets/Edit/{{diets.Id}}"><span class="icon-pencil"></span></a><br />
                             <p>Author: You</p>
                         </div>
                         <div ng-if="currentUser != diets.User">
                             <a ng-click="like(diets.Id);" ng-class="currentUser == l.liked[diets.Id] ? 'liked' : ''" href=""><span class="icon-heart"></span></a>
-                            <a ng-click="selectDiet(diets.Id, '@user.Id')" ng-class="currentUser == userDiet[diets.Id] ? 'selected' :'' " href=""><span class="icon-food"></span></a><br />
+                            <a ng-click="selectDiet(diets.Id, '@user.Id')" ng-class="selected == diets.Id ? 'selected' :'' " href=""><span class="icon-food"></span><span class="icon-checkmark hide"></span></a><br />
                             <p>Author: {{diets.Author}}</p>
                         </div>
 

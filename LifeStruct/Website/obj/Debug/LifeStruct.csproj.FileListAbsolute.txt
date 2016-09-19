@@ -121,3 +121,6 @@ C:\Users\bjoe0771\Desktop\Website\LifeStruct\Website\obj\Debug\Website.Migration
 C:\Users\bjoe0771\Desktop\Website\LifeStruct\Website\obj\Debug\Website.Migrations.Like.resources
 C:\Users\bjoe0771\Desktop\Website\LifeStruct\Website\obj\Debug\Website.Migrations.UserIdString.resources
 C:\Users\bjoe0771\Desktop\Website\LifeStruct\Website\obj\Debug\Website.Migrations.FitnessLike.resources
+E:\Projects\LifeStruct\LifeStruct\Website\obj\Debug\Website.Migrations.Like.resources
+E:\Projects\LifeStruct\LifeStruct\Website\obj\Debug\Website.Migrations.UserIdString.resources
+E:\Projects\LifeStruct\LifeStruct\Website\obj\Debug\Website.Migrations.FitnessLike.resources

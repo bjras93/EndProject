@@ -37,17 +37,14 @@
         </div>
     </div>
 </div>
-<div class="type-1">
-    <a href="/Health/Index">
-        <div class="tile r1">
-            <span class="icon-heart"></span>
-            <div class="hover hide">Articles written by users</div>
-        </div>
-    </a>
-    <a href="/Diets/Index">
-        <div class="tile g3">
-            <span class="icon-lunch"></span>
-            <div class="hover hide">Find your diet</div>
+<div class="type-2">
+    <div class="tile r1">
+        <span class="icon-share2"></span>
+    </div>
+    <a href="/Videos/Index">
+        <div class="tile g2">
+            <span class="icon-play yt"></span>
+            <div class="hover hide">Submit and find inspirational videos</div>
         </div>
     </a>
     <a href="/Fitness/Index">
@@ -56,17 +53,18 @@
             <div class="hover hide">Create and find workout schedules</div>
         </div>
     </a>
-    <a href="/Videos/Index">
-        <div class="tile g2">
-            <span class="icon-play yt"></span>
-            <div class="hover hide">Submit and find inspirational videos</div>
+    <a href="/Diets/Index">
+        <div class="tile g3">
+            <span class="icon-lunch"></span>
+            <div class="hover hide">Find your diet</div>
         </div>
     </a>
-    <div class="tile r1">
-        <span class="icon-share2"></span>
-    </div>
-</div>
-<div class="type-2">
+    <a href="/Health/Index">
+        <div class="tile r1">
+            <span class="icon-heart"></span>
+            <div class="hover hide">Articles written by users</div>
+        </div>
+    </a>
     @if (!string.IsNullOrEmpty(user.DietId))
     {
 
@@ -159,7 +157,7 @@
         </div>
     }
 
-    <div class="tile g4" onmouseover="progress.mouseOver('.intakeHover', '.totalIntake');" onmouseleave="progress.mouseOver('.totalIntake','.intakeHover');">
+    <div class="tile left g4" onmouseover="progress.mouseOver('.intakeHover', '.totalIntake');" onmouseleave="progress.mouseOver('.totalIntake','.intakeHover');">
         @if (!string.IsNullOrEmpty(user.DietId))
         {
 

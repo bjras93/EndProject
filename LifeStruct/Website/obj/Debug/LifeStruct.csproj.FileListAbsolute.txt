@@ -106,7 +106,6 @@ C:\Users\bjoe0771\Desktop\Website\LifeStruct\Website\obj\Debug\Website.Migration
 C:\Users\bjoe0771\Desktop\Website\LifeStruct\Website\obj\Debug\Website.Migrations.UpdateFitness1.resources
 C:\Users\bjoe0771\Desktop\Website\LifeStruct\Website\obj\Debug\Website.Migrations.UpdateFitness2.resources
 C:\Users\bjoe0771\Desktop\Website\LifeStruct\Website\obj\Debug\Website.Migrations.CalInt.resources
-E:\Projects\LifeStruct\LifeStruct\Website\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
 E:\Projects\LifeStruct\LifeStruct\Website\obj\Debug\LifeStruct.csprojResolveAssemblyReference.cache
 E:\Projects\LifeStruct\LifeStruct\Website\obj\Debug\Website.Migrations.FitnessAdd.resources
 E:\Projects\LifeStruct\LifeStruct\Website\obj\Debug\Website.Migrations.UpdateFitness1.resources
@@ -129,3 +128,5 @@ E:\Projects\LifeStruct\LifeStruct\Website\obj\Debug\Website.Migrations.DietProgr
 E:\Projects\LifeStruct\LifeStruct\Website\obj\Debug\Website.Migrations.MealDietProgressModel.resources
 E:\Projects\LifeStruct\LifeStruct\Website\obj\Debug\Website.Migrations.VideoModel.resources
 E:\Projects\LifeStruct\LifeStruct\Website\obj\Debug\Website.Migrations.Unkown.resources
+E:\Projects\LifeStruct\LifeStruct\Website\bin\Website.dll.CodeAnalysisLog.xml
+E:\Projects\LifeStruct\LifeStruct\Website\bin\Website.dll.lastcodeanalysissucceeded

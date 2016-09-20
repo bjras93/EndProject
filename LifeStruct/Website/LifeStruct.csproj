@@ -595,6 +595,8 @@
     <Content Include="Content\JS\plugins\skins\lightgray\fonts\tinymce.ttf" />
     <Content Include="Content\JS\plugins\skins\lightgray\fonts\tinymce.woff" />
     <Content Include="Content\SCSS\styles\progress.scss" />
+    <Content Include="Content\SCSS\styles\video.scss" />
+    <None Include="Content\SCSS\styles\mediaqueries.scss" />
     <None Include="Properties\PublishProfiles\LifeStruct.pubxml" />
     <Content Include="Views\Fitness\Create.cshtml" />
     <Content Include="Views\Fitness\Edit.cshtml" />

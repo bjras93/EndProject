@@ -1,13 +1,22 @@
 ﻿@{ 
     ViewBag.Title = "Video";
 }
-<input type="text" placeholder="Search" class="ipt right" />
-<div class="content g1">
-    <div class="videos">
-        <div class="video">
-            <h3>Title</h3>
-            <iframe width="560" height="315" src="https://www.youtube.com/embed/bHQqvYy5KYo" frameborder="0" allowfullscreen></iframe>
+@Html.ActionLink("Return", "Index", "Home", null, new { @class = "return" })
+<div ng-app="LifeStruct" ng-controller="videoIndexCtrl">
+    <input type="text" placeholder="Search" ng-model="search" class="ipt right" />
+    <div class="content">
+        <div class="videos">
+            <div class="video-index" ng-repeat="video in filteredVids = ( videos | filter: search)">
+                <h3>{{video.Title}}</h3>
+                <p class="description">{{video.Description}}</p>
+                <iframe width="560" height="315" ng-src="{{getFrameSrc(video.YouTubeId)}}" frameborder="0" allowfullscreen></iframe>
+            </div>
+            <div ng-hide="filteredVids.length && videos != undefined"><h3>Could not find "{{search}}" try using a different search term</h3></div>
         </div>
     </div>
 </div>
 @Html.ActionLink("+", "Create", null, new { @class = "add add-video" })
+<script src="~/Content/JS/layout/videos.js"></script>
+<script>
+    videos.init();
+</script>

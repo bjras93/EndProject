@@ -172,10 +172,21 @@ body {
   background: url("../img/web/pexels-photo.jpg");
   background-size: cover;
   background-attachment: fixed; }
+  @media (max-width: 768px) {
+    body {
+      background: #96cb96; } }
 
 .container {
   margin: 0 15%;
   width: 70%; }
+  @media (min-width: 768px) and (max-width: 1259px) {
+    .container {
+      width: 90%;
+      margin: 0 5%; } }
+  @media (max-width: 768px) {
+    .container {
+      margin: 0 2%;
+      width: 95%; } }
 
 .content {
   width: 100%;
@@ -237,6 +248,12 @@ body {
   .type-1 .tile {
     width: 20%;
     height: 160px; }
+    @media (min-width: 768px) and (max-width: 1259px) {
+      .type-1 .tile {
+        width: 25%; } }
+    @media (max-width: 768px) {
+      .type-1 .tile {
+        width: 50%; } }
   .type-1 .tile-2 {
     width: 40%;
     height: 160px; }
@@ -252,6 +269,12 @@ body {
   .type-2 .tile {
     width: 20%;
     height: 160px; }
+    @media (min-width: 768px) and (max-width: 1259px) {
+      .type-2 .tile {
+        width: 25%; } }
+    @media (max-width: 768px) {
+      .type-2 .tile {
+        width: 50%; } }
   .type-2 .tile-2 {
     width: 40%;
     height: 160px; }
@@ -270,6 +293,9 @@ body {
   .tile span {
     margin-top: 20%;
     font-size: 4em; }
+    @media (max-width: 768px) {
+      .tile span {
+        margin-top: 15%; } }
   .tile .hover {
     margin-top: 25px;
     margin-left: -20px;
@@ -280,9 +306,15 @@ body {
 
 .mood {
   width: 60%;
-  float: left; }
+  float: left;
+  position: relative; }
   .mood .tile {
     width: 33.33%; }
+  @media (max-width: 768px) {
+    .mood {
+      margin-top: 160px;
+      width: 100%;
+      position: absolute; } }
 
 .user-section {
   padding: 15px 0; }
@@ -623,3 +655,57 @@ body {
 .totalIntake {
   display: none;
   padding-top: 20%; }
+
+.videos {
+  float: left;
+  width: 100%; }
+  .videos :nth-child(odd) {
+    margin-right: 4%; }
+  .videos .video-index {
+    float: left;
+    color: #333;
+    border: 1px solid #bebebe;
+    background: #fff;
+    display: inline-block;
+    width: 48%;
+    padding: 15px; }
+    @media (min-width: 768px) and (max-width: 1259px) {
+      .videos .video-index {
+        width: 100%;
+        margin-bottom: 15px; } }
+    @media (max-width: 768px) {
+      .videos .video-index {
+        width: 100%;
+        margin-bottom: 15px; } }
+    .videos .video-index iframe {
+      height: 350px;
+      width: 100%; }
+    .videos .video-index h3 {
+      height: 50px; }
+    .videos .video-index .description {
+      height: 120px;
+      margin: 20px 0; }
+  .videos .video {
+    padding: 15px;
+    color: #fff;
+    background-color: #16A085;
+    width: 60%; }
+    @media (min-width: 768px) and (max-width: 1259px) {
+      .videos .video {
+        width: 100%; } }
+    @media (max-width: 768px) {
+      .videos .video {
+        width: 100%; } }
+    .videos .video .tags {
+      padding: 15px;
+      padding-left: 5px; }
+      .videos .video .tags input {
+        width: 163px !important;
+        font: 12pt 'Roboto', 'Open Sans', Verdana, Calibri, sans-serif;
+        font-weight: 500; }
+    .videos .video tags-input {
+      width: 75%; }
+    .videos .video table {
+      width: 100%; }
+    .videos .video .ipt {
+      width: 75%; }

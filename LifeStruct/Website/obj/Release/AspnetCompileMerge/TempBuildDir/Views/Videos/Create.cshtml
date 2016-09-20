@@ -1,42 +1,44 @@
 ﻿@model LifeStruct.Models.VideoModel
 @{
     ViewBag.Title = "Video";
-}<div class="content g1">
+}
+@Html.ActionLink("Return", "Index", "Videos", null, new { @class = "return" })
+<div class="content">
     <div class="videos">
         <div class="video" ng-app="LifeStruct" ng-controller="videoCreateCtrl">
             <h3>Add a video</h3>
             @using (Html.BeginForm("Create", "Videos", FormMethod.Post))
             {
                 @Html.ValidationSummary(true)
-            <table>
-               <tr>
-                   <td>
-                       <input type="text" class="ipt" name="Title" placeholder="Title" /><br />
-                        @Html.ValidationMessageFor(x => x.Title)
-                   </td>
-               </tr>
-                <tr>
-                    <td>
-                        <input type="text" class="ipt" name="YouTubeId" placeholder="YouTube ID ex.: bHQqvYy5KYo" /><br />
-                        @Html.ValidationMessageFor(x => x.YouTubeId)
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <textarea type="text" class="ipt" name="Description" placeholder="Description"></textarea>
-                    </td>
-                </tr>
-                <tr>
-                    <td>                        
-                        <tags-input ng-model="tags" placeholder="Tags to find the video"></tags-input>
-                        <input type="hidden" value="{{tags}}" name="Tags" />
-                        @Html.ValidationMessageFor(x => x.Tags)
-                    </td>
-                </tr>
-                <tr>
-                    <td><input type="submit" class="btn" value="Submit" /></td>
-                </tr>
-            </table>
+                <table>
+                    <tr>
+                        <td>
+                            <input type="text" class="ipt" name="Title" placeholder="Title" /><br />
+                            @Html.ValidationMessageFor(x => x.Title)
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <input type="text" class="ipt" name="YouTubeId" placeholder="YouTube ID ex.: bHQqvYy5KYo" /><br />
+                            @Html.ValidationMessageFor(x => x.YouTubeId)
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <textarea type="text" class="ipt" name="Description" placeholder="Description"></textarea>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <tags-input ng-model="tags" placeholder="Tags to find the video"></tags-input>
+                            <input type="hidden" value="{{tags}}" name="Tags" />
+                            @Html.ValidationMessageFor(x => x.Tags)
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><input type="submit" class="btn" value="Submit" /></td>
+                    </tr>
+                </table>
             }
         </div>
     </div>

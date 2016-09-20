@@ -6,12 +6,23 @@ body {
     background: url('../img/web/pexels-photo.jpg');
     background-size: cover;
     background-attachment: fixed;
+    @include phone {
+        background:#96cb96;
+    }
 }
 
 .container {
     @extend .ib;
     margin: 0 15%;
     width: 70%;
+    @include tablet {
+        width: 90%;
+        margin: 0 5%;
+    }
+    @include phone {
+        margin: 0 2%;
+        width: 95%;
+    }
 }
 
 .content {
@@ -94,17 +105,26 @@ body {
         width: 20%;
         height: 160px;
         @extend .right;
+        @include tablet {
+            width:25%;
+        }
+        @include phone {
+            width: 50%;
+        }
     }
+
     .tile-2 {
         width: 40%;
         height: 160px;
         @extend .right;
     }
+
     .tile-3 {
         width: 60%;
         height: 160px;
         @extend .right;
     }
+
     .tile-4 {
         width: 80%;
         height: 160px;
@@ -125,18 +145,27 @@ body {
         width: 20%;
         height: 160px;
         @extend .left;
+        @include tablet {
+            width:25%;
+        }
+        @include phone {
+            width: 50%;
+        }
     }
+
     .tile-2 {
         width: 40%;
         height: 160px;
         @extend .left;
     }
+
     .tile-3 {
         padding: $spd;
         width: 60%;
         height: 160px;
         @extend .left;
     }
+
     .tile-4 {
         padding: $spd;
         width: 80%;
@@ -157,11 +186,15 @@ body {
         margin-top: 20%;
         @extend .ib;
         font-size: 4em;
+        @include phone {
+            margin-top: 15%;
+        }
     }
+
     .hover {
         margin-top: 25px;
         margin-left: -20px;
-        position:fixed;
+        position: fixed;
         padding: 5px;
         background: $w;
         color: #333;
@@ -171,9 +204,19 @@ body {
 .mood {
     width: 60%;
     float: left;
+    position: relative;
 
     .tile {
         width: 33.33%;
+    }
+
+    @include phone {
+        margin-top: 160px;
+        width: 100%;
+        position: absolute;
+
+        .tile {
+        }
     }
 }
 
@@ -239,6 +282,7 @@ body {
         display: block;
     }
 }
+
 .nobackground {
     background: none !important;
 }

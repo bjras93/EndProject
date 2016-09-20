@@ -1,0 +1,72 @@
+﻿.videos {
+    float:left;
+    width:100%;
+        :nth-child(odd) {
+            margin-right: 4%;
+        }
+    .video-index {
+        float:left;
+        color: #333;
+        border: 1px solid rgb(190,190,190);
+        background: $w;
+        display: inline-block;
+        width: 48%;
+        padding: $spd;
+        @include tablet {
+            width:100%;
+            margin-bottom: 15px;
+        }
+        @include phone {
+            width:100%;
+            margin-bottom: 15px;
+            
+        }
+        iframe {
+            height: 350px;
+            width: 100%;
+        }
+        h3 {
+            height: 50px;
+        }
+        .description {
+            height:120px;
+            margin: 20px 0;
+        }
+    }
+
+    .video {
+        padding:$spd;
+        color: $w;
+        background-color: $gre-1;
+        width: 60%;
+        @include tablet {
+            width:100%;
+        }
+        @include phone {
+            width:100%;
+        }
+        .tags {
+            padding: 15px;
+            padding-left: 5px;
+
+            input {
+                width: 163px !important;
+                font: 12pt 'Roboto', 'Open Sans', Verdana, Calibri, sans-serif;
+                font-weight: 500;
+            }
+        }
+
+        tags-input {
+            width: 75%;
+        }
+
+        table {
+            width: 100%;
+        }
+
+        .ipt {
+            width: 75%;
+        }
+    }
+}
+

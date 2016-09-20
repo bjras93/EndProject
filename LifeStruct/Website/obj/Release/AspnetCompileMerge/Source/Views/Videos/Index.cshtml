@@ -1,3 +1,13 @@
 ﻿@{ 
     ViewBag.Title = "Video";
 }
+<input type="text" placeholder="Search" class="ipt right" />
+<div class="content g1">
+    <div class="videos">
+        <div class="video">
+            <h3>Title</h3>
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/bHQqvYy5KYo" frameborder="0" allowfullscreen></iframe>
+        </div>
+    </div>
+</div>
+@Html.ActionLink("+", "Create", null, new { @class = "add add-video" })

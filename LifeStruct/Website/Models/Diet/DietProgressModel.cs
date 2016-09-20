@@ -13,5 +13,6 @@ namespace LifeStruct.Models
         public string CalorieIntake { get; set; }
         public string Day { get; set; }
         public string FoodId { get; set; }
+        public int Meal { get; set; }
     }
 }

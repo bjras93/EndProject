@@ -1,15 +1,29 @@
-﻿@{
+﻿@model LifeStruct.Controllers.UserData
+@using LifeStruct.Models;
+@{
     ViewBag.Title = "Welcome!";
+    var user = UserViewModel.GetCurrentUser();
+    var total = 0;
 }
-
+<input type="hidden" id="userId" value="@user.Id" />
+<input type="hidden" id="dietId" value="@user.DietId" />
+<div class="signout right">
+    @using (Html.BeginForm("LogOff", "Account", FormMethod.Post))
+    {
+        @Html.AntiForgeryToken()
+        <input class="signout-btn" type="submit" value="Sign out" />
+    }
+</div>
 <div class="type-1">
     <a href="/Account/Details">
         <div class="tile g3">
             <span class="icon-user"></span>
+            <div class="hover hide">Profile</div>
         </div>
     </a>
     <div id="mood" class="tile g4">
         <span class="icon-smiling-face"></span>
+        <div class="hover hide">What is your mood?</div>
     </div>
     <div class="mood hide">
         <div class="tile i">
@@ -27,21 +41,25 @@
     <a href="/Health/Index">
         <div class="tile r1">
             <span class="icon-heart"></span>
+            <div class="hover hide">Articles written by users</div>
         </div>
     </a>
     <a href="/Diets/Index">
         <div class="tile g3">
             <span class="icon-lunch"></span>
+            <div class="hover hide">Find your diet</div>
         </div>
     </a>
     <a href="/Fitness/Index">
         <div class="tile g1">
             <span class="icon-sports-shoe"></span>
+            <div class="hover hide">Create and find workout schedules</div>
         </div>
     </a>
     <a href="/Videos/Index">
         <div class="tile g2">
             <span class="icon-play yt"></span>
+            <div class="hover hide">Submit and find inspirational videos</div>
         </div>
     </a>
     <div class="tile r1">
@@ -49,8 +67,110 @@
     </div>
 </div>
 <div class="type-2">
-    <div class="tile g4">
-        <span class="icon-pie-chart">
+    @if (!string.IsNullOrEmpty(user.DietId))
+    {
+
+        TimeSpan dateResult;
+        dateResult = DateTime.Now - Convert.ToDateTime(user.DietDate);
+        var week = Math.Ceiling(dateResult.TotalDays / 7);
+        <div class="tile-4 g1">
+            <div class="explain">
+                <div class="con">
+                    <h3>Diet for today</h3>
+                    <p>Finished:</p> <span class="done"></span> <p>Unfinished:</p> <span class="undone"></span>
+                </div>
+            </div>
+            <table class="progress">
+
+                <thead>
+                    <tr>
+                        @foreach (var m in Model.Meals)
+                        {
+                            if (Model.MealCollection.Where(x => x.Meal.ToString() == m.Id && ((DayOfWeek)x.Day) == DateTime.Now.DayOfWeek && x.WeekNo == week).Count() > 0)
+                            {
+                                <th>@m.Name</th>
+                            }
+                        }
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        @foreach (var m in Model.Meals)
+                        {
+
+                            if (Model.MealCollection.Where(x => x.Meal.ToString() == m.Id).Count() > 0)
+                            {
+                                <td>
+                                    @foreach (var mc in Model.MealCollection.Where(x => ((DayOfWeek)x.Day) == DateTime.Now.DayOfWeek))
+                                    {
+
+                                        if (mc.Meal.ToString() == m.Id)
+                                        {
+                                            if (mc.WeekNo == week)
+                                            {
+                                                var f = LifeStruct.Controllers.HomeGet.GetFoodById(mc.FoodId);
+                                                var intake = (Convert.ToDouble(f.Calories) / 100) * Convert.ToDouble(mc.Amount);
+                                                var dp = LifeStruct.Controllers.HomeGet.GetProgress(user.Id, mc.DietId, mc.FoodId, intake.ToString(), mc.Meal);
+
+
+                                                foreach (var d in dp)
+                                                {
+                                                    total += Convert.ToInt32(d.CalorieIntake);
+                                                }
+                                                <table onclick="progress.addDietProgress(event, '@f.Id', '@mc.DietId', '@intake', '@user.Id', '@mc.Meal')" class="parent @if (dp.Count() > 0) { <text>done</text>}" data-dietprogress="@if (dp.Count() > 0) { <text>@dp.First().Id</text>}" href="" title="Add to day">
+                                                    <tr>
+                                                        <td>
+                                                            @f.Name
+                                                        </td>
+                                                        <td>
+                                                            <table>
+                                                                <tr>
+                                                                    <td>@Math.Round(intake) kcal </td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td>@mc.Amount gram</td>
+                                                                </tr>
+                                                            </table>
+                                                        </td>
+                                                    </tr>
+                                                </table>
+                                            }
+
+                                        }
+
+                                    }
+                                </td>
+                            }
+                        }
+                    </tr>
+
+
+                    @if (Model.MealCollection.Where(x => ((DayOfWeek)x.Day) == DateTime.Now.DayOfWeek).Count() == 0)
+                    {
+
+                        <tr class="nobackground">
+                            <td>
+                                <h3>No meals today</h3>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    }
+
+    <div class="tile g4" onmouseover="progress.mouseOver('.intakeHover', '.totalIntake');" onmouseleave="progress.mouseOver('.totalIntake','.intakeHover');">
+        @if (!string.IsNullOrEmpty(user.DietId))
+        {
+
+            <div class="totalIntake">Calories today: @total</div>
+        }
+        <span class="icon-pie-chart intakeHover">
         </span>
     </div>
 </div>
+<script src="~/Content/JS/layout/progress.js"></script>
+<script src="~/Content/JS/layout/hover.js"></script>
+<script>
+    progress.init();
+</script>

@@ -4,11 +4,8 @@
     ViewBag.Title = "Welcome";
 }
 <div class="login">
-    @Html.ActionLink("Signup", "Signup", "Account", null, new { @class = "btn bsignup" })
+    <h3>Login with:</h3><hr />
     @Html.Partial("~/Views/Shared/_ExternalLogin.cshtml", new ExternalLoginListViewModel { ReturnUrl = ViewBag.ReturnUrl })
-
-
-    @Html.ActionLink("Login", "Login", "Account", null, new { @class = "btn blogin" })
 </div>
 
 <script src="~/Content/JS/layout/overlay.js"></script>

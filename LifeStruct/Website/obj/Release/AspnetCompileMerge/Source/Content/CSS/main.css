@@ -13,10 +13,10 @@ button, input {
 button, input[type="submit"] {
   cursor: pointer; }
 
-.right, .type-1 .tile, .login a, .login button {
+.right, .type-1 .tile, .type-1 .tile-2, .type-1 .tile-3, .type-1 .tile-4, .login a, .login button {
   float: right; }
 
-.left, .type-1, .type-2, .type-2 .tile {
+.left, .type-1, .type-2, .type-2 .tile, .type-2 .tile-2, .type-2 .tile-3, .type-2 .tile-4 {
   float: left; }
 
 .clear, .type-1:after, .type-2:after {
@@ -25,8 +25,14 @@ button, input[type="submit"] {
 .hide {
   display: none; }
 
-.ib, .container, .type-1, .type-2, .tile span, .login a, .login button, .account-details li span, #modal, .create-diet, .create-diet .days, .create-diet .week-container .weeks {
+.ib, .container, .type-1, .type-2, .tile span, .account-details li span, #modal, .create-diet, .create-diet .days, .create-diet .week-container .weeks {
   display: inline-block; }
+
+table {
+  text-align: left; }
+  table td {
+    vertical-align: text-top;
+    padding: 0; }
 
 .b1 {
   background: #2C3E50; }
@@ -231,12 +237,32 @@ body {
   .type-1 .tile {
     width: 20%;
     height: 160px; }
+  .type-1 .tile-2 {
+    width: 40%;
+    height: 160px; }
+  .type-1 .tile-3 {
+    width: 60%;
+    height: 160px; }
+  .type-1 .tile-4 {
+    width: 80%;
+    height: 160px; }
 
 .type-2 {
   width: 100%; }
   .type-2 .tile {
     width: 20%;
     height: 160px; }
+  .type-2 .tile-2 {
+    width: 40%;
+    height: 160px; }
+  .type-2 .tile-3 {
+    padding: 15px;
+    width: 60%;
+    height: 160px; }
+  .type-2 .tile-4 {
+    padding: 15px;
+    width: 80%;
+    min-height: 160px; }
 
 .tile {
   cursor: pointer;
@@ -244,6 +270,13 @@ body {
   .tile span {
     margin-top: 20%;
     font-size: 4em; }
+  .tile .hover {
+    margin-top: 25px;
+    margin-left: -20px;
+    position: fixed;
+    padding: 5px;
+    background: #fff;
+    color: #333; }
 
 .mood {
   width: 60%;
@@ -291,6 +324,29 @@ body {
 
 .selected .icon-checkmark {
   display: block; }
+
+.nobackground {
+  background: none !important; }
+
+.login {
+  width: 250px;
+  height: 200px;
+  display: block;
+  margin: 15% auto; }
+
+.register {
+  display: inline-block;
+  float: left;
+  padding: 15px; }
+  .register .text-danger {
+    color: darkred; }
+
+.signout .signout-btn {
+  padding: 5px;
+  border-radius: 5px;
+  color: #fff;
+  margin-bottom: 5px;
+  background: #F57979; }
 
 .logo {
   padding: 15px; }
@@ -447,23 +503,24 @@ body {
     background-color: #1ABC9C; }
   .diet-schedule table td, .diet-schedule table th {
     padding: 15px 15px 15px 15px;
-    vertical-align: text-top; }
+    vertical-align: text-top;
+    border: 1px solid #16A085; }
   .diet-schedule table tr td {
     background-color: #96D4BF;
-    border: 2px solid #16A085;
     padding: 0; }
     .diet-schedule table tr td:first-child {
       background-color: #1ABC9C;
       padding: 15px 15px 15px 15px; }
+  .diet-schedule table table tr:first-child td {
+    border-top: none;
+    border-bottom: 1px solid #16A085; }
   .diet-schedule table table tr td {
-    padding: 15px 25px 15px 25px;
     border: none;
-    border-bottom: 1px solid #16A085;
-    border-right: 2px solid #16A085; }
+    padding: 15px 25px 15px 25px;
+    border-top: 1px solid #16A085; }
     .diet-schedule table table tr td:first-child {
       background-color: #96D4BF;
-      padding: 15px 15px 15px 15px;
-      border-right: 1px solid #16A085; }
+      padding: 15px 15px 15px 15px; }
 
 .diet-information {
   max-width: 750px;
@@ -527,3 +584,42 @@ body {
         background-color: #8ecfff; }
     .autocomplete-container .autocomplete .autocomplete-selected {
       background-color: #8ecfff; }
+
+.progress {
+  border-collapse: collapse; }
+  .progress .parent {
+    cursor: pointer;
+    border-collapse: collapse;
+    background-color: #1ABC9C;
+    width: 100%;
+    border-right: 1px solid #16A085;
+    border-bottom: 1px solid #16A085; }
+    .progress .parent td {
+      padding: 5px; }
+  .progress .done {
+    background-color: #5ad29b; }
+
+.explain {
+  display: inline-block; }
+  .explain h3, .explain p {
+    display: inline-block; }
+  .explain span {
+    display: inline-block;
+    width: 30px;
+    height: 20px; }
+  .explain .done {
+    background-color: #5ad29b; }
+  .explain .undone {
+    background-color: #1ABC9C; }
+  .explain .con {
+    display: inline-block; }
+    .explain .con h3, .explain .con p, .explain .con .done, .explain .con .undone {
+      float: left; }
+    .explain .con p, .explain .con .done, .explain .con .undone {
+      margin: 3px 0 0 10px; }
+    .explain .con p {
+      margin-left: 30px; }
+
+.totalIntake {
+  display: none;
+  padding-top: 20%; }

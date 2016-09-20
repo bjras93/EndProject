@@ -125,3 +125,7 @@ E:\Projects\LifeStruct\LifeStruct\Website\obj\Debug\Website.Migrations.Like.reso
 E:\Projects\LifeStruct\LifeStruct\Website\obj\Debug\Website.Migrations.UserIdString.resources
 E:\Projects\LifeStruct\LifeStruct\Website\obj\Debug\Website.Migrations.FitnessLike.resources
 C:\Users\bjoe0771\Desktop\Website\LifeStruct\Website\obj\Debug\Website.Migrations.DietProgress.resources
+E:\Projects\LifeStruct\LifeStruct\Website\obj\Debug\Website.Migrations.DietProgress.resources
+E:\Projects\LifeStruct\LifeStruct\Website\obj\Debug\Website.Migrations.MealDietProgressModel.resources
+E:\Projects\LifeStruct\LifeStruct\Website\obj\Debug\Website.Migrations.VideoModel.resources
+E:\Projects\LifeStruct\LifeStruct\Website\obj\Debug\Website.Migrations.Unkown.resources

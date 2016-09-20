@@ -22,6 +22,7 @@
             dp.CalorieIntake = json.intake.ToString();
             dp.FoodId = json.foodId.ToString();
             dp.Day = DateTime.Now.ToString();
+            dp.Meal = Convert.ToInt32(json.meal);
 
             db.DietProgress.Add(dp);
             db.SaveChanges();

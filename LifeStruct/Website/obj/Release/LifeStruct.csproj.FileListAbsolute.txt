@@ -85,3 +85,6 @@ E:\Projects\LifeStruct\LifeStruct\Website\obj\Release\Website.Migrations.Author.
 E:\Projects\LifeStruct\LifeStruct\Website\obj\Release\Website.Migrations.Like.resources
 E:\Projects\LifeStruct\LifeStruct\Website\obj\Release\Website.Migrations.UserIdString.resources
 E:\Projects\LifeStruct\LifeStruct\Website\obj\Release\Website.Migrations.FitnessLike.resources
+E:\Projects\LifeStruct\LifeStruct\Website\obj\Release\Website.Migrations.DietProgress.resources
+E:\Projects\LifeStruct\LifeStruct\Website\obj\Release\Website.Migrations.MealDietProgressModel.resources
+E:\Projects\LifeStruct\LifeStruct\Website\obj\Release\Website.Migrations.VideoModel.resources

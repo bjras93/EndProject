@@ -224,6 +224,7 @@
     <Compile Include="Controllers\ApiControllers\DaysApiController.cs" />
     <Compile Include="Controllers\ApiControllers\MealsApiController.cs" />
     <Compile Include="Controllers\ApiControllers\UserApiController.cs" />
+    <Compile Include="Controllers\ApiControllers\VideoApiController.cs" />
     <Compile Include="Controllers\DietsController.cs" />
     <Compile Include="Controllers\FitnessController.cs" />
     <Compile Include="Controllers\HealthController.cs" />
@@ -304,6 +305,18 @@
     <Compile Include="Migrations\201609200914344_DietProgress.Designer.cs">
       <DependentUpon>201609200914344_DietProgress.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201609201503273_MealDietProgressModel.cs" />
+    <Compile Include="Migrations\201609201503273_MealDietProgressModel.Designer.cs">
+      <DependentUpon>201609201503273_MealDietProgressModel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201609201745342_VideoModel.cs" />
+    <Compile Include="Migrations\201609201745342_VideoModel.Designer.cs">
+      <DependentUpon>201609201745342_VideoModel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201609201818488_Unkown.cs" />
+    <Compile Include="Migrations\201609201818488_Unkown.Designer.cs">
+      <DependentUpon>201609201818488_Unkown.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Account\AccountViewModels.cs" />
     <Compile Include="Models\Diet\DaysModel.cs" />
@@ -319,6 +332,7 @@
     <Compile Include="Models\LikeModel.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\Account\UserViewModel.cs" />
+    <Compile Include="Models\Video\VideoModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
@@ -372,18 +386,18 @@
     <Content Include="Content\CSS\main.css" />
     <Content Include="Content\CSS\ng-tags-input.min.css" />
     <Content Include="Content\fonts\icomoon.svg" />
-    <Content Include="Content\img\user\5375c643-062c-43b1-86a7-43792a912abalegion %281%29.jpg" />
-    <Content Include="Content\img\user\sm-5375c643-062c-43b1-86a7-43792a912abalegion %281%29.jpg" />
     <Content Include="Content\img\web\pexels-photo.jpg" />
     <Content Include="Content\JS\layout\autocomplete.js" />
     <Content Include="Content\JS\layout\diet.js" />
     <Content Include="Content\JS\layout\fileupload.js" />
     <Content Include="Content\JS\layout\fitness.js" />
+    <Content Include="Content\JS\layout\hover.js" />
     <Content Include="Content\JS\layout\menu.js" />
     <Content Include="Content\JS\layout\modal.js" />
     <Content Include="Content\JS\layout\overlay.js" />
     <Content Include="Content\JS\layout\progress.js" />
     <Content Include="Content\JS\layout\readmore.js" />
+    <Content Include="Content\JS\layout\videos.js" />
     <Content Include="Content\JS\plugins\angular-sanitize.min.js" />
     <Content Include="Content\JS\plugins\angular.min.js" />
     <Content Include="Content\JS\plugins\jquery-3.1.0.min.js" />
@@ -466,12 +480,6 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Account\Details.cshtml" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Views\Account\Signup.cshtml" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Views\Account\Login.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\SCSS\styles\login.scss" />
@@ -562,6 +570,15 @@
     <EmbeddedResource Include="Migrations\201609200914344_DietProgress.resx">
       <DependentUpon>201609200914344_DietProgress.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201609201503273_MealDietProgressModel.resx">
+      <DependentUpon>201609201503273_MealDietProgressModel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201609201745342_VideoModel.resx">
+      <DependentUpon>201609201745342_VideoModel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201609201818488_Unkown.resx">
+      <DependentUpon>201609201818488_Unkown.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\SCSS\styles\autocomplete.scss" />
@@ -585,6 +602,7 @@
     <Content Include="Views\Shared\_AddNewExercise.cshtml" />
     <Content Include="Views\Fitness\Details.cshtml" />
     <Content Include="Views\Diets\Edit.cshtml" />
+    <Content Include="Views\Videos\Create.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

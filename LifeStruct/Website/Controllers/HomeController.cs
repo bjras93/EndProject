@@ -45,10 +45,10 @@ namespace LifeStruct.Controllers
 
             return db.Food.Find(Id);
         }
-        public static IEnumerable<DietProgressModel> GetProgress(string UserId, string DietId, string FoodId, string Intake)
+        public static IEnumerable<DietProgressModel> GetProgress(string UserId, string DietId, string FoodId, string Intake, int Meal)
         {
             DefaultConnection db = new DefaultConnection();
-            return db.DietProgress.ToList().Where(x => x.UserId == UserId && x.DietId == DietId && x.FoodId == FoodId && x.CalorieIntake == Intake);
+            return db.DietProgress.ToList().Where(x => x.UserId == UserId && x.DietId == DietId && x.FoodId == FoodId && x.CalorieIntake == Intake && x.Meal == Meal);
 
         }
     }

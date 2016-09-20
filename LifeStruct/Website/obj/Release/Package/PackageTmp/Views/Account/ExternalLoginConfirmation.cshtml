@@ -5,27 +5,29 @@
 
 @using (Html.BeginForm("ExternalLoginConfirmation", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
 {
-    @Html.AntiForgeryToken()
-
-    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-    <div class="form-group">
-        @Html.TextBoxFor(m => m.Name, new { @class = "ipt", @placeholder = "Full name" })
-        @Html.ValidationMessageFor(m => m.Name, "", new { @class = "text-danger" })
-    </div>
-    <div class="form-group">
-        @Html.TextBoxFor(m => m.Height, new { @class = "ipt", @type = "number", @placeholder = "Height" })
-        @Html.ValidationMessageFor(m => m.Height, "", new { @class = "text-danger" })
-    </div>
-    <div class="form-group">
-        @Html.TextBoxFor(m => m.Weight, new { @class = "ipt", @type= "number", @placeholder = "Weight" })
-        @Html.ValidationMessageFor(m => m.Weight, "", new { @class = "text-danger", @type = "number" })
-    </div>
-    <div class="form-group">
-        @Html.TextBoxFor(m => m.Email, new { @class = "ipt", @placeholder = "E-mail" })
-        @Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger", @type = "number" })
-    </div>
-    <div class="form-group">
-        <input type="submit" class="btn btn-default" value="Register" />
+    <div class="register g1">
+        @Html.AntiForgeryToken()
+        <h3>Hello @Model.Name.Split(' ')[0], is this information correct?</h3>
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+            @Html.TextBoxFor(m => m.Name, new { @class = "ipt", @placeholder = "Full name" })
+            @Html.ValidationMessageFor(m => m.Name, "", new { @class = "text-danger" })
+        </div>
+        <div class="form-group">
+            @Html.TextBoxFor(m => m.Height, new { @class = "ipt", @type = "number", @placeholder = "Height" })
+            @Html.ValidationMessageFor(m => m.Height, "", new { @class = "text-danger" })
+        </div>
+        <div class="form-group">
+            @Html.TextBoxFor(m => m.Weight, new { @class = "ipt", @type = "number", @placeholder = "Weight" })
+            @Html.ValidationMessageFor(m => m.Weight, "", new { @class = "text-danger", @type = "number" })
+        </div>
+        <div class="form-group">
+            @Html.TextBoxFor(m => m.Email, new { @class = "ipt", @placeholder = "E-mail" })
+            @Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger", @type = "number" })
+        </div>
+        <div class="form-group">
+            <input type="submit" class="btn btn-default" value="Register" />
+        </div>
     </div>
 }
 

@@ -1,27 +1,31 @@
 ﻿$spd: 15px;
 $smg: 5px 0;
 $smw: 250px;
+
 body {
     background: url('../img/web/pexels-photo.jpg');
-    background-size:cover;
+    background-size: cover;
     background-attachment: fixed;
 }
+
 .container {
     @extend .ib;
     margin: 0 15%;
     width: 70%;
 }
+
 .content {
     width: 100%;
     min-height: 350px;
     padding: 15px;
-    float:left;
+    float: left;
 }
+
 .stop-scroll {
     overflow: hidden;
 }
+
 .add {
-    
     position: fixed;
     right: 50px;
     bottom: -100px;
@@ -33,138 +37,197 @@ body {
     cursor: pointer;
     animation: bummer 1.5s;
     animation-fill-mode: forwards;
-
 }
+
 @keyframes bummer {
     20% {
         bottom: 70px;
     }
+
     40% {
         bottom: 20px;
     }
+
     60% {
         bottom: 70px;
     }
+
     80% {
         bottom: 45px;
     }
+
     100% {
         bottom: 70px;
     }
-
 }
+
 .text-danger {
     color: $red-1;
 }
+
 .ipt {
     margin: $smg;
     padding: $spd;
     min-width: $smw;
     box-sizing: border-box;
-    outline:none;
+    outline: none;
 }
+
 .btn {
-    display:block;
+    display: block;
     margin: $smg;
     padding: $spd;
     min-width: $smw;
-    text-align:center;
-    clear:both;
+    text-align: center;
+    clear: both;
     background-color: $gre-2;
     color: $w;
     box-sizing: border-box;
 }
+
 .type-1 {
     @extend .ib;
     @extend .left;
     width: 100%;
+
     .tile {
-    width: 20%;
-    height: 160px;
-    @extend .right;
+        width: 20%;
+        height: 160px;
+        @extend .right;
+    }
+    .tile-2 {
+        width: 40%;
+        height: 160px;
+        @extend .right;
+    }
+    .tile-3 {
+        width: 60%;
+        height: 160px;
+        @extend .right;
+    }
+    .tile-4 {
+        width: 80%;
+        height: 160px;
+        @extend .right;
     }
 }
+
 .type-1:after {
     @extend .clear;
 }
+
 .type-2 {
     @extend .left;
     @extend .ib;
     width: 100%;
+
     .tile {
-    width: 20%;
-    height: 160px;
-    @extend .left;
+        width: 20%;
+        height: 160px;
+        @extend .left;
+    }
+    .tile-2 {
+        width: 40%;
+        height: 160px;
+        @extend .left;
+    }
+    .tile-3 {
+        padding: $spd;
+        width: 60%;
+        height: 160px;
+        @extend .left;
+    }
+    .tile-4 {
+        padding: $spd;
+        width: 80%;
+        min-height: 160px;
+        @extend .left;
     }
 }
+
 .type-2:after {
     @extend .clear;
 }
+
 .tile {
     cursor: pointer;
-    text-align:center;
+    text-align: center;
+
     span {
         margin-top: 20%;
         @extend .ib;
         font-size: 4em;
     }
 }
+
 .mood {
     width: 60%;
-    float:left;
+    float: left;
+
     .tile {
         width: 33.33%;
     }
 }
+
 .user-section {
     padding: $spd 0;
 }
+
 .return {
-    display:inline-block;
+    display: inline-block;
     padding: 5px $spd;
     background-color: $gre-1;
     color: $w;
     margin: 10px 0;
     border-radius: 5px;
-    float:left;
+    float: left;
 }
+
 .overview {
     min-height: 200px;
     width: 49.5%;
     margin-right: 0.5%;
     margin-bottom: 0.5%;
-    float:left;
+    float: left;
     padding: $spd;
     background-color: rgb(32,170,143);
-    h3{
-      margin-bottom: $spd;
+
+    h3 {
+        margin-bottom: $spd;
     }
-    a {        
-      color: $w;
+
+    a {
+        color: $w;
     }
+
     .description {
         min-height: 100px;
     }
+
     .user-section {
         a {
-            display:inline-block;
+            display: inline-block;
             margin-right: 15px;
         }
+
         p {
-            display:inline-block;
+            display: inline-block;
         }
     }
 }
+
 .liked {
-    span{
-    color: $red-1;
+    span {
+        color: $red-1;
     }
 }
+
 .selected {
     .icon-food {
-        display:none;
+        display: none;
     }
+
     .icon-checkmark {
-        display:block;
+        display: block;
     }
 }

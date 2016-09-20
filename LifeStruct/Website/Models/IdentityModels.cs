@@ -3,6 +3,7 @@ using System.Security.Claims;
 using System.Threading.Tasks;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
+using System;
 
 namespace LifeStruct.Models
 {
@@ -13,7 +14,9 @@ namespace LifeStruct.Models
         public string Height { get; set; }
         public string Weight { get; set; }
         public string DietId { get; set; }
+        public string DietDate { get; set; }
         public string FitnessId { get; set; }
+        public string FitnessDate { get; set; }
 
         public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<ApplicationUser> manager)
         {

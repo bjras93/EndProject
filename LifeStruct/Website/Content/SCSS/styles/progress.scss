@@ -1,0 +1,65 @@
+﻿.progress {
+    border-collapse: collapse;
+
+    td, th {
+        padding: 5px;
+    }
+
+    tbody {
+        tr {
+            background-color: $gre-2;
+            cursor: pointer;
+
+            table {
+                tr {
+                    background: none;
+                }
+            }
+        }
+
+
+        .done {
+            background-color: $gre-5;
+        }
+    }
+}
+
+.explain {
+    display: inline-block;
+
+    h3, p {
+        display: inline-block;
+    }
+
+    span {
+        display: inline-block;
+        width: 30px;
+        height: 20px;
+    }
+
+    .done {
+        background-color: $gre-5;
+    }
+
+    .undone {
+        background-color: $gre-2;
+    }
+
+    .con{
+        display:inline-block;
+       h3, p, .done, .undone {
+            float:left;
+        }
+        p, .done, .undone {
+            
+            margin: 3px 0 0 10px;
+        }
+       p {
+           margin-left: 30px;
+       }
+    }
+}
+.totalIntake {
+    display:none;
+    padding-top: 20%;
+}

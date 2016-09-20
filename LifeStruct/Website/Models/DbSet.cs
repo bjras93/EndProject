@@ -13,5 +13,6 @@ namespace LifeStruct.Models
         public DbSet<ScheduleModel> Schedule { get; set; }
         public DbSet<MealCollectionModel> MealCollection { get; set; }
         public DbSet<LikeModel> Like { get; set; }
+        public DbSet<DietProgressModel> DietProgress { get; set; }
     }
 }

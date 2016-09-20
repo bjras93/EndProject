@@ -214,6 +214,7 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\ApiControllers\DietApiController.cs" />
+    <Compile Include="Controllers\ApiControllers\DietProgressApiController.cs" />
     <Compile Include="Controllers\ApiControllers\EdiblesApiController.cs" />
     <Compile Include="Controllers\ApiControllers\LikeApiController.cs" />
     <Compile Include="Controllers\ApiControllers\MealCollectionApiController.cs" />
@@ -299,11 +300,16 @@
     <Compile Include="Migrations\201609190818501_FitnessLike.Designer.cs">
       <DependentUpon>201609190818501_FitnessLike.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201609200914344_DietProgress.cs" />
+    <Compile Include="Migrations\201609200914344_DietProgress.Designer.cs">
+      <DependentUpon>201609200914344_DietProgress.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Account\AccountViewModels.cs" />
     <Compile Include="Models\Diet\DaysModel.cs" />
     <Compile Include="Models\DbSet.cs" />
     <Compile Include="Models\Diet\DietModel.cs" />
+    <Compile Include="Models\Diet\DietProgressModel.cs" />
     <Compile Include="Models\Diet\MealCollectionModel.cs" />
     <Compile Include="Models\Diet\MealsModel.cs" />
     <Compile Include="Models\Fitness\ExerciseModel.cs" />
@@ -376,6 +382,7 @@
     <Content Include="Content\JS\layout\menu.js" />
     <Content Include="Content\JS\layout\modal.js" />
     <Content Include="Content\JS\layout\overlay.js" />
+    <Content Include="Content\JS\layout\progress.js" />
     <Content Include="Content\JS\layout\readmore.js" />
     <Content Include="Content\JS\plugins\angular-sanitize.min.js" />
     <Content Include="Content\JS\plugins\angular.min.js" />
@@ -552,6 +559,9 @@
     <EmbeddedResource Include="Migrations\201609190818501_FitnessLike.resx">
       <DependentUpon>201609190818501_FitnessLike.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201609200914344_DietProgress.resx">
+      <DependentUpon>201609200914344_DietProgress.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\SCSS\styles\autocomplete.scss" />
@@ -567,6 +577,7 @@
     <Content Include="Content\JS\plugins\skins\lightgray\fonts\tinymce.eot" />
     <Content Include="Content\JS\plugins\skins\lightgray\fonts\tinymce.ttf" />
     <Content Include="Content\JS\plugins\skins\lightgray\fonts\tinymce.woff" />
+    <Content Include="Content\SCSS\styles\progress.scss" />
     <None Include="Properties\PublishProfiles\LifeStruct.pubxml" />
     <Content Include="Views\Fitness\Create.cshtml" />
     <Content Include="Views\Fitness\Edit.cshtml" />

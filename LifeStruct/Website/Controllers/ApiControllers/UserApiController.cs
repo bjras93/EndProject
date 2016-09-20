@@ -8,6 +8,7 @@
     using System.Web.Mvc;
     using Microsoft.AspNet.Identity.Owin;
     using System.Web.Http;
+    using System;
     public class UserApiController : ApiController
     {
 
@@ -41,12 +42,13 @@
                 if (json.dId != null)
                 {
                     user.DietId = json.dId.ToString();
-
-                     result = await UserManager.UpdateAsync(user);
+                    user.DietDate = DateTime.Now.ToString();
+                    result = await UserManager.UpdateAsync(user);
                 }
                 else
                 {
                     user.DietId = "";
+                    user.DietDate = "";
                     result = await UserManager.UpdateAsync(user);
                 }                
             }
@@ -56,11 +58,13 @@
                 if (json.dId != null)
                 {
                     user.FitnessId = json.dId.ToString();
+                    user.FitnessDate = DateTime.Now.ToString();
                     result = await UserManager.UpdateAsync(user);
                 }
                 else
                 {
                     user.FitnessId = "";
+                    user.FitnessDate = "";
                     result = await UserManager.UpdateAsync(user);
                 }
             }

@@ -163,12 +163,12 @@
         td, th {
             padding: $spd 15px $spd 15px;
             vertical-align: text-top;
+            border: 1px solid $gre-1;
         }
 
         tr {
             td {
                 background-color: $gre-3;
-                border: 2px solid $gre-1;
                 padding: 0;
 
                 &:first-child {
@@ -179,16 +179,23 @@
         }
 
         table {
+            tr{
+            &:first-child {
+                td {
+                    border-top: none;
+                    border-bottom: 1px solid $gre-1;
+                    
+                }
+            }
+            }
             tr {
                 td {
+                    border:none;
                     padding: $spd 25px $spd 25px;
-                    border: none;
-                    border-bottom: 1px solid $gre-1;
-                    border-right: 2px solid $gre-1;
+                    border-top: 1px solid $gre-1;
                 &:first-child {
                     background-color: $gre-3;
                     padding: $spd 15px $spd 15px;
-                    border-right: 1px solid $gre-1;
                 }
                 }
             }

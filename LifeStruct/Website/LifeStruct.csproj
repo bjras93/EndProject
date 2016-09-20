@@ -434,6 +434,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Content\img\user\" />
     <Folder Include="Views\MealCollection\" />
   </ItemGroup>
   <ItemGroup>

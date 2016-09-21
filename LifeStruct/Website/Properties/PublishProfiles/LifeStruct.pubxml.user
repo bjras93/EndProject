@@ -20,10 +20,10 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>09/13/2016 08:46:13</publishTime>
     </File>
     <File Include="bin/App_global.asax.compiled">
-      <publishTime>09/21/2016 11:17:50</publishTime>
+      <publishTime>09/21/2016 14:33:36</publishTime>
     </File>
     <File Include="bin/App_global.asax.dll">
-      <publishTime>09/21/2016 11:17:50</publishTime>
+      <publishTime>09/21/2016 14:33:36</publishTime>
     </File>
     <File Include="bin/EntityFramework.dll">
       <publishTime>09/13/2016 08:46:13</publishTime>
@@ -173,28 +173,28 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>09/13/2016 08:46:13</publishTime>
     </File>
     <File Include="bin/Website.dll">
-      <publishTime>09/21/2016 11:17:34</publishTime>
+      <publishTime>09/21/2016 14:32:46</publishTime>
     </File>
     <File Include="bin/Website.dll.config">
       <publishTime>09/16/2016 10:40:38</publishTime>
     </File>
     <File Include="Content/CSS/main.css">
-      <publishTime>09/21/2016 10:20:24</publishTime>
+      <publishTime>09/21/2016 13:23:54</publishTime>
     </File>
     <File Include="Content/CSS/ng-tags-input.min.css">
       <publishTime>09/19/2016 08:44:09</publishTime>
     </File>
     <File Include="Content/fonts/icomoon.eot">
-      <publishTime>09/20/2016 08:25:32</publishTime>
+      <publishTime>09/21/2016 12:37:07</publishTime>
     </File>
     <File Include="Content/fonts/icomoon.svg">
-      <publishTime>09/20/2016 08:25:32</publishTime>
+      <publishTime>09/21/2016 12:37:07</publishTime>
     </File>
     <File Include="Content/fonts/icomoon.ttf">
-      <publishTime>09/20/2016 08:25:32</publishTime>
+      <publishTime>09/21/2016 12:37:08</publishTime>
     </File>
     <File Include="Content/fonts/icomoon.woff">
-      <publishTime>09/20/2016 08:25:32</publishTime>
+      <publishTime>09/21/2016 12:37:08</publishTime>
     </File>
     <File Include="Content/img/user/5375c643-062c-43b1-86a7-43792a912abalegion %281%29.jpg">
       <publishTime>09/19/2016 15:16:47</publishTime>
@@ -209,7 +209,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>09/19/2016 08:44:09</publishTime>
     </File>
     <File Include="Content/JS/layout/diet.js">
-      <publishTime>09/21/2016 08:47:41</publishTime>
+      <publishTime>09/21/2016 14:30:41</publishTime>
     </File>
     <File Include="Content/JS/layout/fileupload.js">
       <publishTime>09/19/2016 08:44:09</publishTime>
@@ -236,7 +236,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>09/19/2016 09:22:44</publishTime>
     </File>
     <File Include="Content/JS/layout/videos.js">
-      <publishTime>09/21/2016 08:30:38</publishTime>
+      <publishTime>09/21/2016 13:42:53</publishTime>
     </File>
     <File Include="Content/JS/main.js">
       <publishTime>09/13/2016 08:46:13</publishTime>
@@ -332,16 +332,16 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>09/21/2016 10:09:36</publishTime>
     </File>
     <File Include="Content/SCSS/styles/diet.scss">
-      <publishTime>09/20/2016 08:41:50</publishTime>
+      <publishTime>09/21/2016 13:00:59</publishTime>
     </File>
     <File Include="Content/SCSS/styles/fitness.scss">
       <publishTime>09/16/2016 08:23:20</publishTime>
     </File>
     <File Include="Content/SCSS/styles/font.scss">
-      <publishTime>09/20/2016 08:25:32</publishTime>
+      <publishTime>09/21/2016 12:37:09</publishTime>
     </File>
     <File Include="Content/SCSS/styles/login.scss">
-      <publishTime>09/21/2016 08:30:38</publishTime>
+      <publishTime>09/21/2016 12:59:34</publishTime>
     </File>
     <File Include="Content/SCSS/styles/menu.scss">
       <publishTime>09/13/2016 08:46:13</publishTime>
@@ -356,13 +356,13 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>09/20/2016 10:50:02</publishTime>
     </File>
     <File Include="Content/SCSS/styles/video.scss">
-      <publishTime>09/21/2016 10:12:26</publishTime>
+      <publishTime>09/21/2016 13:23:54</publishTime>
     </File>
     <File Include="packages.config">
       <publishTime>09/13/2016 08:46:14</publishTime>
     </File>
     <File Include="PrecompiledApp.config">
-      <publishTime>09/21/2016 11:17:43</publishTime>
+      <publishTime>09/21/2016 14:33:29</publishTime>
     </File>
     <File Include="Views/Account/Details.cshtml">
       <publishTime>09/21/2016 08:30:38</publishTime>
@@ -383,37 +383,37 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>09/12/2016 19:33:18</publishTime>
     </File>
     <File Include="Views/Diets/Create.cshtml">
-      <publishTime>09/21/2016 08:30:38</publishTime>
+      <publishTime>09/21/2016 13:19:25</publishTime>
     </File>
     <File Include="Views/Diets/Details.cshtml">
-      <publishTime>09/19/2016 08:44:09</publishTime>
+      <publishTime>09/21/2016 12:54:49</publishTime>
     </File>
     <File Include="Views/Diets/Edit.cshtml">
-      <publishTime>09/19/2016 13:00:44</publishTime>
+      <publishTime>09/21/2016 14:31:04</publishTime>
     </File>
     <File Include="Views/Diets/Index.cshtml">
-      <publishTime>09/21/2016 08:46:38</publishTime>
+      <publishTime>09/21/2016 12:54:41</publishTime>
     </File>
     <File Include="Views/Diets/_AddMeals.cshtml">
       <publishTime>09/12/2016 19:33:18</publishTime>
     </File>
     <File Include="Views/Fitness/Create.cshtml">
-      <publishTime>09/14/2016 14:58:23</publishTime>
+      <publishTime>09/21/2016 12:54:24</publishTime>
     </File>
     <File Include="Views/Fitness/Details.cshtml">
-      <publishTime>09/14/2016 10:17:55</publishTime>
+      <publishTime>09/21/2016 12:54:27</publishTime>
     </File>
     <File Include="Views/Fitness/Edit.cshtml">
-      <publishTime>09/14/2016 13:44:07</publishTime>
+      <publishTime>09/21/2016 12:54:31</publishTime>
     </File>
     <File Include="Views/Fitness/Index.cshtml">
-      <publishTime>09/16/2016 08:23:20</publishTime>
+      <publishTime>09/21/2016 12:54:37</publishTime>
     </File>
     <File Include="Views/Health/Index.cshtml">
-      <publishTime>09/13/2016 08:46:13</publishTime>
+      <publishTime>09/21/2016 12:54:19</publishTime>
     </File>
     <File Include="Views/Home/Index.cshtml">
-      <publishTime>09/21/2016 11:09:30</publishTime>
+      <publishTime>09/21/2016 12:53:55</publishTime>
     </File>
     <File Include="Views/Shared/_AddMeals.cshtml">
       <publishTime>09/16/2016 08:23:20</publishTime>
@@ -428,16 +428,22 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>09/13/2016 08:46:13</publishTime>
     </File>
     <File Include="Views/Shared/_Layout.cshtml">
-      <publishTime>09/19/2016 08:44:09</publishTime>
+      <publishTime>09/21/2016 12:57:36</publishTime>
+    </File>
+    <File Include="Views/Shared/_logout.cshtml">
+      <publishTime>09/21/2016 12:48:11</publishTime>
     </File>
     <File Include="Views/Shared/_ScheduleExist.cshtml">
       <publishTime>09/13/2016 09:55:18</publishTime>
     </File>
     <File Include="Views/Videos/Create.cshtml">
-      <publishTime>09/21/2016 10:09:55</publishTime>
+      <publishTime>09/21/2016 13:41:30</publishTime>
+    </File>
+    <File Include="Views/Videos/Edit.cshtml">
+      <publishTime>09/21/2016 14:04:01</publishTime>
     </File>
     <File Include="Views/Videos/Index.cshtml">
-      <publishTime>09/21/2016 10:21:23</publishTime>
+      <publishTime>09/21/2016 13:26:46</publishTime>
     </File>
     <File Include="Views/Web.config">
       <publishTime>09/13/2016 08:46:13</publishTime>

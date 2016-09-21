@@ -39,7 +39,7 @@
             IdentityResult result = IdentityResult.Failed();
             if (json.type == 1)
             {
-                if (json.dId != null)
+                if (json.dId != null && !Convert.ToBoolean(json.add))
                 {
                     user.DietId = json.dId.ToString();
                     user.DietDate = DateTime.Now.ToString();

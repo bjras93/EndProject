@@ -28,7 +28,7 @@
             foreach(var mc in d.MealCollection)
             {
                 var fDb = db.Food.Find(mc.FoodId);
-                d.Food.Add(fDb.Name + "," + fDb.Calories);
+                d.Food.Add(fDb.Name + "|" + fDb.Calories);
             }
             return d;
            

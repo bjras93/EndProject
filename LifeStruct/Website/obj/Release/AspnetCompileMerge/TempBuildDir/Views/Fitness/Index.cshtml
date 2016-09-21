@@ -4,6 +4,9 @@
     var user = UserViewModel.GetCurrentUser();
     ViewBag.Title = "Fitness";
 }
+@section Signout{
+    @Html.Partial("~/Views/Shared/_logout.cshtml")
+}
 @Html.ActionLink("Return", "Index", "Home", null, new { @class = "return" })
 <div class="content g2">
     <div class="fitness fitness-index">

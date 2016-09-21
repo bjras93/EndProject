@@ -2,6 +2,9 @@
 @{
     ViewBag.Title = "Edit workout schedule";
 }
+@section Signout{
+    @Html.Partial("~/Views/Shared/_logout.cshtml")
+}
 <div class="content">
     <div class="fitness fitness-edit">
         @using (Html.BeginForm("Edit", "Fitness", FormMethod.Post))

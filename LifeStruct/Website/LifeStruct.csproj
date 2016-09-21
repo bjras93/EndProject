@@ -317,6 +317,10 @@
     <Compile Include="Migrations\201609201818488_Unkown.Designer.cs">
       <DependentUpon>201609201818488_Unkown.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201609210806178_VideoModelType.cs" />
+    <Compile Include="Migrations\201609210806178_VideoModelType.Designer.cs">
+      <DependentUpon>201609210806178_VideoModelType.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Account\AccountViewModels.cs" />
     <Compile Include="Models\Diet\DaysModel.cs" />
@@ -580,6 +584,9 @@
     <EmbeddedResource Include="Migrations\201609201818488_Unkown.resx">
       <DependentUpon>201609201818488_Unkown.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201609210806178_VideoModelType.resx">
+      <DependentUpon>201609210806178_VideoModelType.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\SCSS\styles\autocomplete.scss" />
@@ -606,6 +613,8 @@
     <Content Include="Views\Fitness\Details.cshtml" />
     <Content Include="Views\Diets\Edit.cshtml" />
     <Content Include="Views\Videos\Create.cshtml" />
+    <Content Include="Views\Shared\_logout.cshtml" />
+    <Content Include="Views\Videos\Edit.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

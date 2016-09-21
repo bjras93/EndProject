@@ -1,17 +1,28 @@
-﻿@{ 
+﻿@using LifeStruct.Models;
+@{ 
     ViewBag.Title = "Video";
+    var user = UserViewModel.GetCurrentUser();
+}
+@section Signout{
+    @Html.Partial("~/Views/Shared/_logout.cshtml")
 }
 @Html.ActionLink("Return", "Index", "Home", null, new { @class = "return" })
-<div ng-app="LifeStruct" ng-controller="videoIndexCtrl">
-    <input type="text" placeholder="Search" ng-model="search" class="ipt right" />
+<div ng-app="LifeStruct" class="video-con" ng-controller="videoIndexCtrl">
+    <input type="text" placeholder="Search" ng-model="search" class="ipt search right" />
     <div class="content">
         <div class="videos">
             <div class="video-index" ng-repeat="video in filteredVids = ( videos | filter: search)">
                 <h3>{{video.Title}}</h3>
                 <p class="description">{{video.Description}}</p>
                 <iframe width="560" height="315" ng-src="{{getFrameSrc(video.YouTubeId)}}" frameborder="0" allowfullscreen></iframe>
+                <div ng-if="video.UserId == '@user.Id'">
+                    <a href="/Videos/Edit/{{video.Id}}">
+                        <span class="icon-pencil"></span>
+                    </a>
+                    <span class="icon-bin" ng-click="deleteVideo(video.Id, video.Title, video.UserId)" ></span>
+                </div>
             </div>
-            <div ng-hide="filteredVids.length && videos != undefined"><h3>Could not find "{{search}}" try using a different search term</h3></div>
+            <div class="content w" ng-hide="filteredVids.length && videos != undefined"><h3>Could not find "{{search}}" try using a different search term</h3></div>
         </div>
     </div>
 </div>

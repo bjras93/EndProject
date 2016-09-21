@@ -5,15 +5,11 @@
     var user = UserViewModel.GetCurrentUser();
     var total = 0;
 }
+@section Signout{
+    @Html.Partial("~/Views/Shared/_logout.cshtml")
+}
 <input type="hidden" id="userId" value="@user.Id" />
 <input type="hidden" id="dietId" value="@user.DietId" />
-<div class="signout right">
-    @using (Html.BeginForm("LogOff", "Account", FormMethod.Post))
-    {
-        @Html.AntiForgeryToken()
-        <input class="signout-btn" type="submit" value="Sign out" />
-    }
-</div>
 <div class="type-1">
     <a href="/Account/Details">
         <div class="tile g3">
@@ -113,7 +109,7 @@
 
                                                 foreach (var d in dp)
                                                 {
-                                                    total += Convert.ToInt32(d.CalorieIntake);
+                                                    total += (int)Convert.ToDecimal(d.CalorieIntake);
                                                 }
                                                 <table onclick="progress.addDietProgress(event, '@f.Id', '@mc.DietId', '@intake', '@user.Id', '@mc.Meal')" class="parent @if (dp.Count() > 0) { <text>done</text>}" data-dietprogress="@if (dp.Count() > 0) { <text>@dp.First().Id</text>}" href="" title="Add to day">
                                                     <tr>

@@ -58,7 +58,6 @@ C:\Users\bjoe0771\Desktop\Website\LifeStruct\Website\bin\System.Net.Http.Formatt
 C:\Users\bjoe0771\Desktop\Website\LifeStruct\Website\bin\System.Web.Http.dll
 C:\Users\bjoe0771\Desktop\Website\LifeStruct\Website\bin\System.Web.Http.WebHost.dll
 C:\Users\bjoe0771\Desktop\Website\LifeStruct\Website\bin\Facebook.xml
-C:\Users\bjoe0771\Desktop\Website\LifeStruct\Website\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
 C:\Users\bjoe0771\Desktop\Website\LifeStruct\Website\bin\System.Net.Http.Formatting.xml
 C:\Users\bjoe0771\Desktop\Website\LifeStruct\Website\bin\System.Web.Http.xml
 C:\Users\bjoe0771\Desktop\Website\LifeStruct\Website\bin\System.Web.Http.WebHost.xml
@@ -88,3 +87,13 @@ E:\Projects\LifeStruct\LifeStruct\Website\obj\Release\Website.Migrations.DietPro
 E:\Projects\LifeStruct\LifeStruct\Website\obj\Release\Website.Migrations.MealDietProgressModel.resources
 E:\Projects\LifeStruct\LifeStruct\Website\obj\Release\Website.Migrations.VideoModel.resources
 E:\Projects\LifeStruct\LifeStruct\Website\obj\Release\Website.Migrations.Unkown.resources
+C:\Users\bjoe0771\Desktop\Website\LifeStruct\Website\obj\Release\Website.Migrations.TagsName.resources
+C:\Users\bjoe0771\Desktop\Website\LifeStruct\Website\obj\Release\Website.Migrations.Author.resources
+C:\Users\bjoe0771\Desktop\Website\LifeStruct\Website\obj\Release\Website.Migrations.Like.resources
+C:\Users\bjoe0771\Desktop\Website\LifeStruct\Website\obj\Release\Website.Migrations.UserIdString.resources
+C:\Users\bjoe0771\Desktop\Website\LifeStruct\Website\obj\Release\Website.Migrations.FitnessLike.resources
+C:\Users\bjoe0771\Desktop\Website\LifeStruct\Website\obj\Release\Website.Migrations.DietProgress.resources
+C:\Users\bjoe0771\Desktop\Website\LifeStruct\Website\obj\Release\Website.Migrations.MealDietProgressModel.resources
+C:\Users\bjoe0771\Desktop\Website\LifeStruct\Website\obj\Release\Website.Migrations.VideoModel.resources
+C:\Users\bjoe0771\Desktop\Website\LifeStruct\Website\obj\Release\Website.Migrations.Unkown.resources
+C:\Users\bjoe0771\Desktop\Website\LifeStruct\Website\obj\Release\Website.Migrations.VideoModelType.resources

@@ -146,8 +146,8 @@ var diet = {
                             var dIndex = $scope.dietData.findIndex(x => x.week == mc[i].WeekNo && x.day == mc[i].Day && x.meal == mc[i].Meal);
                             if (mc[i].Edible == 1) {
                                 $scope.dietData[dIndex].id = mc[i].Id;
-                                $scope.dietData[dIndex].name = f[i].split(',')[0];
-                                $scope.dietData[dIndex].calories = f[i].split(',')[1];
+                                $scope.dietData[dIndex].name = f[i].split('|')[0];
+                                $scope.dietData[dIndex].calories = f[i].split('|')[1];
                                 $scope.dietData[dIndex].week = mc[i].WeekNo;
                                 $scope.dietData[dIndex].day = mc[i].Day;
                                 $scope.dietData[dIndex].edible = mc[i].Edible;
@@ -158,8 +158,8 @@ var diet = {
                             else {
                                 $scope.dietData[dIndex].edibles.push({
                                     id: mc[i].Id,
-                                    name: f[i].split(',')[0],
-                                    calories: f[i].split(',')[1],
+                                    name: f[i].split('|')[0],
+                                    calories: f[i].split('|')[1],
                                     week: mc[i].WeekNo,
                                     day: mc[i].Day,
                                     edible: mc[i].Edible,
@@ -305,9 +305,13 @@ var diet = {
                         $scope.calc.days[(s.week - 1) + '_' + (s.day - 1)] += ($scope.obj[indexObj].cal / 100) * $scope.obj[indexObj].amount;
                     }
                     for (var e = 0; e < $scope.dietData[i].edibles.length; e++) {
-                        var edi = s.edibles[e];
-                        var indexObj = $scope.obj.findIndex(x => x.id == 'w' + edi.week + '_m' + edi.meal + '_d' + edi.day + '_e' + edi.edible)
-                        $scope.calc.days[(edi.week - 1) + '_' + (edi.day - 1)] += ($scope.obj[indexObj].cal / 100) * $scope.obj[indexObj].amount;
+                        if ($scope.obj[indexObj] != "") {
+                            var edi = s.edibles[e];
+                            var indexObj = $scope.obj.findIndex(x => x.id == 'w' + edi.week + '_m' + edi.meal + '_d' + edi.day + '_e' + edi.edible)
+                            if (indexObj > -1) {
+                                $scope.calc.days[(edi.week - 1) + '_' + (edi.day - 1)] += ($scope.obj[indexObj].cal / 100) * $scope.obj[indexObj].amount;
+                            }
+                        }
                     }
                     for (var m = 0; m < 4; m++) {
                         if (s.meal == (m + 1)) {
@@ -319,7 +323,9 @@ var diet = {
                             for (var e = 0; e < $scope.dietData[i].edibles.length; e++) {
                                 var edi = s.edibles[e];
                                 var indexObj = $scope.obj.findIndex(x => x.id == 'w' + edi.week + '_m' + edi.meal + '_d' + edi.day + '_e' + edi.edible);
-                                $scope.calc.calories[(m + 1) + '_' + (s.week - 1) + '_' + (s.day - 1)] += ($scope.obj[indexObj].cal / 100) * $scope.obj[indexObj].amount;
+                                if (indexObj > -1) {
+                                    $scope.calc.calories[(m + 1) + '_' + (s.week - 1) + '_' + (s.day - 1)] += ($scope.obj[indexObj].cal / 100) * $scope.obj[indexObj].amount;
+                                }
                             }
                         }
                     }
@@ -393,8 +399,10 @@ var diet = {
                     }
                 })
             }
-            $scope.selectDiet = function (dietId, uId) {
-                $http({ method: 'POST', url: api + 'UserApi/SetDiet', data: JSON.stringify({ uId: uId, dId: dietId, type: 1 }), contentType: "application/json" }).then(function (data) {
+            $scope.selectDiet = function (dietId, uId, selected) {
+               
+               
+                $http({ method: 'POST', url: api + 'UserApi/SetDiet', data: JSON.stringify({ uId: uId, dId: dietId, type: 1, add: selected == dietId }), contentType: "application/json" }).then(function (data) {
                     $scope.selected = data.data.DietId;
                 });
                 $scope.selected = '';

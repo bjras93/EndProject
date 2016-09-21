@@ -45,5 +45,35 @@ namespace LifeStruct.Controllers
             }
             return RedirectToAction("../Account/Index");
         }
+        [HttpGet]
+        public ActionResult Edit(string Id)
+        {
+            VideoModel vm = db.Video.Find(Id);
+            var user = UserViewModel.GetCurrentUser();
+            if (Request.IsAuthenticated && user.Id == vm.UserId)
+            {
+                return View(vm);
+            }
+            return RedirectToAction("../Account/Index");
+        }
+        [HttpPost]
+        public ActionResult Edit(VideoModel model)
+        {
+            var user = UserViewModel.GetCurrentUser();
+            if (Request.IsAuthenticated && user.Id == model.UserId)
+            {
+                if (ModelState.IsValid)
+                {
+                    db.Entry(model).State = System.Data.Entity.EntityState.Modified;
+                    db.SaveChanges();
+                    return RedirectToAction("../Videos/Index");
+                }
+                else
+                {
+                    return View();
+                }
+            }
+            return RedirectToAction("../Account/Index");
+        }
     }
 }

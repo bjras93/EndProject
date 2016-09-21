@@ -2,6 +2,9 @@
 @{ ViewBag.Title = Model.Title;
 
     string id = Model.Id;}
+@section Signout{
+    @Html.Partial("~/Views/Shared/_logout.cshtml")
+}
 <div ng-app="LifeStruct">
     @Html.ActionLink("Return", "Index", "Diets", null, new { @class = "return" })
     @using (Html.BeginForm("Edit", "Diets", FormMethod.Post, new { enctype = "multipart/form-data" }))
@@ -41,7 +44,7 @@
                                                 <div ng-init="Ids = 'w' + week.no + '_m' + diet.meal + '_d' + diet.day + '_e' + 1"></div>
                                                 <input name="{{'collectionId_' + Ids}}" ng-value="diet.id" type="hidden">
                                                 <div ng-init="calCalc(calc.edibleCalories[Ids], measureEdible[Ids], dietIndex, Ids);"></div>
-                                                <input autocomplete="off" type="text" ng-model="searches.searchEdibles[Ids]" id="{{'selected' + Ids + '_sI'}}" ng-keypress="hideResult(Ids, false); setId(Ids);" ng-keyup="results('result' + Ids, searches.searchEdibles[Ids]);" onkeydown="keyDown(event);" name="name_{{Ids}}" ng-value="diet.name" placeholder="Edible" class="ipt" />
+                                                <input autocomplete="off" type="text" ng-model="searches.searchEdibles[Ids]" id="{{'selected' + Ids + '_sI'}}" ng-keypress="hideResult(Ids, false); setId(Ids);" ng-keyup="results('result' + Ids, searches.searchEdibles[Ids]);" onkeydown="keyDown(event);" name="name_{{Ids}}" ng-value="diet.name" placeholder="Edible" class="ipt" />                                                
                                                 <div class="autocomplete-container">
                                                     <div class="autocomplete" id="{{'autocomplete' + Ids}}" ng-if="searches.searchEdibles[Ids].length > 0">
                                                         <div ng-repeat="food in allFood | filter:searches.searchEdibles[Ids] | limitTo: 5 | orderBy: 'Name.length'">

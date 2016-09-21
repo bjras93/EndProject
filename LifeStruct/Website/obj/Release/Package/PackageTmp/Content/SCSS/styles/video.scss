@@ -1,72 +1,91 @@
-﻿.videos {
-    float:left;
-    width:100%;
-        :nth-child(odd) {
-            margin-right: 4%;
-        }
-    .video-index {
-        float:left;
-        color: #333;
-        border: 1px solid rgb(190,190,190);
-        background: $w;
-        display: inline-block;
-        width: 48%;
-        padding: $spd;
-        @include tablet {
-            width:100%;
-            margin-bottom: 15px;
-        }
-        @include phone {
-            width:100%;
-            margin-bottom: 15px;
-            
-        }
-        iframe {
-            height: 350px;
-            width: 100%;
-        }
-        h3 {
-            height: 50px;
-        }
-        .description {
-            height:120px;
-            margin: 20px 0;
-        }
+﻿.video-con {
+    .content {
+        background-color: rgb(190,225,200);
+    }
+    .icon-bin, .icon-pencil {
+        cursor: pointer;
+        display:inline-block;
+        margin: 10px 5px;
     }
 
-    .video {
-        padding:$spd;
-        color: $w;
-        background-color: $gre-1;
-        width: 60%;
-        @include tablet {
-            width:100%;
-        }
-        @include phone {
-            width:100%;
-        }
-        .tags {
-            padding: 15px;
-            padding-left: 5px;
+    .videos {
+        float: left;
+        width: 100%;
 
-            input {
-                width: 163px !important;
-                font: 12pt 'Roboto', 'Open Sans', Verdana, Calibri, sans-serif;
-                font-weight: 500;
+        .video-index:nth-child(odd) {
+            margin-right: 2%;
+        }
+        .video-index {
+            float: left;
+            color: #333;
+            border: 1px solid rgb(190,190,190);
+            background-color: rgb(245,250,233);
+            display: inline-block;
+            width: 48%;
+            padding: $spd;
+            margin-bottom: 2%;
+
+            @include tablet {
+                width: 100%;
+                margin-bottom: 15px;
+            }
+
+            @include phone {
+                width: 100%;
+                margin-bottom: 15px;
+            }
+
+            iframe {
+                height: 350px;
+                width: 100%;
+            }
+
+            h3 {
+                height: 50px;
+            }
+
+            .description {
+                height: 120px;
+                margin: 20px 0;
             }
         }
 
-        tags-input {
-            width: 75%;
-        }
+        .video {
+            padding: $spd;
+            color: $w;
+            background-color: $gre-1;
+            width: 60%;
 
-        table {
-            width: 100%;
-        }
+            @include tablet {
+                width: 100%;
+            }
 
-        .ipt {
-            width: 75%;
+            @include phone {
+                width: 100%;
+            }
+
+            .tags {
+                padding: 15px;
+                padding-left: 5px;
+
+                input {
+                    width: 163px !important;
+                    font: 12pt 'Roboto', 'Open Sans', Verdana, Calibri, sans-serif;
+                    font-weight: 500;
+                }
+            }
+
+
+            table {
+                width: 60%;
+                @include phone{
+                    width:100%;
+                }
+            }
+
+            .ipt {
+                width: 100%;
+            }
         }
     }
 }
-

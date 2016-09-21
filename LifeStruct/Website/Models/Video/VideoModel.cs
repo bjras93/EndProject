@@ -13,5 +13,7 @@ namespace LifeStruct.Models
         [Required(ErrorMessage = "YouTubeId is required")]
         public string YouTubeId { get; set; }
         public string UserId { get; set; }
+        [Range(1, int.MaxValue, ErrorMessage = "Please select what type your video is")]
+        public int Type { get; set; }
     }
 }

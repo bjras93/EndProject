@@ -17,11 +17,18 @@
    }
 }
 .signout {
+    position:relative;
     .signout-btn {
+        width:30px;
         padding: 5px;
         border-radius: 5px;
         color: $w;
         margin-bottom: 5px;
         background: $red-1;
+        .icon-exit {
+            display:block;
+            margin: 2px;
+        }
     }
+    
 }

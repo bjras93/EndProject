@@ -4,6 +4,9 @@
     ViewBag.Title = Model.Title;
 
 }
+@section Signout{
+    @Html.Partial("~/Views/Shared/_logout.cshtml")
+}
 @Html.ActionLink("Return", "Index", "Diets", null, new { @class = "return" })
 
     <div class="diet-information">

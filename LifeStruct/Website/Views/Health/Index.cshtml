@@ -1,6 +1,33 @@
-﻿@{
+﻿@using LifeStruct.Models;
+@{
     ViewBag.Title = "Health articles";
+    var user = UserViewModel.GetCurrentUser();
 }
 @section Signout{
     @Html.Partial("~/Views/Shared/_logout.cshtml")
 }
+<div ng-app="LifeStruct" ng-controller="articleIndexCtrl">
+    <input type="text" class="ipt search right" ng-model="search" placeholder="Search" />
+    @Html.ActionLink("Return", "Index", "Home", null, new { @class = "return" })
+    <div class="content">
+        <div class="articles">
+            <div class="article" ng-repeat="article in articles.Articles | filter: search">
+                <div class="header"><a href="/Health/Details/{{article.Id}}"><h3>{{article.Title}}</h3></a></div>
+                <div class="article-content"><div ng-bind-html="article.Content.length > 400 ? (article.Content | limitTo: 400) + '...' : article.Content"></div></div>
+                <div class="user-section">
+                    <div ng-init="user = findUser(article.UserId, article.Id, articles.Users)"></div>
+                    <span class="icon-heart"></span>
+                    <div ng-if="user.UserId == '@user.Id'">
+                        <span class="icon-pencil"></span>
+                        <span class="icon-bin"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+@Html.ActionLink("+", "Create", null, new { @class = "add add-article" })
+<script src="~/Content/JS/layout/article.js"></script>
+<script>
+    article.init();
+</script>

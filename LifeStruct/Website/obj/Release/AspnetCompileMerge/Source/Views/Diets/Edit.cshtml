@@ -36,7 +36,7 @@
                                 <a ng-click="hideNxt($event, '.pnl');" class="days" href="">{{day.split(',')[0]}}<span ng-if="calc.days[weekIndex + '_' + dayIndex] != 0 && calc.days[weekIndex + '_' + dayIndex] != undefined" class="right">{{(calc.days[weekIndex + '_' + dayIndex] | number: 0).replace(',', '.')}} kcal</span></a>
                                 <div ng-class="day == days[0] ? '' : 'hide'" class="pnl">
                                     <div ng-repeat="diet in dietData | filter: edible" ng-if="days[diet.day -1] == day && week.no == diet.week" class="meals">
-                                        
+                                        <div ng-init="dietIndex = $index"></div>
                                             <div ng-init="mealIndex = diet.meal"></div>
                                             <a ng-click="hideNxt($event, '.week');" href="">{{meals[diet.meal -1]}} <span class="right" ng-if="calc.calories[mealIndex + '_' + weekIndex + '_' + dayIndex] != 0 && calc.calories[mealIndex + '_' + weekIndex + '_' + dayIndex] != undefined">{{(calc.calories[mealIndex + '_' + weekIndex + '_' + dayIndex] | number: 0).replace(',', '.')}} kcal</span></a>
                                             <!-- Edible first repeater-->
@@ -70,7 +70,7 @@
                                                 <!-- Second repeater -->
                                                 <div ng-repeat="edible in diet.edibles">
                                                     <div ng-init="eIds = 'w' + week.no + '_m' + diet.meal + '_d' + diet.day + '_e' + ($index +2)"></div>
-                                                    <div ng-init="calCalc(calc.edibleCalories[eIds], measureEdible[eIds], dietIndex, eIds);"></div>
+                                                    <div></div>
                                                     <input name="{{'collectionId_' + eIds}}" ng-value="edible.id" type="hidden">
                                                     <input autocomplete="off" type="text" ng-model="searches.searchEdibles[eIds]" id="{{'selected' + eIds + '_sI'}}" ng-keypress="hideResult(eIds, false);" ng-keydown="setId(eIds);" ng-keyup="results('result' + eIds, searches.searchEdibles[eIds]);" onkeydown="keyDown(event); " name="name_{{eIds}}" ng-value="edible.name" placeholder="Edible" class="ipt" />
                                                     <div class="autocomplete-container">

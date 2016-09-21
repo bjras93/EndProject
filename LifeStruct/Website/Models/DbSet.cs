@@ -15,5 +15,6 @@ namespace LifeStruct.Models
         public DbSet<LikeModel> Like { get; set; }
         public DbSet<DietProgressModel> DietProgress { get; set; }
         public DbSet<VideoModel> Video { get; set; }
+        public DbSet<HealthModel> Health { get; set; }
     }
 }

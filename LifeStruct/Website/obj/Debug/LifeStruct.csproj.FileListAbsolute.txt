@@ -127,9 +127,11 @@ E:\Projects\LifeStruct\LifeStruct\Website\obj\Debug\Website.Migrations.DietProgr
 E:\Projects\LifeStruct\LifeStruct\Website\obj\Debug\Website.Migrations.MealDietProgressModel.resources
 E:\Projects\LifeStruct\LifeStruct\Website\obj\Debug\Website.Migrations.VideoModel.resources
 E:\Projects\LifeStruct\LifeStruct\Website\obj\Debug\Website.Migrations.Unkown.resources
-E:\Projects\LifeStruct\LifeStruct\Website\bin\Website.dll.CodeAnalysisLog.xml
-E:\Projects\LifeStruct\LifeStruct\Website\bin\Website.dll.lastcodeanalysissucceeded
 C:\Users\bjoe0771\Desktop\Website\LifeStruct\Website\obj\Debug\Website.Migrations.MealDietProgressModel.resources
 C:\Users\bjoe0771\Desktop\Website\LifeStruct\Website\obj\Debug\Website.Migrations.VideoModel.resources
 C:\Users\bjoe0771\Desktop\Website\LifeStruct\Website\obj\Debug\Website.Migrations.Unkown.resources
 C:\Users\bjoe0771\Desktop\Website\LifeStruct\Website\obj\Debug\Website.Migrations.VideoModelType.resources
+E:\Projects\LifeStruct\LifeStruct\Website\obj\Debug\Website.Migrations.VideoModelType.resources
+E:\Projects\LifeStruct\LifeStruct\Website\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+E:\Projects\LifeStruct\LifeStruct\Website\obj\Debug\Website.Migrations.HealthModel.resources
+E:\Projects\LifeStruct\LifeStruct\Website\obj\Debug\Website.Migrations.ArticleUserRequiredFalse.resources

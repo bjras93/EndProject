@@ -712,9 +712,19 @@ body {
       .video-con .videos .video-index {
         width: 100%;
         margin-bottom: 15px; } }
-    .video-con .videos .video-index iframe {
-      height: 350px;
-      width: 100%; }
+    .video-con .videos .video-index .player {
+      position: relative; }
+      .video-con .videos .video-index .player iframe {
+        height: 350px;
+        width: 100%;
+        background: #333; }
+      .video-con .videos .video-index .player .icon-play {
+        font-size: 5em;
+        position: absolute;
+        color: #fff;
+        top: 35%;
+        left: 40%;
+        cursor: pointer; }
     .video-con .videos .video-index h3 {
       height: 50px; }
     .video-con .videos .video-index .description {

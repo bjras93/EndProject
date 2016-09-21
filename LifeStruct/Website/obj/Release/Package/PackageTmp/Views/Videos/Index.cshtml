@@ -11,10 +11,14 @@
     <input type="text" placeholder="Search" ng-model="search" class="ipt search right" />
     <div class="content">
         <div class="videos">
-            <div class="video-index" ng-repeat="video in filteredVids = ( videos | filter: search)">
+            <div class="video-index" ng-repeat="video in filteredVids = ( videos | filter: search) | limitTo:20">
                 <h3>{{video.Title}}</h3>
-                <p class="description">{{video.Description}}</p>
-                <iframe width="560" height="315" ng-src="{{getFrameSrc(video.YouTubeId)}}" frameborder="0" allowfullscreen></iframe>
+                <p class="description">{{video.Description}}</p>                
+                <div class="player">
+                    <iframe width="560" height="315" frameborder="0" allowfullscreen></iframe>
+                    <span data-source="{{getFrameSrc(video.YouTubeId)}}"></span>
+                    <span onclick="setUrl(this)" class="icon-play"></span>
+                </div>
                 <div ng-if="video.UserId == '@user.Id'">
                     <a href="/Videos/Edit/{{video.Id}}">
                         <span class="icon-pencil"></span>
@@ -23,6 +27,13 @@
                 </div>
             </div>
             <div class="content w" ng-hide="filteredVids.length && videos != undefined"><h3>Could not find "{{search}}" try using a different search term</h3></div>
+            <div ng-if="page > 0">
+                <button class="btn" ng-click="videoList(page, 20, false)">Previous page</button>
+            </div>
+            <div ng-if="videos.length == 20">
+                <button class="btn" ng-click="videoList(page, 20, true)">Next page</button>
+            </div>
+            
         </div>
     </div>
 </div>

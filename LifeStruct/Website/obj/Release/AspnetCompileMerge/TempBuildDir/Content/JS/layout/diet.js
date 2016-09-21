@@ -90,7 +90,6 @@ var diet = {
                         method: 'GET',
                         url: api + 'EdiblesApi/FindByName?s=' + newVal[$scope.sId]
                     }).then(function (data) {
-
                         $scope.allFood = data.data;
                     });
                 }
@@ -250,6 +249,7 @@ var diet = {
                         foodId: '',
 
                     });
+
                 }
             }
             var prevIndex = -1;
@@ -258,12 +258,21 @@ var diet = {
             var days = 7;
             $scope.obj = [];
             $scope.$watch('dietData', function (oldValue, newValue) {
-
                 for (var i = 0; i < $scope.dietData.length; i++) {
                     var Ids = 'w' + $scope.dietData[i].week + '_m' + $scope.dietData[i].meal + '_d' + $scope.dietData[i].day + '_e' + $scope.dietData[i].edible;
                     var idIndex = $scope.obj.findIndex(x=> x.id == Ids);
+                    var edi = $scope.dietData[i].edibles;
                     if ($scope.dietData[i].calories != undefined && $scope.dietData[i].calories != null && $scope.dietData[i].calories != '' && idIndex == -1) {
                         $scope.obj.push({ cal: $scope.dietData[i].calories, amount: $scope.dietData[i].amount, index: i, id: Ids, prevCal: ($scope.dietData[i].calories / 100) * $scope.dietData[i].amount });
+                    }
+                    if (edi.length > 0) {                        
+                        for (var e = 0; e < edi.length; e++) {
+                            if (edi[e].calories > 0) {
+                                var eIds = 'w' + edi[e].week + '_m' + edi[e].meal + '_d' + edi[e].day + '_e' + edi[e].edible;
+                                $scope.obj.push({ cal: edi[e].calories, amount: edi[e].amount, index: i, id: eIds, prevCal: (edi[e].calories / 100) * edi[e].amount });
+                            }
+                        }
+                        console.log($scope.obj)
                     }
                 }
             }, true);
@@ -280,7 +289,6 @@ var diet = {
                     meal = split[1].replace('m', '');
                     day = split[2].replace('d', '');
                     edible = split[3].replace('e', '');
-
                 }
                 for (var w = 0; w < $scope.weeks.length; w++) {
                     $scope.calc.days[w + '_' + 0] = 0;
@@ -320,7 +328,7 @@ var diet = {
                                 $scope.calc.calories[(m + 1) + '_' + (s.week - 1) + '_' + (s.day - 1)] += ($scope.obj[iObj].cal / 100) * $scope.obj[iObj].amount;
                             }
 
-                            for (var e = 0; e < $scope.dietData[i].edibles.length; e++) {
+                            for (var e = 0; e < s.edibles.length; e++) {
                                 var edi = s.edibles[e];
                                 var indexObj = $scope.obj.findIndex(x => x.id == 'w' + edi.week + '_m' + edi.meal + '_d' + edi.day + '_e' + edi.edible);
                                 if (indexObj > -1) {
@@ -345,7 +353,6 @@ var diet = {
                         $scope.obj[idIndex].amount = amount;
                         var calAdd = ($scope.obj[idIndex].cal / 100) * $scope.obj[idIndex].amount;
                         $scope.obj[idIndex].prevCal = calAdd;
-
                     }
                 }
                 else {
@@ -393,15 +400,14 @@ var diet = {
                 $http({ method: 'GET', url: api + 'LikeApi/FindByUIdType?uId=' + uId + '&type=' + 1 }).then(function (data) {
                     for (var i = 0; i < data.data.length; i++) {
                         if (dietId == data.data[i].TypeId) {
-                            console.log(data.data[i])
                             $scope.l.liked[dietId] = data.data[i].UserId;
                         }
                     }
                 })
             }
             $scope.selectDiet = function (dietId, uId, selected) {
-               
-               
+
+
                 $http({ method: 'POST', url: api + 'UserApi/SetDiet', data: JSON.stringify({ uId: uId, dId: dietId, type: 1, add: selected == dietId }), contentType: "application/json" }).then(function (data) {
                     $scope.selected = data.data.DietId;
                 });

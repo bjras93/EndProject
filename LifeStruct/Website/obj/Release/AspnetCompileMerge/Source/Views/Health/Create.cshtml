@@ -1,0 +1,50 @@
+﻿@model HealthModel
+@{
+    ViewBag.Title = "Health articles";
+}
+@section Signout{
+    @Html.Partial("~/Views/Shared/_logout.cshtml")
+}
+<div ng-app="LifeStruct" ng-controller="articleCreateCtrl">
+    <input type="text" class="ipt search right" placeholder="Search" />
+    @Html.ActionLink("Return", "Index", "Health", null, new { @class = "return" })
+    <div class="content">
+        <div class="create-articles">
+            <div class="article">
+                @using (Html.BeginForm("Create", "Health", FormMethod.Post))
+                {
+                    @Html.ValidationSummary(true)
+                    <table>
+                        <tr>
+                            <td>
+                                <input type="text" name="Title" placeholder="Title" /><br />
+                                @Html.ValidationMessageFor(x => x.Title)
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <textarea placeholder="Content" class="tinymce" name="Content"></textarea><br />
+                                @Html.ValidationMessageFor(x => x.Content)
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <ng-tags ng-model="tags"></ng-tags>
+                                <input type="hidden" name="Tags" value="{{tags}}" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <input type="submit" class="btn" value="Create article" />
+                            </td>
+                        </tr>
+                    </table>
+                }
+            </div>
+        </div>
+    </div>
+</div>
+<script src="~/Content/JS/layout/article.js"></script>
+<script>
+    article.create();
+</script>

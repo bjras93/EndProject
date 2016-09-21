@@ -216,6 +216,7 @@
     <Compile Include="Controllers\ApiControllers\DietApiController.cs" />
     <Compile Include="Controllers\ApiControllers\DietProgressApiController.cs" />
     <Compile Include="Controllers\ApiControllers\EdiblesApiController.cs" />
+    <Compile Include="Controllers\ApiControllers\HealthApiController.cs" />
     <Compile Include="Controllers\ApiControllers\LikeApiController.cs" />
     <Compile Include="Controllers\ApiControllers\MealCollectionApiController.cs" />
     <Compile Include="Controllers\ApiControllers\ScheduleApiController.cs" />
@@ -321,6 +322,14 @@
     <Compile Include="Migrations\201609210806178_VideoModelType.Designer.cs">
       <DependentUpon>201609210806178_VideoModelType.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201609211639081_HealthModel.cs" />
+    <Compile Include="Migrations\201609211639081_HealthModel.Designer.cs">
+      <DependentUpon>201609211639081_HealthModel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201609211701183_ArticleUserRequiredFalse.cs" />
+    <Compile Include="Migrations\201609211701183_ArticleUserRequiredFalse.Designer.cs">
+      <DependentUpon>201609211701183_ArticleUserRequiredFalse.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Account\AccountViewModels.cs" />
     <Compile Include="Models\Diet\DaysModel.cs" />
@@ -333,6 +342,7 @@
     <Compile Include="Models\Fitness\FitnessModel.cs" />
     <Compile Include="Models\Diet\FoodModel.cs" />
     <Compile Include="Models\Fitness\ScheduleModel.cs" />
+    <Compile Include="Models\Health\HealthModel.cs" />
     <Compile Include="Models\LikeModel.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\Account\UserViewModel.cs" />
@@ -391,6 +401,7 @@
     <Content Include="Content\CSS\ng-tags-input.min.css" />
     <Content Include="Content\fonts\icomoon.svg" />
     <Content Include="Content\img\web\pexels-photo.jpg" />
+    <Content Include="Content\JS\layout\article.js" />
     <Content Include="Content\JS\layout\autocomplete.js" />
     <Content Include="Content\JS\layout\diet.js" />
     <Content Include="Content\JS\layout\fileupload.js" />
@@ -587,6 +598,12 @@
     <EmbeddedResource Include="Migrations\201609210806178_VideoModelType.resx">
       <DependentUpon>201609210806178_VideoModelType.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201609211639081_HealthModel.resx">
+      <DependentUpon>201609211639081_HealthModel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201609211701183_ArticleUserRequiredFalse.resx">
+      <DependentUpon>201609211701183_ArticleUserRequiredFalse.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\SCSS\styles\autocomplete.scss" />
@@ -615,6 +632,9 @@
     <Content Include="Views\Videos\Create.cshtml" />
     <Content Include="Views\Shared\_logout.cshtml" />
     <Content Include="Views\Videos\Edit.cshtml" />
+    <Content Include="Views\Health\Create.cshtml" />
+    <Content Include="Views\Health\Edit.cshtml" />
+    <Content Include="Views\Health\Details.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

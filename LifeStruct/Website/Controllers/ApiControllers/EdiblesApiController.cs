@@ -16,7 +16,7 @@
         {
             var result = from c in db.Food where c.Name.ToLower().StartsWith(s.ToLower()) select c;
 
-            return result.ToList().Take(5);
+            return result.ToList();
         }        
     }
 }

@@ -1,14 +1,23 @@
 ﻿namespace Website.Controllers.ApiControllers
 {
     using LifeStruct.Models;
+    using Newtonsoft.Json.Linq;
+    using System;
     using System.Linq;
     using System.Web.Http;
     public class VideoApiController : ApiController
     {
-        DefaultConnection db = new DefaultConnection();        
-        public IHttpActionResult GetVideos()
+        DefaultConnection db = new DefaultConnection();
+        [Route("api/VideoApi/GetVideos")]
+        [HttpPost]    
+        public IHttpActionResult GetVideos(JObject jData)
         {
-            return Ok(db.Video.ToList());
+            dynamic json = jData;
+            
+            int take = Convert.ToInt32(json.take);
+            int skip = Convert.ToInt32(json.skip);
+            
+            return Ok(db.Video.ToList().Skip(skip).Take(take));
         }
         [HttpGet]
         [Route("api/VideoApi/DeleteVideo")]

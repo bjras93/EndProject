@@ -25,7 +25,7 @@
             }
             return RedirectToAction("../Account/Index");
         }
-        [HttpPost]
+        [HttpPost, ValidateInput(false)]
         public ActionResult Create(string f_title, string f_description)
         {
 

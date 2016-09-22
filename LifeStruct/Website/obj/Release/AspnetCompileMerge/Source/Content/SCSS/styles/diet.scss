@@ -15,7 +15,9 @@
 .create-diet {
     width: 100%;
     @extend .ib;
-
+    #modelImg {
+        min-height: 300px;
+    }
     .ipt {
         width: 100%;
     }
@@ -23,6 +25,9 @@
     .period {
         color: $w;
         background-color: $gre-5;
+        @include phone {
+            background-color: $gre-2;
+        }
 
         a {
             color: #333;
@@ -51,6 +56,11 @@
         padding-top: ($spd+5);
         margin-right: 1%;
         margin-bottom: 1%;
+        @include phone {
+            width: 96%;
+        margin-right: 2%;
+        margin-bottom: 2%;
+        }
     .weeks {
         padding: $spd;
         width: 100%;
@@ -91,6 +101,9 @@
         float:left;
         padding:15px;
         position:relative;
+        @include phone{
+            width: 100%;
+        }
         
        
 .img-edit {
@@ -150,11 +163,19 @@
     border: 1px solid rgb(190,190,190);
 }
 .diet-schedule {
+    .schedule {
+        width:100%;
+        margin-bottom: 20px;
+        border-right:1px solid $gre-1;
+        @include phone {
+            overflow-x: auto;
+        }
+    }
     table {
+        width:100%;
         text-align: left;
         border-collapse: collapse;
         border-spacing: 0;
-
 
         thead {
             background-color: $gre-2;
@@ -187,6 +208,10 @@
                     
                 }
             }
+            &:last-child {
+                
+                    border-bottom: 1px solid $gre-1;
+            }
             }
             tr {
                 td {
@@ -210,8 +235,8 @@
         width: 100%;
     }
     .description {
-        background-color: $w;
         padding: $spd;
+        @extend .w;
     }
 }
 .diet-overview {

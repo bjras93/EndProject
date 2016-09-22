@@ -34,8 +34,14 @@
     </div>
 </div>
 <div class="type-2">
-    <div class="tile r1">
-        <span class="icon-share2"></span>
+    <div class="tile left g4" onmouseover="progress.mouseOver('.intakeHover', '.totalIntake');" onmouseleave="progress.mouseOver('.totalIntake','.intakeHover');">
+        @if (!string.IsNullOrEmpty(user.DietId))
+        {
+
+            <div class="totalIntake">Calories today: @total</div>
+        }
+        <span class="icon-pie-chart intakeHover">
+        </span>
     </div>
     <a href="/Videos/Index">
         <div class="tile g2">
@@ -67,7 +73,7 @@
         TimeSpan dateResult;
         dateResult = DateTime.Now - Convert.ToDateTime(user.DietDate);
         var week = Math.Ceiling(dateResult.TotalDays / 7);
-        <div class="tile-4 g1">
+        <div class="tile-5 g1">
             <div class="explain">
                 <div class="con">
                     <h3>Diet for today</h3>
@@ -114,17 +120,11 @@
                                                 <table onclick="progress.addDietProgress(event, '@f.Id', '@mc.DietId', '@intake', '@user.Id', '@mc.Meal')" class="parent @if (dp.Count() > 0) { <text>done</text>}" data-dietprogress="@if (dp.Count() > 0) { <text>@dp.First().Id</text>}" href="" title="Add to day">
                                                     <tr>
                                                         <td>
-                                                            @f.Name
+                                                            <p>@f.Name</p>
                                                         </td>
                                                         <td>
-                                                            <table>
-                                                                <tr>
-                                                                    <td>@Math.Round(intake) kcal </td>
-                                                                </tr>
-                                                                <tr>
-                                                                    <td>@mc.Amount gram</td>
-                                                                </tr>
-                                                            </table>
+                                                            <div>@Math.Round(intake) kcal</div>
+                                                            <div>@mc.Amount gram</div>
                                                         </td>
                                                     </tr>
                                                 </table>
@@ -152,16 +152,6 @@
             </table>
         </div>
     }
-
-    <div class="tile left g4" onmouseover="progress.mouseOver('.intakeHover', '.totalIntake');" onmouseleave="progress.mouseOver('.totalIntake','.intakeHover');">
-        @if (!string.IsNullOrEmpty(user.DietId))
-        {
-
-            <div class="totalIntake">Calories today: @total</div>
-        }
-        <span class="icon-pie-chart intakeHover">
-        </span>
-    </div>
 </div>
 <script src="~/Content/JS/layout/progress.js"></script>
 <script src="~/Content/JS/layout/hover.js"></script>

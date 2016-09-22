@@ -3,6 +3,7 @@ $smg: 5px 0;
 $smw: 250px;
 
 body {
+    background-color:#96cb96;
     background: url('../img/web/pexels-photo.jpg');
     background-size: cover;
     background-attachment: fixed;
@@ -15,6 +16,7 @@ body {
     @extend .ib;
     margin: 0 15%;
     width: 70%;
+    min-width: 460px;
     @include tablet {
         width: 90%;
         margin: 0 5%;
@@ -48,6 +50,23 @@ body {
     cursor: pointer;
     animation: bummer 1.5s;
     animation-fill-mode: forwards;
+    @include tablet {
+        padding: 5px 10px;
+        right: 5px;
+        font-size: 1.5em;
+        border-radius: 0;
+        bottom:0;
+        animation:none;
+    }
+    @include phone {
+        padding: 5px 10px;
+        right: 5px;
+        font-size: 1.5em;
+        border-radius: 0;
+        bottom:0;
+        animation:none;
+
+    }
 }
 
 @keyframes bummer {
@@ -129,6 +148,13 @@ body {
         width: 80%;
         height: 160px;
         @extend .right;
+    }   
+
+    .tile-5 {
+        padding: $spd;
+        width: 100%;
+        min-height: 160px;
+        @extend .right;
     }
 }
 
@@ -171,6 +197,16 @@ body {
         width: 80%;
         min-height: 160px;
         @extend .left;
+    }
+
+    .tile-5 {
+        padding: $spd;
+        width: 100%;
+        min-height: 160px;
+        @extend .left;
+        @include phone {
+            overflow-x: auto;
+        }
     }
 }
 
@@ -223,7 +259,7 @@ body {
 .user-section {
     padding: $spd 0;
 }
-
+    
 .return {
     display: inline-block;
     padding: 5px $spd;
@@ -242,6 +278,9 @@ body {
     float: left;
     padding: $spd;
     background-color: rgb(32,170,143);
+    @include phone {
+        width:100%;
+    }
 
     h3 {
         margin-bottom: $spd;
@@ -285,4 +324,10 @@ body {
 
 .nobackground {
     background: none !important;
+}
+.tinymce {
+    min-height: 250px;
+}
+.mce-path-item  {
+    display: none !important;
 }

@@ -25,7 +25,10 @@
             padding: $spd;
             margin-bottom: 2%;
             @include tablet {
-                width: 100%;
+                width:50%;
+                &:nth-child(odd) {
+                margin-right: 0;
+                }
                 margin-bottom: 15px;
             }
 

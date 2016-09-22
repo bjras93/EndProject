@@ -13,10 +13,10 @@ button, input {
 button, input[type="submit"] {
   cursor: pointer; }
 
-.right, .type-1 .tile, .type-1 .tile-2, .type-1 .tile-3, .type-1 .tile-4, .login a, .login button {
+.right, .type-1 .tile, .type-1 .tile-2, .type-1 .tile-3, .type-1 .tile-4, .type-1 .tile-5, .login a, .login button {
   float: right; }
 
-.left, .type-1, .type-2, .type-2 .tile, .type-2 .tile-2, .type-2 .tile-3, .type-2 .tile-4 {
+.left, .type-1, .type-2, .type-2 .tile, .type-2 .tile-2, .type-2 .tile-3, .type-2 .tile-4, .type-2 .tile-5 {
   float: left; }
 
 .clear, .type-1:after, .type-2:after {
@@ -65,7 +65,7 @@ table {
   background: #F57979;
   color: #fff; }
 
-.w {
+.w, .diet-information .description, .articles .no-results, .articles .article {
   background-color: #fff;
   color: #333;
   border: 1px solid #bebebe; }
@@ -186,6 +186,7 @@ a {
   content: "\ea82"; }
 
 body {
+  background-color: #96cb96;
   background: url("../img/web/pexels-photo.jpg");
   background-size: cover;
   background-attachment: fixed; }
@@ -195,7 +196,8 @@ body {
 
 .container {
   margin: 0 15%;
-  width: 70%; }
+  width: 70%;
+  min-width: 460px; }
   @media (min-width: 768px) and (max-width: 1259px) {
     .container {
       width: 90%;
@@ -226,6 +228,22 @@ body {
   cursor: pointer;
   animation: bummer 1.5s;
   animation-fill-mode: forwards; }
+  @media (min-width: 768px) and (max-width: 1259px) {
+    .add {
+      padding: 5px 10px;
+      right: 5px;
+      font-size: 1.5em;
+      border-radius: 0;
+      bottom: 0;
+      animation: none; } }
+  @media (max-width: 768px) {
+    .add {
+      padding: 5px 10px;
+      right: 5px;
+      font-size: 1.5em;
+      border-radius: 0;
+      bottom: 0;
+      animation: none; } }
 
 @keyframes bummer {
   20% {
@@ -280,6 +298,10 @@ body {
   .type-1 .tile-4 {
     width: 80%;
     height: 160px; }
+  .type-1 .tile-5 {
+    padding: 15px;
+    width: 100%;
+    min-height: 160px; }
 
 .type-2 {
   width: 100%; }
@@ -303,6 +325,13 @@ body {
     padding: 15px;
     width: 80%;
     min-height: 160px; }
+  .type-2 .tile-5 {
+    padding: 15px;
+    width: 100%;
+    min-height: 160px; }
+    @media (max-width: 768px) {
+      .type-2 .tile-5 {
+        overflow-x: auto; } }
 
 .tile {
   cursor: pointer;
@@ -353,6 +382,9 @@ body {
   float: left;
   padding: 15px;
   background-color: #20aa8f; }
+  @media (max-width: 768px) {
+    .overview {
+      width: 100%; } }
   .overview h3 {
     margin-bottom: 15px; }
   .overview a {
@@ -377,6 +409,12 @@ body {
 .nobackground {
   background: none !important; }
 
+.tinymce {
+  min-height: 250px; }
+
+.mce-path-item {
+  display: none !important; }
+
 .login {
   width: 250px;
   height: 200px;
@@ -395,7 +433,6 @@ body {
   .signout .signout-btn {
     width: 30px;
     padding: 5px;
-    border-radius: 5px;
     color: #fff;
     margin-bottom: 5px;
     background: #F57979; }
@@ -461,11 +498,16 @@ body {
 
 .create-diet {
   width: 100%; }
+  .create-diet #modelImg {
+    min-height: 300px; }
   .create-diet .ipt {
     width: 100%; }
   .create-diet .period {
     color: #fff;
     background-color: #5ad29b; }
+    @media (max-width: 768px) {
+      .create-diet .period {
+        background-color: #1ABC9C; } }
     .create-diet .period a {
       color: #333; }
     .create-diet .period input {
@@ -484,6 +526,11 @@ body {
     padding-top: 20px;
     margin-right: 1%;
     margin-bottom: 1%; }
+    @media (max-width: 768px) {
+      .create-diet .week-container {
+        width: 96%;
+        margin-right: 2%;
+        margin-bottom: 2%; } }
     .create-diet .week-container .weeks {
       padding: 15px;
       width: 100%;
@@ -511,6 +558,9 @@ body {
     float: left;
     padding: 15px;
     position: relative; }
+    @media (max-width: 768px) {
+      .create-diet .information {
+        width: 100%; } }
     .create-diet .information .img-edit {
       margin-top: 15px;
       position: relative; }
@@ -550,7 +600,16 @@ body {
   float: right;
   border: 1px solid #bebebe; }
 
+.diet-schedule .schedule {
+  width: 100%;
+  margin-bottom: 20px;
+  border-right: 1px solid #16A085; }
+  @media (max-width: 768px) {
+    .diet-schedule .schedule {
+      overflow-x: auto; } }
+
 .diet-schedule table {
+  width: 100%;
   text-align: left;
   border-collapse: collapse;
   border-spacing: 0; }
@@ -569,6 +628,8 @@ body {
   .diet-schedule table table tr:first-child td {
     border-top: none;
     border-bottom: 1px solid #16A085; }
+  .diet-schedule table table tr:last-child {
+    border-bottom: 1px solid #16A085; }
   .diet-schedule table table tr td {
     border: none;
     padding: 15px 25px 15px 25px;
@@ -584,7 +645,6 @@ body {
     display: block;
     width: 100%; }
   .diet-information .description {
-    background-color: #fff;
     padding: 15px; }
 
 .diet-overview .description {
@@ -644,18 +704,24 @@ body {
       background-color: #8ecfff; }
 
 .progress {
-  border-collapse: collapse; }
+  border-collapse: collapse;
+  width: 100%; }
+  .progress th {
+    padding: 15px 0 5px 15px; }
   .progress .parent {
     cursor: pointer;
     border-collapse: collapse;
     background-color: #1ABC9C;
     width: 100%;
+    max-width: 300px;
     border-right: 1px solid #16A085;
     border-bottom: 1px solid #16A085; }
     .progress .parent td {
-      padding: 5px; }
+      padding: 15px; }
+      .progress .parent td div {
+        text-align: right; }
   .progress .done {
-    background-color: #5ad29b; }
+    background-color: #5ad29b !important; }
 
 .explain {
   display: inline-block; }
@@ -706,8 +772,10 @@ body {
     margin-bottom: 2%; }
     @media (min-width: 768px) and (max-width: 1259px) {
       .video-con .videos .video-index {
-        width: 100%;
-        margin-bottom: 15px; } }
+        width: 50%;
+        margin-bottom: 15px; }
+        .video-con .videos .video-index:nth-child(odd) {
+          margin-right: 0; } }
     @media (max-width: 768px) {
       .video-con .videos .video-index {
         width: 100%;
@@ -755,3 +823,34 @@ body {
           width: 100%; } }
     .video-con .videos .video .ipt {
       width: 100%; }
+
+.articles {
+  width: 100%; }
+  .articles .menu-article {
+    float: left; }
+    .articles .menu-article .btn {
+      display: inline-block;
+      padding: 10px;
+      margin: 5px 0;
+      background: #5ad29b; }
+    .articles .menu-article .selected {
+      background: #96D4BF; }
+  .articles .no-results {
+    float: left;
+    padding: 15px;
+    width: 100%;
+    margin: 10px 0 0px 0; }
+  .articles .article {
+    float: left;
+    padding: 15px;
+    width: 100%;
+    margin: 10px 0 0px 0; }
+    .articles .article .article-content {
+      margin: 15px 0;
+      max-width: 400px; }
+    .articles .article .icon {
+      cursor: pointer;
+      color: #333;
+      margin: 0 4px; }
+    .articles .article .liked {
+      color: #F57979; }

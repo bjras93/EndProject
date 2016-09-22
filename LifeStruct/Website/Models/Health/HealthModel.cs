@@ -11,6 +11,7 @@
         public string UserId { get; set; }
         public string Tags { get; set; }
         public int Likes { get; set; }
-        
+        public int Type { get; set; }
+
     }
 }

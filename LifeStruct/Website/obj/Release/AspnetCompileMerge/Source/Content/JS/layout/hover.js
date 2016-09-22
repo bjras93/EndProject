@@ -3,8 +3,8 @@
         var $mouseX = 0, $mouseY = 0;
         $(document).mousemove(function (e) {
             $('.hover').css({
-                left: e.pageX,
-                top: e.pageY
+                left: e.clientX,
+                top: e.clientY
             });
         });
         $('.tile').on('mouseover', function () {

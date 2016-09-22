@@ -16,14 +16,14 @@
 <body>
     <div class="overlay">
         <div class="container">
+
+            @RenderSection("Signout", false)
             <div class="logo">
                 @Html.ActionLink("LifeStruct", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav"></ul>
             </div>
-
-            @RenderSection("Signout", false)
         </div>
         <div class="container">
             @RenderBody()

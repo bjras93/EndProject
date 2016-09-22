@@ -1,23 +1,38 @@
 ﻿.progress {
     border-collapse: collapse;
+    width: 100%;
+
+
+    th {
+        padding: $spd 0 5px $spd;
+    }
 
     .parent {
         cursor: pointer;
         border-collapse: collapse;
         background-color: $gre-2;
         width: 100%;
+        max-width: 300px;
         border-right: 1px solid $gre-1;
         border-bottom: 1px solid $gre-1;
 
+
         td {
-            padding: 5px;
+            padding: $spd;
+
+            div {
+                text-align: right;
+            }
         }
     }
-
-    .done {
-        background-color: $gre-5;
-    }
+    
+        .done {
+            background-color: $gre-5 !important;
+        }
 }
+
+
+
 
 .explain {
     display: inline-block;

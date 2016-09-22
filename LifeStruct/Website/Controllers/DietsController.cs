@@ -209,8 +209,14 @@
                 dv.Meals = db.Meals;
                 dv.Days = db.Days;
                 dv.Img = dDb.Img;
+
                 foreach (var mcm in db.MealCollection.ToList().Where(x => x.DietId == ID))
                 {
+                    int value = mcm.WeekNo;
+                    if (value > dv.Weeks)
+                    {
+                        dv.Weeks = value;
+                    }
                     var fDb = db.Food.Find(mcm.FoodId);
                     dv.MealCollection.Add(new MealCollectionView { Amount = mcm.Amount, Day = mcm.Day, Food = fDb.Name, Calories = fDb.Calories, Meal = mcm.Meal, Week = mcm.WeekNo });
                 }
@@ -231,7 +237,8 @@
         public string Title { get; set; }
         public string Description { get; set; }
         public string Img { get; set; }
-        public List<MealCollectionView> MealCollection { get; set; }        
+        public List<MealCollectionView> MealCollection { get; set; }
+        public int Weeks { get; set; }
         public DbSet<DaysModel> Days { get; set; }
         public DbSet<MealsModel> Meals { get; set; }
     }

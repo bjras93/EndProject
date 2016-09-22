@@ -37,6 +37,12 @@
                     f.Likes++;
                     db.Entry(f).State = System.Data.Entity.EntityState.Modified;
                 }
+                if(json.type == 3)
+                {
+                    HealthModel h = db.Health.Find(json.typeId.ToString());
+                    h.Likes++;
+                    db.Entry(h).State = System.Data.Entity.EntityState.Modified;
+                }
                 db.SaveChanges();
                 return Ok(lm);
             }
@@ -56,6 +62,12 @@
                     FitnessModel f = db.Fitness.Find(json.typeId.ToString());
                     f.Likes = f.Likes -1;
                     db.Entry(f).State = System.Data.Entity.EntityState.Modified;
+                }
+                if (json.type == 3)
+                {
+                    HealthModel h = db.Health.Find(json.typeId.ToString());
+                    h.Likes = h.Likes - 1;
+                    db.Entry(h).State = System.Data.Entity.EntityState.Modified;
                 }
                 db.SaveChanges();
                 return Ok();

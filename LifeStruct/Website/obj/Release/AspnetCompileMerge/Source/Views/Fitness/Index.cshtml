@@ -19,7 +19,7 @@
                         <div>
 
                             <h3>@Html.ActionLink(f.Title, string.Format("Details/{0}", f.Id))</h3>
-                            @f.Description
+                            @Html.Raw(f.Description)
                         </div>
                         <div class="user-section">
                             @if (user.Id == f.UserId)

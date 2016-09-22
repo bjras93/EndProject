@@ -38,7 +38,7 @@
         @if (!string.IsNullOrEmpty(user.DietId))
         {
 
-            <div class="totalIntake">Calories today: @total</div>
+            <div class="totalIntake"><p class="total">Calories today: </p></div>
         }
         <span class="icon-pie-chart intakeHover">
         </span>
@@ -63,7 +63,7 @@
     </a>
     <a href="/Health/Index">
         <div class="tile r1">
-            <span class="icon-heart"></span>
+            <span class="icon-pencil"></span>
             <div class="hover hide">Articles written by users</div>
         </div>
     </a>
@@ -138,7 +138,6 @@
                         }
                     </tr>
 
-
                     @if (Model.MealCollection.Where(x => ((DayOfWeek)x.Day) == DateTime.Now.DayOfWeek).Count() == 0)
                     {
 
@@ -150,6 +149,7 @@
                     }
                 </tbody>
             </table>
+            <input type="hidden" id="total" value="@total" />
         </div>
     }
 </div>

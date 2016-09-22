@@ -11,6 +11,7 @@
         public string UserId { get; set; }
         public string Tags { get; set; }
         public int Likes { get; set; }
+        [Range(1, int.MaxValue, ErrorMessage = "You need to pick which post you want")]
         public int Type { get; set; }
 
     }

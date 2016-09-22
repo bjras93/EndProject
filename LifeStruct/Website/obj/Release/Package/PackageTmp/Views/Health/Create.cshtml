@@ -5,31 +5,60 @@
 @section Signout{
     @Html.Partial("~/Views/Shared/_logout.cshtml")
 }
+<script>
+    tinymce.init({
+        selector: '.tinymce-img',
+        plugins: [
+          'link image'
+        ],
+        toolbar: 'undo redo bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image',
+        menubar: false
+    });
+</script>
 <div ng-app="LifeStruct" ng-controller="articleCreateCtrl">
-    <input type="text" class="ipt search right" placeholder="Search" />
     @Html.ActionLink("Return", "Index", "Health", null, new { @class = "return" })
-    <div class="content">
-        <div class="create-articles">
-            <div class="article">
-                @using (Html.BeginForm("Create", "Health", FormMethod.Post))
-                {
-                    @Html.ValidationSummary(true)
-                    <table>
-                        <tr>
-                            <td>
-                                <input type="text" name="Title" placeholder="Title" /><br />
-                                @Html.ValidationMessageFor(x => x.Title)
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <textarea placeholder="Content" class="tinymce" name="Content"></textarea><br />
+    <div class="create-articles">
+        <div class="article">
+            @using (Html.BeginForm("Create", "Health", FormMethod.Post))
+            {
+                @Html.ValidationSummary(true)
+
+                <table>
+                    <tr>
+                        <td>
+                            <select class="ipt" name="Type">
+                                <option value="0">
+                                    Select which type of post you want
+                                </option>
+                                <option value="1">
+                                    Health
+                                </option>
+                                <option value="2">
+                                    Fitness
+                                </option>
+                                <option value="3">
+                                    Personal
+                                </option>
+                            </select><br />
+                            @Html.ValidationMessageFor(x => x.Type)
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            @Html.TextBoxFor(x => x.Title, new { @placeholder = "Title", @class = "ipt" })<br />
+                            @Html.ValidationMessageFor(x => x.Title)
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            @Html.TextAreaFor(x => x.Content, new { @placeholder = "Content", @class = "tinymce-img" })<br />
                                 @Html.ValidationMessageFor(x => x.Content)
                             </td>
                         </tr>
                         <tr>
                             <td>
-                                <ng-tags ng-model="tags"></ng-tags>
+
+                                <tags-input ng-model="tags" placeholder="Tags to find your post"></tags-input>
                                 <input type="hidden" name="Tags" value="{{tags}}" />
                             </td>
                         </tr>
@@ -39,8 +68,7 @@
                             </td>
                         </tr>
                     </table>
-                }
-            </div>
+            }
         </div>
     </div>
 </div>

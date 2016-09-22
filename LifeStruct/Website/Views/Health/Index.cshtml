@@ -12,25 +12,30 @@
             <div class="menu-article">
                 <a class="btn btn-article selected" data-type="1" href="">Health</a>
                 <a class="btn btn-article"  data-type="2" href="">Fitness</a>
+                <a class="btn btn-article" data-type="3" href="">Personal</a>
             </div>
             <input type="text" class="ipt search right" ng-model="search" placeholder="Search" />
-            <div class="article" ng-repeat="article in filterArticles = (articles.Articles | filter: search) | orderBy: '-Likes'">
-                <div class="header"><a href="/Health/Details/{{article.Id}}"><h3>{{article.Title}}</h3></a></div>
-                <div class="article-content"><div ng-bind-html="article.Content.length > 400 ? (article.Content | limitTo: 400) + '...' : article.Content"></div></div>
-                <div class="user-section">
-                    <div ng-init="user = findUser(article.UserId, article.Id, articles.Users)"></div>
-                    <input type="hidden" ng-init="getLikes('@user.Id', article.Id);" />
-                    <a href="" ng-click="like(article.Id, this);">
-                        <span ng-class="'@user.Id' == likes.like[article.Id] ? 'liked' : ''" class="icon icon-heart"></span>
-                    </a>
-                    <span ng-if="user.UserId == '@user.Id'">
-                        <a href="/Health/Edit/{{article.Id}}">
-                            <span class="icon icon-pencil"></span>
-                        </a>
-                        <a ng-click="deleteArticle('@user.Id', article)" href="">
-                            <span class="icon icon-bin"></span>
-                        </a>
-                    </span>
+            <div class="article" >
+                <div class="item" ng-repeat="article in filterArticles = (articles.Articles | filter: search) | orderBy: '-Likes'">
+                    <div ng-hide="article.UserId != '@user.Id' && article.Type == 3">
+                        <div class="header"><a href="/Health/Details/{{article.Id}}"><h3>{{article.Title}}</h3></a></div>
+                        <div class="article-content"><div ng-bind-html="article.Content.length > 800 ? (article.Content | limitTo: 800) + '...' : article.Content"></div></div>
+                        <div class="user-section">
+                            <div ng-init="user = findUser(article.UserId, article.Id, articles.Users)"></div>
+                            <input type="hidden" ng-init="getLikes('@user.Id', article.Id);" />
+                            <a href="" ng-click="like(article.Id, this);" ng-if="article.Type != 3">
+                                <span ng-class="'@user.Id' == likes.like[article.Id] ? 'liked' : ''" class="icon icon-heart"></span>
+                            </a>
+                            <span ng-if="user.UserId == '@user.Id'">
+                                <a href="/Health/Edit/{{article.Id}}">
+                                    <span class="icon icon-pencil"></span>
+                                </a>
+                                <a ng-click="deleteArticle('@user.Id', article)" href="">
+                                    <span class="icon icon-bin"></span>
+                                </a>
+                            </span>
+                        </div>
+                    </div>
                 </div>
             </div>
             <div ng-if="filterArticles.length == 0" class="no-results">

@@ -5,6 +5,8 @@
         init: function () {
             dietId = $('#dietId').val();
             userId = $('#userId').val();
+            var total = $('#total').val();
+            $('.total').append(total)
         },
         addDietProgress: function (e, fId, dId, intake, uId, meal) {
             var target = $($(e.target).parents('.parent')[0]),

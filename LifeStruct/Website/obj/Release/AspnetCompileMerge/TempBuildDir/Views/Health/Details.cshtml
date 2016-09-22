@@ -9,12 +9,10 @@
 <div ng-app="LifeStruct" ng-controller="articleIndexCtrl">
     <input type="text" class="ipt search right" placeholder="Search" />
     @Html.ActionLink("Return", "Index", "Health", null, new { @class = "return" })
-    <div class="content">
-            <div class="details-article">
-                <div class="header"><h1>@Model.Title</h1></div>
-                <div class="content">@Html.Raw(Model.Content)</div>
-                <div class="user-section">Written by: @user.Name</div>
-            </div>
+    <div class="details-article">
+        <div class="header"><h1>@Model.Title</h1></div>
+        <div class="content-article">@Html.Raw(Model.Content)</div>
+        <div class="user-section">Written by: @user.Name</div>
     </div>
 </div>
 <script src="~/Content/JS/layout/article.js"></script>

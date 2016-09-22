@@ -58,7 +58,7 @@ var article = {
     },
     create: function () {
         app.controller('articleCreateCtrl', ['$scope', '$http', '$document', function ($scope, $http, $document) {
-
+            $scope.tags = [];
         }]);
     }
 }

@@ -105,3 +105,4 @@ C:\Users\bjoe0771\Desktop\Website\LifeStruct\Website\bin\Microsoft.CodeDom.Provi
 C:\Users\bjoe0771\Desktop\Website\LifeStruct\Website\obj\Release\Website.Migrations.HealthModel.resources
 C:\Users\bjoe0771\Desktop\Website\LifeStruct\Website\obj\Release\Website.Migrations.ArticleUserRequiredFalse.resources
 C:\Users\bjoe0771\Desktop\Website\LifeStruct\Website\obj\Release\Website.Migrations.TypeArticle.resources
+E:\Projects\LifeStruct\LifeStruct\Website\obj\Release\Website.Migrations.TypeArticle.resources

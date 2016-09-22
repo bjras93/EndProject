@@ -16,7 +16,7 @@ body {
     @extend .ib;
     margin: 0 15%;
     width: 70%;
-    min-width: 460px;
+    min-width: 320px;
     @include tablet {
         width: 90%;
         margin: 0 5%;
@@ -325,7 +325,7 @@ body {
 .nobackground {
     background: none !important;
 }
-.tinymce {
+.tinymce, .tinymce-img {
     min-height: 250px;
 }
 .mce-path-item  {

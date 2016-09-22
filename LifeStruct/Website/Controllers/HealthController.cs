@@ -43,16 +43,40 @@
                 }
                 else
                 {
-                    return View();
+                    return View(model);
                 }
             }
             return RedirectToAction("../Account/Index");
         }
-        public ActionResult Edit()
+        public ActionResult Edit(string Id)
         {
             if (Request.IsAuthenticated)
             {
-                return View();
+                return View(db.Health.Find(Id));
+            }
+            return RedirectToAction("../Account/Index");
+        }
+        [HttpPost, ValidateInput(false)]
+        public ActionResult Edit(HealthModel model)
+        {
+            if (Request.IsAuthenticated)
+            {
+                if (string.IsNullOrEmpty(model.Tags))
+                {
+                    model.Tags = "";
+                }
+                if (ModelState.IsValid)
+                {
+
+                    db.Entry(model).State = System.Data.Entity.EntityState.Modified;
+                    
+                    db.SaveChanges();
+                    return RedirectToAction("../Health/Details/" + model.Id);
+                }
+                else
+                {
+                    return View(model);
+                }
             }
             return RedirectToAction("../Account/Index");
         }

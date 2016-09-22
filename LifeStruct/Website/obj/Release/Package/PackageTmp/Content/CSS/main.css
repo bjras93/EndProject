@@ -65,7 +65,7 @@ table {
   background: #F57979;
   color: #fff; }
 
-.w, .diet-information .description, .articles .no-results, .articles .article {
+.w, .diet-information .description, .articles .no-results, .articles .article, .details-article {
   background-color: #fff;
   color: #333;
   border: 1px solid #bebebe; }
@@ -197,7 +197,7 @@ body {
 .container {
   margin: 0 15%;
   width: 70%;
-  min-width: 460px; }
+  min-width: 320px; }
   @media (min-width: 768px) and (max-width: 1259px) {
     .container {
       width: 90%;
@@ -409,7 +409,7 @@ body {
 .nobackground {
   background: none !important; }
 
-.tinymce {
+.tinymce, .tinymce-img {
   min-height: 250px; }
 
 .mce-path-item {
@@ -854,3 +854,28 @@ body {
       margin: 0 4px; }
     .articles .article .liked {
       color: #F57979; }
+    .articles .article .item {
+      margin-bottom: 25px;
+      border-bottom: 1px solid #fafaff; }
+
+.create-articles {
+  float: left;
+  width: 100%; }
+  .create-articles .article {
+    width: 70%;
+    padding: 15px;
+    background-color: #96D4BF; }
+    .create-articles .article table {
+      width: 65%; }
+    @media (max-width: 768px) {
+      .create-articles .article {
+        width: 100%; }
+        .create-articles .article table {
+          width: 100%; } }
+
+.details-article {
+  width: 100%;
+  float: left;
+  padding: 15px; }
+  .details-article .content-article {
+    margin: 25px 0; }

@@ -8,7 +8,7 @@
             var reader = new FileReader();
             reader.onloadend = function () {
                 $(target).attr('src', reader.result);
-                $(target).css('width', '100%').css('height', '300px')
+                $(target).css('width', '100%').css('height', '270')
             }
             reader.readAsDataURL(file);
 

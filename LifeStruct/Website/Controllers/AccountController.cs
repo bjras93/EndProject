@@ -73,19 +73,7 @@ namespace LifeStruct.Controllers
             return View();
         }
 
-
-        //
-        // GET: /Account/VerifyCode
-        [AllowAnonymous]
-        public async Task<ActionResult> VerifyCode(string provider, string returnUrl, bool rememberMe)
-        {
-            // Require that the user has already logged in via username/password or external login
-            if (!await SignInManager.HasBeenVerifiedAsync())
-            {
-                return View("Error");
-            }
-            return View(new VerifyCodeViewModel { Provider = provider, ReturnUrl = returnUrl, RememberMe = rememberMe });
-        }
+        
 
         //
         // POST: /Account/ExternalLogin
@@ -158,9 +146,9 @@ namespace LifeStruct.Controllers
                 var info = await AuthenticationManager.GetExternalLoginInfoAsync();
                 if (info == null)
                 {
-                    return View("ExternalLoginFailure");
+                    return View("../Account/Index");
                 }
-                var user = new ApplicationUser { UserName = model.Email, Email = model.Email, Name = model.Name, Height = model.Height, Weight = model.Weight, DietId = "", DietDate = "", FitnessId = "", FitnessDate = "" };
+                var user = new ApplicationUser { UserName = model.Email, Email = model.Email, Name = model.Name, Height = model.Height, Weight = model.Weight, DietId = "", DietDate = "", FitnessId = "", FitnessDate = "", Birthday = model.Birthday, Gender = model.Gender };
                 var result = await UserManager.CreateAsync(user);
                 if (result.Succeeded)
                 {
@@ -187,15 +175,6 @@ namespace LifeStruct.Controllers
             AuthenticationManager.SignOut(DefaultAuthenticationTypes.ApplicationCookie);
             return RedirectToAction("Index", "Account");
         }
-
-        //
-        // GET: /Account/ExternalLoginFailure
-        [AllowAnonymous]
-        public ActionResult ExternalLoginFailure()
-        {
-            return View();
-        }
-
         protected override void Dispose(bool disposing)
         {
             if (disposing)

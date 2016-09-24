@@ -1,23 +1,15 @@
 ﻿@{
     ViewBag.Title = "Profile";
     var user = LifeStruct.Models.UserViewModel.GetCurrentUser();
+    decimal height = Convert.ToDecimal(user.Height);
+    decimal weight = Convert.ToDecimal(user.Weight);
+    decimal heightDivided = height / 100;
+    decimal bmi = weight / (heightDivided * heightDivided);
+    var bmiClass = BmiClassViewModel.GetBmi(bmi);
+    double bmr = 66.47 + (13.75 * Convert.ToDouble(weight)) + (5.0 * Convert.ToDouble(height)) - (6.75 * 25);
 }
 @Html.ActionLink("Return", "Index", "Home", null, new { @class = "return" })
 <div class="content g2">
-    <div class="account-menu">
-        <ul>
-            <li>
-                <a data-section="account-details" id="acount-d" href="">
-                    Account Details
-                </a>
-            </li>
-            <li>
-                <a data-section="account-goals" href="">
-                    Goal
-                </a>
-            </li>
-        </ul>
-    </div>
     <div class="account-details hide">
         <ul>
             <li>
@@ -27,11 +19,6 @@
                 <span>
                     @user.Name
                 </span>
-                <span>
-                    <a href="">
-                        Edit
-                    </a>
-                </span>
             </li>
             <li>
                 <span>
@@ -39,11 +26,6 @@
                 </span>
                 <span>
                     @user.Email
-                </span>
-                <span>
-                    <a href="">
-                        Edit
-                    </a>
                 </span>
             </li>
             <li>
@@ -53,11 +35,6 @@
                 <span>
                     @user.Weight kg
                 </span>
-                <span>
-                    <a href="">
-                        Edit
-                    </a>
-                </span>
             </li>
             <li>
                 <span>
@@ -66,10 +43,42 @@
                 <span>
                     @user.Height cm
                 </span>
+            </li>
+            <li>
                 <span>
-                    <a href="">
-                        Edit
-                    </a>
+                    Bmi
+                </span>
+                <span>
+                    @bmi.ToString("##.##")
+                </span>
+            </li>
+            <li>
+                <span>
+                    Bmi weight class: 
+                </span>
+                <span>
+                    @bmiClass.Name
+                </span>
+            </li>
+            <li>
+                <span>
+                    Select how active you are
+                </span>
+                <select>
+                    <option value="0">Select activity</option>
+                    <option value="1">Not very active</option>
+                    <option value="2">Exercise 1 to 3 times a week</option>
+                    <option value="3">Exercise 3 to 5 times a week</option>
+                    <option value="4">Exercise 6 to 7 times a week</option>
+                    <option value="4">Exercise 7 times a week more than once</option>
+                </select>
+            </li>
+            <li>
+                <span>
+                    Suggested intake
+                </span>
+                <span>
+                    @bmr kcal pr. day
                 </span>
             </li>
         </ul>       

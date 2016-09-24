@@ -9,6 +9,8 @@
         [Required(ErrorMessage = "You forgot to fill out Description")]
         public string Description { get; set; }
         public string UserId { get; set; }
+        public string Tags { get; set; }
+        public string Img { get; set; }
         public int Likes { get; set; }
     }
 }

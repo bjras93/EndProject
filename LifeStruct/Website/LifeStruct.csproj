@@ -334,8 +334,35 @@
     <Compile Include="Migrations\201609220756121_TypeArticle.Designer.cs">
       <DependentUpon>201609220756121_TypeArticle.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201609230802255_BmiClass.cs" />
+    <Compile Include="Migrations\201609230802255_BmiClass.Designer.cs">
+      <DependentUpon>201609230802255_BmiClass.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201609231205414_Fitness.cs" />
+    <Compile Include="Migrations\201609231205414_Fitness.Designer.cs">
+      <DependentUpon>201609231205414_Fitness.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201609231806259_ExerciseIndex.cs" />
+    <Compile Include="Migrations\201609231806259_ExerciseIndex.Designer.cs">
+      <DependentUpon>201609231806259_ExerciseIndex.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201609231848372_ImgTagsFitness.cs" />
+    <Compile Include="Migrations\201609231848372_ImgTagsFitness.Designer.cs">
+      <DependentUpon>201609231848372_ImgTagsFitness.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201609240046290_CaloriesFitness.cs" />
+    <Compile Include="Migrations\201609240046290_CaloriesFitness.Designer.cs">
+      <DependentUpon>201609240046290_CaloriesFitness.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201609240050187_wrongcalfitness.cs" />
+    <Compile Include="Migrations\201609240050187_wrongcalfitness.Designer.cs">
+      <DependentUpon>201609240050187_wrongcalfitness.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Account\AccountViewModels.cs" />
+    <Compile Include="Models\Account\BmiClassModel.cs" />
+    <Compile Include="Models\Account\BmiClassViewModel.cs" />
+    <Compile Include="Models\DayViewModel.cs" />
     <Compile Include="Models\Diet\DaysModel.cs" />
     <Compile Include="Models\DbSet.cs" />
     <Compile Include="Models\Diet\DietModel.cs" />
@@ -405,6 +432,7 @@
     <Content Include="Content\CSS\ng-tags-input.min.css" />
     <Content Include="Content\fonts\icomoon.svg" />
     <Content Include="Content\img\web\pexels-photo.jpg" />
+    <Content Include="Content\img\web\youtubeid.png" />
     <Content Include="Content\JS\layout\article.js" />
     <Content Include="Content\JS\layout\autocomplete.js" />
     <Content Include="Content\JS\layout\diet.js" />
@@ -419,6 +447,7 @@
     <Content Include="Content\JS\layout\videos.js" />
     <Content Include="Content\JS\plugins\angular-sanitize.min.js" />
     <Content Include="Content\JS\plugins\angular.min.js" />
+    <Content Include="Content\JS\plugins\chartjs\chart.js" />
     <Content Include="Content\JS\plugins\jquery-3.1.0.min.js" />
     <Content Include="Content\JS\main.js" />
     <Content Include="Content\JS\plugins\jquery-ui.min.js" />
@@ -454,6 +483,11 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Content\img\user\" />
+    <Folder Include="Content\JS\plugins\chartjs\charts\" />
+    <Folder Include="Content\JS\plugins\chartjs\controllers\" />
+    <Folder Include="Content\JS\plugins\chartjs\core\" />
+    <Folder Include="Content\JS\plugins\chartjs\elements\" />
+    <Folder Include="Content\JS\plugins\chartjs\scales\" />
     <Folder Include="Content\JS\plugins\plugins\" />
     <Folder Include="Views\MealCollection\" />
   </ItemGroup>
@@ -611,6 +645,24 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201609220756121_TypeArticle.resx">
       <DependentUpon>201609220756121_TypeArticle.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201609230802255_BmiClass.resx">
+      <DependentUpon>201609230802255_BmiClass.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201609231205414_Fitness.resx">
+      <DependentUpon>201609231205414_Fitness.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201609231806259_ExerciseIndex.resx">
+      <DependentUpon>201609231806259_ExerciseIndex.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201609231848372_ImgTagsFitness.resx">
+      <DependentUpon>201609231848372_ImgTagsFitness.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201609240046290_CaloriesFitness.resx">
+      <DependentUpon>201609240046290_CaloriesFitness.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201609240050187_wrongcalfitness.resx">
+      <DependentUpon>201609240050187_wrongcalfitness.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

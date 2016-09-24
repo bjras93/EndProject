@@ -5,64 +5,115 @@
 @section Signout{
     @Html.Partial("~/Views/Shared/_logout.cshtml")
 }
-<div class="content">
+<div class="content" ng-app="LifeStruct" ng-controller="FitnessCtrl">
     <div class="fitness fitness-edit">
-        @using (Html.BeginForm("Edit", "Fitness", FormMethod.Post))
+        @using (Html.BeginForm("Edit", "Fitness", FormMethod.Post, new { enctype = "multipart/form-data" }))
         {
-            <div ng-app="LifeStruct" ng-controller="FitnessCtrl" class="schedule">
+            <div class="fitness-info left">
+                <ul>
+                    <li>
+                        @Html.TextBoxFor(x => x.Title, new {@class = "ipt"})
+                    </li>
+                    <li>
+                        @Html.TextAreaFor(x => x.Description, new { @class = "tinymce" })
+                    </li>
+                    <li>
+                        <tags-input ng-model="tags" ng-init="tags = @Model.Tags" placeholder="Tags to find your diet"></tags-input>
+                        <input type="hidden" name="Tags" value="{{tags}}" />
+                    </li>
+                    <li>
+                        <div class="img-edit">
+                            <img id="modelImg" @if (!string.IsNullOrEmpty(Model.Img)){<text>src="/Content/img/user/sm-@Model.Img" </text>}/>                            
+                            <label for="file-upload" class="overlay-click" href="">
+                                Click to change
+                            </label>
+                            <input type="file" id="file-upload" accept="image/.png,.jpg,.gif" name="fileUpload" class="hide" />
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            <div class="schedule right">
                 @Html.HiddenFor(x => x.Id)
                 @if (ViewBag.Schedule != null)
                 {
                     <div ng-init="getSchedule('@Model.Id')"></div>
                 }
-               
-                <div class="exercise-add" ng-repeat="exercise in exercises">
-                    <input ng-model="eList.exercise['s_id_e' + eIndex]" name="{{'s_id_e' + eIndex}}" ng-value="exercise.id" type="hidden">
-                    <div ng-init="eIndex = ($index+1)"></div>
-                    <h3>Exercise {{eIndex}}</h3>
-                    <ul>
-                        <li>
-                            <select class="ipt" name="s_day_e{{eIndex}}" type="text">
-                                @foreach (var day in ViewBag.Days)
-                                {
-                                    <option ng-selected="exercise.day == @(day.Id)" value="@day.Id">@day.Name</option>
-                                }
-                            </select>
-                        </li>
-                        <li>
-                            <input autocomplete="off" ng-click="" ng-keyup="showAc($event); sExercise('s_exercise_e' + eIndex, 'notFound_' + eIndex);" onkeydown="keyDown(event);" ng-model="eList.exercise['s_exercise_e' + eIndex]" ng-value="exercise.exercise" class="ipt" name="s_exercise_e{{eIndex}}" placeholder="Exercise" type="text" />
-                            <div class="autocomplete-container">
-                                <div class="autocomplete" ng-if="eList.exercise['s_exercise_e' + eIndex].length > 0">
-                                    <div class="results" ng-repeat="result in exerciseCollection = (allExercises | filter: eList.exercise['s_exercise_e' + eIndex]) | limitTo: 5 ">
-                                        <div ng-if="exerciseCollection.length > 0">
-                                            <div ng-init="rIndex = ($index+1)"></div>
-                                            <a ng-click="setCalories($event, eIndex, rIndex); eList.exercise['s_exercise_e' + eIndex] = result.Name;" onkeydown="keyDown(event);" data-val="{{result.Calories}}" data-id="{{result.Id}}" href="">{{result.Name}}</a>
+                <div ng-init="exerciseInit()"></div>
+                <div ng-repeat="w in weeks">
+                    <a class="panel btn-week" href=""><h3>Week {{w}}</h3></a>
+                    <div>
+                        <div class="exercise-add" ng-repeat="exercise in exercises" ng-if="w == exercise.week">
+                            <div ng-init="eIndex = 'id_e' + 1 + '_d' + exercise.day + '_w' + exercise.week"></div>
+                            <input type="hidden" name="schedule_{{eIndex}}" ng-value="exercise.id" />
+                            <div class="panels">
+                                <a class="panel btn-day" href="#">
+                                    <h4> {{days.day[exercise.day]}}</h4>
+                                </a>
+                                <ul class="exercise-list hide">
+                                    <li>
+                                        <a href="" class="panel"><h5>Exercise 1</h5></a>
+                                        <div>
+                                            <input autocomplete="off" ng-click="" ng-keyup="showAc($event); sExercise(eIndex, 'notFound_' + eIndex);" onkeydown="keyDown(event);" ng-model="eList.exercise['name_' + eIndex]" ng-value="exercise.exercise" class="ipt" name="name_{{eIndex}}" placeholder="Exercise" type="text" />
+                                            <div class="autocomplete-container">
+                                                <div class="autocomplete" ng-if="eList.exercise['name_' + eIndex].length > 0">
+                                                    <div class="results" ng-repeat="result in exerciseCollection = (allExercises | filter: eList.exercise['name_' + eIndex]) | limitTo: 5 ">
+                                                        <div ng-if="exerciseCollection.length > 0">
+                                                            <a ng-click="setCalories($event, eIndex); eList.exercise['name_' + eIndex] = result.Name;" onkeydown="keyDown(event);" data-val="{{result.Calories}}" data-id="{{result.Id}}" href="">{{result.Name}}</a>
+                                                        </div>
+                                                    </div>
+                                                    <a data-url="@(Url.Action("_AddNewExercise"))" data-content="{{eList.exercise['notFound_' + eIndex]}}" onkeydown="keyDown(event);" ng-click="$event.preventDefault();" class="open-modal hide" id="{{'notFound_' + eIndex}}" href="">
+                                                        Could not find {{eList.exercise['notFound_' + eIndex]}} would you like to add it?
+                                                    </a>
+                                                </div>
+                                            </div>
+                                            <input id="calories_{{eIndex}}" ng-model="eList.exercise['calories_' + eIndex]" ng-init="eList.exercise['calories_' + eIndex] = exercise.calories" name="calories_{{eIndex}}" ng-value="exercise.calories" type="hidden" />
+                                            <input id="exerciseId_{{eIndex}}" ng-model="eList.exercise['exerciseId_' + eIndex]" name="exerciseId_{{eIndex}}" ng-value="exercise.exerciseId" type="hidden" />
+                                            <input class="ipt" ng-model="eList.exercise['interval_' + eIndex]" ng-init="eList.exercise['interval_' + eIndex] = exercise.interval" name="interval_{{eIndex}}" ng-value="exercise.interval" placeholder="Minutes" type="text" />
+                                            <div ng-if="eList.exercise['calories_' + eIndex].length > 0 && eList.exercise['interval_' + eIndex].length > 0">
+                                                {{(eList.exercise['calories_' + eIndex] /60) * eList.exercise['interval_' + eIndex]}} kcal
+                                            </div>
                                         </div>
-                                    </div>
-                                    <a data-url="@(Url.Action("_AddNewExercise"))" data-content="{{eList.exercise['s_exercise_e' + eIndex]}}" onkeydown="keyDown(event);" ng-click="$event.preventDefault();" class="open-modal hide" id="{{'notFound_' + eIndex}}" href="">
-                                        Could not find {{eList.exercise['s_exercise_e' + eIndex]}} would you like to add it?
-                                    </a>
-                                </div>
+                                    </li>
+                                    <li>
+                                        <ul ng-repeat="subExercise in exercise.subExercises">
+                                            <li>
+                                                <a class="panel" href=""><h5>Exercise {{$index+2}}</h5></a>
+                                                <div>
+                                                    <div ng-init="sIndex = 'id_e' + ($index+2) + '_d' + exercise.day + '_w' + exercise.week"></div>
+                                                    <input type="hidden" name="schedule_{{sIndex}}" ng-value="subExercise.id" />
+                                                    <input autocomplete="off" ng-keyup=" sExercise(sIndex, 'notFound_' + sIndex);" onkeydown="keyDown(event);" ng-model="eList.exercise['name_' + sIndex]" ng-value="subExercise.exercise" class="ipt" name="name_{{sIndex}}" placeholder="Exercise" type="text" />
+                                                    <div class="autocomplete-container">
+                                                        <div class="autocomplete" ng-if="eList.exercise['name_' + sIndex].length > 0">
+                                                            <div class="results" ng-repeat="result in exerciseCollection = (allExercises | filter: eList.exercise['name_' + sIndex]) | limitTo: 5 ">
+                                                                <div ng-if="exerciseCollection.length > 0">
+                                                                    <a ng-click="setCalories($event, sIndex); eList.exercise['name_' + sIndex] = result.Name;" onkeydown="keyDown(event);" data-val="{{result.Calories}}" data-id="{{result.Id}}" href="">{{result.Name}}</a>
+                                                                </div>
+                                                            </div>
+                                                            <a data-url="@(Url.Action("_AddNewExercise"))" data-content="{{eList.exercise['notFound_' + sIndex]}}" onkeydown="keyDown(event);" ng-click="$event.preventDefault();" class="open-modal hide" id="{{'notFound_' + sIndex}}" href="">
+                                                                Could not find {{eList.exercise['notFound_' + sIndex]}} would you like to add it?
+                                                            </a>
+                                                        </div>
+                                                    </div>
+                                                    <input id="calories_{{sIndex}}" ng-model="eList.exercise['calories_' + sIndex]" type="hidden" />
+                                                    <input id="exerciseId_{{sIndex}}" ng-model="eList.exercise['exerciseId_' + sIndex]" name="exerciseId_{{sIndex}}" ng-value="subExercise.exerciseId" type="hidden" />
+                                                    <input class="ipt" ng-model="eList.exercise['interval_' + sIndex]" name="interval_{{sIndex}}" ng-value="subExercise.interval" placeholder="Minutes" type="text" />
+                                                    <div ng-if="eList.exercise['calories_' + sIndex].length > 0 && eList.exercise['interval_' + sIndex].length > 0">
+                                                        {{(eList.exercise['calories_' + sIndex] /60) * eList.exercise['interval_' + sIndex]}} kcal
+                                                    </div>
+                                                </div>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                    <li>
+                                        <a class="add-exercise" ng-click="addExercise(eIndex);" href="">Add another exercise</a>
+                                    </li>
+                                </ul>
                             </div>
-                        </li>
-                        <li>
-                            <input id="s_calories_e{{eIndex}}" ng-model="eList.exercise['s_calories_e' + eIndex]" ng-value="exercise.calories"  type="hidden" />
-                            <input id="s_exerciseId_e{{eIndex}}" ng-model="eList.exercise['s_exerciseId_e' + eIndex]" name="s_exerciseId_e{{eIndex}}" ng-value="exercise.exerciseId" value="{{eList.exercise['s_exerciseId_e' + eIndex]}}" type="hidden" />
-                            <input class="ipt" ng-model="eList.exercise['s_interval_e' + eIndex]" name="s_interval_e{{eIndex}}" ng-value="exercise.interval" placeholder="Interval" type="text" />
-                            <div ng-if="eList.exercise['s_interval_e' + eIndex].length > 0 && exercise.calories == ''">
-                                
-                                {{(eList.exercise['s_calories_e' + eIndex] / 60) * eList.exercise['s_interval_e' + eIndex]}} kcal loss
-                            </div>
-                            <div ng-if="eList.exercise['s_interval_e' + eIndex].length > 0 && exercise.calories != ''">
-
-                                {{(exercise.calories/ 60) * eList.exercise['s_interval_e' + eIndex]}} kcal loss
-                            </div>
-                        </li>
-                    </ul>
+                        </div>
+                    </div>
                 </div>
-                <a class="add-day" ng-click="addExercise($event);" href="">Add another day</a>
-                <input value="Update schedule" type="submit" class="btn fit-gre" />
-
+                    <a class="add-week" href="" ng-click="addWeek()">Add week</a>
+                    <input value="Update schedule" type="submit" class="btn fit-gre" />
             </div>
         }
 
@@ -75,4 +126,5 @@
 </div>
 <script src="~/Content/JS/layout/autocomplete.js"></script>
 <script src="~/Content/JS/layout/fitness.js"></script>
-<script>fitness.schedule(); autocomplete.init(); </script>
+<script src="~/Content/JS/layout/fileupload.js"></script>
+<script>fitness.schedule(); autocomplete.init(); upload('#file-upload', '#modelImg') </script>

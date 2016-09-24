@@ -19,9 +19,10 @@
 .signout {
     position:relative;
     .signout-btn {
-        width:30px;
-        padding: 5px;
+        width:42px;
+        padding: 10px;
         color: $w;
+        font-size: 1.4em;
         margin-bottom: 5px;
         background: $red-1;
         .icon-exit {

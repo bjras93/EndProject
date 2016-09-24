@@ -119,6 +119,7 @@ var diet = {
                     f = data.data.Food;
 
                 var week = Math.max.apply(Math, mc.map(function (o) { return o.WeekNo }))
+                currentW = week;
                 for (var w = 0; w < week; w++) {
                     for (var i = 0; i < 7; i++) {
                         for (var m = 0; m < 4; m++) {

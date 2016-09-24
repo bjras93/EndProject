@@ -1,8 +1,9 @@
-﻿using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-
-namespace LifeStruct.Models
+﻿namespace LifeStruct.Models
 {
+    using System;
+    using System.Collections.Generic;
+    using System.ComponentModel.DataAnnotations;
+
     public class ExternalLoginConfirmationViewModel
     {
         [Required(ErrorMessage = "You forgot to fill out your name")]
@@ -20,6 +21,12 @@ namespace LifeStruct.Models
         [Required(ErrorMessage = "You forgot to fill out your weight")]
         [Display(Name = "Weight")]
         public string Weight { get; set; }
+        [Required(ErrorMessage = "Please fill out your birthday")]
+        [Display(Name = "Birthday")]
+        public DateTime? Birthday { get; set; }
+        [Range(1, int.MaxValue, ErrorMessage = "Please pick a gender")]
+        [Display(Name = "Gender")]
+        public int? Gender { get; set; }
     }
 
     public class ExternalLoginListViewModel
@@ -34,22 +41,7 @@ namespace LifeStruct.Models
         public string ReturnUrl { get; set; }
         public bool RememberMe { get; set; }
     }
-
-    public class VerifyCodeViewModel
-    {
-        [Required]
-        public string Provider { get; set; }
-
-        [Required]
-        [Display(Name = "Code")]
-        public string Code { get; set; }
-        public string ReturnUrl { get; set; }
-
-        [Display(Name = "Remember this browser?")]
-        public bool RememberBrowser { get; set; }
-
-        public bool RememberMe { get; set; }
-    }
+    
     
     public class LoginViewModel
     {
@@ -62,25 +54,6 @@ namespace LifeStruct.Models
         [DataType(DataType.Password)]
         [Display(Name = "Password")]
         public string Password { get; set; }
-    }
-
-    public class RegisterViewModel
-    {
-        [Required]
-        [EmailAddress]
-        [Display(Name = "Email")]
-        public string Email { get; set; }
-
-        [Required]
-        [StringLength(100, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 6)]
-        [DataType(DataType.Password)]
-        [Display(Name = "Password")]
-        public string Password { get; set; }
-
-        [DataType(DataType.Password)]
-        [Display(Name = "Confirm password")]
-        [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
-        public string ConfirmPassword { get; set; }
     }
     
 }

@@ -1,25 +1,34 @@
-﻿@{
+﻿@model LifeStruct.Models.FitnessModel
+@{
     ViewBag.Title = "Create workout schedule";
 }
 
 @section Signout{
     @Html.Partial("~/Views/Shared/_logout.cshtml")
 }
-<div class="content">
-    <div class="fitness fitness-create">
-        @using (Html.BeginForm("Create", "Fitness", FormMethod.Post))
+<div class="content" ng-app="LifeStruct">
+    <div class="fitness fitness-create" ng-controller="fitnessCreateCtrl">
+        @using (Html.BeginForm("Create", "Fitness", FormMethod.Post, new { enctype = "multipart/form-data" }))
         {
-            <ul>
+            <ul class="create-info left">
                 <li>
-                    <input type="text" class="ipt" name="f_title" placeholder="Title" />
+                    @Html.TextBoxFor(x => x.Title, new { @class = "ipt", placeholder = "Title" })
                 </li>
                 <li>
-                    <textarea class="tinymce" name="f_description" placeholder="Description"></textarea>
+                    @Html.TextAreaFor(x => x.Description, new { @class = "tinymce", @placeholder = "Description"})
                 </li>
                 <li>
-                    <label class="btn ib" for="upl">Upload image</label>
-                    <input onchange="fileupload.upl(this, event);" accept="image/.png,.jpg,.gif" type="file" class="hide" id="upl" />
-                    <div id="pic"></div>
+                    <tags-input ng-model="tags" placeholder="Tags to find your diet"></tags-input>
+                    <input type="hidden" name="Tags" value="{{tags}}" />                    
+                </li>
+            </ul>
+            <ul class="create-picture right">
+                <li>
+                    <div class="picture">
+                        <label class="btn ib" for="upload-file">Upload image</label>
+                        <input ng-model="Img" type="file" accept="image/.png,.jpg,.gif" class="hide" id="upload-file" name="uploadFile" />
+                        <img src="" id="modelImg" />
+                    </div>
                 </li>
                 <li>
                     <input class="btn fit-gre" type="submit" value="Next" />
@@ -29,5 +38,8 @@
     </div>
 </div>
 <script src="~/Content/JS/layout/fileupload.js"></script>
+<script src="~/Content/JS/layout/fitness.js"></script>
 <script>
+    upload('#upload-file', '#modelImg');
+    fitness.create();
 </script>

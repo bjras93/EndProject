@@ -9,11 +9,23 @@
         DefaultConnection db = new DefaultConnection();
         [Route("api/ScheduleApi/FindById")]
         [HttpGet]
-        public IEnumerable<ScheduleModel> FindById(string Id)
+        public ScheduleList FindById(string Id)
         {
-            var result = db.Schedule.Where(x => x.FitnessId == Id);
+            ScheduleList sl = new ScheduleList();
+            sl.Schedule = db.Schedule.ToList().Where(x => x.FitnessId == Id);
+            sl.Exercises = new List<ExerciseModel>();
+            foreach(var exercise in sl.Schedule)
+            {
+                sl.Exercises.Add(db.Exercise.Find(exercise.ExerciseId));
+            }
 
-            return result;
+            return sl;
         }
+        
+    }
+    public class ScheduleList
+    {
+        public List<ExerciseModel> Exercises { get; set; }
+        public IEnumerable<ScheduleModel> Schedule { get; set; }
     }
 }

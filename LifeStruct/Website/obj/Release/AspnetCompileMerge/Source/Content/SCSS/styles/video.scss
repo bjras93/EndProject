@@ -1,13 +1,30 @@
 ﻿.video-con {
+    float:left;
     .content {
         background-color: rgb(190,225,200);
     }
-    .icon-bin, .icon-pencil {
+    .menu-video {
+        float:left;
+        .btn {
+            display:inline-block;
+            padding: 10px;
+            margin: 5px 0;
+            background: $gre-5;
+            @include phone{
+                width: 100%;
+            }
+        }
+        
+        .selected {
+            background: $gre-3;
+
+        }
+    }
+    .icon-bin, .icon-pencil, .icon-empty {
         cursor: pointer;
         display:inline-block;
         margin: 10px 5px;
     }
-
     .videos {
         float: left;
         width: 100%;
@@ -43,7 +60,7 @@
                 width: 100%;
                 background: #333;
             }
-            .icon-play {
+            .icon-play3 {
                 font-size: 5em;
                 position:absolute;
                 color: $w;

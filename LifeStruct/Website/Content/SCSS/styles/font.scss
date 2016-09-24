@@ -19,7 +19,6 @@ a {
   font-weight: normal;
   font-style: normal;
 }
-
 [class^="icon-"], [class*=" icon-"] {
   /* use !important to prevent issues with browser extensions that change fonts */
   font-family: 'icomoon' !important;
@@ -44,6 +43,9 @@ a {
 .icon-soup:before {
   content: "\e900";
 }
+.icon-checkered-flag:before {
+  content: "\e906";
+}
 .icon-sad-face:before {
   content: "\e901";
 }
@@ -59,9 +61,6 @@ a {
 .icon-pencil:before {
   content: "\e905";
 }
-.icon-play:before {
-  content: "\e912";
-}
 .icon-undo2:before {
   content: "\e967";
 }
@@ -74,6 +73,9 @@ a {
 .icon-bin:before {
   content: "\e9ac";
 }
+.icon-flag:before {
+  content: "\e9cc";
+}
 .icon-heart:before {
   content: "\e9da";
 }
@@ -85,6 +87,18 @@ a {
 }
 .icon-exit:before {
   content: "\ea14";
+}
+.icon-play3:before {
+  content: "\ea1c";
+}
+.icon-loop2:before {
+  content: "\ea2e";
+}
+.icon-arrow-up:before {
+  content: "\ea32";
+}
+.icon-arrow-down:before {
+  content: "\ea36";
 }
 .icon-share2:before {
   content: "\ea82";

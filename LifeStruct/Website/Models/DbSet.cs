@@ -6,6 +6,7 @@ namespace LifeStruct.Models
     {
         public DbSet<DietModel> Diet { get; set; }
         public DbSet<FitnessModel> Fitness { get; set; }
+        public DbSet<BmiClassModel> BmiClass { get; set; }
         public DbSet<FoodModel> Food { get; set; }
         public DbSet<MealsModel> Meals { get; set; }
         public DbSet<DaysModel> Days { get; set; }

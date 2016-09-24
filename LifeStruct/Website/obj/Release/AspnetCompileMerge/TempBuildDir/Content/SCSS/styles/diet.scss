@@ -15,9 +15,6 @@
 .create-diet {
     width: 100%;
     @extend .ib;
-    #modelImg {
-        min-height: 300px;
-    }
     .ipt {
         width: 100%;
     }
@@ -105,46 +102,8 @@
             width: 100%;
         }
         
-       
-.img-edit {
-    margin-top: 15px;
-    position:relative;
-            img {
-            width:100%;
-        }
-        label{
-            background-color: rgba(154, 109, 99, 0.61);
-            box-sizing:border-box;
-            cursor:pointer;
-            display:none;
-            position:absolute;
-            width: 100%;
-            height: 100%;
-            left:0;
-            top:0;
-            padding-top: 25%;
-            text-align:center;
-            color: $w;
-
-        }
-        &:hover {
-            label {
-                display:block;
-            }
-        }
-        }
-    } 
-    .picture {
-        width: 48%;
-        float:right;
-        padding: $spd;
-        .btn {
-            margin: 5px 0;
-        }
-        img{
-            max-height: 200px;
-        }
-    }
+      }
+    
     .description-btn {
         background-color: $gre-1;
     }
@@ -161,6 +120,10 @@
 .diet-search {
     float:right;
     border: 1px solid rgb(190,190,190);
+    @include phone {
+        max-width: 450px;
+        width: 100%;
+    }
 }
 .diet-schedule {
     .schedule {

@@ -16,7 +16,7 @@
             <div class="diets" ng-repeat="diets in dietData | limitTo: 20 | filter :searchDiets | orderBy: '-Likes'">
                 <div class="overview diet-overview">
                     <div ng-if="diets.Img != ''">
-                        <a href="/Diets/Details/{{diets.Id}}"><img src="~/Content/img/user/{{'sm-' +diets.Img}}" style="width:100%; height: 200px;" /></a>
+                        <a href="/Diets/Details/{{diets.Id}}"><img src="~/Content/img/user/{{'sm-' +diets.Img}}" style="width:100%; height: 270px;" /></a>
                     </div>
                     <h3>
                         <a href="/Diets/Details/{{diets.Id}}">{{diets.Title}}</a>

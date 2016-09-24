@@ -17,7 +17,7 @@
             int take = Convert.ToInt32(json.take);
             int skip = Convert.ToInt32(json.skip);
             
-            return Ok(db.Video.ToList().Skip(skip).Take(take));
+            return Ok(db.Video.ToList().Where(x => x.Type == Convert.ToInt32(json.type)).Skip(skip).Take(take));
         }
         [HttpGet]
         [Route("api/VideoApi/DeleteVideo")]

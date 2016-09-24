@@ -4,7 +4,7 @@ var videos = {
     init: function () {
         app.controller('videoIndexCtrl', ['$scope', '$http', '$document', '$sce', function ($scope, $http, $document, $sce) {
             $scope.page = 0;
-            $scope.videoList = function (page, take, np) {
+            $scope.videoList = function (page, take, np, type) {
                 if (page == -1)
                 {
                     page = 0;
@@ -22,11 +22,11 @@ var videos = {
                     page = page - 1;
                 }                
                 var skip = page * take;
-                $http({ method: 'POST', url: api + 'VideoApi/GetVideos', data: JSON.stringify({ take: take, skip: skip }), contentType: "application/json" }).then(function (data) {
+                $http({ method: 'POST', url: api + 'VideoApi/GetVideos', data: JSON.stringify({ take: take, skip: skip, type: type }), contentType: "application/json" }).then(function (data) {
                     $scope.videos = data.data;
                 });
             }
-            $scope.videoList(0, 20, false);
+            $scope.videoList(0, 20, false, 1);
             $scope.getFrameSrc = function (source) {
                 return $sce.trustAsResourceUrl('https://www.youtube.com/v/' + source + '&autoplay=1&rel=0');
             }
@@ -41,7 +41,17 @@ var videos = {
                 }
             }
 
-            
+            $('.btn-article').on('click', function (e) {
+                e.preventDefault();
+                if ($scope.videos.findIndex(x => x.Type == $(this).data('type')) == -1) {
+                    $(this).parent().children().each(function () {
+                        if ($(this).hasClass('selected')) {
+                            $(this).removeClass('selected');
+                        }
+                    });
+                    $(this).addClass('selected');
+                }
+            });
         }]);
     },
     create: function () {

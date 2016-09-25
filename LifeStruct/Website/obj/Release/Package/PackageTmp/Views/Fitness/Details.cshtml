@@ -45,7 +45,7 @@
                                             </span>
                                             <ul>
                                                 <li>@exercise.Time minutes</li>
-                                                <li>@exercise.Calories kcal</li>
+                                                <li>@((Convert.ToDecimal(exercise.Calories)/60)*Convert.ToDecimal(exercise.Time)) kcal</li>
                                             </ul>
                                         </li>
                                     }

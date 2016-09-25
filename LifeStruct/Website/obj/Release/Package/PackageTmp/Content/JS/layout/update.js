@@ -1,7 +1,7 @@
 ﻿var api = 'http://' + location.host + '/api/';
 var update = {
     set: function (uId, type, target) {
-        $('.mood').children('.tile').each(function () {
+        $('.goal').children('.tile').each(function () {
             $(this).removeClass('selected');
         });
         $(target).addClass('selected')
@@ -19,7 +19,7 @@ var update = {
             },
             error: function () {
                 setTimeout(function () {
-                    $('.mood').toggle("slide", { direction: "right" }, 1500);
+                    $('.goal').toggle("slide", { direction: "right" }, 1500);
                 }, 2000)
             }
         });

@@ -3,7 +3,8 @@
 @{
     ViewBag.Title = "Welcome!";
     var user = UserViewModel.GetCurrentUser();
-    var total = 0;
+    decimal gain = new decimal();
+    decimal loss = new decimal();
 }
 @section Signout{
     @Html.Partial("~/Views/Shared/_logout.cshtml")
@@ -17,11 +18,11 @@
             <div class="hover hide">Profile</div>
         </div>
     </a>
-    <div id="mood" class="tile g4">
+    <div id="goal" class="tile g4">
         <span class="icon-checkered-flag"></span>
         <div class="hover hide">What is your goal?</div>
     </div>
-    <div class="mood hide">
+    <div class="goal hide">
         <div onclick="update.set('@(user.Id)_1', 'Goal', this)" id="goal1" class="tile goal-index g2">
             <span class="icon-arrow-up"></span>
             <div class="hover hide">To gain weight</div>
@@ -37,29 +38,35 @@
     </div>
 </div>
 <div class="type-2">
-    <div class="tile left g4" onmouseover="progress.mouseOver('.intakeHover', '.totalIntake');" onmouseleave="progress.mouseOver('.totalIntake','.intakeHover');">
-        @if (!string.IsNullOrEmpty(user.DietId))
-        {
+    <div class="tile left g6" onmouseover="progress.mouseOver('.intakeHover', '.totalIntake');" onmouseleave="progress.mouseOver('.totalIntake','.intakeHover');">
+        <div class="totalIntake">
+            @if (!string.IsNullOrEmpty(user.DietId))
+            {
 
-            <div class="totalIntake"><p class="total">Calories today: </p></div>
-        }
+                <p id="gain"></p>
+            }
+            @if (!string.IsNullOrEmpty(user.FitnessId))
+            {
+                <p id="loss"></p>
+            }
+        </div>
         <span class="icon-pie-chart intakeHover">
         </span>
     </div>
     <a href="/Videos/Index">
-        <div class="tile g2">
+        <div class="tile r2">
             <span class="icon-play3"></span>
             <div class="hover hide">Submit and find inspirational videos</div>
         </div>
     </a>
     <a href="/Fitness/Index">
-        <div class="tile g1">
+        <div class="tile orange4">
             <span class="icon-sports-shoe"></span>
             <div class="hover hide">Create and find workout schedules</div>
         </div>
     </a>
     <a href="/Diets/Index">
-        <div class="tile g3">
+        <div class="tile b1">
             <span class="icon-lunch"></span>
             <div class="hover hide">Find your diet</div>
         </div>
@@ -76,7 +83,7 @@
         TimeSpan dateResult;
         dateResult = DateTime.Now - Convert.ToDateTime(user.DietDate);
         var week = Math.Ceiling(dateResult.TotalDays / 7);
-        <div class="tile-5 g1">
+        <div class="tile-5 b2">
             <div class="explain">
                 <div class="con">
                     <h3>Diet for today</h3>
@@ -89,7 +96,7 @@
                     <tr>
                         @foreach (var m in Model.Meals)
                         {
-                            if (Model.MealCollection.Where(x => x.Meal.ToString() == m.Id && ((DayOfWeek)x.Day) == DateTime.Now.DayOfWeek && x.WeekNo == week).Count() > 0)
+                            if (Model.MealCollection.Where(x => x.Meal.ToString() == m.Id && ((DayOfWeek)x.Day-1) == DateTime.Now.DayOfWeek && x.WeekNo == week).Count() > 0)
                             {
                                 <th>@m.Name</th>
                             }
@@ -104,7 +111,7 @@
                             if (Model.MealCollection.Where(x => x.Meal.ToString() == m.Id).Count() > 0)
                             {
                                 <td>
-                                    @foreach (var mc in Model.MealCollection.Where(x => ((DayOfWeek)x.Day) == DateTime.Now.DayOfWeek))
+                                    @foreach (var mc in Model.MealCollection.Where(x => ((DayOfWeek)x.Day-1) == DateTime.Now.DayOfWeek))
                                     {
 
                                         if (mc.Meal.ToString() == m.Id)
@@ -118,7 +125,7 @@
 
                                                 foreach (var d in dp)
                                                 {
-                                                    total += (int)Convert.ToDecimal(d.CalorieIntake);
+                                                    gain += (int)Convert.ToDecimal(d.CalorieIntake);
                                                 }
                                                 <table onclick="progress.addDietProgress(event, '@f.Id', '@mc.DietId', '@intake', '@user.Id', '@mc.Meal')" class="parent @if (dp.Count() > 0) { <text>done</text>}" data-dietprogress="@if (dp.Count() > 0) { <text>@dp.First().Id</text>}" href="" title="Add to day">
                                                     <tr>
@@ -141,7 +148,7 @@
                         }
                     </tr>
 
-                    @if (Model.MealCollection.Where(x => ((DayOfWeek)x.Day) == DateTime.Now.DayOfWeek).Count() == 0)
+                    @if (Model.MealCollection.Where(x => ((DayOfWeek)x.Day-1) == DateTime.Now.DayOfWeek).Count() == 0)
                     {
 
                         <tr class="nobackground">
@@ -152,7 +159,7 @@
                     }
                 </tbody>
             </table>
-            <input type="hidden" id="total" value="@total" />
+            <input type="hidden" id="gain" value="@gain" />
         </div>
     }
     @if (!string.IsNullOrEmpty(user.FitnessId))
@@ -169,7 +176,8 @@
                 </div>
             </div>
             <div class="clear"></div>
-            @foreach (var exercise in Model.Schedule.Where(x => ((DayOfWeek)x.Day) == DateTime.Now.DayOfWeek))
+
+            @foreach (var exercise in Model.Schedule.Where(x => ((DayOfWeek)x.Day -1) == DateTime.Now.DayOfWeek))
             {
             <div class="home-exercise @if (Model.FitnessProgress.Where(x => x.ExerciseId == exercise.Id).Count() >0) {<text>done</text> }" onclick="progress.addFitnessProgress(event, '@exercise.Id', '@Model.Fitness.Id', '@((Convert.ToDecimal(exercise.Calories)/60)*Convert.ToDecimal(exercise.Time))', '@Model.Fitness.UserId')"  data-fitnessprogress="@if(Model.FitnessProgress.Where(x=> x.ExerciseId == exercise.Id).Count() > 0) {<text>@Model.FitnessProgress.Where(x=> x.ExerciseId == exercise.Id).First().Id</text>}">
                 <div>
@@ -180,10 +188,16 @@
                         @exercise.Time minutes
                     </p>
                     <p>
-                        @exercise.Calories kcal loss
+                        @((Convert.ToDecimal(exercise.Calories)/60) * Convert.ToDecimal(exercise.Time)) kcal loss
                     </p>
                 </div>
             </div>
+            }
+            @if(Model.Schedule.Where(x => ((DayOfWeek)x.Day - 1) == DateTime.Now.DayOfWeek).Count() == 0)
+            {
+                <div>
+                    <h3>There are no exercises today</h3>
+                </div>
             }
             <div class="clear"></div>
         </div>

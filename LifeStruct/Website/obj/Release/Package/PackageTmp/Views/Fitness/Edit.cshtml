@@ -95,9 +95,9 @@
                                                             </a>
                                                         </div>
                                                     </div>
-                                                    <input id="calories_{{sIndex}}" ng-model="eList.exercise['calories_' + sIndex]" type="hidden" />
+                                                    <input id="calories_{{sIndex}}" ng-model="eList.exercise['calories_' + sIndex]" ng-init="eList.exercise['calories_' + sIndex] = subExercise.calories" name="calories_{{sIndex}}" ng-value="subExercise.calories" type="hidden" />
                                                     <input id="exerciseId_{{sIndex}}" ng-model="eList.exercise['exerciseId_' + sIndex]" name="exerciseId_{{sIndex}}" ng-value="subExercise.exerciseId" type="hidden" />
-                                                    <input class="ipt" ng-model="eList.exercise['interval_' + sIndex]" name="interval_{{sIndex}}" ng-value="subExercise.interval" placeholder="Minutes" type="text" />
+                                                    <input class="ipt" ng-model="eList.exercise['interval_' + sIndex]" ng-init="eList.exercise['interval_' + sIndex] = subExercise.interval" name="interval_{{sIndex}}" ng-value="subExercise.interval" placeholder="Minutes" type="text" />
                                                     <div ng-if="eList.exercise['calories_' + sIndex].length > 0 && eList.exercise['interval_' + sIndex].length > 0">
                                                         {{(eList.exercise['calories_' + sIndex] /60) * eList.exercise['interval_' + sIndex]}} kcal
                                                     </div>

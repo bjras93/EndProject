@@ -1,0 +1,18 @@
+﻿@{
+    ViewBag.Title = "Statistics";
+}
+<div class="statistics">
+    <div class="stats">
+        <canvas id="mood"></canvas>
+    </div>
+
+    <div class="stats">
+        <canvas id="weight"></canvas>
+    </div>
+</div>
+<script src="~/Content/JS/plugins/chartjs/Chart.bundle.min.js"></script>
+<script src="~/Content/JS/plugins/chartjs/Chart.min.js"></script>
+<script src="~/Content/JS/layout/statistics.js"></script>
+<script>
+    statistics.init();
+</script>

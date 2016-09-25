@@ -25,9 +25,20 @@ var videos = {
                     $http({ method: 'POST', url: api + 'VideoApi/GetVideos', data: JSON.stringify({ take: take, skip: skip, type: type }), contentType: "application/json" }).then(function (data) {
                         $scope.videos = data.data;
                     });
+                    $('#type-' + type).parent().children().each(function () {
+                        $(this).removeClass('selected')
+                    });
+                    $('#type-' + type).addClass('selected');
+                    localStorage.setItem('page', type)
                 }
             }
-            $scope.videoList(0, 20, false, 2);
+            if (localStorage.getItem('page') == null) {
+                $scope.videoList(0, 20, false, 2);
+            }
+            else {
+                $scope.videoList(0, 20, false, localStorage.getItem('page'));
+
+            }
             $scope.getFrameSrc = function (source) {
                 return $sce.trustAsResourceUrl('https://www.youtube.com/v/' + source + '&autoplay=1&rel=0');
             }
@@ -66,6 +77,18 @@ var videos = {
         }]);
     }
 }
+var maxLen = 400;
+$('.max-400').keydown(function(event){
+    var Length = $(".max-400").val().length;
+    var AmountLeft = maxLen - Length;
+    $('#txt-length-left').html(AmountLeft + ' characters left');
+    if(Length >= maxLen){
+        if (event.which != 8) {
+            return false;
+        }
+    }
+    
+});
 
 var setUrl = function (t) {
     var data = $(t).prev().data('source')

@@ -21,5 +21,6 @@ namespace LifeStruct.Models
         public DbSet<GoalModel> Goal { get; set; }
         public DbSet<MoodModel> Mood { get; set; }
         public DbSet<ActivityModel> Activity { get; set; }
+        public DbSet<WeightModel> Weight { get; set; }
     }
 }

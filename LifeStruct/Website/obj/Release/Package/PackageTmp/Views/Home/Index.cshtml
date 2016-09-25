@@ -4,7 +4,7 @@
     ViewBag.Title = "Welcome!";
     var user = UserViewModel.GetCurrentUser();
     decimal gain = new decimal();
-    decimal loss = new decimal();
+
 }
 @section Signout{
     @Html.Partial("~/Views/Shared/_logout.cshtml")
@@ -15,7 +15,7 @@
     <a href="/Account/Details">
         <div class="tile g3">
             <span class="icon-user"></span>
-            <div class="hover hide">Profile</div>
+            <div class="hover hide">Profile - Update your weight</div>
         </div>
     </a>
     <div id="goal" class="tile g4">
@@ -38,22 +38,24 @@
     </div>
 </div>
 <div class="type-2">
-    <div class="tile left g6" onmouseover="progress.mouseOver('.intakeHover', '.totalIntake');" onmouseleave="progress.mouseOver('.totalIntake','.intakeHover');">
-        <div class="totalIntake">
-            @if (!string.IsNullOrEmpty(user.DietId))
+    <a href="../Statistics/index">
+        <div class="tile left g6" onmouseover="progress.mouseOver('.intakeHover', '.totalIntake');" onmouseleave="progress.mouseOver('.totalIntake','.intakeHover');">
+            <div class="totalIntake">
+                @if (!string.IsNullOrEmpty(user.DietId))
             {
 
-                <p id="gain"></p>
-            }
-            @if (!string.IsNullOrEmpty(user.FitnessId))
+                    <p id="gain"></p>
+                }
+                @if (!string.IsNullOrEmpty(user.FitnessId))
             {
-                <p id="loss"></p>
-            }
-            <p id="total"></p>
+                    <p id="loss"></p>
+                }
+                <p id="total"></p>
+            </div>
+            <span class="icon-pie-chart intakeHover">
+            </span>
         </div>
-        <span class="icon-pie-chart intakeHover">
-        </span>
-    </div>
+    </a>
     <a href="/Videos/Index">
         <div class="tile r2">
             <span class="icon-play3"></span>
@@ -183,8 +185,6 @@
             <div class="home-exercise @if (Model.FitnessProgress.Where(x => x.ExerciseId == exercise.Id).Count() >0) {<text>done</text> }" onclick="progress.addFitnessProgress(event, '@exercise.Id', '@Model.Fitness.Id', '@((Convert.ToDecimal(exercise.Calories)/60)*Convert.ToDecimal(exercise.Time))', '@Model.Fitness.UserId')"  data-fitnessprogress="@if(Model.FitnessProgress.Where(x=> x.ExerciseId == exercise.Id).Count() > 0) {<text>@Model.FitnessProgress.Where(x=> x.ExerciseId == exercise.Id).First().Id</text>}">
                 <div>
                         @exercise.Exercise
-                    @DateTime.Now.DayOfWeek
-                    @((DayOfWeek)exercise.Day)
                 </div>
                 <div>
                     <p>

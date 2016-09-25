@@ -19,17 +19,17 @@
                             <input type="hidden" name="Id" value="@Model.Id" />
                             <input type="hidden" name="UserId" value="@Model.UserId" />
                             <select class="ipt" name="Type">
-                            
+
                                 <option value="0">Select video type</option>
-                                <option @if (Model.Type == 1) {<text>selected</text> } value="1">Fitness</option>
-                                <option @if (Model.Type == 2) {<text>selected</text> } value="2">Health</option>
+                                <option @if (Model.Type == 1) { <text> selected</text> } value="1">Fitness</option>
+                                <option @if (Model.Type == 2) { <text> selected</text> } value="2">Health</option>
                             </select><br />
                             @Html.ValidationMessageFor(x => x.Type)
                         </td>
                     </tr>
                     <tr>
                         <td>
-                            @Html.TextBoxFor(x => x.Title, new { @class= "ipt", @placeholder= "Title"})<br />
+                            @Html.TextBoxFor(x => x.Title, new { @class = "ipt", @placeholder = "Title" })<br />
                             @Html.ValidationMessageFor(x => x.Title)
                         </td>
                     </tr>
@@ -41,7 +41,8 @@
                     </tr>
                     <tr>
                         <td>
-                            @Html.TextAreaFor(x => x.Description, new { @class = "ipt", @placeholder = "Description" })
+                            @Html.TextAreaFor(x => x.Description, new { @class = "ipt max-400", @placeholder = "Description" })
+                            <div id="txt-length-left">400 characters left</div>
                         </td>
                     </tr>
                     <tr>

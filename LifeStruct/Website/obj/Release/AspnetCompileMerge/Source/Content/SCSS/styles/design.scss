@@ -459,11 +459,21 @@ body {
     top:0;
     left:0;
     background-color: rgba(22, 160, 133, 0.6);
+    
+        @include vertical {
+            width:100%;
+            }
     .mood {
         position: absolute;
         top: 15%;
         left:35%;
         padding: $spd;
+        @include phone {
+            left: 10%;
+        }
+        @include vertical {
+            left: 10px;
+        }
         @extend .b1;
         p {
             margin-bottom: 10px;
@@ -472,6 +482,10 @@ body {
             font-size: 6em;
             cursor: pointer;
             margin: 0 10px;
+            
+        @include vertical {
+            font-size: 4em;
+            }
         }
     }
 }

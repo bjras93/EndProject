@@ -119,3 +119,17 @@ C:\Users\bjoe0771\Desktop\Website\LifeStruct\Website\obj\Release\Website.Migrati
 C:\Users\bjoe0771\Desktop\Website\LifeStruct\Website\obj\Release\Website.Migrations.Activity.resources
 C:\Users\bjoe0771\Desktop\Website\LifeStruct\Website\obj\Release\Website.Migrations.FProgressDate.resources
 C:\Users\bjoe0771\Desktop\Website\LifeStruct\Website\obj\Release\Website.Migrations.moodtype.resources
+E:\Projects\LifeStruct\LifeStruct\Website\obj\Release\Website.Migrations.BmiClass.resources
+E:\Projects\LifeStruct\LifeStruct\Website\obj\Release\Website.Migrations.Fitness.resources
+E:\Projects\LifeStruct\LifeStruct\Website\obj\Release\Website.Migrations.ExerciseIndex.resources
+E:\Projects\LifeStruct\LifeStruct\Website\obj\Release\Website.Migrations.ImgTagsFitness.resources
+E:\Projects\LifeStruct\LifeStruct\Website\obj\Release\Website.Migrations.CaloriesFitness.resources
+E:\Projects\LifeStruct\LifeStruct\Website\obj\Release\Website.Migrations.wrongcalfitness.resources
+E:\Projects\LifeStruct\LifeStruct\Website\obj\Release\Website.Migrations.FitnessAuthor.resources
+E:\Projects\LifeStruct\LifeStruct\Website\obj\Release\Website.Migrations.FitnessProgress.resources
+E:\Projects\LifeStruct\LifeStruct\Website\obj\Release\Website.Migrations.MoodGoal.resources
+E:\Projects\LifeStruct\LifeStruct\Website\obj\Release\Website.Migrations.goal.resources
+E:\Projects\LifeStruct\LifeStruct\Website\obj\Release\Website.Migrations.Activity.resources
+E:\Projects\LifeStruct\LifeStruct\Website\obj\Release\Website.Migrations.FProgressDate.resources
+E:\Projects\LifeStruct\LifeStruct\Website\obj\Release\Website.Migrations.moodtype.resources
+E:\Projects\LifeStruct\LifeStruct\Website\obj\Release\Website.Migrations.WeightUser.resources

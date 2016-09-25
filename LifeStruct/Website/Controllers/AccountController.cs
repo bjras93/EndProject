@@ -47,7 +47,7 @@
             if (Request.IsAuthenticated)
             {
                 var user = UserViewModel.GetUser(model.User.Id);
-
+                WeightModel wm = new WeightModel();
                 DateTime dt = new DateTime();
                 foreach (var g in db.Goal.Where(x => x.UserId == user.Id))
                 {
@@ -55,6 +55,15 @@
                     {
                         dt = Convert.ToDateTime(g.Date);
                     }
+                }
+                if (db.Weight.ToList().Where(x => x.UserId == user.Id && x.Date == DateTime.Now.ToString("dd-MM-yyyy")).Count() == 0)
+                {
+                    wm.Id = Guid.NewGuid().ToString();
+                    wm.UserId = user.Id;
+                    wm.Date = DateTime.Now.ToString("dd-MM-yyyy");
+                    wm.Weight = Convert.ToDecimal(model.User.Weight);
+                    db.Weight.Add(wm);
+                    db.SaveChanges();
                 }
                 model.Goal = db.Goal.ToList().Where(x => x.UserId == user.Id && x.Date == dt.ToString("dd-MM-yyyy")).First();
                 model.Activity = db.Activity;
@@ -188,7 +197,9 @@
                 {
                     return View("../Account/Index");
                 }
+
                 var user = new ApplicationUser { UserName = model.Email, Email = model.Email, Name = model.Name, Height = model.Height, Weight = model.Weight, DietId = "", DietDate = "", FitnessId = "", FitnessDate = "", Birthday = model.Birthday, Gender = model.Gender };
+
                 var result = await UserManager.CreateAsync(user);
                 if (result.Succeeded)
                 {
@@ -198,6 +209,14 @@
                         await SignInManager.SignInAsync(user, isPersistent: false, rememberBrowser: false);
                         return RedirectToLocal(returnUrl);
                     }
+
+                    WeightModel wm = new WeightModel();
+                    wm.Id = Guid.NewGuid().ToString();
+                    wm.UserId = user.Id;
+                    wm.Date = DateTime.Now.ToString("dd-MM-yyyy");
+                    wm.Weight = Convert.ToDecimal(user.Weight);
+                    db.Weight.Add(wm);
+                    db.SaveChanges();
                 }
                 AddErrors(result);
             }

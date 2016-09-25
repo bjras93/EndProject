@@ -90,7 +90,7 @@ table {
   background: #D9853C;
   color: #fff; }
 
-.w, .diet-information .description, .articles .no-results, .articles .article, .details-article {
+.w, .diet-information .description, .articles .no-results, .articles .article, .details-article, .statistics {
   background-color: #fff;
   color: #333;
   border: 1px solid #bebebe; }
@@ -535,17 +535,29 @@ body {
   top: 0;
   left: 0;
   background-color: rgba(22, 160, 133, 0.6); }
+  @media (max-width: 450px) {
+    .mood-overlay {
+      width: 100%; } }
   .mood-overlay .mood {
     position: absolute;
     top: 15%;
     left: 35%;
     padding: 15px; }
+    @media (max-width: 768px) {
+      .mood-overlay .mood {
+        left: 10%; } }
+    @media (max-width: 450px) {
+      .mood-overlay .mood {
+        left: 10px; } }
     .mood-overlay .mood p {
       margin-bottom: 10px; }
     .mood-overlay .mood span {
       font-size: 6em;
       cursor: pointer;
       margin: 0 10px; }
+      @media (max-width: 450px) {
+        .mood-overlay .mood span {
+          font-size: 4em; } }
 
 .login {
   width: 250px;
@@ -1061,7 +1073,7 @@ body {
         height: 50px; }
       .video-con .videos .video-index .description {
         height: 120px;
-        margin: 20px 0; }
+        margin-bottom: 40px; }
     .video-con .videos .video {
       padding: 15px;
       color: #fff;
@@ -1144,3 +1156,7 @@ body {
   .details-article .content-article {
     margin: 25px 0;
     max-width: 850px; }
+
+.statistics .stats {
+  width: 75%;
+  margin: 20px; }

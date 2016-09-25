@@ -13,15 +13,17 @@
         [HttpGet]
         public IHttpActionResult SetMood(string Id)
         {
-            var mood = db.Mood.ToList().Where(x => x.UserId == Id);
+            var mood = db.Mood.ToList().Where(x => x.UserId == Id.Split('_')[0]);
             MoodModel mm = new MoodModel();
+            int type = Convert.ToInt32(Id.Split('_')[1]);
 
             if (mood.Count() > 0)
             {
-                if (mm.Date == DateTime.Now.ToString("dd-MM-yyyy"))
+                if (mm.Date == DateTime.Now.ToString())
                 {
                     mm = mood.First();
-                    mm.Date = DateTime.Now.ToString("dd-MM-yyyy");
+                    mm.Date = DateTime.Now.ToString();
+                    mm.Type = type;
                     db.Entry(mm).State = System.Data.Entity.EntityState.Modified;
                     db.SaveChanges();
                 }
@@ -29,7 +31,8 @@
                 {
                     mm.Id = Guid.NewGuid().ToString();
                     mm.UserId = Id;
-                    mm.Date = DateTime.Now.ToString("dd-MM-yyyy");
+                    mm.Date = DateTime.Now.ToString();
+                    mm.Type = type;
                     db.Mood.Add(mm);
                     db.SaveChanges();
                 }
@@ -38,11 +41,12 @@
             {
                 mm.Id = Guid.NewGuid().ToString();
                 mm.UserId = Id;
-                mm.Date = DateTime.Now.ToString("dd-MM-yyyy");
+                mm.Date = DateTime.Now.ToString();
+                mm.Type = type;
                 db.Mood.Add(mm);
                 db.SaveChanges();
             }
-            return Ok();
+            return Ok("set");
         }
         [Route("api/UpdateApi/SetGoal")]
         [HttpGet]
@@ -82,6 +86,22 @@
                 db.SaveChanges();
             }
             return Ok();
+        }
+        [Route("api/UpdateApi/GetMood")]
+        [HttpGet]
+        public IHttpActionResult GetMood(string uId)
+        {
+            DateTime dt = DateTime.Now.Date;
+            var mood = db.Mood.ToList().Where(x => x.UserId.Split('_')[0] == uId && Convert.ToDateTime(x.Date).Date.ToString() == dt.ToString() && Convert.ToDateTime(x.Date).Hour > 3);
+            if (mood.Count() > 0)
+            {
+                return Ok("set");
+            }
+            else
+            {
+                return Ok("notset");
+            }
+
         }
         [Route("api/UpdateApi/GetGoal")]
         [HttpGet]

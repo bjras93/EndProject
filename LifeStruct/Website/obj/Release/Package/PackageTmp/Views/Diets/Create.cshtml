@@ -39,6 +39,7 @@
                     <input ng-model="Img" type="file" accept="image/.png,.jpg,.gif" class="hide" id="upload-file" name="uploadFile" />
                     <img src="" id="modelImg" />
                 </div>
+                @Html.ValidationMessage("Filesize")
                 <div class="clear"></div>
             }
         </div>

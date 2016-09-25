@@ -38,8 +38,13 @@
 
                 if (Request.Files.Count > 0)
                 {
+                    
                     var uploadFile = Request.Files[0];
-                    if (uploadFile != null && uploadFile.ContentLength > 0)
+                    if(uploadFile.ContentLength > 4095)
+                    {
+                        ModelState.AddModelError("Filesize", "Image is too big, please select at smaller file");
+                    }
+                    if (uploadFile != null && uploadFile.ContentLength > 0 && uploadFile.ContentLength < 4096)
                     {
                         var fullPath = Server.MapPath("~/Content/img/user/" + model.Img);
                         var sFullPath = Server.MapPath("~/Content/img/user/sm-" + model.Img);
@@ -132,7 +137,11 @@
             if (Request.Files.Count > 0)
             {
                 var uploadFile = Request.Files[0];
-                if (uploadFile != null && uploadFile.ContentLength > 0)
+                if(uploadFile.ContentLength > 4095)
+                {
+                    ModelState.AddModelError("Filesize", "Image is too big, please try uploading a smaller one");
+                }
+                if (uploadFile != null && uploadFile.ContentLength > 0 && uploadFile.ContentLength < 4096)
                 {
                     var fullPath = Server.MapPath("~/Content/img/user/" + f.Img);
                     var sFullPath = Server.MapPath("~/Content/img/user/sm-" + f.Img);
@@ -155,11 +164,18 @@
                     img.Save(sPath);
                 }
             }
-            f.Title = model.Title;
-            f.Description = model.Description;
-            f.Tags = model.Tags;
-            db.Entry(f).State = EntityState.Modified;
-            db.SaveChanges();
+            if (ModelState.IsValid)
+            {
+                f.Title = model.Title;
+                f.Description = model.Description;
+                f.Tags = model.Tags;
+                db.Entry(f).State = EntityState.Modified;
+                db.SaveChanges();
+            }
+            else
+            {
+                return View(model);
+            }
 
             foreach (var key in formData)
             {
@@ -183,7 +199,12 @@
                         {                            
                             sm.ExerciseId = value[0];
                             sm.Exercise = db.Exercise.Find(sm.ExerciseId).Name;
-                            sm.Day = Convert.ToInt32(values[3].Replace("d", ""));
+                            int day = Convert.ToInt32(values[3].Replace("d", ""));
+                            if (day == 7)
+                            {
+                                day = 0;
+                            }
+                            sm.Day = day;
                             sm.Week = Convert.ToInt32(values[4].Replace("w", ""));
                             sm.ExerciseIndex = Convert.ToInt32(values[2].Replace("e", ""));
                         }

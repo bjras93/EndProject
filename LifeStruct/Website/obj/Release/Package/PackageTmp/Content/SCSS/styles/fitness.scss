@@ -3,9 +3,13 @@
     display: inline-block;
 
     .overview-fitness {        
+        &:nth-child(even)
+        {
+            margin-right: 0;
+        }
     min-height: 200px;
-    width: 48%;
-    margin-right: 1%;
+    width: 49%;
+    margin-right: 2%;
     margin-bottom: 1%;
     padding: $spd;
     color: $w;
@@ -174,7 +178,6 @@
     float: left;
     margin-bottom: 30px;
     width: 100%;
-    @extend .w;
     padding: $spd;
     img {
         max-width: 100%;
@@ -212,7 +215,6 @@
     float: left;
     width: 100%;
     padding: $spd;
-    background: $gre-2;
     color: $w;
 
     h3 {

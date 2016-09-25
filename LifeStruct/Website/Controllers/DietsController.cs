@@ -30,7 +30,7 @@
 
             return RedirectToAction("../Account/Index");
         }
-        [HttpPost,ValidateInput(false)]
+        [HttpPost, ValidateInput(false)]
         public ActionResult Create(DietModel dm)
         {
             if (Request.IsAuthenticated)
@@ -45,7 +45,7 @@
                     if (Request.Files.Count > 0)
                     {
                         var uploadFile = Request.Files[0];
-                        if (uploadFile != null && uploadFile.ContentLength > 0)
+                        if (uploadFile != null && uploadFile.ContentLength > 0 && uploadFile.ContentLength < 4096)
                         {
                             var fileName = Path.GetFileName(uploadFile.FileName);
                             var fileId = Guid.NewGuid().ToString();
@@ -61,6 +61,10 @@
 
                             img.Save(sPath);
                         }
+                        if (uploadFile.ContentLength > 4095)
+                        {
+                            ModelState.AddModelError("Filesize", "Filesize is too big please select a smaller image");
+                        }
                     }
                     else
                     {
@@ -72,7 +76,7 @@
                 }
                 else
                 {
-                    return View();
+                    return View(dm);
                 }
             }
             return RedirectToAction("../Account/Index");
@@ -99,13 +103,19 @@
             var formData = Request.Form.AllKeys.ToList();
 
             MealCollectionModel mcm = new MealCollectionModel();
-            
+
             var dietId = Request.Form["Id"];
             var d = db.Diet.Find(dietId);
             if (Request.Files.Count > 0)
             {
                 var uploadFile = Request.Files[0];
-                if (uploadFile != null && uploadFile.ContentLength > 0)
+
+                if (uploadFile.ContentLength > 4095)
+                {
+                    ModelState.AddModelError("Filesize", "Filesize is too big please try uploading another image");
+
+                }
+                if (uploadFile != null && uploadFile.ContentLength > 0 && uploadFile.ContentLength < 4096)
                 {
                     var fullPath = Server.MapPath("~/Content/img/user/" + d.Img);
                     var sFullPath = Server.MapPath("~/Content/img/user/sm-" + d.Img);
@@ -128,11 +138,18 @@
                     img.Save(sPath);
                 }
             }
-            d.Title = dm.Title;
-            d.Description = dm.Description;
-            d.Tags = dm.Tags;
-            db.Entry(d).State = EntityState.Modified;
-            db.SaveChanges();
+            if (ModelState.IsValid)
+            {
+                d.Title = dm.Title;
+                d.Description = dm.Description;
+                d.Tags = dm.Tags;
+                db.Entry(d).State = EntityState.Modified;
+                db.SaveChanges();
+            }
+            else
+            {
+                return View(dm);
+            }
             foreach (var key in formData)
             {
                 if (!key.StartsWith("Description"))
@@ -140,55 +157,59 @@
                     string[] value = Request.Form[key].Split(',');
 
                     string[] values = key.Split('_');
-              
-                if (key.StartsWith("name_") || key.StartsWith("amount_") || key.StartsWith("foodId_") || key.StartsWith("collectionId_"))
-                {
-                    if (value[0] != "")
+
+                    if (key.StartsWith("name_") || key.StartsWith("amount_") || key.StartsWith("foodId_") || key.StartsWith("collectionId_"))
                     {
+                        if (value[0] != "")
+                        {
 
-                        if (key.StartsWith("name_"))
-                        {
-                            int week = int.Parse(values[1].Substring(1));
-                            int meal = int.Parse(values[2].Substring(1));
-                            int day = int.Parse(values[3].Substring(1));
-                            int edible = int.Parse(values[4].Substring(1));
-
-                            mcm.WeekNo = week;
-                            mcm.Meal = meal;
-                            mcm.Day = day;
-                            mcm.DietId = dietId;
-                            mcm.Edible = edible;
-
-                        }
-                        if (key.StartsWith("amount_"))
-                        {
-                            mcm.Amount = value[0];
-                        }
-                        if (key.StartsWith("foodId_"))
-                        {
-                            mcm.FoodId = value[0];
-                        }
-                        if (key.StartsWith("collectionId_"))
-                        {
-                            mcm.Id = value[0];
-                        }
-                        if (!string.IsNullOrEmpty(mcm.FoodId) && !string.IsNullOrEmpty(mcm.Amount))
-                        {
-                            if (string.IsNullOrEmpty(mcm.Id))
+                            if (key.StartsWith("name_"))
                             {
-                                mcm.Id = Guid.NewGuid().ToString();
-                                db.MealCollection.Add(mcm);
-                                db.SaveChanges();
+                                int week = int.Parse(values[1].Substring(1));
+                                int meal = int.Parse(values[2].Substring(1));
+                                int day = int.Parse(values[3].Substring(1));
+                                int edible = int.Parse(values[4].Substring(1));
+
+                                if (day == 7)
+                                {
+                                    day = 0;
+                                }
+                                mcm.WeekNo = week;
+                                mcm.Meal = meal;
+                                mcm.Day = day;
+                                mcm.DietId = dietId;
+                                mcm.Edible = edible;
 
                             }
-                            else
+                            if (key.StartsWith("amount_"))
                             {
-                                db.Entry(mcm).State = System.Data.Entity.EntityState.Modified;
-                                db.SaveChanges();
+                                mcm.Amount = value[0];
                             }
-                            mcm = new MealCollectionModel();
+                            if (key.StartsWith("foodId_"))
+                            {
+                                mcm.FoodId = value[0];
+                            }
+                            if (key.StartsWith("collectionId_"))
+                            {
+                                mcm.Id = value[0];
+                            }
+                            if (!string.IsNullOrEmpty(mcm.FoodId) && !string.IsNullOrEmpty(mcm.Amount))
+                            {
+                                if (string.IsNullOrEmpty(mcm.Id))
+                                {
+                                    mcm.Id = Guid.NewGuid().ToString();
+                                    db.MealCollection.Add(mcm);
+                                    db.SaveChanges();
+
+                                }
+                                else
+                                {
+                                    db.Entry(mcm).State = System.Data.Entity.EntityState.Modified;
+                                    db.SaveChanges();
+                                }
+                                mcm = new MealCollectionModel();
+                            }
                         }
-                    }
                     }
 
                 }
@@ -220,7 +241,7 @@
                     var fDb = db.Food.Find(mcm.FoodId);
                     dv.MealCollection.Add(new MealCollectionView { Amount = mcm.Amount, Day = mcm.Day, Food = fDb.Name, Calories = fDb.Calories, Meal = mcm.Meal, Week = mcm.WeekNo });
                 }
-                
+
                 return View(dv);
             }
             return RedirectToAction("../Account/Index");
@@ -233,7 +254,8 @@
             return PartialView("~/Views/Shared/_AddNewFood.cshtml");
         }
     }
-    public class DietView {
+    public class DietView
+    {
         public string Title { get; set; }
         public string Description { get; set; }
         public string Img { get; set; }

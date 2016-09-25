@@ -40,7 +40,6 @@ var article = {
 
             $('.btn-article').on('click', function (e) {
                 e.preventDefault();
-                console.log($scope.articles.Articles.findIndex(x => x.Type == $(this).data('type')) )
                 if ($scope.articles.Articles.findIndex(x => x.Type == $(this).data('type')) == -1) {
                 $(this).parent().children().each(function () {
                     if ($(this).hasClass('selected')) {

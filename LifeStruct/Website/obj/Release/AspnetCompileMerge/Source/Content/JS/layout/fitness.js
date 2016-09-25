@@ -128,7 +128,6 @@ var fitness = {
                             
                             if(sche[i].ExerciseIndex > 1){
                                 var exIndex = $scope.exercises.findIndex(x => x.day == sche[i].Day && x.week == sche[i].Week);
-                                console.log($scope.exercises[exIndex])
                                 if(exIndex > -1)
                                 {
                                     $scope.exercises[exIndex].subExercises.push({

@@ -2,7 +2,8 @@
     dietId = '',
     userId = '',
     gain = 0,
-    loss = 0,
+    fLoss = 0,
+    total = 0,
     progress = {
         init: function () {
             dietId = $('#dietId').val();
@@ -11,16 +12,16 @@
                 type: 'GET',
                 url: api + 'DietProgressApi/GetProgress',
                 success: function (data) {
-                    console.log(data)
-                    gain = 0;
                     for (var i = 0; i < data.DietProgress.length; i++) {
                         gain += parseFloat(data.DietProgress[i].CalorieIntake);
                     }
                     for (var i = 0; i < data.FitnessProgress.length; i++) {
-                        loss += parseFloat(data.FitnessProgress[i].Loss)
+                        fLoss += parseFloat(data.FitnessProgress[i].Loss)
                     }
                     $('#gain').text('Calorie intake: ' + parseFloat(gain).toFixed(0));
-                    $('#loss').text('Calorie loss: ' + parseFloat(loss).toFixed(0))
+                    $('#loss').text('Calorie loss: ' + parseFloat(fLoss).toFixed(0));
+                    total = parseFloat(data.Bmr).toFixed(0) - gain;
+                    $('#total').text('Suggested intake: ' + total);
                 }
             })
         },
@@ -34,8 +35,12 @@
                     data: JSON.stringify({ foodId: fId, dietId: dId, intake: intake, userId: uId, meal: meal }),
                     contentType: "application/json",
                     success: function (data) {
-                        gain += parseFloat(data.CalorieIntake);
+                        var fix = data.CalorieIntake.replace(',', '.');
+                        gain += +parseFloat(fix);
                         $('#gain').text('Calorie intake: ' + parseFloat(gain).toFixed(0));
+                        total = total - parseFloat(data.CalorieIntake);
+                        $('#total').text('Suggested intake: ' + parseFloat(total).toFixed(0));
+
                         target.data('dietprogress', data.Id);
 
                         setTimeout(function () {
@@ -55,9 +60,10 @@
                     type: 'GET',
                     url: api + 'DietProgressApi/RemoveProgress?id=' + dietProgress.trim(),
                     success: function (data) {
-                        console.log(data)
-                        gain = gain - parseFloat(data);
+                        gain = gain - +parseFloat(data);
                         $('#gain').text('Calorie intake: ' + parseFloat(gain).toFixed(0));
+                        total += +parseFloat(data);
+                        $('#total').text('Suggested intake: ' + parseFloat(total).toFixed(0));
                         setTimeout(function () {
                             $('.intakeHover').trigger('mouseover')
                         }, 200)
@@ -74,7 +80,11 @@
         },
         addFitnessProgress: function (e, eId, fId, loss, uId, eIndex) {
             var target = $(e.target);
-            console.log(target.data('fitnessprogress'))
+            if (target.parents('.home-exercise').length > 0)
+            {
+                target = $(target.parents('.home-exercise')[0]);
+            }
+
             if (!target.hasClass('done') && target.data('fitnessprogress') == '') {
                 $.ajax({
                     type: 'POST',
@@ -83,8 +93,17 @@
                     contentType: "application/json",
                     success: function (data) {
                         target.data('fitnessprogress', data.Id)
-                        loss += parseFloat(data.Loss);
-                        $('#loss').text('Calorie loss: ' + parseFloat(loss).toFixed(0))
+                        fLoss += +parseFloat(data.Loss);
+                        total = total + +parseFloat(data.Loss);
+                        $('#total').text('Suggested intake: ' + parseFloat(total).toFixed(0));
+                        $('#loss').text('Calorie loss: ' + parseFloat(fLoss).toFixed(0))
+                        setTimeout(function () {
+                            $('.intakeHover').trigger('mouseover')
+                        }, 200)
+                        setTimeout(function () {
+
+                            $('.intakeHover').trigger('mouseleave')
+                        }, 1500)
                     }
                 });
                 target.addClass('done');
@@ -92,10 +111,19 @@
             else {
                 $.ajax({
                     type: 'GET',
-                    url: api + 'FitnessApi/RemoveProgress?id=' + target.data('fitnessprogress').trim(),
+                    url: api + 'FitnessApi/RemoveProgress?id=' + target.data('fitnessprogress'),
                     success: function (data) {
-                        loss = loss - parseFloat(data);
-                        $('#loss').text('Calorie loss: ' + parseFloat(data).toFixed(0))
+                        fLoss = fLoss - parseFloat(data);
+                        total = total - parseFloat(data);
+                        $('#total').text('Suggested intake: ' + parseFloat(total).toFixed(0));
+                        $('#loss').text('Calorie loss: ' + parseFloat(fLoss).toFixed(0))
+                        setTimeout(function () {
+                            $('.intakeHover').trigger('mouseover')
+                        }, 200)
+                        setTimeout(function () {
+
+                            $('.intakeHover').trigger('mouseleave')
+                        }, 1500)
                     }
                 });
                 target.data('fitnessprogress', '');

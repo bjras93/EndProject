@@ -6,7 +6,6 @@ var videos = {
             $scope.page = 0;
             var t = 0;
             $scope.videoList = function (page, take, np, type) {
-                console.log(type)
                 if (t != type) {
                         t = type;
                     if (page == -1) {
@@ -16,7 +15,6 @@ var videos = {
                     $scope.videos = [];
                     if (np) {
                         $scope.page++;
-                        console.log($scope.page)
                         page++;
                     }
                     else {
@@ -59,9 +57,7 @@ var videos = {
     },
     create: function () {
         app.controller('videoCreateCtrl', ['$scope', '$http', '$document', function ($scope, $http, $document) {
-
             $scope.tags = [];
-            console.log($scope.tags)
         }]);
     },
     edit: function () {        

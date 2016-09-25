@@ -6,7 +6,7 @@
     @Html.Partial("~/Views/Shared/_logout.cshtml")
 }
 @Html.ActionLink("Return", "Index", "Fitness", null, new { @class = "return" })
-<div class="content" ng-app="LifeStruct" ng-controller="FitnessCtrl">
+<div class="content b1" ng-app="LifeStruct" ng-controller="FitnessCtrl">
     <div class="fitness fitness-edit">
         @using (Html.BeginForm("Edit", "Fitness", FormMethod.Post, new { enctype = "multipart/form-data" }))
         {
@@ -30,6 +30,7 @@
                             </label>
                             <input type="file" id="file-upload" accept="image/.png,.jpg,.gif" name="fileUpload" class="hide" />
                         </div>
+                        @Html.ValidationMessage("Filesize")
                     </li>
                 </ul>
             </div>

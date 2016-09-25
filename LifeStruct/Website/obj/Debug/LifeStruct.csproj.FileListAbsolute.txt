@@ -152,3 +152,4 @@ C:\Users\bjoe0771\Desktop\Website\LifeStruct\Website\obj\Debug\Website.Migration
 C:\Users\bjoe0771\Desktop\Website\LifeStruct\Website\obj\Debug\Website.Migrations.goal.resources
 C:\Users\bjoe0771\Desktop\Website\LifeStruct\Website\obj\Debug\Website.Migrations.Activity.resources
 C:\Users\bjoe0771\Desktop\Website\LifeStruct\Website\obj\Debug\Website.Migrations.FProgressDate.resources
+C:\Users\bjoe0771\Desktop\Website\LifeStruct\Website\obj\Debug\Website.Migrations.moodtype.resources

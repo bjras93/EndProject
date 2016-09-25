@@ -9,7 +9,7 @@
 }
 
 @Html.ActionLink("Return", "Index", "Fitness", null, new { @class = "return" })
-<div class="fitness-details">
+<div class="fitness-details b1">
     <div class="detail">
         <img src="/Content/img/user/@Model.Fitness.Img" />
         <h1>@Model.Fitness.Title</h1>
@@ -30,12 +30,12 @@
         {
             <div class="week">
                 <h3>Week @i</h3>
-                    @for (var d = 1; d < 8; d++)
+                    @for (var d = 0; d < 7; d++)
                     {
                         if (Model.Schedule.Where(x => x.Day == d && !string.IsNullOrEmpty(x.Exercise) && !string.IsNullOrEmpty(x.Time) && x.Week == i).Count() > 0)
                         {
                             <div class="day">
-                                <h4>@DayViewModel.GetDay(d).Name</h4>
+                                <h4>@DayViewModel.GetDay((d+1)).Name</h4>
                                 <ul>
                                     @foreach (var exercise in Model.Schedule.Where(x => x.Day == d && x.Week == i))
                                     {

@@ -118,3 +118,4 @@ C:\Users\bjoe0771\Desktop\Website\LifeStruct\Website\obj\Release\Website.Migrati
 C:\Users\bjoe0771\Desktop\Website\LifeStruct\Website\obj\Release\Website.Migrations.goal.resources
 C:\Users\bjoe0771\Desktop\Website\LifeStruct\Website\obj\Release\Website.Migrations.Activity.resources
 C:\Users\bjoe0771\Desktop\Website\LifeStruct\Website\obj\Release\Website.Migrations.FProgressDate.resources
+C:\Users\bjoe0771\Desktop\Website\LifeStruct\Website\obj\Release\Website.Migrations.moodtype.resources

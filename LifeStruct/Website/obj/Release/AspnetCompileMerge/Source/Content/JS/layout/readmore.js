@@ -6,7 +6,6 @@
         $(document).on('click', '.read', function () {
             var content = $(this).prev().text();
             var c = content.substr(0, max);
-            console.log(c)
         });
     }
 }

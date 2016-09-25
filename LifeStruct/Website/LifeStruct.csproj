@@ -384,6 +384,10 @@
     <Compile Include="Migrations\201609242356122_FProgressDate.Designer.cs">
       <DependentUpon>201609242356122_FProgressDate.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201609251531343_moodtype.cs" />
+    <Compile Include="Migrations\201609251531343_moodtype.Designer.cs">
+      <DependentUpon>201609251531343_moodtype.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Account\AccountViewModels.cs" />
     <Compile Include="Models\Account\ActivityModel.cs" />
@@ -713,6 +717,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201609242356122_FProgressDate.resx">
       <DependentUpon>201609242356122_FProgressDate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201609251531343_moodtype.resx">
+      <DependentUpon>201609251531343_moodtype.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

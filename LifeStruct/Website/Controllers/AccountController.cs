@@ -28,7 +28,15 @@
                 UserDetail ud = new UserDetail();
                 ud.User = UserViewModel.GetCurrentUser();
                 ud.Activity = db.Activity;
-
+                DateTime dt = new DateTime();
+                foreach (var g in db.Goal.Where(x => x.UserId == ud.User.Id))
+                {
+                    if (Convert.ToDateTime(g.Date).Date > dt.Date)
+                    {
+                        dt = Convert.ToDateTime(g.Date);
+                  }
+                }
+                ud.Goal = db.Goal.ToList().Where(x => x.UserId == ud.User.Id && x.Date == dt.ToString("dd-MM-yyyy")).First();
                 return View(ud);
             }
             return RedirectToAction("../Account/Index");
@@ -39,6 +47,16 @@
             if (Request.IsAuthenticated)
             {
                 var user = UserViewModel.GetUser(model.User.Id);
+
+                DateTime dt = new DateTime();
+                foreach (var g in db.Goal.Where(x => x.UserId == user.Id))
+                {
+                    if (Convert.ToDateTime(g.Date).Date > dt.Date)
+                    {
+                        dt = Convert.ToDateTime(g.Date);
+                    }
+                }
+                model.Goal = db.Goal.ToList().Where(x => x.UserId == user.Id && x.Date == dt.ToString("dd-MM-yyyy")).First();
                 model.Activity = db.Activity;
                 user.Weight = model.User.Weight;
                 user.ActiveLevel = model.User.ActiveLevel;
@@ -279,9 +297,11 @@
 
     }
 
-    public class UserDetail {
+    public class UserDetail
+    {
         public IEnumerable<ActivityModel> Activity { get; set; }
         public IEnumerable<SelectListItem> ActivityDropdown { get { return new SelectList(Activity, "Multiplier", "Name"); } }
         public ApplicationUser User { get; set; }
+        public GoalModel Goal { get; set; }
     }
 }

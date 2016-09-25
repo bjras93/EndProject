@@ -49,6 +49,7 @@
             {
                 <p id="loss"></p>
             }
+            <p id="total"></p>
         </div>
         <span class="icon-pie-chart intakeHover">
         </span>
@@ -83,11 +84,11 @@
         TimeSpan dateResult;
         dateResult = DateTime.Now - Convert.ToDateTime(user.DietDate);
         var week = Math.Ceiling(dateResult.TotalDays / 7);
-        <div class="tile-5 b2">
+        <div class="tile-5 b1 border">
             <div class="explain">
                 <div class="con">
                     <h3>Diet for today</h3>
-                    <p>Finished:</p> <span class="done"></span> <p>Unfinished:</p> <span class="undone"></span>
+                    <p>Finished:</p> <span class="done border"></span> <p>Unfinished:</p> <span class="undone border"></span>
                 </div>
             </div>
             <table class="progress">
@@ -167,21 +168,23 @@
         TimeSpan dateResult;
         dateResult = DateTime.Now - Convert.ToDateTime(user.FitnessDate);
         var week = Math.Ceiling(dateResult.TotalDays / 7);
-        <div class="home-fitness">
+        <div class="home-fitness g3 border-no-top border">
 
             <div class="explain">
                 <div class="con">
                     <h3>Workout for @DateTime.Now.DayOfWeek</h3>
-                    <p>Finished:</p> <span class="done"></span> <p>Unfinished:</p> <span class="undone"></span>
+                    <p>Finished:</p> <span class="done border"></span> <p>Unfinished:</p> <span class="undone border"></span>
                 </div>
             </div>
             <div class="clear"></div>
 
-            @foreach (var exercise in Model.Schedule.Where(x => ((DayOfWeek)x.Day -1) == DateTime.Now.DayOfWeek))
+            @foreach (var exercise in Model.Schedule.Where(x => ((DayOfWeek)x.Day) == DateTime.Now.DayOfWeek))
             {
             <div class="home-exercise @if (Model.FitnessProgress.Where(x => x.ExerciseId == exercise.Id).Count() >0) {<text>done</text> }" onclick="progress.addFitnessProgress(event, '@exercise.Id', '@Model.Fitness.Id', '@((Convert.ToDecimal(exercise.Calories)/60)*Convert.ToDecimal(exercise.Time))', '@Model.Fitness.UserId')"  data-fitnessprogress="@if(Model.FitnessProgress.Where(x=> x.ExerciseId == exercise.Id).Count() > 0) {<text>@Model.FitnessProgress.Where(x=> x.ExerciseId == exercise.Id).First().Id</text>}">
                 <div>
                         @exercise.Exercise
+                    @DateTime.Now.DayOfWeek
+                    @((DayOfWeek)exercise.Day)
                 </div>
                 <div>
                     <p>
@@ -202,6 +205,15 @@
             <div class="clear"></div>
         </div>
     }
+</div>
+<div class="mood-overlay">
+    <div class="mood">
+        <h3>Hello @user.Name.Split(' ')[0]</h3>
+    <p>What is your mood today?</p>
+    <span onclick="update.set('@(user.Id)_1', 'Mood', this)" class="icon-neutral-face"></span>
+        <span onclick="update.set('@(user.Id)_2', 'Mood', this)" class="icon-smiling-face"></span>
+    <span onclick="update.set('@(user.Id)_3', 'Mood', this)" class="icon-sad-face"></span>
+</div>
 </div>
 <script src="~/Content/JS/layout/progress.js"></script>
 <script src="~/Content/JS/layout/hover.js"></script>

@@ -142,13 +142,13 @@ var diet = {
                     }
                 }
                 $scope.days.push(
+                        'Sunday,' + 1,
                         'Monday,' + 1,
                         'Tuesday,' + 1,
                         'Wednesday,' + 1,
                         'Thursday,' + 1,
                         'Friday,' + 1,
-                        'Saturday,' + 1,
-                        'Sunday,' + 1
+                        'Saturday,' + 1
                         )
                 $scope.meals.push('Breakfast', 'Lunch', 'Dinner', 'Snack')
                 for (var i = 0; i < mc.length; i++) {

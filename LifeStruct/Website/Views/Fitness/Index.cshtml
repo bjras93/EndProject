@@ -10,11 +10,11 @@
 @Html.ActionLink("Return", "Index", "Home", null, new { @class = "return" })
 <div ng-app="LifeStruct" ng-controller="indexFitnessCtrl">
     <input type="text" class="ipt search right" placeholder="Search" ng-model="search" />
-    <div class="content w">
+    <div class="content b1">
         <div ng-init="currentUser = '@user.Id'"></div>
         <input type="hidden" ng-init="selected = '@user.FitnessId'" />
         <div class="fitness fitness-index">
-            <div class="overview-fitness b2" ng-repeat="fitness in fitnessInit | filter : search | orderBy : '-Likes'">
+            <div class="overview-fitness g3" ng-repeat="fitness in fitnessInit | filter : search | orderBy : '-Likes'">
                 <div class="index-info">
                     <a href="../Fitness/Details/{{fitness.Id}}">
                         <img src="/Content/img/user/sm-{{fitness.Img}}" />

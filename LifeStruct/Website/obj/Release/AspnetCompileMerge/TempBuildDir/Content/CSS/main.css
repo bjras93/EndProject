@@ -35,7 +35,8 @@ table {
     padding: 0; }
 
 .b1 {
-  background: #2C3E50; }
+  background: #73AFAD;
+  color: #fff; }
 
 .b2 {
   background: #34495E;
@@ -61,8 +62,32 @@ table {
   background: #639C89;
   color: #fff; }
 
+.g6 {
+  background: #A2AB58;
+  color: #fff; }
+
 .r1 {
   background: #F57979;
+  color: #fff; }
+
+.r2 {
+  background: #E44424;
+  color: #fff; }
+
+.orange1 {
+  background: #EB974E;
+  color: #fff; }
+
+.orange2 {
+  background: #F4B350;
+  color: #fff; }
+
+.orange3 {
+  background: #FDE3A7;
+  color: #fff; }
+
+.orange4 {
+  background: #D9853C;
   color: #fff; }
 
 .w, .diet-information .description, .fitness-details, .articles .no-results, .articles .article, .details-article {
@@ -376,26 +401,26 @@ body {
     background: #fff;
     color: #333; }
 
-.mood {
+.goal {
   width: 60%;
   float: left;
   position: relative; }
   @media (min-width: 768px) and (max-width: 1259px) {
-    .mood {
+    .goal {
       width: 50%; } }
-  .mood .selected {
+  .goal .selected {
     background-color: #16A085; }
-  .mood .tile {
+  .goal .tile {
     width: 33.33%; }
     @media (min-width: 768px) and (max-width: 1259px) {
-      .mood .tile span {
+      .goal .tile span {
         font-size: 3em;
         margin-top: 32%; } }
     @media (max-width: 768px) {
-      .mood .tile {
+      .goal .tile {
         width: 50%; } }
   @media (max-width: 768px) {
-    .mood {
+    .goal {
       margin-top: 160px;
       width: 100%;
       position: absolute; } }
@@ -431,7 +456,10 @@ body {
   .overview a {
     color: #fff; }
   .overview .description {
-    min-height: 100px; }
+    min-height: 130px; }
+    @media (max-width: 768px) {
+      .overview .description {
+        min-height: 200px; } }
   .overview .user-section a {
     display: inline-block;
     margin-right: 15px; }
@@ -723,9 +751,32 @@ body {
 
 .fitness {
   width: 100%;
-  display: inline-block;
-  padding: 15px;
-  background: #1ABC9C; }
+  display: inline-block; }
+  .fitness .overview-fitness {
+    min-height: 200px;
+    width: 48%;
+    margin-right: 1%;
+    margin-bottom: 1%;
+    padding: 15px;
+    color: #fff;
+    float: left; }
+    @media (min-width: 768px) and (max-width: 1259px) {
+      .fitness .overview-fitness {
+        width: 80%;
+        max-width: 700px;
+        float: none;
+        margin: 20px auto; } }
+    @media (max-width: 768px) {
+      .fitness .overview-fitness {
+        width: 100%; } }
+    .fitness .overview-fitness a {
+      color: #fff; }
+  .fitness .user-section span {
+    float: left;
+    margin: 0 15px 10px 0;
+    font-size: 1.2em; }
+  .fitness .user-section p {
+    float: left; }
   .fitness .index-info {
     display: inline-block;
     margin-bottom: 20px;
@@ -842,7 +893,9 @@ body {
     float: left;
     background: #639C89;
     padding: 15px;
-    cursor: pointer; }
+    cursor: pointer;
+    border: 1px solid #828282;
+    margin: 0.5px; }
     .home-fitness .home-exercise div {
       float: left; }
     .home-fitness .home-exercise div:nth-child(even) {

@@ -263,7 +263,7 @@ body {
     }
 }
 
-.mood {
+.goal {
     width: 60%;
     float: left;
     position: relative;
@@ -334,7 +334,10 @@ body {
     }
 
     .description {
-        min-height: 100px;
+        min-height: 130px;
+        @include phone {
+            min-height:200px;
+        }
     }
 
     .user-section {

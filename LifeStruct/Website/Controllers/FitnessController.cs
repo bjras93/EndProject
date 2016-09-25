@@ -64,6 +64,7 @@
                 }
                 model.Id = Guid.NewGuid().ToString();
                 model.UserId = UserViewModel.GetCurrentUser().Id;
+                model.Author = UserViewModel.GetCurrentUser().Name;
                 if (ModelState.IsValid)
                 {
                     db.Fitness.Add(model);
@@ -124,7 +125,6 @@
         public ActionResult Edit(FitnessModel model)
         {
             var formData = Request.Form.AllKeys.ToList();
-
             ScheduleModel sm = new ScheduleModel();
             var fitnessId = Request.Form["Id"];
             var scheduleId = Request.Form["scheduleId"];
@@ -180,7 +180,7 @@
                         }
 
                         if (key.StartsWith("exerciseId_"))
-                        {
+                        {                            
                             sm.ExerciseId = value[0];
                             sm.Exercise = db.Exercise.Find(sm.ExerciseId).Name;
                             sm.Day = Convert.ToInt32(values[3].Replace("d", ""));

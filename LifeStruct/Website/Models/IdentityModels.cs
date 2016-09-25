@@ -19,6 +19,7 @@ namespace LifeStruct.Models
         public string FitnessDate { get; set; }
         public DateTime? Birthday { get; set; }
         public int? Gender { get; set; }
+        public decimal? ActiveLevel { get; set; }
 
         public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<ApplicationUser> manager)
         {

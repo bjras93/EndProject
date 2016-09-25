@@ -1,6 +1,6 @@
 ﻿$base: #333;
 $w: #fff;
-$blu-1: #2C3E50;
+$blu-1: #73AFAD;
 $blu-2: #34495E;
 $gre-1: #16A085;
 $g1-o6:rgba(22,160,133,0.6);
@@ -8,10 +8,13 @@ $gre-2: #1ABC9C;
 $gre-3: #96D4BF;
 $gre-4: #639C89;
 $gre-5: rgb(90,210,155);
+$gre-6: #A2AB58;
 $orange-1: #EB974E;
 $orange-2: #F4B350;
 $orange-3: #FDE3A7;
+$orange-4: #D9853C;
 $red-1: #F57979;
+$red-2: #E44424;
 $happy: #00AF5E;
 $sad: #CEB3A8;
 $indifferent: #D4E8D6;
@@ -21,6 +24,7 @@ $twt: #55ACEE;
 $yt: #E52727;
 .b1 {
     background: $blu-1;
+    color: $w;
 }
 .b2 {
     background: $blu-2;
@@ -46,8 +50,32 @@ $yt: #E52727;
     background: $gre-4;
     color: $w;
 }
+.g6 {
+    background: $gre-6;
+    color: $w;
+}
 .r1 {
     background: $red-1;
+    color: $w;
+}
+.r2 {
+    background: $red-2;
+    color: $w;
+}
+.orange1 {
+    background: $orange-1;
+    color: $w;
+}
+.orange2 {
+    background: $orange-2;
+    color: $w;
+}
+.orange3 {
+    background: $orange-3;
+    color: $w;
+}
+.orange4 {
+    background: $orange-4;
     color: $w;
 }
 .w {

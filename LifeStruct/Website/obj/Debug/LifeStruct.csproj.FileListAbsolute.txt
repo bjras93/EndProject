@@ -146,3 +146,9 @@ C:\Users\bjoe0771\Desktop\Website\LifeStruct\Website\obj\Debug\Website.Migration
 C:\Users\bjoe0771\Desktop\Website\LifeStruct\Website\obj\Debug\Website.Migrations.ImgTagsFitness.resources
 C:\Users\bjoe0771\Desktop\Website\LifeStruct\Website\obj\Debug\Website.Migrations.CaloriesFitness.resources
 C:\Users\bjoe0771\Desktop\Website\LifeStruct\Website\obj\Debug\Website.Migrations.wrongcalfitness.resources
+C:\Users\bjoe0771\Desktop\Website\LifeStruct\Website\obj\Debug\Website.Migrations.FitnessAuthor.resources
+C:\Users\bjoe0771\Desktop\Website\LifeStruct\Website\obj\Debug\Website.Migrations.FitnessProgress.resources
+C:\Users\bjoe0771\Desktop\Website\LifeStruct\Website\obj\Debug\Website.Migrations.MoodGoal.resources
+C:\Users\bjoe0771\Desktop\Website\LifeStruct\Website\obj\Debug\Website.Migrations.goal.resources
+C:\Users\bjoe0771\Desktop\Website\LifeStruct\Website\obj\Debug\Website.Migrations.Activity.resources
+C:\Users\bjoe0771\Desktop\Website\LifeStruct\Website\obj\Debug\Website.Migrations.FProgressDate.resources

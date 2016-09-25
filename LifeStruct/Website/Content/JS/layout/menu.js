@@ -1,12 +1,17 @@
 ﻿var menu = {
     init: function () {
-        menu.mood();
+        menu.goal();
         menu.account();
     },
-    mood: function () {        
-        $('#mood').on('click', function () {
-            $('.mood').toggle("slide", { direction: "right" }, 1000);
-        });       
+    goal: function () {        
+        $('#goal').on('click', function () {
+            $('.goal').toggle("slide", { direction: "right" }, 1000);
+        });
+        $('.goal-index').on('click', function () {
+            setTimeout(function () {
+                $('.goal').toggle("slide", { direction: "right" }, 1500);
+            }, 300);
+        });
     },
     account: function () {
         var prev = 'account-details',

@@ -55,9 +55,9 @@
             else
             {
 
-                if (json.dId != null)
+                if (json.fId != null && !Convert.ToBoolean(json.add))
                 {
-                    user.FitnessId = json.dId.ToString();
+                    user.FitnessId = json.fId.ToString();
                     user.FitnessDate = DateTime.Now.ToString();
                     result = await UserManager.UpdateAsync(user);
                 }

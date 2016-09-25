@@ -1,32 +1,54 @@
-﻿using System.Threading.Tasks;
-using System.Web;
-using System.Web.Mvc;
-using Microsoft.AspNet.Identity;
-using Microsoft.AspNet.Identity.Owin;
-using Microsoft.Owin.Security;
-using LifeStruct.Models;
-using System.Linq;
-using Facebook;
-
-namespace LifeStruct.Controllers
+﻿namespace LifeStruct.Controllers
 {
+    using System.Threading.Tasks;
+    using System.Web;
+    using System.Web.Mvc;
+    using Microsoft.AspNet.Identity;
+    using Microsoft.AspNet.Identity.Owin;
+    using Microsoft.Owin.Security;
+    using Models;
+    using System.Linq;
+    using System.Collections.Generic;
+    using System;
     public class AccountController : Controller
     {
         private ApplicationSignInManager _signInManager;
         private ApplicationUserManager _userManager;
+        DefaultConnection db = new DefaultConnection();
         // GET: Account
         public ActionResult Index()
         {
             return View();
         }
+        [HttpGet]
         public ActionResult Details()
         {
             if (Request.IsAuthenticated)
             {
-                return View();
+                UserDetail ud = new UserDetail();
+                ud.User = UserViewModel.GetCurrentUser();
+                ud.Activity = db.Activity;
+
+                return View(ud);
             }
             return RedirectToAction("../Account/Index");
         }
+        [HttpPost]
+        public ActionResult Details(UserDetail model)
+        {
+            if (Request.IsAuthenticated)
+            {
+                var user = UserViewModel.GetUser(model.User.Id);
+                model.Activity = db.Activity;
+                user.Weight = model.User.Weight;
+                user.ActiveLevel = model.User.ActiveLevel;
+                user.Name = model.User.Name;
+                UserManager.Update(user);
+                return View(model);
+            }
+            return RedirectToAction("../Account/Index");
+        }
+
         public ActionResult Signup()
         {
             return View();
@@ -73,7 +95,7 @@ namespace LifeStruct.Controllers
             return View();
         }
 
-        
+
 
         //
         // POST: /Account/ExternalLogin
@@ -86,7 +108,7 @@ namespace LifeStruct.Controllers
             return new ChallengeResult(provider, Url.Action("ExternalLoginCallback", "Account", new { ReturnUrl = returnUrl }));
         }
 
-        
+
         //
         // GET: /Account/ExternalLoginCallback
         [AllowAnonymous]
@@ -255,5 +277,11 @@ namespace LifeStruct.Controllers
         #endregion
 
 
+    }
+
+    public class UserDetail {
+        public IEnumerable<ActivityModel> Activity { get; set; }
+        public IEnumerable<SelectListItem> ActivityDropdown { get { return new SelectList(Activity, "Multiplier", "Name"); } }
+        public ApplicationUser User { get; set; }
     }
 }

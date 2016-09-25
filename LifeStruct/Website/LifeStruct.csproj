@@ -216,6 +216,7 @@
     <Compile Include="Controllers\ApiControllers\DietApiController.cs" />
     <Compile Include="Controllers\ApiControllers\DietProgressApiController.cs" />
     <Compile Include="Controllers\ApiControllers\EdiblesApiController.cs" />
+    <Compile Include="Controllers\ApiControllers\FitnessApiController.cs" />
     <Compile Include="Controllers\ApiControllers\HealthApiController.cs" />
     <Compile Include="Controllers\ApiControllers\LikeApiController.cs" />
     <Compile Include="Controllers\ApiControllers\MealCollectionApiController.cs" />
@@ -224,6 +225,7 @@
     <Compile Include="Controllers\ApiControllers\FoodApiController.cs" />
     <Compile Include="Controllers\ApiControllers\DaysApiController.cs" />
     <Compile Include="Controllers\ApiControllers\MealsApiController.cs" />
+    <Compile Include="Controllers\ApiControllers\UpdateApiController.cs" />
     <Compile Include="Controllers\ApiControllers\UserApiController.cs" />
     <Compile Include="Controllers\ApiControllers\VideoApiController.cs" />
     <Compile Include="Controllers\DietsController.cs" />
@@ -358,10 +360,37 @@
     <Compile Include="Migrations\201609240050187_wrongcalfitness.Designer.cs">
       <DependentUpon>201609240050187_wrongcalfitness.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201609240856021_FitnessAuthor.cs" />
+    <Compile Include="Migrations\201609240856021_FitnessAuthor.Designer.cs">
+      <DependentUpon>201609240856021_FitnessAuthor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201609241040430_FitnessProgress.cs" />
+    <Compile Include="Migrations\201609241040430_FitnessProgress.Designer.cs">
+      <DependentUpon>201609241040430_FitnessProgress.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201609241207207_MoodGoal.cs" />
+    <Compile Include="Migrations\201609241207207_MoodGoal.Designer.cs">
+      <DependentUpon>201609241207207_MoodGoal.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201609241249103_goal.cs" />
+    <Compile Include="Migrations\201609241249103_goal.Designer.cs">
+      <DependentUpon>201609241249103_goal.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201609241257039_Activity.cs" />
+    <Compile Include="Migrations\201609241257039_Activity.Designer.cs">
+      <DependentUpon>201609241257039_Activity.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201609242356122_FProgressDate.cs" />
+    <Compile Include="Migrations\201609242356122_FProgressDate.Designer.cs">
+      <DependentUpon>201609242356122_FProgressDate.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Account\AccountViewModels.cs" />
+    <Compile Include="Models\Account\ActivityModel.cs" />
     <Compile Include="Models\Account\BmiClassModel.cs" />
     <Compile Include="Models\Account\BmiClassViewModel.cs" />
+    <Compile Include="Models\Account\GoalModel.cs" />
+    <Compile Include="Models\Account\MoodModel.cs" />
     <Compile Include="Models\DayViewModel.cs" />
     <Compile Include="Models\Diet\DaysModel.cs" />
     <Compile Include="Models\DbSet.cs" />
@@ -372,6 +401,7 @@
     <Compile Include="Models\Fitness\ExerciseModel.cs" />
     <Compile Include="Models\Fitness\FitnessModel.cs" />
     <Compile Include="Models\Diet\FoodModel.cs" />
+    <Compile Include="Models\Fitness\FitnessProgressModel.cs" />
     <Compile Include="Models\Fitness\ScheduleModel.cs" />
     <Compile Include="Models\Health\HealthModel.cs" />
     <Compile Include="Models\LikeModel.cs" />
@@ -430,6 +460,7 @@
     <Content Include="bin\Website.pdb" />
     <Content Include="Content\CSS\main.css" />
     <Content Include="Content\CSS\ng-tags-input.min.css" />
+    <Content Include="Content\img\web\favicon.ico" />
     <Content Include="Content\fonts\icomoon.svg" />
     <Content Include="Content\img\web\pexels-photo.jpg" />
     <Content Include="Content\img\web\youtubeid.png" />
@@ -444,6 +475,7 @@
     <Content Include="Content\JS\layout\overlay.js" />
     <Content Include="Content\JS\layout\progress.js" />
     <Content Include="Content\JS\layout\readmore.js" />
+    <Content Include="Content\JS\layout\update.js" />
     <Content Include="Content\JS\layout\videos.js" />
     <Content Include="Content\JS\plugins\angular-sanitize.min.js" />
     <Content Include="Content\JS\plugins\angular.min.js" />
@@ -663,6 +695,24 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201609240050187_wrongcalfitness.resx">
       <DependentUpon>201609240050187_wrongcalfitness.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201609240856021_FitnessAuthor.resx">
+      <DependentUpon>201609240856021_FitnessAuthor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201609241040430_FitnessProgress.resx">
+      <DependentUpon>201609241040430_FitnessProgress.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201609241207207_MoodGoal.resx">
+      <DependentUpon>201609241207207_MoodGoal.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201609241249103_goal.resx">
+      <DependentUpon>201609241249103_goal.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201609241257039_Activity.resx">
+      <DependentUpon>201609241257039_Activity.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201609242356122_FProgressDate.resx">
+      <DependentUpon>201609242356122_FProgressDate.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

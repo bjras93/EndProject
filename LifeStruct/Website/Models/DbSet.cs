@@ -17,5 +17,9 @@ namespace LifeStruct.Models
         public DbSet<DietProgressModel> DietProgress { get; set; }
         public DbSet<VideoModel> Video { get; set; }
         public DbSet<HealthModel> Health { get; set; }
+        public DbSet<FitnessProgressModel> FitnessProgress { get; set; }
+        public DbSet<GoalModel> Goal { get; set; }
+        public DbSet<MoodModel> Mood { get; set; }
+        public DbSet<ActivityModel> Activity { get; set; }
     }
 }

@@ -33,6 +33,30 @@
                 target.removeClass('done');
             }
         },
+        addFitnessProgress: function (e, eId, fId, loss, uId, eIndex) {
+            var target = $(e.target);
+            if (!target.hasClass('done') && target.data('fitnessprogress') == '') {
+                $.ajax({
+                    type: 'POST',
+                    url: api + 'FitnessApi/SetProgress',
+                    data: JSON.stringify({ exerciseId: eId, fitnessId: fId, loss: loss, userId: uId, exerciseIndex: eIndex }),
+                    contentType: "application/json",
+                    success: function (data) {
+                        target.data('fitnessprogress', data.Id)
+                    }
+                });
+                target.addClass('done');
+            }
+            else {
+                $.ajax({
+                    type: 'GET',
+                    url: api + 'FitnessApi/RemoveProgress?id=' + target.data('fitnessprogress').trim()
+                });
+                target.data('dietprogress', '');
+                target.removeClass('done');
+            }
+
+        },
         mouseOver: function (th, t) {
             if ($(th).length > 0 && $(t).length > 0) {
                 $(th).hide();

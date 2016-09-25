@@ -22,15 +22,15 @@
         <div class="hover hide">What is your goal?</div>
     </div>
     <div class="mood hide">
-        <div class="tile i">
+        <div onclick="update.set('@(user.Id)_1', 'Goal', this)" id="goal1" class="tile goal-index g2">
             <span class="icon-arrow-up"></span>
             <div class="hover hide">To gain weight</div>
         </div>
-        <div class="tile s">
+        <div onclick="update.set('@(user.Id)_2', 'Goal', this)" id="goal2" class="tile goal-index g2">
             <span class="icon-loop2"></span>
             <div class="hover hide">To maintain current weight</div>
         </div>
-        <div class="tile h">
+        <div onclick="update.set('@(user.Id)_3', 'Goal', this)" id="goal3" class="tile goal-index g2">
             <span class="icon-arrow-down"></span>
             <div class="hover hide">To lose weight</div>
         </div>
@@ -155,9 +155,44 @@
             <input type="hidden" id="total" value="@total" />
         </div>
     }
+    @if (!string.IsNullOrEmpty(user.FitnessId))
+    {
+        TimeSpan dateResult;
+        dateResult = DateTime.Now - Convert.ToDateTime(user.FitnessDate);
+        var week = Math.Ceiling(dateResult.TotalDays / 7);
+        <div class="home-fitness">
+
+            <div class="explain">
+                <div class="con">
+                    <h3>Workout for @DateTime.Now.DayOfWeek</h3>
+                    <p>Finished:</p> <span class="done"></span> <p>Unfinished:</p> <span class="undone"></span>
+                </div>
+            </div>
+            <div class="clear"></div>
+            @foreach (var exercise in Model.Schedule.Where(x => ((DayOfWeek)x.Day) == DateTime.Now.DayOfWeek))
+            {
+            <div class="home-exercise @if (Model.FitnessProgress.Where(x => x.ExerciseId == exercise.Id).Count() >0) {<text>done</text> }" onclick="progress.addFitnessProgress(event, '@exercise.Id', '@Model.Fitness.Id', '@((Convert.ToDecimal(exercise.Calories)/60)*Convert.ToDecimal(exercise.Time))', '@Model.Fitness.UserId')"  data-fitnessprogress="@if(Model.FitnessProgress.Where(x=> x.ExerciseId == exercise.Id).Count() > 0) {<text>@Model.FitnessProgress.Where(x=> x.ExerciseId == exercise.Id).First().Id</text>}">
+                <div>
+                        @exercise.Exercise
+                </div>
+                <div>
+                    <p>
+                        @exercise.Time minutes
+                    </p>
+                    <p>
+                        @exercise.Calories kcal loss
+                    </p>
+                </div>
+            </div>
+            }
+            <div class="clear"></div>
+        </div>
+    }
 </div>
 <script src="~/Content/JS/layout/progress.js"></script>
 <script src="~/Content/JS/layout/hover.js"></script>
+<script src="~/Content/JS/layout/update.js"></script>
 <script>
     progress.init();
+    update.get('@user.Id');
 </script>

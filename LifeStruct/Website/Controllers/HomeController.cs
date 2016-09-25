@@ -28,7 +28,16 @@ namespace LifeStruct.Controllers
                 }
                 if (!string.IsNullOrEmpty(user.FitnessId))
                 {
+                    ud.Exercises = new List<ExerciseModel>();
                     ud.Fitness = db.Fitness.Find(user.FitnessId);
+                    ud.Schedule = db.Schedule.Where(x => x.FitnessId == user.FitnessId);
+                    ud.FitnessProgress = db.FitnessProgress.Where(x => x.FitnessId == ud.Fitness.Id && x.UserId == user.Id);
+
+                    foreach (var exercise in ud.Schedule)
+                    {
+                        ud.Exercises.Add(db.Exercise.Find(exercise.ExerciseId));
+                    }
+
                 }
 
                 return View(ud);
@@ -56,7 +65,10 @@ namespace LifeStruct.Controllers
     {
         public DietModel Diet { get; set; }
         public FitnessModel Fitness { get; set; }
+        public IEnumerable<ScheduleModel> Schedule { get; set; }
+        public List<ExerciseModel> Exercises { get; set; }
         public IEnumerable<MealCollectionModel> MealCollection { get; set; }
+        public IEnumerable<FitnessProgressModel> FitnessProgress { get; set; }
         public IEnumerable<MealsModel> Meals { get; set; }
         public List<Food> Food { get; set; }
     }

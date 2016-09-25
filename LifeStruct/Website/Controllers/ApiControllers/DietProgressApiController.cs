@@ -33,12 +33,27 @@
         public IHttpActionResult RemoveProgress(string Id)
         {
             DietProgressModel dpm = db.DietProgress.Find(Id);
-
+            decimal removed = Convert.ToDecimal(dpm.CalorieIntake);
             db.DietProgress.Remove(dpm);
 
             db.SaveChanges();
 
-            return Ok();
+            return Ok(removed);
         }
+        [Route("api/DietProgressApi/GetProgress")]
+        [HttpGet]
+        public IHttpActionResult GetProgress()
+        {
+            var user = UserViewModel.GetCurrentUser();
+            Progress p = new Progress();
+            p.DietProgress = db.DietProgress.ToList().Where(x => x.UserId == user.Id && Convert.ToDateTime(x.Day).DayOfWeek == DateTime.Now.DayOfWeek);
+            p.FitnessProgress = db.FitnessProgress.ToList().Where(x => x.UserId == user.Id && Convert.ToDateTime(x.Date).DayOfWeek == DateTime.Now.DayOfWeek);
+            return Ok(p);
+        }
+    }
+    public class Progress
+    {
+        public IEnumerable<DietProgressModel> DietProgress { get; set; }
+        public IEnumerable<FitnessProgressModel> FitnessProgress { get; set; }
     }
 }

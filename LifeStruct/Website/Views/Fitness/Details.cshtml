@@ -24,40 +24,36 @@
             week = schedule.Week;
         }
     }
-    <ul>
-        @for (var i = 1; i < (week + 1); i++)
+    @for (var i = 1; i < (week + 1); i++)
+    {
+        if (Model.Schedule.Where(x => x.Week == i && !string.IsNullOrEmpty(x.Exercise) && !string.IsNullOrEmpty(x.Time)).Count() > 0)
         {
-            if (Model.Schedule.Where(x => x.Week == i && !string.IsNullOrEmpty(x.Exercise) && !string.IsNullOrEmpty(x.Time)).Count() > 0)
-            {
-            <li class="week">
+            <div class="week">
                 <h3>Week @i</h3>
-                <ul>
                     @for (var d = 1; d < 8; d++)
                     {
                         if (Model.Schedule.Where(x => x.Day == d && !string.IsNullOrEmpty(x.Exercise) && !string.IsNullOrEmpty(x.Time) && x.Week == i).Count() > 0)
                         {
-                       <li>
-                           <h4>@DayViewModel.GetDay(d).Name</h4>
-                           <ul>
-                               @foreach (var exercise in Model.Schedule.Where(x => x.Day == d && x.Week == i))
-                               {
-                               <li>
-                                   <span>
-                                       @exercise.Exercise - 
-                                   </span>
-                                   <span>
-                                       @exercise.Time minutes
-                                   </span>
-                               </li>
-                               }
-                           </ul>
-                       </li>
+                            <div class="day">
+                                <h4>@DayViewModel.GetDay(d).Name</h4>
+                                <ul>
+                                    @foreach (var exercise in Model.Schedule.Where(x => x.Day == d && x.Week == i))
+                                    {
+                                        <li>
+                                            <span>
+                                                @exercise.Exercise
+                                            </span>
+                                            <ul>
+                                                <li>@exercise.Time minutes</li>
+                                                <li>@((Convert.ToDecimal(exercise.Calories)/60)*Convert.ToDecimal(exercise.Time)) kcal</li>
+                                            </ul>
+                                        </li>
+                                    }
+                                </ul>
+                            </div>
                         }
                     }
-
-                </ul>
-            </li>
-            }
+            </div>
         }
-    </ul>
-</div>
+    }
+        </div>

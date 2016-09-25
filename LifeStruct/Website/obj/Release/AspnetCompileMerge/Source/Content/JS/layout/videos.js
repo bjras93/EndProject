@@ -4,29 +4,32 @@ var videos = {
     init: function () {
         app.controller('videoIndexCtrl', ['$scope', '$http', '$document', '$sce', function ($scope, $http, $document, $sce) {
             $scope.page = 0;
+            var t = 0;
             $scope.videoList = function (page, take, np, type) {
-                if (page == -1)
-                {
-                    page = 0;
-                    $scope.page = 0;
+                console.log(type)
+                if (t != type) {
+                        t = type;
+                    if (page == -1) {
+                        page = 0;
+                        $scope.page = 0;
+                    }
+                    $scope.videos = [];
+                    if (np) {
+                        $scope.page++;
+                        console.log($scope.page)
+                        page++;
+                    }
+                    else {
+                        $scope.page = $scope.page - 1;
+                        page = page - 1;
+                    }
+                    var skip = page * take;
+                    $http({ method: 'POST', url: api + 'VideoApi/GetVideos', data: JSON.stringify({ take: take, skip: skip, type: type }), contentType: "application/json" }).then(function (data) {
+                        $scope.videos = data.data;
+                    });
                 }
-                $scope.videos = [];
-                if (np) {
-                    $scope.page++;
-                    console.log($scope.page)
-                    page++;
-                }
-                else
-                {
-                    $scope.page = $scope.page - 1;
-                    page = page - 1;
-                }                
-                var skip = page * take;
-                $http({ method: 'POST', url: api + 'VideoApi/GetVideos', data: JSON.stringify({ take: take, skip: skip, type: type }), contentType: "application/json" }).then(function (data) {
-                    $scope.videos = data.data;
-                });
             }
-            $scope.videoList(0, 20, false, 1);
+            $scope.videoList(0, 20, false, 2);
             $scope.getFrameSrc = function (source) {
                 return $sce.trustAsResourceUrl('https://www.youtube.com/v/' + source + '&autoplay=1&rel=0');
             }

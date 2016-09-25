@@ -1,8 +1,39 @@
-﻿var app = angular.module('LifeStruct', ['ngTagsInput']);
+﻿var app = angular.module('LifeStruct', ['ngTagsInput', 'ngSanitize']);
 var api = 'http://' + location.host + '/api/';
 var fitness = {
-    init: function () {
+    index: function() {
+        app.controller('indexFitnessCtrl', ['$scope', '$http', function ($scope, $http) {
+            $scope.fitnessInit = [];
+            $http.get(api + 'FitnessApi/GetFitness').then(function (data) {
+                $scope.fitnessInit = data.data;
+            });
+            $scope.l = {
+                liked: {
 
+                }
+            }
+            $scope.like = function (id) {
+                $http({ method: 'POST', url: api + 'LikeApi/Like', data: JSON.stringify({ type: 2, typeId: id }), contentType: "application/json" }).then(function (data) {
+                    $scope.l.liked[id] = data.data.UserId;
+                });
+            };
+            $scope.getLikes = function (uId, dietId) {
+                $http({ method: 'GET', url: api + 'LikeApi/FindByUIdType?uId=' + uId + '&type=' + 2 }).then(function (data) {
+                    for (var i = 0; i < data.data.length; i++) {
+                        if (dietId == data.data[i].TypeId) {
+                            $scope.l.liked[dietId] = data.data[i].UserId;
+                        }
+                    }
+                });
+            };
+
+            $scope.selectFitness = function (fitnessId, uId, selected) {
+                $http({ method: 'POST', url: api + 'UserApi/SetDiet', data: JSON.stringify({ uId: uId, fId: fitnessId, type: 2, add: selected == fitnessId }), contentType: "application/json" }).then(function (data) {
+                    $scope.selected = data.data.FitnessId;
+                });
+                $scope.selected = '';
+            };
+        }]);
     },
     schedule: function () {
         app.controller('FitnessCtrl', ['$scope', '$http', '$q', function ($scope, $http, $q) {

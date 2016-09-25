@@ -59,7 +59,7 @@
                     <tr>
                         <td>
 
-                            <tags-input ng-model="tags" placeholder="Tags to find your post"></tags-input>
+                            <tags-input ng-model="tags" ng-init="tags = @Model.Tags" placeholder="Tags to find your post"></tags-input>
                             <input type="hidden" name="Tags" value="{{tags}}" />
                         </td>
                     </tr>

@@ -380,13 +380,28 @@ body {
   width: 60%;
   float: left;
   position: relative; }
+  @media (min-width: 768px) and (max-width: 1259px) {
+    .mood {
+      width: 50%; } }
+  .mood .selected {
+    background-color: #16A085; }
   .mood .tile {
     width: 33.33%; }
+    @media (min-width: 768px) and (max-width: 1259px) {
+      .mood .tile span {
+        font-size: 3em;
+        margin-top: 32%; } }
+    @media (max-width: 768px) {
+      .mood .tile {
+        width: 50%; } }
   @media (max-width: 768px) {
     .mood {
       margin-top: 160px;
       width: 100%;
       position: absolute; } }
+
+.save-details {
+  background-color: #5ad29b; }
 
 .user-section {
   padding: 15px 0; }
@@ -521,16 +536,31 @@ body {
       color: #fff; }
 
 .account-details {
-  width: 80%;
-  float: right; }
+  width: 80%; }
+  @media (max-width: 768px) {
+    .account-details {
+      width: 100%; } }
   .account-details li {
     list-style: none;
-    margin: 10px 0; }
+    margin: 20px 0; }
+    .account-details li:first-child {
+      margin-top: 0; }
+    .account-details li .ipt {
+      margin: 0;
+      max-width: 300px; }
+      @media (max-width: 768px) {
+        .account-details li .ipt {
+          width: 100%; } }
     .account-details li span:first-child {
+      float: left;
       font-weight: bold; }
     .account-details li span {
       color: #fff;
-      width: 33%; }
+      width: 40%; }
+      @media (max-width: 768px) {
+        .account-details li span {
+          width: 100%;
+          margin-bottom: 10px; } }
       .account-details li span a {
         color: #fff; }
 
@@ -696,6 +726,27 @@ body {
   display: inline-block;
   padding: 15px;
   background: #1ABC9C; }
+  .fitness .index-info {
+    display: inline-block;
+    margin-bottom: 20px;
+    width: 100%; }
+    .fitness .index-info img {
+      width: 100%;
+      height: 270px; }
+      @media (min-width: 768px) and (max-width: 1259px) {
+        .fitness .index-info img {
+          height: 220px; } }
+      @media (max-width: 768px) {
+        .fitness .index-info img {
+          height: 200px; } }
+    .fitness .index-info .description {
+      height: 140px; }
+  .fitness .selected .icon-plus {
+    display: none; }
+  .fitness .selected .icon-checkmark {
+    display: inline-block; }
+  .fitness .user-section {
+    display: inline-block; }
   .fitness .fitness-info {
     width: 48%; }
   .fitness .schedule {
@@ -757,6 +808,8 @@ body {
   margin-bottom: 30px;
   width: 100%;
   padding: 15px; }
+  .fitness-details img {
+    max-width: 100%; }
   .fitness-details h1 {
     margin-top: 20px; }
   .fitness-details .description {
@@ -766,8 +819,37 @@ body {
     margin-left: 20px; }
     .fitness-details ul li {
       margin: 10px 0; }
+      .fitness-details ul li ul li {
+        font-size: 0.9em; }
+  .fitness-details .day {
+    margin: 5px; }
   .fitness-details .week {
     margin-bottom: 20px; }
+
+.home-fitness {
+  float: left;
+  width: 100%;
+  padding: 15px;
+  background: #1ABC9C;
+  color: #fff; }
+  .home-fitness h3 {
+    margin-bottom: 20px; }
+  .home-fitness .explain .undone {
+    background-color: #639C89; }
+  .home-fitness .home-exercise {
+    width: 100%;
+    max-width: 300px;
+    float: left;
+    background: #639C89;
+    padding: 15px;
+    cursor: pointer; }
+    .home-fitness .home-exercise div {
+      float: left; }
+    .home-fitness .home-exercise div:nth-child(even) {
+      text-align: right;
+      float: right; }
+  .home-fitness .done {
+    background: #5ad29b; }
 
 .autocomplete-container {
   position: relative; }
@@ -838,7 +920,8 @@ body {
   padding-top: 20%; }
 
 .video-con {
-  float: left; }
+  float: left;
+  width: 100%; }
   .video-con .content {
     background-color: #bee1c8; }
   .video-con .menu-video {
@@ -948,7 +1031,7 @@ body {
     margin: 10px 0 0px 0; }
     .articles .article .article-content {
       margin: 15px 0;
-      max-width: 400px; }
+      max-width: 750px; }
     .articles .article .icon {
       cursor: pointer;
       color: #333;
@@ -979,4 +1062,5 @@ body {
   float: left;
   padding: 15px; }
   .details-article .content-article {
-    margin: 25px 0; }
+    margin: 25px 0;
+    max-width: 850px; }

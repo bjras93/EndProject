@@ -1157,6 +1157,13 @@ body {
     margin: 25px 0;
     max-width: 850px; }
 
-.statistics .stats {
-  width: 75%;
-  margin: 20px; }
+.statistics {
+  width: 100%;
+  float: left; }
+  .statistics .stats {
+    width: 60%;
+    margin: 100px auto; }
+    .statistics .stats h3, .statistics .stats p {
+      margin: 10px 40px; }
+    .statistics .stats canvas {
+      margin-top: 20px; }

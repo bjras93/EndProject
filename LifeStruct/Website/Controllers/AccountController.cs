@@ -151,9 +151,12 @@
             var result = await SignInManager.ExternalSignInAsync(loginInfo, isPersistent: false);
 
             var google = loginInfo.ExternalIdentity.Name;
-            if (loginInfo.ExternalIdentity.Name.IndexOf("(") > 0)
+            if (google != null)
             {
-                google = loginInfo.ExternalIdentity.Name.Substring(0, loginInfo.ExternalIdentity.Name.IndexOf("("));
+                if (loginInfo.ExternalIdentity.Name.IndexOf("(") > 0)
+                {
+                    google = loginInfo.ExternalIdentity.Name.Substring(0, loginInfo.ExternalIdentity.Name.IndexOf("("));
+                }
             }
             switch (result)
             {

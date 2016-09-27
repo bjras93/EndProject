@@ -32,7 +32,7 @@ namespace LifeStruct
             app.UseCookieAuthentication(new CookieAuthenticationOptions
             {
                 AuthenticationType = DefaultAuthenticationTypes.ApplicationCookie,
-                LoginPath = new PathString("/Account/Login"),
+                LoginPath = new PathString("/Account/Index"),
                 Provider = new CookieAuthenticationProvider
                 {
                     // Enables the application to validate the security stamp when the user logs in.
@@ -60,6 +60,7 @@ namespace LifeStruct
                 Provider = new GoogleOAuth2AuthenticationProvider()
             };
             googleOptions.Scope.Add("email");
+            googleOptions.Scope.Add("profile");
 
             app.UseGoogleAuthentication(googleOptions);
 

@@ -48,14 +48,17 @@ var videos = {
                 if(w)
                 {
                     $http({ method: 'GET', url: api + 'VideoApi/DeleteVideo?id=' + id + '&userId=' + userId }).then(function () {
-                        $scope.videos.splice($scope.videos.findIndex(x => x.Id == id), 1);
+                        $scope.videos.splice($scope.videos.findIndex(function (x) {
+                            return x.Id == id;
+                        }), 1);
                     });
                 }
             }
 
             $('.btn-article').on('click', function (e) {
                 e.preventDefault();
-                if ($scope.videos.findIndex(x => x.Type == $(this).data('type')) == -1) {
+                if ($scope.videos.findIndex(function (x) {  return x.Type == $(this).data('type');
+                }) == -1) {
                     $(this).parent().children().each(function () {
                         if ($(this).hasClass('selected')) {
                             $(this).removeClass('selected');

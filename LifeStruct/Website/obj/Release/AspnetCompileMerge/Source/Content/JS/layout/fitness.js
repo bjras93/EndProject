@@ -108,7 +108,9 @@ var fitness = {
                     for (var w = 0; w < week; w++) {
                         for (var i = 0; i < sche.length; i++) {
                             if (sche[i].ExerciseIndex == 1) {
-                                var exIndex = $scope.exercises.findIndex(x => x.day == sche[i].Day && x.week == sche[i].Week);
+                                var exIndex = $scope.exercises.findIndex(function (x) {
+                                    return x.day == sche[i].Day && x.week == sche[i].Week;
+                                });
                                 if (exIndex != -1) {
                                     $scope.exercises[exIndex].id = sche[i].Id;
                                     $scope.exercises[exIndex].exercise = sche[i].Exercise;
@@ -127,7 +129,9 @@ var fitness = {
                         for (var i = 0; i < sche.length; i++) {
                             
                             if(sche[i].ExerciseIndex > 1){
-                                var exIndex = $scope.exercises.findIndex(x => x.day == sche[i].Day && x.week == sche[i].Week);
+                                var exIndex = $scope.exercises.findIndex(function (x) {
+                                    return x.day == sche[i].Day && x.week == sche[i].Week;
+                                });
                                 if(exIndex > -1)
                                 {
                                     $scope.exercises[exIndex].subExercises.push({
@@ -152,7 +156,9 @@ var fitness = {
                      week = split[3][1],
                      day = split[2][1],
                      exercise = split[1][1],
-                     exIndex = $scope.exercises.findIndex(x => x.day == day && x.week == week && x.exerciseIndex == exercise);
+                     exIndex = $scope.exercises.findIndex(function (x) {
+                         return x.day == day && x.week == week && x.exerciseIndex == exercise;
+                     });
                 if (exIndex > -1) {
                     $scope.exercises[exIndex].subExercises.push({
                         id: '',

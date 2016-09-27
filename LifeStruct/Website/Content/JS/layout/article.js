@@ -13,7 +13,9 @@ var article = {
             });
             $scope.findUser = function (uId, aId, data) {
 
-                return data[data.findIndex(x => x.UserId == uId && x.ArticleId == aId)];
+                return data[data.findIndex(function (x) {
+                    return x.UserId == uId && x.ArticleId == aId;
+                })];
             };
             $scope.like = function (id) {
                 $http({ method: 'POST', url: api + 'LikeApi/Like', data: JSON.stringify({ type: 3, typeId: id }), contentType: "application/json" }).then(function (data) {
@@ -40,12 +42,13 @@ var article = {
 
             $('.btn-article').on('click', function (e) {
                 e.preventDefault();
-                if ($scope.articles.Articles.findIndex(x => x.Type == $(this).data('type')) == -1) {
-                $(this).parent().children().each(function () {
-                    if ($(this).hasClass('selected')) {
-                        $(this).removeClass('selected');
-                    }
-                });
+                if ($scope.articles.Articles.findIndex(function (x) {  return x.Type == $(this).data('type');
+                }) == -1) {
+                    $(this).parent().children().each(function () {
+                        if ($(this).hasClass('selected')) {
+                            $(this).removeClass('selected');
+                        }
+                    });
                     $scope.articles = [];
                     $http({ method: 'GET', url: api + 'HealthApi/GetArticles?type=' + $(this).data('type') }).then(function (data) {
                         $scope.articles = data.data;

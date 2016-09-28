@@ -1,5 +1,7 @@
 ﻿.fitness {
     width: 100%;
+    padding: $spd;
+    @extend .b1;
     display: inline-block;
 
     .overview-fitness {        

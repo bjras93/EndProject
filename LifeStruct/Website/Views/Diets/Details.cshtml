@@ -26,12 +26,9 @@
             <div class="schedule">
                 <table>
                     <thead>
-                        @if (i > 0)
-                    {
                             <tr>
                                 <th colspan="5">Week @(i + 1)</th>
                             </tr>
-                        }
                         <tr>
                             <th>Day</th>
                             @foreach (var m in Model.Meals)

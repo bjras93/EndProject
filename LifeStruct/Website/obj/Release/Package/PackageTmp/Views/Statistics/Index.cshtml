@@ -1,6 +1,9 @@
 ﻿@{
     ViewBag.Title = "Statistics";
 }
+@section Signout{
+    @Html.Partial("~/Views/Shared/_logout.cshtml")
+}
 @Html.ActionLink("Return", "Index", "Home", null, new { @class = "return" })
 <div class="statistics">
     <div class="stats">

@@ -34,7 +34,7 @@ table {
     vertical-align: text-top;
     padding: 0; }
 
-.b1, .mood-overlay .mood {
+.b1, .mood-overlay .mood, .fitness {
   background: #73AFAD;
   color: #fff; }
 
@@ -789,6 +789,7 @@ body {
 
 .fitness {
   width: 100%;
+  padding: 15px;
   display: inline-block; }
   .fitness .overview-fitness {
     min-height: 200px;

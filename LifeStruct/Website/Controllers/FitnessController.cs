@@ -40,11 +40,11 @@
                 {
                     
                     var uploadFile = Request.Files[0];
-                    if(uploadFile.ContentLength > 4095)
+                    if(uploadFile.ContentLength > (4096 * 1024))
                     {
                         ModelState.AddModelError("Filesize", "Image is too big, please select at smaller file");
                     }
-                    if (uploadFile != null && uploadFile.ContentLength > 0 && uploadFile.ContentLength < 4096)
+                    if (uploadFile != null && uploadFile.ContentLength > 0 && uploadFile.ContentLength < (4096 * 1024))
                     {
                         var fullPath = Server.MapPath("~/Content/img/user/" + model.Img);
                         var sFullPath = Server.MapPath("~/Content/img/user/sm-" + model.Img);
@@ -137,11 +137,11 @@
             if (Request.Files.Count > 0)
             {
                 var uploadFile = Request.Files[0];
-                if(uploadFile.ContentLength > 4095)
+                if(uploadFile.ContentLength > (4096 * 1024))
                 {
                     ModelState.AddModelError("Filesize", "Image is too big, please try uploading a smaller one");
                 }
-                if (uploadFile != null && uploadFile.ContentLength > 0 && uploadFile.ContentLength < 4096)
+                if (uploadFile != null && uploadFile.ContentLength > 0 && uploadFile.ContentLength < (4096 * 1024))
                 {
                     var fullPath = Server.MapPath("~/Content/img/user/" + f.Img);
                     var sFullPath = Server.MapPath("~/Content/img/user/sm-" + f.Img);

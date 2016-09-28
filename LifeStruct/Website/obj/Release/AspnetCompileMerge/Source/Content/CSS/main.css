@@ -256,6 +256,9 @@ body {
 .stop-scroll {
   overflow: hidden; }
 
+.navbar-brand {
+  text-shadow: 1px 1px #828282; }
+
 .add {
   position: fixed;
   right: 50px;
@@ -308,6 +311,7 @@ body {
   outline: none; }
 
 .btn {
+  cursor: pointer;
   display: block;
   margin: 5px 0;
   padding: 15px;
@@ -475,7 +479,7 @@ body {
 .liked span {
   color: #F57979; }
 
-.selected .icon-food {
+.selected .icon-plus {
   display: none; }
 
 .selected .icon-checkmark {
@@ -657,7 +661,23 @@ body {
     background-color: #fff; }
 
 .create-diet {
-  width: 100%; }
+  width: 100%;
+  color: #fff; }
+  .create-diet .picture {
+    padding: 0; }
+  .create-diet .diet-showpic {
+    padding: 20px;
+    width: 48%; }
+    @media (max-width: 768px) {
+      .create-diet .diet-showpic {
+        width: 100%; } }
+  .create-diet .create-diet-submit {
+    padding: 15px;
+    width: 50%; }
+    .create-diet .create-diet-submit .btn {
+      margin: 10px 0;
+      width: 100%;
+      color: #fff; }
   .create-diet .ipt {
     width: 100%; }
   .create-diet .period {
@@ -784,6 +804,9 @@ body {
 .diet-overview .description {
   height: 150px; }
 
+.diet-overview .user-section span {
+  font-size: 1.2em; }
+
 .search {
   border: 1px solid #bebebe; }
 
@@ -822,6 +845,8 @@ body {
     display: inline-block;
     margin-bottom: 20px;
     width: 100%; }
+    .fitness .index-info h3 {
+      height: 60px; }
     .fitness .index-info img {
       width: 100%;
       height: 270px; }
@@ -841,8 +866,14 @@ body {
     display: inline-block; }
   .fitness .fitness-info {
     width: 48%; }
+    @media (max-width: 768px) {
+      .fitness .fitness-info {
+        width: 100%; } }
   .fitness .schedule {
     width: 48%; }
+    @media (max-width: 768px) {
+      .fitness .schedule {
+        width: 100%; } }
   .fitness .btn-day, .fitness .btn-week {
     width: 100%;
     padding: 15px;
@@ -865,6 +896,11 @@ body {
   .fitness .create-info, .fitness .create-picture {
     width: 48%;
     display: inline-block; }
+    @media (max-width: 768px) {
+      .fitness .create-info, .fitness .create-picture {
+        width: 100%; } }
+    .fitness .create-info .picture, .fitness .create-picture .picture {
+      padding: 0; }
   .fitness .add-day {
     display: inline-block;
     background-color: #16A085;
@@ -943,6 +979,12 @@ body {
       float: right; }
   .home-fitness .done {
     background: #5ad29b; }
+
+.fitness-edit .fitness-info {
+  color: #333; }
+
+.fitness-edit .schedule {
+  color: #333; }
 
 .autocomplete-container {
   position: relative; }
@@ -1064,12 +1106,19 @@ body {
           width: 100%;
           background: #333; }
         .video-con .videos .video-index .player .icon-play3 {
-          font-size: 5em;
+          font-size: 4em;
           position: absolute;
+          padding: 20px 20px 20px 25px;
+          border-radius: 50%;
+          background: #3d3636;
           color: #fff;
+          opacity: 0.7;
           top: 35%;
           left: 40%;
           cursor: pointer; }
+          .video-con .videos .video-index .player .icon-play3:hover {
+            opacity: 0.9;
+            transition: opacity 500ms; }
       .video-con .videos .video-index h3 {
         height: 50px; }
       .video-con .videos .video-index .description {

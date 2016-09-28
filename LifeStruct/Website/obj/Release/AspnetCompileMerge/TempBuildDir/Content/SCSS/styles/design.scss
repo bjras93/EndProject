@@ -40,7 +40,9 @@ body {
 .stop-scroll {
     overflow: hidden;
 }
-
+.navbar-brand {
+    text-shadow: 1px 1px rgb(130,130,130);
+}
 .add {
     position: fixed;
     right: 50px;
@@ -108,6 +110,7 @@ body {
 }
 
 .btn {
+    cursor:pointer;
     display: block;
     margin: $smg;
     padding: $spd;
@@ -375,7 +378,7 @@ body {
 }
 
 .selected {
-    .icon-food {
+    .icon-plus {
         display: none;
     }
 

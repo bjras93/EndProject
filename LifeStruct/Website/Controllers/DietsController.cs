@@ -170,10 +170,7 @@
                                 int day = int.Parse(values[3].Substring(1));
                                 int edible = int.Parse(values[4].Substring(1));
 
-                                if (day == 7)
-                                {
-                                    day = 0;
-                                }
+                                day = day - 1;
                                 mcm.WeekNo = week;
                                 mcm.Meal = meal;
                                 mcm.Day = day;

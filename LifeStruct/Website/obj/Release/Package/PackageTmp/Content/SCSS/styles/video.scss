@@ -62,12 +62,20 @@
                 background: #333;
             }
             .icon-play3 {
-                font-size: 5em;
+                font-size: 4em;
                 position:absolute;
+                padding: 20px 20px 20px 25px;                
+                border-radius: 50%;
+                background:rgb(61, 54, 54);
                 color: $w;
+                opacity: 0.7;
                 top:35%;
                 left: 40%;
                 cursor:pointer;
+                &:hover {
+                    opacity: 0.9;
+                    transition: opacity 500ms;
+                }
             }
             }
 

@@ -31,13 +31,17 @@
                         <tags-input ng-model="tags" placeholder="Tags to find your diet"></tags-input>
                         <input type="hidden" name="Tags" value="{{tags}}" />
                     </div>
-                    <input type="submit" class="btn ib blogin" value="Next" />
                 </div>
-
-                <div class="picture">
-                    <label class="btn ib" for="upload-file">Upload image</label>
-                    <input ng-model="Img" type="file" accept="image/.png,.jpg,.gif" class="hide" id="upload-file" name="uploadFile" />
+                <div class="diet-showpic right">
                     <img src="" id="modelImg" />
+                </div>
+                <div class="create-diet-submit">
+                    <h4>Click below to upload an image suggested aspect ratio is 2.2:1</h4>
+                    <div class="picture">
+                        <label class="btn ib" for="upload-file">Upload image</label>
+                        <input ng-model="Img" type="file" accept="image/.png,.jpg,.gif" class="hide" id="upload-file" name="uploadFile" />
+                    </div>
+                    <input type="submit" class="btn ib blogin" value="Create" />
                 </div>
                 @Html.ValidationMessage("Filesize")
                 <div class="clear"></div>

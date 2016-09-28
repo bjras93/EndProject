@@ -20,7 +20,7 @@
                     <h3>{{video.Title}}</h3>
                     <p class="description">{{video.Description | limitTo: 400}}</p>
                     <div class="player">
-                        <iframe width="560" height="315" frameborder="0" allowfullscreen></iframe>
+                        <iframe width="560" height="315" frameborder="0" style="background: url(http://img.youtube.com/vi/{{video.YouTubeId}}/0.jpg)" allowfullscreen></iframe>
                         <span data-source="{{getFrameSrc(video.YouTubeId)}}"></span>
                         <span onclick="setUrl(this)" class="icon-play3"></span>
                     </div>

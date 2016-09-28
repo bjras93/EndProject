@@ -43,8 +43,8 @@
                     </thead>
                     <tbody>
                         @foreach (var d in Model.Days)
-                    {
-                        if (Model.MealCollection.Where(x => x.Day == Convert.ToInt32(d.Id)).Count() > 0)
+                    {                           
+                        if (Model.MealCollection.Where(x => x.Day == Convert.ToInt32(d.Id)-1).Count() > 0)
                         {
 
                                 <tr>
@@ -59,7 +59,7 @@
                                                 <table>
                                                     @foreach (var mc in Model.MealCollection)
                                                     {
-                                                        if (d.Id == mc.Day && Convert.ToInt32(m.Id) == mc.Meal && mc.Week == (i + 1))
+                                                        if (d.Id-1 == mc.Day && Convert.ToInt32(m.Id) == mc.Meal && mc.Week == (i + 1))
                                                         {
                                                             <tr>
                                                                 <td>

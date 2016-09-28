@@ -15,6 +15,26 @@
 .create-diet {
     width: 100%;
     @extend .ib;
+    color: $w;
+    .picture {
+        padding: 0;
+    }
+    .diet-showpic {
+        padding: 20px;
+        width: 48%;
+        @include phone {
+            width: 100%;
+        }
+    }
+    .create-diet-submit {
+        padding: $spd;
+        width: 50%;
+        .btn {
+            margin: 10px 0;
+            width: 100%;
+            color: $w;
+        }
+    }
     .ipt {
         width: 100%;
     }
@@ -205,6 +225,11 @@
 .diet-overview {
     .description {
         height: 150px;
+    }
+    .user-section {
+        span {
+            font-size: 1.2em;
+        }
     }
 }
 .search {    

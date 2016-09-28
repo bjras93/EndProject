@@ -22,7 +22,8 @@
                         <tags-input ng-model="tags" ng-init="tags = @Model.Tags" placeholder="Tags to find your diet"></tags-input>
                         <input type="hidden" name="Tags" value="{{tags}}" />
                     </li>
-                    <li>
+                    <li><br />
+                        <h4>Click below to upload an image suggested aspect ratio is 2.2:1</h4>
                         <div class="img-edit">
                             <img id="modelImg" @if (!string.IsNullOrEmpty(Model.Img)){<text>src="/Content/img/user/sm-@Model.Img" </text>}/>                            
                             <label for="file-upload" class="overlay-click" href="">

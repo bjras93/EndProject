@@ -200,10 +200,7 @@
                             sm.ExerciseId = value[0];
                             sm.Exercise = db.Exercise.Find(sm.ExerciseId).Name;
                             int day = Convert.ToInt32(values[3].Replace("d", ""));
-                            if (day == 7)
-                            {
-                                day = 0;
-                            }
+                            day = day - 1;
                             sm.Day = day;
                             sm.Week = Convert.ToInt32(values[4].Replace("w", ""));
                             sm.ExerciseIndex = Convert.ToInt32(values[2].Replace("e", ""));

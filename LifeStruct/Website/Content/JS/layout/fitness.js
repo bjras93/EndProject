@@ -105,11 +105,13 @@ var fitness = {
                             });
                         }
                     }
+                    console.log(sche)
+                    console.log($scope.exercises)
                     for (var w = 0; w < week; w++) {
                         for (var i = 0; i < sche.length; i++) {
                             if (sche[i].ExerciseIndex == 1) {
                                 var exIndex = $scope.exercises.findIndex(function (x) {
-                                    return x.day == sche[i].Day && x.week == sche[i].Week;
+                                    return x.day == (sche[i].Day+1) && x.week == sche[i].Week;
                                 });
                                 if (exIndex != -1) {
                                     $scope.exercises[exIndex].id = sche[i].Id;
@@ -117,7 +119,7 @@ var fitness = {
                                     $scope.exercises[exIndex].exerciseId = sche[i].ExerciseId;
                                     $scope.exercises[exIndex].exerciseIndex = sche[i].ExerciseIndex;
                                     $scope.exercises[exIndex].interval = sche[i].Time;
-                                    $scope.exercises[exIndex].day = sche[i].Day;
+                                    $scope.exercises[exIndex].day = (sche[i].Day + 1);
                                     $scope.exercises[exIndex].week = sche[i].Week;
                                     $scope.exercises[exIndex].calories = sche[i].Calories;
 
@@ -140,7 +142,7 @@ var fitness = {
                                         interval: sche[i].Time,
                                         exerciseId: sche[i].ExerciseId,
                                         exerciseIndex: sche[i].ExerciseIndex,
-                                        day: sche[i].Day,
+                                        day: (sche[i].Day + 1),
                                         week: sche[i].Week,
                                         calories: sche[i].Calories
                                     });

@@ -1,4 +1,5 @@
 ﻿using LifeStruct.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web.Mvc;
@@ -57,7 +58,7 @@ namespace LifeStruct.Controllers
         public static IEnumerable<DietProgressModel> GetProgress(string UserId, string DietId, string FoodId, string Intake, int Meal)
         {
             DefaultConnection db = new DefaultConnection();
-            return db.DietProgress.ToList().Where(x => x.UserId == UserId && x.DietId == DietId && x.FoodId == FoodId && x.CalorieIntake == Intake && x.Meal == Meal);
+            return db.DietProgress.ToList().Where(x => x.UserId == UserId && x.DietId == DietId && x.FoodId == FoodId && x.CalorieIntake == Intake && x.Meal == Meal && Convert.ToDateTime(x.Day).ToString("dd-MM-yyyy") == DateTime.Now.ToString("dd-MM-yyyy"));
 
         }
     }

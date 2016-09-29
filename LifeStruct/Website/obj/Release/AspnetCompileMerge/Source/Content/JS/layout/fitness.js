@@ -132,7 +132,7 @@ var fitness = {
                             
                             if(sche[i].ExerciseIndex > 1){
                                 var exIndex = $scope.exercises.findIndex(function (x) {
-                                    return x.day == sche[i].Day && x.week == sche[i].Week;
+                                    return x.day == (sche[i].Day + 1) && x.week == sche[i].Week;
                                 });
                                 if(exIndex > -1)
                                 {

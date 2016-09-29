@@ -322,6 +322,7 @@ var diet = {
                 }
                 for (var i = 0; i < $scope.dietData.length; i++) {
                     var s = $scope.dietData[i];
+                    console.log($scope.obj)
                     var indexObj = $scope.obj.findIndex(function (x) {
                         return x.id == 'w' + s.week + '_m' + s.meal + '_d' + s.day + '_e' + s.edible;
                     });
@@ -332,7 +333,7 @@ var diet = {
                     for (var e = 0; e < $scope.dietData[i].edibles.length; e++) {
                         if ($scope.obj[indexObj] != "") {
                             var edi = s.edibles[e]; var indexObj = $scope.obj.findIndex(function (x) {
-                                return x.id == 'w' + edi.week + '_m' + edi.meal + '_d' + (edi.day-1) + '_e' + edi.edible;
+                                return x.id == 'w' + edi.week + '_m' + edi.meal + '_d' + edi.day + '_e' + edi.edible;
                             });
                             if (indexObj > -1) {
                                 $scope.calc.days[(edi.week - 1) + '_' + (edi.day-1)] += ($scope.obj[indexObj].cal / 100) * $scope.obj[indexObj].amount;

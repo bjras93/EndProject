@@ -99,7 +99,7 @@
                     <tr>
                         @foreach (var m in Model.Meals)
                         {
-                            if (Model.MealCollection.Where(x => x.Meal.ToString() == m.Id && ((DayOfWeek)x.Day-1) == DateTime.Now.DayOfWeek && x.WeekNo == week).Count() > 0)
+                            if (Model.MealCollection.Where(x => x.Meal.ToString() == m.Id && ((DayOfWeek)x.Day) == DateTime.Now.DayOfWeek && x.WeekNo == week).Count() > 0)
                             {
                                 <th>@m.Name</th>
                             }
@@ -114,7 +114,7 @@
                             if (Model.MealCollection.Where(x => x.Meal.ToString() == m.Id).Count() > 0)
                             {
                                 <td>
-                                    @foreach (var mc in Model.MealCollection.Where(x => ((DayOfWeek)x.Day-1) == DateTime.Now.DayOfWeek))
+                                    @foreach (var mc in Model.MealCollection.Where(x => ((DayOfWeek)x.Day) == DateTime.Now.DayOfWeek))
                                     {
 
                                         if (mc.Meal.ToString() == m.Id)

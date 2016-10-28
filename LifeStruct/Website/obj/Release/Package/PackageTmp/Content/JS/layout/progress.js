@@ -12,18 +12,27 @@
                 type: 'GET',
                 url: api + 'DietProgressApi/GetProgress',
                 success: function (data) {
-                    for (var i = 0; i < data.DietProgress.length; i++) {
-                        gain += parseFloat(data.DietProgress[i].CalorieIntake);
+                    if (data.DietProgress != null) {
+                        for (var i = 0; i < data.DietProgress.length; i++) {
+                            gain += parseFloat(data.DietProgress[i].CalorieIntake);
+                        }
+                    } else {
+                        gain = 0;
                     }
-                    for (var i = 0; i < data.FitnessProgress.length; i++) {
-                        fLoss += parseFloat(data.FitnessProgress[i].Loss)
+
+                    if (data.FitnessProgress != null) {
+                        for (var i = 0; i < data.FitnessProgress.length; i++) {
+                            fLoss += parseFloat(data.FitnessProgress[i].Loss);
+                        }
+                    } else {
+                        fLoss = 0;
                     }
                     $('#gain').text('Calorie intake: ' + parseFloat(gain).toFixed(0));
                     $('#loss').text('Calorie loss: ' + parseFloat(fLoss).toFixed(0));
                     total = parseFloat(data.Bmr).toFixed(0) - gain;
                     $('#total').text('Suggested intake: ' + total);
                 }
-            })
+            });
         },
         addDietProgress: function (e, fId, dId, intake, uId, meal) {
             var target = $($(e.target).parents('.parent')[0]),

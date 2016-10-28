@@ -1,4 +1,7 @@
-﻿namespace LifeStruct.Models
+﻿using System;
+using System.ComponentModel.DataAnnotations;
+
+namespace LifeStruct.Models
 {
     using System;
     using System.Collections.Generic;
@@ -17,10 +20,11 @@
         [Required(ErrorMessage = "You forgot to fill out your height")]
         [Display(Name = "Height")]
         public string Height { get; set; }
-
         [Required(ErrorMessage = "You forgot to fill out your weight")]
         [Display(Name = "Weight")]
         public string Weight { get; set; }
+
+        [DateAttribute(ErrorMessage = "Birthdate is incorrect.")]
         [Required(ErrorMessage = "Please fill out your birthday")]
         [Display(Name = "Birthday")]
         public DateTime? Birthday { get; set; }
@@ -56,4 +60,9 @@
         public string Password { get; set; }
     }
     
+}
+public class DateAttribute : RangeAttribute
+{
+    public DateAttribute()
+        : base(typeof(DateTime), DateTime.Now.AddYears(-100).ToShortDateString(), DateTime.Now.AddYears(-18).ToShortDateString()) { }
 }

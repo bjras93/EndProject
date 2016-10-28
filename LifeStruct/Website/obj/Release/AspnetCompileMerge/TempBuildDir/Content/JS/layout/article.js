@@ -5,14 +5,17 @@ var article = {
     init: function () {
         app.controller('articleIndexCtrl', ['$scope', '$http', '$document', function ($scope, $http, $document) {
             $scope.articles = [];
+            $scope.count = 0;
             $scope.likes = {
                 like: {}
             };
             $http({ method: 'GET', url: api + 'HealthApi/GetArticles?type=' + 1 }).then(function (data) {
+                for (var i = 0; i > $scope.articles.length; i++) {
+                    $scope.count++;
+                }
                 $scope.articles = data.data;
             });
             $scope.findUser = function (uId, aId, data) {
-
                 return data[data.findIndex(function (x) {
                     return x.UserId == uId && x.ArticleId == aId;
                 })];

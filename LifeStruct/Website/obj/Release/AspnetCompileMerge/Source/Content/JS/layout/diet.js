@@ -117,17 +117,20 @@ var diet = {
 
                 var mc = data.data.MealCollection,
                     f = data.data.Food;
-
-                var week = Math.max.apply(Math, mc.map(function (o) { return o.WeekNo }))
+                if (mc.length > 0) {
+                    var week = Math.max.apply(Math, mc.map(function(o) { return o.WeekNo; }));
+                } else {
+                    week = 1;
+                }
                 currentW = week;
                 for (var w = 0; w < week; w++) {
-                    for (var i = 0; i < 7; i++) {
+                    for (var d = 0; d < 7; d++) {
                         for (var m = 0; m < 4; m++) {
                             $scope.dietData.push({
                                 name: '',
                                 calories: '',
                                 week: (w + 1),
-                                day: i + 1,
+                                day: d + 1,
                                 edible: 1,
                                 meal: (m + 1),
                                 amount: '',
@@ -137,19 +140,20 @@ var diet = {
                         }
                     }
                     if (w > 0) {
-                        $scope.weeks.push({ no: (w + 1), text: 'Week ' })
+                        $scope.weeks.push({ no: (w + 1), text: 'Week ' });
                     }
                 }
+                console.log($scope.dietData);
                 $scope.days.push(
-                        'Sunday,' + 1,
-                        'Monday,' + 1,
-                        'Tuesday,' + 1,
-                        'Wednesday,' + 1,
-                        'Thursday,' + 1,
-                        'Friday,' + 1,
-                        'Saturday,' + 1
-                        )
-                $scope.meals.push('Breakfast', 'Lunch', 'Dinner', 'Snack')
+                    'Sunday,' + 1,
+                    'Monday,' + 1,
+                    'Tuesday,' + 1,
+                    'Wednesday,' + 1,
+                    'Thursday,' + 1,
+                    'Friday,' + 1,
+                    'Saturday,' + 1
+                );
+                $scope.meals.push('Breakfast', 'Lunch', 'Dinner', 'Snack');
                 for (var i = 0; i < mc.length; i++) {
                     var dIndex = $scope.dietData.findIndex(function (x) {
                         return x.week == mc[i].WeekNo && x.day == (mc[i].Day+1) && x.meal == mc[i].Meal;
@@ -200,7 +204,7 @@ var diet = {
 
 
             $scope.addWeek = function () {
-                currentW++
+                currentW++;
                 $http({ method: 'GET', url: api + 'DaysApi/GetDays' }).then(function (data) {
                     weekDay = data.data;
                     for (var i = 1; i < weekDay.length; i++) {
@@ -215,7 +219,7 @@ var diet = {
                                 amount: '',
                                 foodId: '',
                                 edibles: []
-                            })
+                            });
                         }
                     }
                 });

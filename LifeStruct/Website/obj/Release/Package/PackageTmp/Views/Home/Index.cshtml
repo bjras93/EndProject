@@ -1,4 +1,5 @@
 ﻿@model LifeStruct.Controllers.UserData
+@using System.Globalization
 @using LifeStruct.Models;
 @{
     ViewBag.Title = "Welcome!";
@@ -89,7 +90,7 @@
         <div class="tile-5 b1 border">
             <div class="explain">
                 <div class="con">
-                    <h3>Diet for today</h3>
+                    <h3>Diet for @DateTime.Now.DayOfWeek</h3>
                     <p>Finished:</p> <span class="done border"></span> <p>Unfinished:</p> <span class="undone border"></span>
                 </div>
             </div>
@@ -151,7 +152,7 @@
                         }
                     </tr>
 
-                    @if (Model.MealCollection.Where(x => ((DayOfWeek)x.Day-1) == DateTime.Now.DayOfWeek).Count() == 0)
+                    @if (!Model.MealCollection.Any(x => ((DayOfWeek)x.Day-1) == DateTime.Now.DayOfWeek))
                     {
 
                         <tr class="nobackground">
@@ -182,7 +183,7 @@
 
             @foreach (var exercise in Model.Schedule.Where(x => ((DayOfWeek)x.Day) == DateTime.Now.DayOfWeek))
             {
-            <div class="home-exercise @if (Model.FitnessProgress.Where(x => x.ExerciseId == exercise.Id).Count() >0) {<text>done</text> }" onclick="progress.addFitnessProgress(event, '@exercise.Id', '@Model.Fitness.Id', '@((Convert.ToDecimal(exercise.Calories)/60)*Convert.ToDecimal(exercise.Time))', '@Model.Fitness.UserId')"  data-fitnessprogress="@if(Model.FitnessProgress.Where(x=> x.ExerciseId == exercise.Id).Count() > 0) {<text>@Model.FitnessProgress.Where(x=> x.ExerciseId == exercise.Id).First().Id</text>}">
+            <div class="home-exercise @if (Model.FitnessProgress.Any(x => x.ExerciseId == exercise.Id)) {<text>done</text> }" onclick="progress.addFitnessProgress(event, '@exercise.Id', '@Model.Fitness.Id', '@((Convert.ToDecimal(exercise.Calories)/60)*Convert.ToDecimal(exercise.Time))', '@Model.Fitness.UserId')"  data-fitnessprogress="@if(Model.FitnessProgress.Where(x=> x.ExerciseId == exercise.Id).Count() > 0) {<text>@Model.FitnessProgress.Where(x=> x.ExerciseId == exercise.Id).First().Id</text>}">
                 <div>
                         @exercise.Exercise
                 </div>
@@ -196,7 +197,7 @@
                 </div>
             </div>
             }
-            @if(Model.Schedule.Where(x => ((DayOfWeek)x.Day - 1) == DateTime.Now.DayOfWeek).Count() == 0)
+            @if(Model.Schedule.Any(x => ((DayOfWeek)x.Day - 1) == DateTime.Now.DayOfWeek))
             {
                 <div>
                     <h3>There are no exercises today</h3>

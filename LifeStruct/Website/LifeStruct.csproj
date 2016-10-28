@@ -529,7 +529,6 @@
     <Folder Include="App_Data\" />
     <Folder Include="Content\img\user\" />
     <Folder Include="Content\JS\plugins\plugins\" />
-    <Folder Include="Views\MealCollection\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />

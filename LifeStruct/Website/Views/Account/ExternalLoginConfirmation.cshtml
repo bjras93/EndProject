@@ -14,11 +14,11 @@
             @Html.ValidationMessageFor(m => m.Name, "", new { @class = "text-danger" })
         </div>
         <div class="form-group">
-            @Html.TextBoxFor(m => m.Height, new { @class = "ipt", @type = "number", @placeholder = "Height" })
+            @Html.TextBoxFor(m => m.Height, new { @class = "ipt", @type = "number", @placeholder = "Height", @min = "30", @max = "400" })
             @Html.ValidationMessageFor(m => m.Height, "", new { @class = "text-danger" })
         </div>
         <div class="form-group">
-            @Html.TextBoxFor(m => m.Weight, new { @class = "ipt", @type = "number", @placeholder = "Weight" })
+            @Html.TextBoxFor(m => m.Weight, new { @class = "ipt", @type = "number", @placeholder = "Weight", @min = 30, @max = 300 })
             @Html.ValidationMessageFor(m => m.Weight, "", new { @class = "text-danger", @type = "number" })
         </div>
         <div class="form-group">
@@ -27,7 +27,7 @@
         </div>
         <div class="form-group">
             <div>Birthday</div>
-            @Html.TextBoxFor(m => m.Birthday, "{0:dd-mm-yyyy}", new { @class = "ipt", @placeholder = "Birthday", @type = "date" })<br />
+            @Html.TextBoxFor(m => m.Birthday, "{0:dd-mm-yyyy}", new { @class = "ipt", @placeholder = "Birthday", @type = "date", @min = (Convert.ToInt32(DateTime.Now.Year)-100) + "-12-31", @max = (Convert.ToInt32(DateTime.Now.Year)-18) + "-12-31" })<br />
             @Html.ValidationMessageFor(m => m.Birthday, "", new { @class = "text-danger" })
         </div>
         <div class="form-group">

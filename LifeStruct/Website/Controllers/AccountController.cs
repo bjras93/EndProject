@@ -45,7 +45,7 @@ namespace LifeStruct.Controllers
                         dt = Convert.ToDateTime(g.Date);
                   }
                 }
-                ud.Goal = _db.Goal.ToList().First(x => x.UserId == ud.User.Id && x.Date == dt.ToString("dd-MM-yyyy"));
+                ud.Goal = _db.Goal.ToList().First(x => x.UserId == ud.User.Id && x.Date == dt.ToString());
                 return View(ud);
             }
             return RedirectToAction("Index");
@@ -65,16 +65,16 @@ namespace LifeStruct.Controllers
                         dt = Convert.ToDateTime(g.Date);
                     }
                 }
-                if (!_db.Weight.ToList().Any(x => x.UserId == user.Id && x.Date == DateTime.Now.ToString("dd-MM-yyyy")))
+                if (!_db.Weight.ToList().Any(x => x.UserId == user.Id && x.Date == DateTime.Now.ToString()))
                 {
                     wm.Id = Guid.NewGuid().ToString();
                     wm.UserId = user.Id;
-                    wm.Date = DateTime.Now.ToString("dd-MM-yyyy");
+                    wm.Date = DateTime.Now.ToString();
                     wm.Weight = Convert.ToDecimal(model.User.Weight);
                     _db.Weight.Add(wm);
                     _db.SaveChanges();
                 }
-                model.Goal = _db.Goal.ToList().First(x => x.UserId == user.Id && x.Date == dt.ToString("dd-MM-yyyy"));
+                model.Goal = _db.Goal.ToList().First(x => x.UserId == user.Id && x.Date == dt.ToString());
                 model.Activity = _db.Activity;
                 user.Weight = model.User.Weight;
                 user.ActiveLevel = model.User.ActiveLevel;
@@ -201,7 +201,7 @@ namespace LifeStruct.Controllers
                     {
                         Id = Guid.NewGuid().ToString(),
                         UserId = user.Id,
-                        Date = DateTime.Now.ToString("dd-MM-yyyy"),
+                        Date = DateTime.Now.ToString(),
                         Weight = Convert.ToDecimal(user.Weight)
                     };
                     _db.Weight.Add(wm);

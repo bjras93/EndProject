@@ -1,4 +1,5 @@
-﻿using LifeStruct.Models.Account;
+﻿using System.Globalization;
+using LifeStruct.Models.Account;
 
 namespace LifeStruct.Controllers.ApiControllers
 {
@@ -38,7 +39,7 @@ namespace LifeStruct.Controllers.ApiControllers
         {
             dynamic json = jsonData;
             ApplicationUser user = UserViewModel.GetUser(json.uId.ToString());
-            IdentityResult result = IdentityResult.Failed();
+            IdentityResult result;
             if (json.type == 1)
             {
                 if (json.dId != null && !Convert.ToBoolean(json.add))

@@ -1,0 +1,115 @@
+﻿@using LifeStruct.Models.Account
+@model LifeStruct.Controllers.UserDetail
+@{
+    ViewBag.Title = "Profile";
+    var user = UserViewModel.GetCurrentUser();
+    decimal height = Convert.ToDecimal(user.Height);
+    decimal weight = Convert.ToDecimal(user.Weight);
+    decimal heightDivided = height / 100;
+    decimal bmi = weight / (heightDivided * heightDivided);
+    var bmiClass = BmiClassViewModel.GetBmi(bmi);
+    var age = DateTime.Now.Year - Convert.ToDateTime(user.Birthday).Year;
+    double bmr = 0;
+    if (user.Gender == 2)
+    {
+        bmr = (10 * Convert.ToDouble(weight)) + (6.25 * Convert.ToDouble(height)) - (5 * age) + 5;
+    }
+    else
+    {
+        bmr = (10 * Convert.ToDouble(weight)) + (6.25 * Convert.ToDouble(height)) - (5 * age) + -161;
+
+    }
+    if(Model.Goal.Goal == 1)
+    {
+        bmr = bmr * 1.10;
+    }
+    if (Model.Goal.Goal == 3)
+    {
+        bmr = bmr * 0.80;
+    }
+}
+@Html.ActionLink("Return", "Index", "Home", null, new { @class = "return" })
+<div class="content g2">
+    <div class="account-details hide">
+        @using (Html.BeginForm("Details", "Account", FormMethod.Post))
+        {
+            @Html.HiddenFor(x => x.Goal.Id)
+            @Html.HiddenFor(x => x.User.Id)
+            <ul>
+                <li>
+                    <span>
+                        Name
+                    </span>
+                    <span>
+                        @Html.TextBoxFor(x => x.User.Name, new { @class = "ipt" })
+                    </span>
+                </li>
+                <li>
+                    <span>
+                        Weight
+                    </span>
+                    <span>
+                        @Html.TextBoxFor(x => x.User.Weight, new { @class = "ipt" }) kg
+                    </span>
+                </li>
+                <li>
+                    <span>
+                        Height
+                    </span>
+                    <span>
+                        @user.Height cm 
+                        
+                    </span>
+                </li>
+                <li>
+                    <span>
+                        Bmi
+                    </span>
+                    <span>
+                        @bmi.ToString("##.##")
+                    </span>
+                </li>
+                <li>
+                    <span>
+                        Bmi weight class:
+                    </span>
+                    <span>
+                        @bmiClass.Name
+                    </span>
+                </li>
+                <li>
+                    <span>
+                        Select how active you are
+                    </span>
+                    @Html.DropDownListFor(x => x.User.ActiveLevel, Model.ActivityDropdown, new { @class= "ipt" })
+                </li>
+                <li>
+                    <span>
+                        Suggested intake
+                    </span>
+                    <span>
+                        @if (Model.User.ActiveLevel != null)
+                        {
+                            @(bmr *Convert.ToDouble(Model.User.ActiveLevel) )
+                        }
+                        else
+                        {
+                            @bmr
+                        }
+                            kcal pr. day
+                       </span>
+   
+                   </li>
+   
+               </ul>
+   
+               <input type="submit" value="Save changes" class="btn  save-details" />
+        }
+    </div>
+    <div class="account-goals hide">
+        <ul>
+            <li></li>
+        </ul>
+    </div>
+    <div class="clear"></div>
+</div>

@@ -49,9 +49,8 @@ namespace LifeStruct
                 AppId = "101084843685007",
                 AppSecret = "7ee5880cef2e1e2c683096bbad2f50bb",
                 BackchannelHttpHandler = new FacebookBackChannelHandler(),
-                UserInformationEndpoint = "https://graph.facebook.com/v2.4/me?fields=id,name,email,first_name,last_name,location"
+                UserInformationEndpoint = "https://graph.facebook.com/v2.8/me?fields=id,name,email,first_name,last_name,location"
             };
-            facebookOptions.Scope.Add("email");
             app.UseFacebookAuthentication(facebookOptions);
             var googleOptions = new GoogleOAuth2AuthenticationOptions()
             {

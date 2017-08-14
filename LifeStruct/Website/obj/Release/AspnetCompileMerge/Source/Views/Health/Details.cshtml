@@ -1,0 +1,22 @@
+﻿@using LifeStruct.Models.Account
+@model LifeStruct.Models.Health.HealthModel
+@{
+    ViewBag.Title = "Health articles";
+    var user = UserViewModel.GetUser(Model.UserId);
+}
+@section Signout{
+    @Html.Partial("~/Views/Shared/_logout.cshtml")
+}
+<div ng-app="LifeStruct" ng-controller="articleIndexCtrl">
+    <input type="text" class="ipt search right" placeholder="Search" />
+    @Html.ActionLink("Return", "Index", "Health", null, new { @class = "return" })
+    <div class="details-article">
+        <div class="header"><h1>@Model.Title</h1></div>
+        <div class="content-article">@Html.Raw(Model.Content)</div>
+        <div class="user-section">Written by: @user.Name</div>
+    </div>
+</div>
+<script src="~/Content/JS/layout/article.js"></script>
+<script>
+    article.details();
+</script>

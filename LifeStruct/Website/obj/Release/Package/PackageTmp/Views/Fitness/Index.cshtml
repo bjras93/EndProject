@@ -1,0 +1,53 @@
+﻿@using LifeStruct.Models;
+@using LifeStruct.Models.Account
+@model IEnumerable<LifeStruct.Models.Fitness.FitnessModel>
+@{
+    var user = UserViewModel.GetCurrentUser();
+    ViewBag.Title = "Fitness";
+}
+@section Signout{
+    @Html.Partial("~/Views/Shared/_logout.cshtml")
+}
+@Html.ActionLink("Return", "Index", "Home", null, new { @class = "return" })
+<div ng-app="LifeStruct" ng-controller="indexFitnessCtrl">
+    <input type="text" class="ipt search right" placeholder="Search" ng-model="search" />
+    <div class="content b1">
+        <div ng-init="currentUser = '@user.Id'"></div>
+        <input type="hidden" ng-init="selected = '@user.FitnessId'" />
+        <div class="fitness fitness-index">
+            <div class="overview-fitness g3" ng-repeat="fitness in fitnessInit | filter : search | orderBy : '-Likes'">
+                <div class="index-info">
+                    <a href="../Fitness/Details/{{fitness.Id}}">
+                        <img src="/Content/img/user/sm-{{fitness.Img}}" />
+                    </a>
+
+                    <a href="../Fitness/Details/{{fitness.Id}}">
+                        <h3>{{fitness.Title}}</h3>
+                    </a>
+                    <div class="description" ng-bind-html="fitness.Description.length > 400 ? (fitness.Description | limitTo: 400) + '...' : fitness.Description">
+
+                    </div>
+                </div>
+                <div class="user-section">
+                    <input type="hidden" ng-init="getLikes('@user.Id', fitness.Id);" />
+                    <div ng-if="currentUser == fitness.UserId">
+                        <a ng-click="like(fitness.Id);" ng-class="currentUser == l.liked[fitness.Id] ? 'liked' : ''" href=""><span class="icon-heart"></span></a>
+                        <a ng-click="selectFitness(fitness.Id, '@user.Id', selected)" ng-class="selected == fitness.Id ? 'selected' :'' " href=""><span class="icon-plus"></span><span class="icon-checkmark hide"></span></a>
+                        <a href="../Fitness/Edit/{{fitness.Id}}"><span href="" class="icon-pencil"></span></a><br />
+                        <p>Author: You</p>
+                    </div>
+                    <div ng-if="currentUser != fitness.UserId">
+                        <a ng-click="like(fitness.Id);" ng-class="currentUser == l.liked[fitness.Id] ? 'liked' : ''" href=""><span class="icon-heart"></span></a>
+                        <a ng-click="selectFitness(fitness.Id, '@user.Id', selected)" ng-class="selected == fitness.Id ? 'selected' :'' " href=""><span class="icon-plus"></span><span class="icon-checkmark hide"></span></a><br />
+                        <p>Author: {{fitness.Author}} </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+@Html.ActionLink("+", "Create", null, new { @class = "add add-fitness" })
+<script src="~/Content/JS/layout/fitness.js"></script>
+<script>
+    fitness.index();
+</script>

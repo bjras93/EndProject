@@ -26,7 +26,7 @@ namespace LifeStruct.Controllers.ApiControllers
             dp.DietId = json.dietId.ToString();
             dp.CalorieIntake = json.intake.ToString();
             dp.FoodId = json.foodId.ToString();
-            dp.Day = DateTime.Now.ToString("dd-MM-yyyy");
+            dp.Day = DateTime.Now.ToString();
             dp.Meal = Convert.ToInt32(json.meal);
 
             _db.DietProgress.Add(dp);
@@ -73,7 +73,7 @@ namespace LifeStruct.Controllers.ApiControllers
             }
             foreach (var goal in _db.Goal.ToList().Where(x => x.UserId == user.Id))
             {
-                if (Convert.ToDateTime(goal.Date) > max)
+                if (DateTime.Parse(goal.Date) > max)
                 {
                     p.Goal = goal;
                     max = Convert.ToDateTime(goal.Date);
@@ -91,11 +91,11 @@ namespace LifeStruct.Controllers.ApiControllers
             p.Bmr = Convert.ToDecimal(bmr);
             p.DietProgress =
                 _db.DietProgress.ToList()
-                    .Where(x => x.UserId == user.Id && x.Day == DateTime.Now.ToString("dd-MM-yyyy"));
+                    .Where(x => x.UserId == user.Id && x.Day == DateTime.Now.ToString());
             p.FitnessProgress =
                 _db.FitnessProgress.ToList()
                     .Where(
-                        x => x.UserId == user.Id && x.Date == DateTime.Now.ToString("dd-MM-yyyy"));
+                        x => x.UserId == user.Id && x.Date == DateTime.Now.ToString());
 
             return Ok(p);
 

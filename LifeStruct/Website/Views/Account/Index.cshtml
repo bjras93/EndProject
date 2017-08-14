@@ -5,9 +5,10 @@
     ViewBag.Title = "Welcome";
 }
 <div class="login">
+    <script src="~/Content/JS/plugins/facebook.js"></script>
     <h3>Login with:</h3><hr />
     @Html.Partial("~/Views/Shared/_ExternalLogin.cshtml", new ExternalLoginListViewModel { ReturnUrl = ViewBag.ReturnUrl })
-</div>
+ </div>
 
 <script src="~/Content/JS/layout/overlay.js"></script>
 <script>

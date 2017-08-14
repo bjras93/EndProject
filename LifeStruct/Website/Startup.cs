@@ -1,7 +1,8 @@
 ﻿using Microsoft.Owin;
 using Owin;
 
-[assembly: OwinStartupAttribute(typeof(LifeStruct.Startup))]
+[assembly: OwinStartup(typeof(LifeStruct.Startup))]
+
 namespace LifeStruct
 {
     public partial class Startup

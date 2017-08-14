@@ -61,7 +61,7 @@
         public static IEnumerable<DietProgressModel> GetProgress(string userId, string dietId, string foodId, string intake, int meal)
         {
             DefaultConnection db = new DefaultConnection();
-            return db.DietProgress.ToList().Where(x => x.UserId == userId && x.DietId == dietId && x.FoodId == foodId && x.CalorieIntake == intake && x.Meal == meal && Convert.ToDateTime(x.Day).ToString("dd-MM-yyyy") == DateTime.Now.ToString("dd-MM-yyyy"));
+            return db.DietProgress.ToList().Where(x => x.UserId == userId && x.DietId == dietId && x.FoodId == foodId && x.CalorieIntake == intake && x.Meal == meal && Convert.ToDateTime(x.Day).ToString() == DateTime.Now.ToString());
 
         }
     }

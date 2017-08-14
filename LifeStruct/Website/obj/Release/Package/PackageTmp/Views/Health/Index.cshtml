@@ -1,0 +1,66 @@
+﻿@using LifeStruct.Models;
+@using LifeStruct.Models.Account
+@{
+    ViewBag.Title = "Health articles";
+    var user = UserViewModel.GetCurrentUser();
+}
+@section Signout{
+    @Html.Partial("~/Views/Shared/_logout.cshtml")
+}
+<div ng-app="LifeStruct" ng-controller="articleIndexCtrl">
+    @Html.ActionLink("Return", "Index", "Home", null, new { @class = "return" })
+    <div class="articles left">
+        <div class="menu-article">
+            <a class="btn btn-article selected" data-type="1" href="">Health</a>
+            <a class="btn btn-article" data-type="2" href="">Fitness</a>
+            <a class="btn btn-article" data-type="3" href="">Personal</a>
+        </div>
+        <input type="text" class="ipt search right" ng-model="search" placeholder="Search" />
+        <div class="content g3">
+            <div class="item" ng-repeat="article in filterArticles = (articles.Articles | filter: search) | orderBy: '-Likes'">
+                
+                <div ng-if="filterArticles.length != 0" class="article">
+                    <div ng-hide="article.UserId != '@user.Id' && article.Type == 3">
+                        <div class="header">
+                            <a href="/Health/Details/{{article.Id}}"><h3>{{article.Title}}</h3></a>
+                        </div>
+                        <div class="article-content">
+                            <div ng-bind-html="article.Content.length > 800 ? (article.Content | limitTo: 800) + '...' : article.Content"></div>
+                        </div>
+                        <div class="user-section">
+                            
+                            <div ng-init="user = findUser(article.UserId, article.Id, articles.Users)">
+                            </div>
+
+                            <input type="hidden" ng-init="getLikes('@user.Id', article.Id);" />
+
+                            <a href="" ng-click="like(article.Id, this);" ng-if="article.Type != 3">
+                                <span ng-class="'@user.Id' == likes.like[article.Id] ? 'liked' : ''" class="icon icon-heart"></span>
+                            </a>
+
+                            <span ng-if="user.UserId == '@user.Id'">
+                                
+                                <a href="/Health/Edit/{{article.Id}}">
+                                    <span class="icon icon-pencil"></span>
+                                </a>
+
+                                <a ng-click="deleteArticle('@user.Id', article)" href="">
+                                    <span class="icon icon-bin"></span>
+                                </a>
+
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div ng-if="filterArticles.length == 0" class="no-results">
+            <h3>Couldn't find "{{search}}" please try typing something else</h3>
+        </div>
+    </div>
+</div>
+@Html.ActionLink("+", "Create", null, new { @class = "add add-article" })
+<script src="~/Content/JS/layout/article.js"></script>
+<script>
+    article.init();
+</script>

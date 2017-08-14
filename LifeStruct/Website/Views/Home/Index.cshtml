@@ -125,7 +125,7 @@
                                             {
                                                 var f = LifeStruct.Controllers.HomeGet.GetFoodById(mc.FoodId);
                                                 var intake = (Convert.ToDouble(f.Calories) / 100) * Convert.ToDouble(mc.Amount);
-                                                var dp = LifeStruct.Controllers.HomeGet.GetProgress(user.Id, mc.DietId, mc.FoodId, intake.ToString(CultureInfo.InvariantCulture), mc.Meal);
+                                                var dp = LifeStruct.Controllers.HomeGet.GetProgress(user.Id, mc.DietId, mc.FoodId, intake.ToString(), mc.Meal);
 
 
                                                 foreach (var d in dp)

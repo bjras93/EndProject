@@ -1,172 +1,3 @@
-E:\Projects\YouGo\LifeStruct\Website\obj\Debug\Website.Migrations.Initial.resources
-E:\Projects\YouGo\LifeStruct\Website\obj\Debug\Website.Migrations.MealDays.resources
-E:\Projects\YouGo\LifeStruct\Website\obj\Debug\Website.Migrations.MealCollection.resources
-E:\Projects\YouGo\LifeStruct\Website\obj\Debug\Website.Migrations.Upd.resources
-E:\Projects\YouGo\LifeStruct\Website\obj\Debug\Website.Migrations.MealCollection1.resources
-E:\Projects\YouGo\LifeStruct\Website\obj\Debug\Website.Migrations.edibleADd.resources
-E:\Projects\YouGo\LifeStruct\Website\obj\Debug\Website.Migrations.DayDiets.resources
-E:\Projects\YouGo\LifeStruct\Website\obj\Debug\LifeStruct.csproj.GenerateResource.Cache
-E:\Projects\YouGo\LifeStruct\Website\obj\Debug\Website.dll
-E:\Projects\YouGo\LifeStruct\Website\obj\Debug\Website.pdb
-E:\Projects\YouGo\LifeStruct\Website\bin\ApplicationInsights.config
-E:\Projects\YouGo\LifeStruct\Website\bin\roslyn\csc.exe
-E:\Projects\YouGo\LifeStruct\Website\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
-E:\Projects\YouGo\LifeStruct\Website\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
-E:\Projects\YouGo\LifeStruct\Website\bin\roslyn\Microsoft.CodeAnalysis.dll
-E:\Projects\YouGo\LifeStruct\Website\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
-E:\Projects\YouGo\LifeStruct\Website\bin\roslyn\Microsoft.CSharp.Core.targets
-E:\Projects\YouGo\LifeStruct\Website\bin\roslyn\Microsoft.VisualBasic.Core.targets
-E:\Projects\YouGo\LifeStruct\Website\bin\roslyn\System.Collections.Immutable.dll
-E:\Projects\YouGo\LifeStruct\Website\bin\roslyn\System.Reflection.Metadata.dll
-E:\Projects\YouGo\LifeStruct\Website\bin\roslyn\vbc.exe
-E:\Projects\YouGo\LifeStruct\Website\bin\roslyn\VBCSCompiler.exe
-E:\Projects\YouGo\LifeStruct\Website\bin\roslyn\VBCSCompiler.exe.config
-E:\Projects\YouGo\LifeStruct\Website\bin\Website.dll.config
-E:\Projects\YouGo\LifeStruct\Website\bin\Website.dll
-E:\Projects\YouGo\LifeStruct\Website\bin\Website.pdb
-E:\Projects\YouGo\LifeStruct\Website\bin\Facebook.dll
-E:\Projects\YouGo\LifeStruct\Website\bin\System.Net.Http.Formatting.dll
-E:\Projects\YouGo\LifeStruct\Website\bin\System.Web.Http.dll
-E:\Projects\YouGo\LifeStruct\Website\bin\System.Web.Http.WebHost.dll
-E:\Projects\YouGo\LifeStruct\Website\bin\Facebook.xml
-E:\Projects\YouGo\LifeStruct\Website\bin\System.Net.Http.Formatting.xml
-E:\Projects\YouGo\LifeStruct\Website\bin\System.Web.Http.xml
-E:\Projects\YouGo\LifeStruct\Website\bin\System.Web.Http.WebHost.xml
-C:\Users\bjoe0771\Desktop\Website\LifeStruct\Website\bin\ApplicationInsights.config
-C:\Users\bjoe0771\Desktop\Website\LifeStruct\Website\bin\roslyn\csc.exe
-C:\Users\bjoe0771\Desktop\Website\LifeStruct\Website\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
-C:\Users\bjoe0771\Desktop\Website\LifeStruct\Website\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
-C:\Users\bjoe0771\Desktop\Website\LifeStruct\Website\bin\roslyn\Microsoft.CodeAnalysis.dll
-C:\Users\bjoe0771\Desktop\Website\LifeStruct\Website\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
-C:\Users\bjoe0771\Desktop\Website\LifeStruct\Website\bin\roslyn\Microsoft.CSharp.Core.targets
-C:\Users\bjoe0771\Desktop\Website\LifeStruct\Website\bin\roslyn\Microsoft.VisualBasic.Core.targets
-C:\Users\bjoe0771\Desktop\Website\LifeStruct\Website\bin\roslyn\System.Collections.Immutable.dll
-C:\Users\bjoe0771\Desktop\Website\LifeStruct\Website\bin\roslyn\System.Reflection.Metadata.dll
-C:\Users\bjoe0771\Desktop\Website\LifeStruct\Website\bin\roslyn\vbc.exe
-C:\Users\bjoe0771\Desktop\Website\LifeStruct\Website\bin\roslyn\VBCSCompiler.exe
-C:\Users\bjoe0771\Desktop\Website\LifeStruct\Website\bin\roslyn\VBCSCompiler.exe.config
-C:\Users\bjoe0771\Desktop\Website\LifeStruct\Website\bin\Website.dll.config
-C:\Users\bjoe0771\Desktop\Website\LifeStruct\Website\bin\Website.dll
-C:\Users\bjoe0771\Desktop\Website\LifeStruct\Website\bin\Website.pdb
-C:\Users\bjoe0771\Desktop\Website\LifeStruct\Website\bin\Facebook.dll
-C:\Users\bjoe0771\Desktop\Website\LifeStruct\Website\bin\System.Net.Http.Formatting.dll
-C:\Users\bjoe0771\Desktop\Website\LifeStruct\Website\bin\System.Web.Http.dll
-C:\Users\bjoe0771\Desktop\Website\LifeStruct\Website\bin\System.Web.Http.WebHost.dll
-C:\Users\bjoe0771\Desktop\Website\LifeStruct\Website\bin\Facebook.xml
-C:\Users\bjoe0771\Desktop\Website\LifeStruct\Website\bin\System.Net.Http.Formatting.xml
-C:\Users\bjoe0771\Desktop\Website\LifeStruct\Website\bin\System.Web.Http.xml
-C:\Users\bjoe0771\Desktop\Website\LifeStruct\Website\bin\System.Web.Http.WebHost.xml
-C:\Users\bjoe0771\Desktop\Website\LifeStruct\Website\obj\Debug\LifeStruct.csprojResolveAssemblyReference.cache
-C:\Users\bjoe0771\Desktop\Website\LifeStruct\Website\obj\Debug\Website.Migrations.Initial.resources
-C:\Users\bjoe0771\Desktop\Website\LifeStruct\Website\obj\Debug\Website.Migrations.MealDays.resources
-C:\Users\bjoe0771\Desktop\Website\LifeStruct\Website\obj\Debug\Website.Migrations.MealCollection.resources
-C:\Users\bjoe0771\Desktop\Website\LifeStruct\Website\obj\Debug\Website.Migrations.Upd.resources
-C:\Users\bjoe0771\Desktop\Website\LifeStruct\Website\obj\Debug\Website.Migrations.MealCollection1.resources
-C:\Users\bjoe0771\Desktop\Website\LifeStruct\Website\obj\Debug\Website.Migrations.edibleADd.resources
-C:\Users\bjoe0771\Desktop\Website\LifeStruct\Website\obj\Debug\Website.Migrations.DayDiets.resources
-C:\Users\bjoe0771\Desktop\Website\LifeStruct\Website\obj\Debug\LifeStruct.csproj.GenerateResource.Cache
-C:\Users\bjoe0771\Desktop\Website\LifeStruct\Website\obj\Debug\Website.dll
-C:\Users\bjoe0771\Desktop\Website\LifeStruct\Website\obj\Debug\Website.pdb
-C:\Users\bjoe0771\Desktop\Website\LifeStruct\Website\obj\Debug\Website.Migrations.FitnessAdd.resources
-C:\Users\bjoe0771\Desktop\Website\LifeStruct\Website\obj\Debug\Website.Migrations.UpdateFitness1.resources
-C:\Users\bjoe0771\Desktop\Website\LifeStruct\Website\obj\Debug\Website.Migrations.UpdateFitness2.resources
-C:\Users\bjoe0771\Desktop\Website\LifeStruct\Website\obj\Debug\Website.Migrations.CalInt.resources
-C:\Users\bjoe0771\Desktop\Website\LifeStruct\Website\obj\Debug\Website.Migrations.UserFitness.resources
-C:\Users\bjoe0771\Desktop\Website\LifeStruct\Website\obj\Debug\Website.Migrations.TagsName.resources
-C:\Users\bjoe0771\Desktop\Website\LifeStruct\Website\obj\Debug\Website.Migrations.Author.resources
-C:\Users\bjoe0771\Desktop\Website\LifeStruct\Website\obj\Debug\Website.Migrations.Like.resources
-C:\Users\bjoe0771\Desktop\Website\LifeStruct\Website\obj\Debug\Website.Migrations.UserIdString.resources
-C:\Users\bjoe0771\Desktop\Website\LifeStruct\Website\obj\Debug\Website.Migrations.FitnessLike.resources
-C:\Users\bjoe0771\Desktop\Website\LifeStruct\Website\obj\Debug\Website.Migrations.DietProgress.resources
-C:\Users\bjoe0771\Desktop\Website\LifeStruct\Website\obj\Debug\Website.Migrations.MealDietProgressModel.resources
-C:\Users\bjoe0771\Desktop\Website\LifeStruct\Website\obj\Debug\Website.Migrations.VideoModel.resources
-C:\Users\bjoe0771\Desktop\Website\LifeStruct\Website\obj\Debug\Website.Migrations.Unkown.resources
-C:\Users\bjoe0771\Desktop\Website\LifeStruct\Website\obj\Debug\Website.Migrations.VideoModelType.resources
-C:\Users\bjoe0771\Desktop\Website\LifeStruct\Website\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
-C:\Users\bjoe0771\Desktop\Website\LifeStruct\Website\obj\Debug\Website.Migrations.HealthModel.resources
-C:\Users\bjoe0771\Desktop\Website\LifeStruct\Website\obj\Debug\Website.Migrations.ArticleUserRequiredFalse.resources
-C:\Users\bjoe0771\Desktop\Website\LifeStruct\Website\obj\Debug\Website.Migrations.TypeArticle.resources
-C:\Users\bjoe0771\Desktop\Website\LifeStruct\Website\obj\Debug\Website.Migrations.BmiClass.resources
-C:\Users\bjoe0771\Desktop\Website\LifeStruct\Website\obj\Debug\Website.Migrations.Fitness.resources
-C:\Users\bjoe0771\Desktop\Website\LifeStruct\Website\obj\Debug\Website.Migrations.ExerciseIndex.resources
-C:\Users\bjoe0771\Desktop\Website\LifeStruct\Website\obj\Debug\Website.Migrations.ImgTagsFitness.resources
-C:\Users\bjoe0771\Desktop\Website\LifeStruct\Website\obj\Debug\Website.Migrations.CaloriesFitness.resources
-C:\Users\bjoe0771\Desktop\Website\LifeStruct\Website\obj\Debug\Website.Migrations.wrongcalfitness.resources
-C:\Users\bjoe0771\Desktop\Website\LifeStruct\Website\obj\Debug\Website.Migrations.FitnessAuthor.resources
-C:\Users\bjoe0771\Desktop\Website\LifeStruct\Website\obj\Debug\Website.Migrations.FitnessProgress.resources
-C:\Users\bjoe0771\Desktop\Website\LifeStruct\Website\obj\Debug\Website.Migrations.MoodGoal.resources
-C:\Users\bjoe0771\Desktop\Website\LifeStruct\Website\obj\Debug\Website.Migrations.goal.resources
-C:\Users\bjoe0771\Desktop\Website\LifeStruct\Website\obj\Debug\Website.Migrations.Activity.resources
-C:\Users\bjoe0771\Desktop\Website\LifeStruct\Website\obj\Debug\Website.Migrations.FProgressDate.resources
-C:\Users\bjoe0771\Desktop\Website\LifeStruct\Website\obj\Debug\Website.Migrations.moodtype.resources
-C:\Users\bjoe0771\Desktop\Website\LifeStruct\Website\obj\Debug\Website.Migrations.WeightUser.resources
-D:\Projects\LifeStruct\LifeStruct\Website\bin\ApplicationInsights.config
-D:\Projects\LifeStruct\LifeStruct\Website\bin\roslyn\csc.exe
-D:\Projects\LifeStruct\LifeStruct\Website\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
-D:\Projects\LifeStruct\LifeStruct\Website\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
-D:\Projects\LifeStruct\LifeStruct\Website\bin\roslyn\Microsoft.CodeAnalysis.dll
-D:\Projects\LifeStruct\LifeStruct\Website\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
-D:\Projects\LifeStruct\LifeStruct\Website\bin\roslyn\Microsoft.CSharp.Core.targets
-D:\Projects\LifeStruct\LifeStruct\Website\bin\roslyn\Microsoft.VisualBasic.Core.targets
-D:\Projects\LifeStruct\LifeStruct\Website\bin\roslyn\System.Collections.Immutable.dll
-D:\Projects\LifeStruct\LifeStruct\Website\bin\roslyn\System.Reflection.Metadata.dll
-D:\Projects\LifeStruct\LifeStruct\Website\bin\roslyn\vbc.exe
-D:\Projects\LifeStruct\LifeStruct\Website\bin\roslyn\VBCSCompiler.exe
-D:\Projects\LifeStruct\LifeStruct\Website\bin\roslyn\VBCSCompiler.exe.config
-D:\Projects\LifeStruct\LifeStruct\Website\bin\Website.dll.config
-D:\Projects\LifeStruct\LifeStruct\Website\bin\Website.dll
-D:\Projects\LifeStruct\LifeStruct\Website\bin\Website.pdb
-D:\Projects\LifeStruct\LifeStruct\Website\bin\Facebook.dll
-D:\Projects\LifeStruct\LifeStruct\Website\bin\System.Net.Http.Formatting.dll
-D:\Projects\LifeStruct\LifeStruct\Website\bin\System.Web.Http.dll
-D:\Projects\LifeStruct\LifeStruct\Website\bin\System.Web.Http.WebHost.dll
-D:\Projects\LifeStruct\LifeStruct\Website\bin\Facebook.xml
-D:\Projects\LifeStruct\LifeStruct\Website\bin\System.Net.Http.Formatting.xml
-D:\Projects\LifeStruct\LifeStruct\Website\bin\System.Web.Http.xml
-D:\Projects\LifeStruct\LifeStruct\Website\bin\System.Web.Http.WebHost.xml
-D:\Projects\LifeStruct\LifeStruct\Website\obj\Debug\LifeStruct.csprojResolveAssemblyReference.cache
-D:\Projects\LifeStruct\LifeStruct\Website\obj\Debug\Website.Migrations.Initial.resources
-D:\Projects\LifeStruct\LifeStruct\Website\obj\Debug\Website.Migrations.MealDays.resources
-D:\Projects\LifeStruct\LifeStruct\Website\obj\Debug\Website.Migrations.MealCollection.resources
-D:\Projects\LifeStruct\LifeStruct\Website\obj\Debug\Website.Migrations.Upd.resources
-D:\Projects\LifeStruct\LifeStruct\Website\obj\Debug\Website.Migrations.MealCollection1.resources
-D:\Projects\LifeStruct\LifeStruct\Website\obj\Debug\Website.Migrations.edibleADd.resources
-D:\Projects\LifeStruct\LifeStruct\Website\obj\Debug\Website.Migrations.DayDiets.resources
-D:\Projects\LifeStruct\LifeStruct\Website\obj\Debug\Website.Migrations.FitnessAdd.resources
-D:\Projects\LifeStruct\LifeStruct\Website\obj\Debug\Website.Migrations.UpdateFitness1.resources
-D:\Projects\LifeStruct\LifeStruct\Website\obj\Debug\Website.Migrations.UpdateFitness2.resources
-D:\Projects\LifeStruct\LifeStruct\Website\obj\Debug\Website.Migrations.CalInt.resources
-D:\Projects\LifeStruct\LifeStruct\Website\obj\Debug\Website.Migrations.UserFitness.resources
-D:\Projects\LifeStruct\LifeStruct\Website\obj\Debug\Website.Migrations.TagsName.resources
-D:\Projects\LifeStruct\LifeStruct\Website\obj\Debug\Website.Migrations.Author.resources
-D:\Projects\LifeStruct\LifeStruct\Website\obj\Debug\Website.Migrations.Like.resources
-D:\Projects\LifeStruct\LifeStruct\Website\obj\Debug\Website.Migrations.UserIdString.resources
-D:\Projects\LifeStruct\LifeStruct\Website\obj\Debug\Website.Migrations.FitnessLike.resources
-D:\Projects\LifeStruct\LifeStruct\Website\obj\Debug\Website.Migrations.DietProgress.resources
-D:\Projects\LifeStruct\LifeStruct\Website\obj\Debug\Website.Migrations.MealDietProgressModel.resources
-D:\Projects\LifeStruct\LifeStruct\Website\obj\Debug\Website.Migrations.VideoModel.resources
-D:\Projects\LifeStruct\LifeStruct\Website\obj\Debug\Website.Migrations.Unkown.resources
-D:\Projects\LifeStruct\LifeStruct\Website\obj\Debug\Website.Migrations.VideoModelType.resources
-D:\Projects\LifeStruct\LifeStruct\Website\obj\Debug\Website.Migrations.HealthModel.resources
-D:\Projects\LifeStruct\LifeStruct\Website\obj\Debug\Website.Migrations.ArticleUserRequiredFalse.resources
-D:\Projects\LifeStruct\LifeStruct\Website\obj\Debug\Website.Migrations.TypeArticle.resources
-D:\Projects\LifeStruct\LifeStruct\Website\obj\Debug\Website.Migrations.BmiClass.resources
-D:\Projects\LifeStruct\LifeStruct\Website\obj\Debug\Website.Migrations.Fitness.resources
-D:\Projects\LifeStruct\LifeStruct\Website\obj\Debug\Website.Migrations.ExerciseIndex.resources
-D:\Projects\LifeStruct\LifeStruct\Website\obj\Debug\Website.Migrations.ImgTagsFitness.resources
-D:\Projects\LifeStruct\LifeStruct\Website\obj\Debug\Website.Migrations.CaloriesFitness.resources
-D:\Projects\LifeStruct\LifeStruct\Website\obj\Debug\Website.Migrations.wrongcalfitness.resources
-D:\Projects\LifeStruct\LifeStruct\Website\obj\Debug\Website.Migrations.FitnessAuthor.resources
-D:\Projects\LifeStruct\LifeStruct\Website\obj\Debug\Website.Migrations.FitnessProgress.resources
-D:\Projects\LifeStruct\LifeStruct\Website\obj\Debug\Website.Migrations.MoodGoal.resources
-D:\Projects\LifeStruct\LifeStruct\Website\obj\Debug\Website.Migrations.goal.resources
-D:\Projects\LifeStruct\LifeStruct\Website\obj\Debug\Website.Migrations.Activity.resources
-D:\Projects\LifeStruct\LifeStruct\Website\obj\Debug\Website.Migrations.FProgressDate.resources
-D:\Projects\LifeStruct\LifeStruct\Website\obj\Debug\Website.Migrations.moodtype.resources
-D:\Projects\LifeStruct\LifeStruct\Website\obj\Debug\Website.Migrations.WeightUser.resources
-D:\Projects\LifeStruct\LifeStruct\Website\obj\Debug\LifeStruct.csproj.GenerateResource.Cache
-D:\Projects\LifeStruct\LifeStruct\Website\obj\Debug\Website.dll
-D:\Projects\LifeStruct\LifeStruct\Website\obj\Debug\Website.pdb
 C:\Project list\Priv\LifeStruct\LifeStruct\Website\bin\ApplicationInsights.config
 C:\Project list\Priv\LifeStruct\LifeStruct\Website\bin\roslyn\csc.exe
 C:\Project list\Priv\LifeStruct\LifeStruct\Website\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
@@ -180,18 +11,11 @@ C:\Project list\Priv\LifeStruct\LifeStruct\Website\bin\roslyn\System.Reflection.
 C:\Project list\Priv\LifeStruct\LifeStruct\Website\bin\roslyn\vbc.exe
 C:\Project list\Priv\LifeStruct\LifeStruct\Website\bin\roslyn\VBCSCompiler.exe
 C:\Project list\Priv\LifeStruct\LifeStruct\Website\bin\roslyn\VBCSCompiler.exe.config
-C:\Project list\Priv\LifeStruct\LifeStruct\Website\bin\Facebook.xml
-C:\Project list\Priv\LifeStruct\LifeStruct\Website\bin\System.Net.Http.Formatting.xml
-C:\Project list\Priv\LifeStruct\LifeStruct\Website\bin\System.Web.Http.xml
-C:\Project list\Priv\LifeStruct\LifeStruct\Website\bin\System.Web.Http.WebHost.xml
-C:\Project list\Priv\LifeStruct\LifeStruct\Website\obj\Debug\LifeStruct.csproj.GenerateResource.Cache
 C:\Project list\Priv\LifeStruct\LifeStruct\Website\bin\LifeStruct.dll.config
 C:\Project list\Priv\LifeStruct\LifeStruct\Website\bin\LifeStruct.dll
 C:\Project list\Priv\LifeStruct\LifeStruct\Website\bin\LifeStruct.pdb
-C:\Project list\Priv\LifeStruct\LifeStruct\Website\obj\Debug\LifeStruct.dll
-C:\Project list\Priv\LifeStruct\LifeStruct\Website\obj\Debug\LifeStruct.pdb
-C:\Project list\Priv\LifeStruct\LifeStruct\Website\obj\Debug\LifeStruct.Migrations.Initial.resources
 C:\Project list\Priv\LifeStruct\LifeStruct\Website\obj\Debug\LifeStruct.csprojResolveAssemblyReference.cache
+C:\Project list\Priv\LifeStruct\LifeStruct\Website\obj\Debug\LifeStruct.Migrations.Initial.resources
 C:\Project list\Priv\LifeStruct\LifeStruct\Website\obj\Debug\LifeStruct.Migrations.MealDays.resources
 C:\Project list\Priv\LifeStruct\LifeStruct\Website\obj\Debug\LifeStruct.Migrations.MealCollection.resources
 C:\Project list\Priv\LifeStruct\LifeStruct\Website\obj\Debug\LifeStruct.Migrations.Upd.resources
@@ -230,3 +54,6 @@ C:\Project list\Priv\LifeStruct\LifeStruct\Website\obj\Debug\LifeStruct.Migratio
 C:\Project list\Priv\LifeStruct\LifeStruct\Website\obj\Debug\LifeStruct.Migrations.FProgressDate.resources
 C:\Project list\Priv\LifeStruct\LifeStruct\Website\obj\Debug\LifeStruct.Migrations.moodtype.resources
 C:\Project list\Priv\LifeStruct\LifeStruct\Website\obj\Debug\LifeStruct.Migrations.WeightUser.resources
+C:\Project list\Priv\LifeStruct\LifeStruct\Website\obj\Debug\LifeStruct.csproj.GenerateResource.Cache
+C:\Project list\Priv\LifeStruct\LifeStruct\Website\obj\Debug\LifeStruct.dll
+C:\Project list\Priv\LifeStruct\LifeStruct\Website\obj\Debug\LifeStruct.pdb

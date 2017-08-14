@@ -4,6 +4,7 @@ using LifeStruct.Models.Diet;
 using LifeStruct.Models.Fitness;
 using LifeStruct.Models.Health;
 using LifeStruct.Models.Video;
+using Microsoft.Ajax.Utilities;
 
 namespace LifeStruct.Models
 {
@@ -28,4 +29,5 @@ namespace LifeStruct.Models
         public DbSet<ActivityModel> Activity { get; set; }
         public DbSet<WeightModel> Weight { get; set; }
     }
+    
 }

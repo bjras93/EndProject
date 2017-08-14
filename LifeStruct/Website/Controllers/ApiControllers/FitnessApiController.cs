@@ -28,7 +28,7 @@ namespace LifeStruct.Controllers.ApiControllers
             fpm.FitnessId = json.fitnessId.ToString();
             fpm.ExerciseId = json.exerciseId;
             fpm.Loss = json.loss;
-            fpm.Date = DateTime.Now.ToString("dd-MM-yyyy");
+            fpm.Date = DateTime.Now.ToString();
 
             db.FitnessProgress.Add(fpm);
             db.SaveChanges();

@@ -1,0 +1,34 @@
+﻿.login {
+    width:250px;
+    height:200px;
+    display:block; 
+    margin: 15% auto;
+    a, button {
+        @extend .right;
+    }    
+}
+.register {
+    display:inline-block;
+    float:left;
+    padding: 15px;
+    
+   .text-danger {
+       color: darkred;
+   }
+}
+.signout {
+    position:relative;
+    .signout-btn {
+        width:42px;
+        padding: 10px;
+        color: $w;
+        font-size: 1.4em;
+        margin-bottom: 5px;
+        background: $red-1;
+        .icon-exit {
+            display:block;
+            margin: 2px;
+        }
+    }
+    
+}

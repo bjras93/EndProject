@@ -1,0 +1,60 @@
+﻿@using LifeStruct.Models
+@model LifeStruct.Controllers.FitnessView
+@{
+    ViewBag.Title = "Details";
+    int week = 0;
+}
+
+@section Signout{
+    @Html.Partial("~/Views/Shared/_logout.cshtml")
+}
+
+@Html.ActionLink("Return", "Index", "Fitness", null, new { @class = "return" })
+<div class="fitness-details b1">
+    <div class="detail">
+        <img src="/Content/img/user/@Model.Fitness.Img" />
+        <h1>@Model.Fitness.Title</h1>
+        <div class="description">
+            @Html.Raw(Model.Fitness.Description)
+        </div>
+    </div>
+    @foreach (var schedule in Model.Schedule)
+    {
+        if (week < schedule.Week)
+        {
+            week = schedule.Week;
+        }
+    }
+    @for (var i = 1; i < (week + 1); i++)
+    {
+        if (Model.Schedule.Where(x => x.Week == i && !string.IsNullOrEmpty(x.Exercise) && !string.IsNullOrEmpty(x.Time)).Count() > 0)
+        {
+            <div class="week">
+                <h3>Week @i</h3>
+                    @for (var d = 0; d < 7; d++)
+                    {
+                        if (Model.Schedule.Where(x => x.Day == d && !string.IsNullOrEmpty(x.Exercise) && !string.IsNullOrEmpty(x.Time) && x.Week == i).Count() > 0)
+                        {
+                            <div class="day">
+                                <h4>@DayViewModel.GetDay((d+1)).Name</h4>
+                                <ul>
+                                    @foreach (var exercise in Model.Schedule.Where(x => x.Day == d && x.Week == i))
+                                    {
+                                        <li>
+                                            <span>
+                                                @exercise.Exercise
+                                            </span>
+                                            <ul>
+                                                <li>@exercise.Time minutes</li>
+                                                <li>@((Convert.ToDecimal(exercise.Calories)/60)*Convert.ToDecimal(exercise.Time)) kcal</li>
+                                            </ul>
+                                        </li>
+                                    }
+                                </ul>
+                            </div>
+                        }
+                    }
+            </div>
+        }
+    }
+        </div>

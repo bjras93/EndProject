@@ -1,5 +1,6 @@
 ﻿@using LifeStruct.Models;
-@model IEnumerable<FitnessModel>
+@using LifeStruct.Models.Account
+@model IEnumerable<LifeStruct.Models.Fitness.FitnessModel>
 @{
     var user = UserViewModel.GetCurrentUser();
     ViewBag.Title = "Fitness";

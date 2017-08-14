@@ -1,4 +1,9 @@
-﻿namespace LifeStruct.Controllers.ApiControllers
+﻿using LifeStruct.Models.Account;
+using LifeStruct.Models.Diet;
+using LifeStruct.Models.Fitness;
+using LifeStruct.Models.Health;
+
+namespace LifeStruct.Controllers.ApiControllers
 {
     using Models;
     using Newtonsoft.Json.Linq;
@@ -8,7 +13,7 @@
 
     public class LikeApiController : ApiController
     {
-        DefaultConnection db = new DefaultConnection();
+        DefaultConnection _db = new DefaultConnection();
         [Route("api/LikeApi/Like")]
         [HttpPost]
         public IHttpActionResult Like(JObject jsonData)
@@ -17,59 +22,60 @@
 
             dynamic json = jsonData;
             var user = UserViewModel.GetCurrentUser();
-            var liked = db.Like.ToList().Where(x => x.Type == Convert.ToInt32(json.type) && x.TypeId == json.typeId.ToString() && x.UserId == user.Id);
-            if (liked.Count() == 0)
+            var liked = _db.Like.ToList().Where(x => x.Type == Convert.ToInt32(json.type) && x.TypeId == json.typeId.ToString() && x.UserId == user.Id);
+            var likeModels = liked as LikeModel[] ?? liked.ToArray();
+            if (!likeModels.Any())
             {
                 lm.Id = Guid.NewGuid().ToString();
                 lm.Type = json.type;
                 lm.UserId = user.Id;
                 lm.TypeId = json.typeId.ToString();
-                db.Like.Add(lm);
+                _db.Like.Add(lm);
                 if (json.type == 1)
                 {
-                    DietModel d = db.Diet.Find(json.typeId.ToString());
+                    DietModel d = _db.Diet.Find(json.typeId.ToString());
                     d.Likes++;
-                    db.Entry(d).State = System.Data.Entity.EntityState.Modified;
+                    _db.Entry(d).State = System.Data.Entity.EntityState.Modified;
                 }
                 if(json.type == 2)
                 {
-                    FitnessModel f = db.Fitness.Find(json.typeId.ToString());
+                    FitnessModel f = _db.Fitness.Find(json.typeId.ToString());
                     f.Likes++;
-                    db.Entry(f).State = System.Data.Entity.EntityState.Modified;
+                    _db.Entry(f).State = System.Data.Entity.EntityState.Modified;
                 }
                 if(json.type == 3)
                 {
-                    HealthModel h = db.Health.Find(json.typeId.ToString());
+                    HealthModel h = _db.Health.Find(json.typeId.ToString());
                     h.Likes++;
-                    db.Entry(h).State = System.Data.Entity.EntityState.Modified;
+                    _db.Entry(h).State = System.Data.Entity.EntityState.Modified;
                 }
-                db.SaveChanges();
+                _db.SaveChanges();
                 return Ok(lm);
             }
             else
             {
-                var like = liked.First();
+                var like = likeModels.First();
 
-                db.Like.Remove(like);
+                _db.Like.Remove(like);
                 if (json.type == 1)
                 {
-                    DietModel d = db.Diet.Find(json.typeId.ToString());
+                    DietModel d = _db.Diet.Find(json.typeId.ToString());
                     d.Likes = d.Likes -1;
-                    db.Entry(d).State = System.Data.Entity.EntityState.Modified;
+                    _db.Entry(d).State = System.Data.Entity.EntityState.Modified;
                 }
                 if (json.type == 2)
                 {
-                    FitnessModel f = db.Fitness.Find(json.typeId.ToString());
+                    FitnessModel f = _db.Fitness.Find(json.typeId.ToString());
                     f.Likes = f.Likes -1;
-                    db.Entry(f).State = System.Data.Entity.EntityState.Modified;
+                    _db.Entry(f).State = System.Data.Entity.EntityState.Modified;
                 }
                 if (json.type == 3)
                 {
-                    HealthModel h = db.Health.Find(json.typeId.ToString());
+                    HealthModel h = _db.Health.Find(json.typeId.ToString());
                     h.Likes = h.Likes - 1;
-                    db.Entry(h).State = System.Data.Entity.EntityState.Modified;
+                    _db.Entry(h).State = System.Data.Entity.EntityState.Modified;
                 }
-                db.SaveChanges();
+                _db.SaveChanges();
                 return Ok();
             }          
 
@@ -79,7 +85,7 @@
         [HttpGet]
         public IHttpActionResult FindByUIdType(string uId, int type)
         {
-            var like = db.Like.ToList().Where(x => x.Type == type && x.UserId == uId);
+            var like = _db.Like.ToList().Where(x => x.Type == type && x.UserId == uId);
 
             return Ok(like);
         }

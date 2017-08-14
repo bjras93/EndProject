@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace LifeStruct.Models
+namespace LifeStruct.Models.Video
 {
     public class VideoModel
     {

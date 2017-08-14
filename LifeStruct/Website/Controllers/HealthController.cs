@@ -1,12 +1,14 @@
 ﻿namespace LifeStruct.Controllers
 {
+    using Models.Account;
+    using Models.Health;
     using Models;
     using System;
     using System.Web.Mvc;
 
     public class HealthController : Controller
     {
-        DefaultConnection db = new DefaultConnection();
+        readonly DefaultConnection _db = new DefaultConnection();
         // GET: Health
         public ActionResult Index()
         {
@@ -14,7 +16,7 @@
             {
                 return View();
             }
-            return RedirectToAction("../Account/Index");
+            return RedirectToAction("Index", "Account");
         }
         public ActionResult Create()
         {
@@ -22,7 +24,7 @@
             {
                     return View();
             }
-            return RedirectToAction("../Account/Index");
+            return RedirectToAction("Index", "Account");
         }
         [HttpPost, ValidateInput(false)]
         public ActionResult Create(HealthModel model)
@@ -37,8 +39,8 @@
                 }
                 if (ModelState.IsValid)
                 {                    
-                    db.Health.Add(model);
-                    db.SaveChanges();
+                    _db.Health.Add(model);
+                    _db.SaveChanges();
                     return RedirectToAction("../Health/Details/" + model.Id);
                 }
                 else
@@ -46,15 +48,15 @@
                     return View(model);
                 }
             }
-            return RedirectToAction("../Account/Index");
+            return RedirectToAction("Index", "Account");
         }
-        public ActionResult Edit(string Id)
+        public ActionResult Edit(string id)
         {
             if (Request.IsAuthenticated)
             {
-                return View(db.Health.Find(Id));
+                return View(_db.Health.Find(id));
             }
-            return RedirectToAction("../Account/Index");
+            return RedirectToAction("Index", "Account");
         }
         [HttpPost, ValidateInput(false)]
         public ActionResult Edit(HealthModel model)
@@ -68,25 +70,22 @@
                 if (ModelState.IsValid)
                 {
 
-                    db.Entry(model).State = System.Data.Entity.EntityState.Modified;
+                    _db.Entry(model).State = System.Data.Entity.EntityState.Modified;
                     
-                    db.SaveChanges();
+                    _db.SaveChanges();
                     return RedirectToAction("../Health/Details/" + model.Id);
                 }
-                else
-                {
-                    return View(model);
-                }
+                return View(model);
             }
-            return RedirectToAction("../Account/Index");
+            return RedirectToAction("Index", "Account");
         }
-        public ActionResult Details(string Id)
+        public ActionResult Details(string id)
         {
             if (Request.IsAuthenticated)
             {
-                return View(db.Health.Find(Id));
+                return View(_db.Health.Find(id));
             }
-            return RedirectToAction("../Account/Index");
+            return RedirectToAction("Index", "Account");
         }
     }
 }

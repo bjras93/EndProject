@@ -1,4 +1,7 @@
-﻿namespace LifeStruct.Controllers.ApiControllers
+﻿using LifeStruct.Models.Account;
+using LifeStruct.Models.Health;
+
+namespace LifeStruct.Controllers.ApiControllers
 {
     using LifeStruct.Models;
     using System.Collections.Generic;

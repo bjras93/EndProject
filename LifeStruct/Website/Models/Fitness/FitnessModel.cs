@@ -1,6 +1,7 @@
-﻿namespace LifeStruct.Models
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace LifeStruct.Models.Fitness
 {
-    using System.ComponentModel.DataAnnotations;
     public class FitnessModel
     {
         public string Id { get; set; }

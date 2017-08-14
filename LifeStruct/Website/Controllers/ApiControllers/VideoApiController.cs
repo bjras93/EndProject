@@ -1,10 +1,12 @@
-﻿namespace Website.Controllers.ApiControllers
+﻿using System;
+using System.Linq;
+using System.Web.Http;
+using LifeStruct.Models;
+using LifeStruct.Models.Account;
+using Newtonsoft.Json.Linq;
+
+namespace LifeStruct.Controllers.ApiControllers
 {
-    using LifeStruct.Models;
-    using Newtonsoft.Json.Linq;
-    using System;
-    using System.Linq;
-    using System.Web.Http;
     public class VideoApiController : ApiController
     {
         DefaultConnection db = new DefaultConnection();

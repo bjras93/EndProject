@@ -1,70 +1,74 @@
-﻿namespace LifeStruct
+﻿using System;
+using System.Globalization;
+using System.Linq;
+using System.Web.Http;
+using LifeStruct.Models;
+using LifeStruct.Models.Account;
+
+namespace LifeStruct.Controllers.ApiControllers
 {
-    using Models;
-    using System;
-    using System.Collections.Generic;
-    using System.Linq;
-    using System.Web.Http;
     public class UpdateApiController : ApiController
     {
-        DefaultConnection db = new DefaultConnection();
+        readonly DefaultConnection _db = new DefaultConnection();
 
         [Route("api/UpdateApi/SetMood")]
         [HttpGet]
-        public IHttpActionResult SetMood(string Id)
+        public IHttpActionResult SetMood(string id)
         {
-            var mood = db.Mood.ToList().Where(x => x.UserId == Id.Split('_')[0]);
+            var mood = _db.Mood.ToList().Where(x => x.UserId == id.Split('_')[0]);
             MoodModel mm = new MoodModel();
-            int type = Convert.ToInt32(Id.Split('_')[1]);
+            int type = Convert.ToInt32(id.Split('_')[1]);
 
-            if (mood.Count() > 0)
+            var moodModels = mood as MoodModel[] ?? mood.ToArray();
+            if (moodModels.Any())
             {
-                if (mm.Date == DateTime.Now.ToString())
+                if (mm.Date == DateTime.Now.ToString(CultureInfo.InvariantCulture))
                 {
-                    mm = mood.First();
-                    mm.Date = DateTime.Now.ToString();
+                    mm = moodModels.First();
+                    mm.Date = DateTime.Now.ToString(CultureInfo.InvariantCulture);
                     mm.Type = type;
-                    db.Entry(mm).State = System.Data.Entity.EntityState.Modified;
-                    db.SaveChanges();
+                    _db.Entry(mm).State = System.Data.Entity.EntityState.Modified;
+                    _db.SaveChanges();
                 }
                 else
                 {
                     mm.Id = Guid.NewGuid().ToString();
-                    mm.UserId = Id;
-                    mm.Date = DateTime.Now.ToString();
+                    mm.UserId = id;
+                    mm.Date = DateTime.Now.ToString(CultureInfo.InvariantCulture);
                     mm.Type = type;
-                    db.Mood.Add(mm);
-                    db.SaveChanges();
+                    _db.Mood.Add(mm);
+                    _db.SaveChanges();
                 }
             }
             else
             {
                 mm.Id = Guid.NewGuid().ToString();
-                mm.UserId = Id;
-                mm.Date = DateTime.Now.ToString();
+                mm.UserId = id;
+                mm.Date = DateTime.Now.ToString(CultureInfo.InvariantCulture);
                 mm.Type = type;
-                db.Mood.Add(mm);
-                db.SaveChanges();
+                _db.Mood.Add(mm);
+                _db.SaveChanges();
             }
             return Ok("set");
         }
         [Route("api/UpdateApi/SetGoal")]
         [HttpGet]
-        public IHttpActionResult SetGoal(string Id)
+        public IHttpActionResult SetGoal(string id)
         {
-            var split = Id.Split('_');
-            var goal = db.Goal.ToList().Where(x => x.UserId == split[0]);
+            var split = id.Split('_');
+            var goal = _db.Goal.ToList().Where(x => x.UserId == split[0]);
             GoalModel gm = new GoalModel();
-            int Goal = Convert.ToInt32(split[1]);
-            if (goal.Count() > 0)
+            var Goal = Convert.ToInt32(split[1]);
+            var goalModels = goal as GoalModel[] ?? goal.ToArray();
+            if (goalModels.Any())
             {
-                if (goal.First().Date == DateTime.Now.ToString("dd-MM-yyyy"))
+                if (goalModels.First().Date == DateTime.Now.ToString("dd-MM-yyyy"))
                 {
-                    gm = goal.First();
+                    gm = goalModels.First();
                     gm.Date = DateTime.Now.ToString("dd-MM-yyyy");
                     gm.Goal = Goal;
-                    db.Entry(gm).State = System.Data.Entity.EntityState.Modified;
-                    db.SaveChanges();
+                    _db.Entry(gm).State = System.Data.Entity.EntityState.Modified;
+                    _db.SaveChanges();
                 }
                 else
                 {
@@ -72,8 +76,8 @@
                     gm.UserId = split[0];
                     gm.Goal = Goal;
                     gm.Date = DateTime.Now.ToString("dd-MM-yyyy");
-                    db.Goal.Add(gm);
-                    db.SaveChanges();
+                    _db.Goal.Add(gm);
+                    _db.SaveChanges();
                 }
             }
             else
@@ -82,8 +86,8 @@
                 gm.UserId = split[0];
                 gm.Goal = Goal;
                 gm.Date = DateTime.Now.ToString("dd-MM-yyyy");
-                db.Goal.Add(gm);
-                db.SaveChanges();
+                _db.Goal.Add(gm);
+                _db.SaveChanges();
             }
             return Ok();
         }
@@ -92,8 +96,8 @@
         public IHttpActionResult GetMood(string uId)
         {
             DateTime dt = DateTime.Now.Date;
-            var mood = db.Mood.ToList().Where(x => x.UserId.Split('_')[0] == uId && Convert.ToDateTime(x.Date).Date.ToString() == dt.ToString() && Convert.ToDateTime(x.Date).Hour > 3);
-            if (mood.Count() > 0)
+            var mood = _db.Mood.ToList().Where(x => x.UserId.Split('_')[0] == uId && Convert.ToDateTime(x.Date).Date.ToString(CultureInfo.InvariantCulture) == dt.ToString(CultureInfo.InvariantCulture) && Convert.ToDateTime(x.Date).Hour > 3);
+            if (mood.Any())
             {
                 return Ok("set");
             }
@@ -107,7 +111,7 @@
         [HttpGet]
         public IHttpActionResult GetGoal(string uId)
         {
-            var goal = db.Goal.Where(x => x.UserId == uId);
+            var goal = _db.Goal.Where(x => x.UserId == uId);
             var date = new DateTime();
             foreach (var g in goal)
             {
@@ -116,10 +120,11 @@
                     date = Convert.ToDateTime(g.Date);
                 }
             }
-            var goalByDate = db.Goal.ToList().Where(x => x.UserId == uId && x.Date == date.ToString("dd-MM-yyyy"));
-            if (goalByDate.Count() > 0)
+            var goalByDate = _db.Goal.ToList().Where(x => x.UserId == uId && x.Date == date.ToString("dd-MM-yyyy"));
+            var goalModels = goalByDate as GoalModel[] ?? goalByDate.ToArray();
+            if (goalModels.Any())
             {
-                return Ok(goalByDate.First());
+                return Ok(goalModels.First());
             }
             else
             {

@@ -1,4 +1,6 @@
-﻿namespace LifeStruct.Controllers
+﻿using LifeStruct.Models.Account;
+
+namespace LifeStruct.Controllers
 {
     using System.Threading.Tasks;
     using System.Web;
@@ -14,7 +16,12 @@
     {
         private ApplicationSignInManager _signInManager;
         private ApplicationUserManager _userManager;
-        DefaultConnection db = new DefaultConnection();
+        readonly DefaultConnection _db = new DefaultConnection();
+        public AccountController()
+        {
+
+        }
+
         // GET: Account
         public ActionResult Index()
         {
@@ -25,21 +32,23 @@
         {
             if (Request.IsAuthenticated)
             {
-                UserDetail ud = new UserDetail();
-                ud.User = UserViewModel.GetCurrentUser();
-                ud.Activity = db.Activity;
+                var ud = new UserDetail
+                {
+                    User = UserViewModel.GetCurrentUser(),
+                    Activity = _db.Activity
+                };
                 DateTime dt = new DateTime();
-                foreach (var g in db.Goal.Where(x => x.UserId == ud.User.Id))
+                foreach (var g in _db.Goal.Where(x => x.UserId == ud.User.Id))
                 {
                     if (Convert.ToDateTime(g.Date).Date > dt.Date)
                     {
                         dt = Convert.ToDateTime(g.Date);
                   }
                 }
-                ud.Goal = db.Goal.ToList().Where(x => x.UserId == ud.User.Id && x.Date == dt.ToString("dd-MM-yyyy")).First();
+                ud.Goal = _db.Goal.ToList().First(x => x.UserId == ud.User.Id && x.Date == dt.ToString("dd-MM-yyyy"));
                 return View(ud);
             }
-            return RedirectToAction("../Account/Index");
+            return RedirectToAction("Index");
         }
         [HttpPost]
         public ActionResult Details(UserDetail model)
@@ -49,41 +58,33 @@
                 var user = UserViewModel.GetUser(model.User.Id);
                 WeightModel wm = new WeightModel();
                 DateTime dt = new DateTime();
-                foreach (var g in db.Goal.Where(x => x.UserId == user.Id))
+                foreach (var g in _db.Goal.Where(x => x.UserId == user.Id))
                 {
                     if (Convert.ToDateTime(g.Date).Date > dt.Date)
                     {
                         dt = Convert.ToDateTime(g.Date);
                     }
                 }
-                if (db.Weight.ToList().Where(x => x.UserId == user.Id && x.Date == DateTime.Now.ToString("dd-MM-yyyy")).Count() == 0)
+                if (!_db.Weight.ToList().Any(x => x.UserId == user.Id && x.Date == DateTime.Now.ToString("dd-MM-yyyy")))
                 {
                     wm.Id = Guid.NewGuid().ToString();
                     wm.UserId = user.Id;
                     wm.Date = DateTime.Now.ToString("dd-MM-yyyy");
                     wm.Weight = Convert.ToDecimal(model.User.Weight);
-                    db.Weight.Add(wm);
-                    db.SaveChanges();
+                    _db.Weight.Add(wm);
+                    _db.SaveChanges();
                 }
-                model.Goal = db.Goal.ToList().Where(x => x.UserId == user.Id && x.Date == dt.ToString("dd-MM-yyyy")).First();
-                model.Activity = db.Activity;
+                model.Goal = _db.Goal.ToList().First(x => x.UserId == user.Id && x.Date == dt.ToString("dd-MM-yyyy"));
+                model.Activity = _db.Activity;
                 user.Weight = model.User.Weight;
                 user.ActiveLevel = model.User.ActiveLevel;
                 user.Name = model.User.Name;
                 UserManager.Update(user);
                 return View(model);
             }
-            return RedirectToAction("../Account/Index");
+            return RedirectToAction("Index");
         }
 
-        public ActionResult Signup()
-        {
-            return View();
-        }
-        public AccountController()
-        {
-
-        }
         public AccountController(ApplicationUserManager userManager, ApplicationSignInManager signInManager)
         {
             UserManager = userManager;
@@ -113,17 +114,6 @@
                 _userManager = value;
             }
         }
-
-        //
-        // GET: /Account/Login
-        [AllowAnonymous]
-        public ActionResult Login()
-        {
-            return View();
-        }
-
-
-
         //
         // POST: /Account/ExternalLogin
         [HttpPost]
@@ -134,8 +124,7 @@
             // Request a redirect to the external login provider
             return new ChallengeResult(provider, Url.Action("ExternalLoginCallback", "Account", new { ReturnUrl = returnUrl }));
         }
-
-
+        
         //
         // GET: /Account/ExternalLoginCallback
         [AllowAnonymous]
@@ -144,7 +133,7 @@
             var loginInfo = await AuthenticationManager.GetExternalLoginInfoAsync();
             if (loginInfo == null)
             {
-                return RedirectToAction("Login");
+                return RedirectToAction("Index");
             }
 
             // Sign in the user with this external login provider if the user already has a login
@@ -153,20 +142,15 @@
             var google = loginInfo.ExternalIdentity.Name;
             if (google != null)
             {
-                if (loginInfo.ExternalIdentity.Name.IndexOf("(") > 0)
+                if (loginInfo.ExternalIdentity.Name.IndexOf("(", StringComparison.Ordinal) > 0)
                 {
-                    google = loginInfo.ExternalIdentity.Name.Substring(0, loginInfo.ExternalIdentity.Name.IndexOf("("));
+                    google = loginInfo.ExternalIdentity.Name.Substring(0, loginInfo.ExternalIdentity.Name.IndexOf("(", StringComparison.Ordinal));
                 }
             }
             switch (result)
             {
                 case SignInStatus.Success:
                     return RedirectToLocal(returnUrl);
-                case SignInStatus.LockedOut:
-                    return View("Lockout");
-                case SignInStatus.RequiresVerification:
-                    return RedirectToAction("SendCode", new { ReturnUrl = returnUrl, RememberMe = false });
-                case SignInStatus.Failure:
                 default:
                     // If the user does not have an account, then prompt the user to create an account
                     ViewBag.ReturnUrl = returnUrl;
@@ -189,7 +173,7 @@
         {
             if (User.Identity.IsAuthenticated)
             {
-                return RedirectToAction("Index", "Manage");
+                return RedirectToAction("Index", "Account");
             }
 
             if (ModelState.IsValid)
@@ -209,17 +193,19 @@
                     result = await UserManager.AddLoginAsync(user.Id, info.Login);
                     if (result.Succeeded)
                     {
-                        await SignInManager.SignInAsync(user, isPersistent: false, rememberBrowser: false);
+                        await SignInManager.SignInAsync(user, false, false);
                         return RedirectToLocal(returnUrl);
                     }
 
-                    WeightModel wm = new WeightModel();
-                    wm.Id = Guid.NewGuid().ToString();
-                    wm.UserId = user.Id;
-                    wm.Date = DateTime.Now.ToString("dd-MM-yyyy");
-                    wm.Weight = Convert.ToDecimal(user.Weight);
-                    db.Weight.Add(wm);
-                    db.SaveChanges();
+                    WeightModel wm = new WeightModel
+                    {
+                        Id = Guid.NewGuid().ToString(),
+                        UserId = user.Id,
+                        Date = DateTime.Now.ToString("dd-MM-yyyy"),
+                        Weight = Convert.ToDecimal(user.Weight)
+                    };
+                    _db.Weight.Add(wm);
+                    _db.SaveChanges();
                 }
                 AddErrors(result);
             }
@@ -227,7 +213,6 @@
             ViewBag.ReturnUrl = returnUrl;
             return View(model);
         }
-
         //
         // POST: /Account/LogOff
         [HttpPost]
@@ -261,13 +246,7 @@
         // Used for XSRF protection when adding external logins
         private const string XsrfKey = "XsrfId";
 
-        private IAuthenticationManager AuthenticationManager
-        {
-            get
-            {
-                return HttpContext.GetOwinContext().Authentication;
-            }
-        }
+        private IAuthenticationManager AuthenticationManager => HttpContext.GetOwinContext().Authentication;
 
         private void AddErrors(IdentityResult result)
         {
@@ -322,7 +301,7 @@
     public class UserDetail
     {
         public IEnumerable<ActivityModel> Activity { get; set; }
-        public IEnumerable<SelectListItem> ActivityDropdown { get { return new SelectList(Activity, "Multiplier", "Name"); } }
+        public IEnumerable<SelectListItem> ActivityDropdown => new SelectList(Activity, "Multiplier", "Name");
         public ApplicationUser User { get; set; }
         public GoalModel Goal { get; set; }
     }

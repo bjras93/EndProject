@@ -1,7 +1,8 @@
-﻿@model LifeStruct.Controllers.UserDetail
+﻿@using LifeStruct.Models.Account
+@model LifeStruct.Controllers.UserDetail
 @{
     ViewBag.Title = "Profile";
-    var user = LifeStruct.Models.UserViewModel.GetCurrentUser();
+    var user = UserViewModel.GetCurrentUser();
     decimal height = Convert.ToDecimal(user.Height);
     decimal weight = Convert.ToDecimal(user.Weight);
     decimal heightDivided = height / 100;

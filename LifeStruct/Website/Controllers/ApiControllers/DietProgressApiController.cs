@@ -1,14 +1,19 @@
-﻿namespace LifeStruct.Website.Controllers.ApiControllers
+﻿using LifeStruct.Models.Account;
+using LifeStruct.Models.Diet;
+using LifeStruct.Models.Fitness;
+
+namespace LifeStruct.Controllers.ApiControllers
 {
-    using Newtonsoft.Json.Linq;
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
     using System.Web.Http;
     using Models;
-    using System;
-    using System.Linq;
-    using System.Collections.Generic;
+    using Newtonsoft.Json.Linq;
+
     public class DietProgressApiController : ApiController
     {
-        DefaultConnection db = new DefaultConnection();
+        readonly DefaultConnection _db = new DefaultConnection();
         [Route("api/DietProgressApi/AddProgress")]
         [HttpPost]
         public IHttpActionResult AddProgress(JObject jsonData)
@@ -24,37 +29,49 @@
             dp.Day = DateTime.Now.ToString("dd-MM-yyyy");
             dp.Meal = Convert.ToInt32(json.meal);
 
-            db.DietProgress.Add(dp);
-            db.SaveChanges();
+            _db.DietProgress.Add(dp);
+            _db.SaveChanges();
             return Ok(dp);
         }
         [Route("api/DietProgressApi/RemoveProgress")]
         [HttpGet]
-        public IHttpActionResult RemoveProgress(string Id)
+        public IHttpActionResult RemoveProgress(string id)
         {
-            DietProgressModel dpm = db.DietProgress.Find(Id);
-            decimal removed = Convert.ToDecimal(dpm.CalorieIntake);
-            db.DietProgress.Remove(dpm);
+            DietProgressModel dpm = _db.DietProgress.Find(id);
+            if (dpm != null)
+            {
+                decimal removed = Convert.ToDecimal(dpm.CalorieIntake);
+                _db.DietProgress.Remove(dpm);
 
-            db.SaveChanges();
+                _db.SaveChanges();
 
-            return Ok(removed);
+                return Ok(removed);
+            }
+            return NotFound();
         }
         [Route("api/DietProgressApi/GetProgress")]
         [HttpGet]
         public IHttpActionResult GetProgress()
         {
             var user = UserViewModel.GetCurrentUser();
-
-
             decimal height = Convert.ToDecimal(user.Height);
             decimal weight = Convert.ToDecimal(user.Weight);
             var age = DateTime.Now.Year - Convert.ToDateTime(user.Birthday).Year;
             double bmr = 0;
-            var dt = DateTime.Now.ToString("dd-MM-yyyy");
             DateTime max = new DateTime();
             var p = new Progress();
-            foreach (var goal in db.Goal.ToList().Where(x => x.UserId == user.Id))
+            
+            if (user.Gender == 2)
+            {
+                bmr = ((10 * Convert.ToDouble(weight)) + (6.25 * Convert.ToDouble(height)) - (5 * age) + 5) *
+                      Convert.ToDouble(user.ActiveLevel);
+            }
+            else
+            {
+                bmr = ((10 * Convert.ToDouble(weight)) + (6.25 * Convert.ToDouble(height)) - (5 * age) + -161) *
+                      Convert.ToDouble(user.ActiveLevel);
+            }
+            foreach (var goal in _db.Goal.ToList().Where(x => x.UserId == user.Id))
             {
                 if (Convert.ToDateTime(goal.Date) > max)
                 {
@@ -71,26 +88,12 @@
                 }
             }
 
-
-            if (user.Gender == 2)
-            {
-                bmr = ((10 * Convert.ToDouble(weight)) + (6.25 * Convert.ToDouble(height)) - (5 * age) + 5) *
-                      Convert.ToDouble(user.ActiveLevel);
-            }
-            else
-            {
-                bmr = ((10 * Convert.ToDouble(weight)) + (6.25 * Convert.ToDouble(height)) - (5 * age) + -161) *
-                      Convert.ToDouble(user.ActiveLevel);
-
-            }
-
-
             p.Bmr = Convert.ToDecimal(bmr);
             p.DietProgress =
-                db.DietProgress.ToList()
+                _db.DietProgress.ToList()
                     .Where(x => x.UserId == user.Id && x.Day == DateTime.Now.ToString("dd-MM-yyyy"));
             p.FitnessProgress =
-                db.FitnessProgress.ToList()
+                _db.FitnessProgress.ToList()
                     .Where(
                         x => x.UserId == user.Id && x.Date == DateTime.Now.ToString("dd-MM-yyyy"));
 

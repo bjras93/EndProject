@@ -1,8 +1,9 @@
-﻿@model LifeStruct.Models.DietModel
+﻿@using LifeStruct.Models.Account
+@model LifeStruct.Models.Diet.DietModel
 
 @{
     ViewBag.Title = "Create your own diet";
-    var user = LifeStruct.Models.UserViewModel.GetCurrentUser();
+    var user = UserViewModel.GetCurrentUser();
 }
 
 

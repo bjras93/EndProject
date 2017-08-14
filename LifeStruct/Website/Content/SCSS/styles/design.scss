@@ -3,13 +3,10 @@ $smg: 5px 0;
 $smw: 250px;
 
 body {
-    background-color: #96cb96;
-    background: url('../img/web/pexels-photo.jpg');
-    background-size: cover;
-    background-attachment: fixed;
+    background-color: #e2efe2;
 
     @include phone {
-        background: #96cb96;
+        background: #e2efe2;
     }
 }
 

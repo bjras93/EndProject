@@ -1,14 +1,16 @@
-﻿using LifeStruct.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web.Mvc;
-
-namespace LifeStruct.Controllers
+﻿namespace LifeStruct.Controllers
 {
+    using Models;
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+    using System.Web.Mvc;
+    using Models.Account;
+    using Models.Diet;
+    using Models.Fitness;
     public class HomeController : Controller
     {
-        DefaultConnection db = new DefaultConnection();
+        readonly DefaultConnection _db = new DefaultConnection();
         public ActionResult Index()
         {
             if (Request.IsAuthenticated)
@@ -17,48 +19,49 @@ namespace LifeStruct.Controllers
                 var user = UserViewModel.GetCurrentUser();
                 if (!string.IsNullOrEmpty(user.DietId))
                 {
-                    ud.Diet = db.Diet.Find(user.DietId);
-                    ud.MealCollection = db.MealCollection.ToList().Where(x => x.DietId == ud.Diet.Id);
-                    ud.Meals = db.Meals.ToList();
+                    ud.Diet = _db.Diet.Find(user.DietId);
+                    ud.MealCollection = _db.MealCollection.ToList().Where(x => x.DietId == ud.Diet.Id);
+                    ud.Meals = _db.Meals.ToList();
                     ud.Food = new List<Food>();
                     foreach (var m in ud.MealCollection)
                     {
-                        var f = db.Food.Find(m.FoodId);
-                        ud.Food.Add(new Food { Id = f.Id, Name = f.Name, Calories = f.Calories.ToString() });
+                        var f = _db.Food.Find(m.FoodId);
+                        if (f != null)
+                            ud.Food.Add(new Food { Id = f.Id, Name = f.Name, Calories = f.Calories.ToString() });
                     }
                 }
                 if (!string.IsNullOrEmpty(user.FitnessId))
                 {
                     ud.Exercises = new List<ExerciseModel>();
-                    ud.Fitness = db.Fitness.Find(user.FitnessId);
-                    ud.Schedule = db.Schedule.Where(x => x.FitnessId == user.FitnessId);
-                    ud.FitnessProgress = db.FitnessProgress.Where(x => x.FitnessId == ud.Fitness.Id && x.UserId == user.Id);
+                    ud.Fitness = _db.Fitness.Find(user.FitnessId);
+                    ud.Schedule = _db.Schedule.Where(x => x.FitnessId == user.FitnessId);
+                    ud.FitnessProgress = _db.FitnessProgress.Where(x => x.FitnessId == ud.Fitness.Id && x.UserId == user.Id);
 
                     foreach (var exercise in ud.Schedule)
                     {
-                        ud.Exercises.Add(db.Exercise.Find(exercise.ExerciseId));
+                        ud.Exercises.Add(_db.Exercise.Find(exercise.ExerciseId));
                     }
 
                 }
 
                 return View(ud);
             }
-            return RedirectToAction("../Account/Index");
+            return RedirectToAction("Index", "Account");
         }
 
     }
     public class HomeGet
     {
-        public static FoodModel GetFoodById(string Id)
+        public static FoodModel GetFoodById(string id)
         {
             DefaultConnection db = new DefaultConnection();
 
-            return db.Food.Find(Id);
+            return db.Food.Find(id);
         }
-        public static IEnumerable<DietProgressModel> GetProgress(string UserId, string DietId, string FoodId, string Intake, int Meal)
+        public static IEnumerable<DietProgressModel> GetProgress(string userId, string dietId, string foodId, string intake, int meal)
         {
             DefaultConnection db = new DefaultConnection();
-            return db.DietProgress.ToList().Where(x => x.UserId == UserId && x.DietId == DietId && x.FoodId == FoodId && x.CalorieIntake == Intake && x.Meal == Meal && Convert.ToDateTime(x.Day).ToString("dd-MM-yyyy") == DateTime.Now.ToString("dd-MM-yyyy"));
+            return db.DietProgress.ToList().Where(x => x.UserId == userId && x.DietId == dietId && x.FoodId == foodId && x.CalorieIntake == intake && x.Meal == meal && Convert.ToDateTime(x.Day).ToString("dd-MM-yyyy") == DateTime.Now.ToString("dd-MM-yyyy"));
 
         }
     }

@@ -1,10 +1,8 @@
-﻿using Microsoft.AspNet.Identity;
+﻿using System.Web;
+using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
-using System;
-using System.Collections.Generic;
-using System.Web;
 
-namespace LifeStruct.Models
+namespace LifeStruct.Models.Account
 {
     public class UserViewModel
     {

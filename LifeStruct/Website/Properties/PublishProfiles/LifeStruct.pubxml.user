@@ -6,7 +6,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <TimeStampOfAssociatedLegacyPublishXmlFile />
-    <EncryptedPassword>AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAKel4sISJJ0KfiMpPeEEbdgAAAAACAAAAAAAQZgAAAAEAACAAAABQE+2LAvQcf3fPvONdTbwH6OjrN3GVJyl13U5zx27cIAAAAAAOgAAAAAIAACAAAAAbPVCH77xObIhXEV13P/ReWXtMVNsJX4tyqGLGcLuSkiAAAACKBLg7kzqmWvu4w49IHgS8mK5LQETRq7ivfLAZPjJ4f0AAAAB23VYmhcsAqcmuBKJu/GhRpTgVynosZlQ+6dq251XjBVWRSc2AYdPxo+/tVuc7gul+kaPcPFeOHt+m7Hcu8Hum</EncryptedPassword>
+    <EncryptedPassword>AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAA0jyAuyYTakCuBLyHqgyczgAAAAACAAAAAAADZgAAwAAAABAAAADCUrw6Q19cC9M0jbuyHtafAAAAAASAAACgAAAAEAAAACX2SgwDB2Vj6Xwc5tn6lZUYAAAAMSgfEqLFdhN6/Pe1pLELMA8JHZAOoBwlFAAAAJYsaPbaE0TxjHgNleTPM0Yg8RD3</EncryptedPassword>
     <_PublishTargetUrl>ftp://nt7.unoeuro.com/public_html</_PublishTargetUrl>
   </PropertyGroup>
   <ItemGroup>

@@ -1,9 +1,10 @@
-﻿namespace LifeStruct
+﻿using System.Linq;
+using System.Web.Http;
+using LifeStruct.Models;
+using LifeStruct.Models.Account;
+
+namespace LifeStruct.Controllers.ApiControllers
 {
-    using Models;
-    using System;
-    using System.Linq;
-    using System.Web.Http;
     public class StatisticsApiController : ApiController
     {
         DefaultConnection db = new DefaultConnection();

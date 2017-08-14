@@ -1,9 +1,11 @@
-﻿namespace Website.Controllers.ApiControllers
+﻿using LifeStruct.Models.Diet;
+
+namespace LifeStruct.Controllers.ApiControllers
 {
-    using LifeStruct.Models;
     using System.Collections.Generic;
     using System.Linq;
     using System.Web.Http;
+    using Models;
     public class MealCollectionApiController : ApiController
     {
         DefaultConnection db = new DefaultConnection();

@@ -1,4 +1,6 @@
-﻿namespace LifeStruct.Controllers.ApiControllers
+﻿using LifeStruct.Models.Account;
+
+namespace LifeStruct.Controllers.ApiControllers
 {
     using Microsoft.AspNet.Identity;
     using Models;

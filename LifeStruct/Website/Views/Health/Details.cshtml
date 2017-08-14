@@ -1,7 +1,8 @@
-﻿@model HealthModel
+﻿@using LifeStruct.Models.Account
+@model LifeStruct.Models.Health.HealthModel
 @{
     ViewBag.Title = "Health articles";
-    var user = LifeStruct.Models.UserViewModel.GetUser(Model.UserId);
+    var user = UserViewModel.GetUser(Model.UserId);
 }
 @section Signout{
     @Html.Partial("~/Views/Shared/_logout.cshtml")

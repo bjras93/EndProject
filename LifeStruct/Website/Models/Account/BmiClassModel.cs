@@ -1,4 +1,4 @@
-﻿namespace LifeStruct
+﻿namespace LifeStruct.Models.Account
 {
     public class BmiClassModel
     {

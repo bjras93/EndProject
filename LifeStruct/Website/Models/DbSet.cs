@@ -1,4 +1,9 @@
 ﻿using System.Data.Entity;
+using LifeStruct.Models.Account;
+using LifeStruct.Models.Diet;
+using LifeStruct.Models.Fitness;
+using LifeStruct.Models.Health;
+using LifeStruct.Models.Video;
 
 namespace LifeStruct.Models
 {

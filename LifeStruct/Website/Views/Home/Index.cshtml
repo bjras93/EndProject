@@ -1,6 +1,7 @@
 ﻿@model LifeStruct.Controllers.UserData
 @using System.Globalization
 @using LifeStruct.Models;
+@using LifeStruct.Models.Account
 @{
     ViewBag.Title = "Welcome!";
     var user = UserViewModel.GetCurrentUser();
@@ -100,7 +101,7 @@
                     <tr>
                         @foreach (var m in Model.Meals)
                         {
-                            if (Model.MealCollection.Where(x => x.Meal.ToString() == m.Id && ((DayOfWeek)x.Day) == DateTime.Now.DayOfWeek && x.WeekNo == week).Count() > 0)
+                            if (Model.MealCollection.Any(x => x.Meal.ToString() == m.Id && ((DayOfWeek)x.Day) == DateTime.Now.DayOfWeek && x.WeekNo == week))
                             {
                                 <th>@m.Name</th>
                             }
@@ -112,7 +113,7 @@
                         @foreach (var m in Model.Meals)
                         {
 
-                            if (Model.MealCollection.Where(x => x.Meal.ToString() == m.Id).Count() > 0)
+                            if (Model.MealCollection.Any(x => x.Meal.ToString() == m.Id))
                             {
                                 <td>
                                     @foreach (var mc in Model.MealCollection.Where(x => ((DayOfWeek)x.Day) == DateTime.Now.DayOfWeek))
@@ -124,14 +125,14 @@
                                             {
                                                 var f = LifeStruct.Controllers.HomeGet.GetFoodById(mc.FoodId);
                                                 var intake = (Convert.ToDouble(f.Calories) / 100) * Convert.ToDouble(mc.Amount);
-                                                var dp = LifeStruct.Controllers.HomeGet.GetProgress(user.Id, mc.DietId, mc.FoodId, intake.ToString(), mc.Meal);
+                                                var dp = LifeStruct.Controllers.HomeGet.GetProgress(user.Id, mc.DietId, mc.FoodId, intake.ToString(CultureInfo.InvariantCulture), mc.Meal);
 
 
                                                 foreach (var d in dp)
                                                 {
                                                     gain += (int)Convert.ToDecimal(d.CalorieIntake);
                                                 }
-                                                <table onclick="progress.addDietProgress(event, '@f.Id', '@mc.DietId', '@intake', '@user.Id', '@mc.Meal')" class="parent @if (dp.Count() > 0) { <text>done</text>}" data-dietprogress="@if (dp.Count() > 0) { <text>@dp.First().Id</text>}" href="" title="Add to day">
+                                                <table onclick="progress.addDietProgress(event, '@f.Id', '@mc.DietId', '@intake', '@user.Id', '@mc.Meal')" class="parent @if (dp.Any()) { <text>done</text>}" data-dietprogress="@if (dp.Count() > 0) { <text>@dp.First().Id</text>}" href="" title="Add to day">
                                                     <tr>
                                                         <td>
                                                             <p>@f.Name</p>
@@ -152,7 +153,7 @@
                         }
                     </tr>
 
-                    @if (!Model.MealCollection.Any(x => ((DayOfWeek)x.Day-1) == DateTime.Now.DayOfWeek))
+                    @if (Model.MealCollection.All(x => ((DayOfWeek) x.Day - 1) != DateTime.Now.DayOfWeek))
                     {
 
                         <tr class="nobackground">
@@ -168,8 +169,7 @@
     }
     @if (!string.IsNullOrEmpty(user.FitnessId))
     {
-        TimeSpan dateResult;
-        dateResult = DateTime.Now - Convert.ToDateTime(user.FitnessDate);
+        var dateResult = DateTime.Now - Convert.ToDateTime(user.FitnessDate);
         var week = Math.Ceiling(dateResult.TotalDays / 7);
         <div class="home-fitness g3 border-no-top border">
 
@@ -183,7 +183,7 @@
 
             @foreach (var exercise in Model.Schedule.Where(x => ((DayOfWeek)x.Day) == DateTime.Now.DayOfWeek))
             {
-            <div class="home-exercise @if (Model.FitnessProgress.Any(x => x.ExerciseId == exercise.Id)) {<text>done</text> }" onclick="progress.addFitnessProgress(event, '@exercise.Id', '@Model.Fitness.Id', '@((Convert.ToDecimal(exercise.Calories)/60)*Convert.ToDecimal(exercise.Time))', '@Model.Fitness.UserId')"  data-fitnessprogress="@if(Model.FitnessProgress.Where(x=> x.ExerciseId == exercise.Id).Count() > 0) {<text>@Model.FitnessProgress.Where(x=> x.ExerciseId == exercise.Id).First().Id</text>}">
+            <div class="home-exercise @if (Model.FitnessProgress.Any(x => x.ExerciseId == exercise.Id)) {<text>done</text> }" onclick="progress.addFitnessProgress(event, '@exercise.Id', '@Model.Fitness.Id', '@((Convert.ToDecimal(exercise.Calories)/60)*Convert.ToDecimal(exercise.Time))', '@Model.Fitness.UserId')"  data-fitnessprogress="@if(Model.FitnessProgress.Any(x => x.ExerciseId == exercise.Id)) {<text>@Model.FitnessProgress.First(x => x.ExerciseId == exercise.Id).Id</text>}">
                 <div>
                         @exercise.Exercise
                 </div>

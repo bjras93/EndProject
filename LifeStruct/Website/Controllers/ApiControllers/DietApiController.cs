@@ -4,6 +4,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web.Http;
 using LifeStruct.Models;
+using LifeStruct.Models.Account;
+using LifeStruct.Models.Diet;
 
 namespace LifeStruct.Controllers.ApiControllers
 {

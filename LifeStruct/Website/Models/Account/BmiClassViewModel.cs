@@ -1,7 +1,7 @@
-﻿namespace LifeStruct
+﻿using System.Linq;
+
+namespace LifeStruct.Models.Account
 {
-    using LifeStruct.Models;
-    using System.Linq;
     public class BmiClassViewModel
     {
 

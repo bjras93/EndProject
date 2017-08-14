@@ -1,12 +1,11 @@
 ﻿using System;
+using System;
+using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations;
 
-namespace LifeStruct.Models
+namespace LifeStruct.Models.Account
 {
-    using System;
-    using System.Collections.Generic;
-    using System.ComponentModel.DataAnnotations;
-
     public class ExternalLoginConfirmationViewModel
     {
         [Required(ErrorMessage = "You forgot to fill out your name")]
@@ -24,7 +23,7 @@ namespace LifeStruct.Models
         [Display(Name = "Weight")]
         public string Weight { get; set; }
 
-        [DateAttribute(ErrorMessage = "Birthdate is incorrect.")]
+        [Date(ErrorMessage = "Birthdate is incorrect.")]
         [Required(ErrorMessage = "Please fill out your birthday")]
         [Display(Name = "Birthday")]
         public DateTime? Birthday { get; set; }
@@ -59,10 +58,10 @@ namespace LifeStruct.Models
         [Display(Name = "Password")]
         public string Password { get; set; }
     }
-    
-}
-public class DateAttribute : RangeAttribute
-{
-    public DateAttribute()
-        : base(typeof(DateTime), DateTime.Now.AddYears(-100).ToShortDateString(), DateTime.Now.AddYears(-18).ToShortDateString()) { }
+
+    public class DateAttribute : RangeAttribute
+    {
+        public DateAttribute()
+            : base(typeof(DateTime), DateTime.Now.AddYears(-100).ToShortDateString(), DateTime.Now.AddYears(-18).ToShortDateString()) { }
+    }
 }

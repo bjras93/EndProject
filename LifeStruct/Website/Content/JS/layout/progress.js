@@ -21,8 +21,8 @@
                     }
 
                     if (data.FitnessProgress != null) {
-                        for (var i = 0; i < data.FitnessProgress.length; i++) {
-                            fLoss += parseFloat(data.FitnessProgress[i].Loss);
+                        for (var m = 0; m < data.FitnessProgress.length; m++) {
+                            fLoss += parseFloat(data.FitnessProgress[m].Loss);
                         }
                     } else {
                         fLoss = 0;
@@ -37,7 +37,7 @@
         addDietProgress: function (e, fId, dId, intake, uId, meal) {
             var target = $($(e.target).parents('.parent')[0]),
                 dietProgress = target.data('dietprogress');
-            if (!target.hasClass('done') && dietProgress == '') {
+            if (!target.hasClass('done') && dietProgress === '') {
                 $.ajax({
                     type: 'POST',
                     url: api + 'DietProgressApi/AddProgress',
@@ -53,14 +53,13 @@
                         target.data('dietprogress', data.Id);
 
                         setTimeout(function () {
-                            $('.intakeHover').trigger('mouseover')
-                        }, 200)
+                            $('.intakeHover').trigger('mouseover');
+                        }, 200);
                         setTimeout(function () {
-
-                            $('.intakeHover').trigger('mouseleave')
-                        }, 1500)
+                            $('.intakeHover').trigger('mouseleave');
+                        }, 1500);
                     }
-                })
+                });
 
                 target.addClass('done');
             }
@@ -74,12 +73,11 @@
                         total += +parseFloat(data);
                         $('#total').text('Suggested intake: ' + parseFloat(total).toFixed(0));
                         setTimeout(function () {
-                            $('.intakeHover').trigger('mouseover')
-                        }, 200)
+                            $('.intakeHover').trigger('mouseover');
+                        }, 200);
                         setTimeout(function () {
-
-                            $('.intakeHover').trigger('mouseleave')
-                        }, 1500)
+                            $('.intakeHover').trigger('mouseleave');
+                        }, 1500);
                     }
                 });
 
@@ -89,30 +87,28 @@
         },
         addFitnessProgress: function (e, eId, fId, loss, uId, eIndex) {
             var target = $(e.target);
-            if (target.parents('.home-exercise').length > 0)
-            {
+            if (target.parents('.home-exercise').length > 0) {
                 target = $(target.parents('.home-exercise')[0]);
             }
 
-            if (!target.hasClass('done') && target.data('fitnessprogress') == '') {
+            if (!target.hasClass('done') && target.data('fitnessprogress') === '') {
                 $.ajax({
                     type: 'POST',
                     url: api + 'FitnessApi/SetProgress',
                     data: JSON.stringify({ exerciseId: eId, fitnessId: fId, loss: parseFloat(loss).toFixed(0), userId: uId, exerciseIndex: eIndex }),
                     contentType: "application/json",
                     success: function (data) {
-                        target.data('fitnessprogress', data.Id)
+                        target.data('fitnessprogress', data.Id);
                         fLoss += +parseFloat(data.Loss);
                         total = total + +parseFloat(data.Loss);
                         $('#total').text('Suggested intake: ' + parseFloat(total).toFixed(0));
-                        $('#loss').text('Calorie loss: ' + parseFloat(fLoss).toFixed(0))
+                        $('#loss').text('Calorie loss: ' + parseFloat(fLoss).toFixed(0));
                         setTimeout(function () {
-                            $('.intakeHover').trigger('mouseover')
-                        }, 200)
+                            $('.intakeHover').trigger('mouseover');
+                        }, 200);
                         setTimeout(function () {
-
-                            $('.intakeHover').trigger('mouseleave')
-                        }, 1500)
+                            $('.intakeHover').trigger('mouseleave');
+                        }, 1500);
                     }
                 });
                 target.addClass('done');
@@ -125,14 +121,15 @@
                         fLoss = fLoss - parseFloat(data);
                         total = total - parseFloat(data);
                         $('#total').text('Suggested intake: ' + parseFloat(total).toFixed(0));
-                        $('#loss').text('Calorie loss: ' + parseFloat(fLoss).toFixed(0))
+                        $('#loss').text('Calorie loss: ' + parseFloat(fLoss).toFixed(0));
                         setTimeout(function () {
-                            $('.intakeHover').trigger('mouseover')
-                        }, 200)
+                            $('.intakeHover').trigger('mouseover');
+                        },
+                            200);
                         setTimeout(function () {
-
-                            $('.intakeHover').trigger('mouseleave')
-                        }, 1500)
+                            $('.intakeHover').trigger('mouseleave');
+                        },
+                            1500);
                     }
                 });
                 target.data('fitnessprogress', '');

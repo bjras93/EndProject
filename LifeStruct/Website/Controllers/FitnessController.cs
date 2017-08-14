@@ -1,5 +1,7 @@
 ﻿namespace LifeStruct.Controllers
 {
+    using Models.Account;
+    using Models.Fitness;
     using Models;
     using System;
     using System.Collections.Generic;
@@ -10,15 +12,15 @@
     using System.Web.Mvc;
     public class FitnessController : Controller
     {
-        DefaultConnection db = new DefaultConnection();
+        readonly DefaultConnection _db = new DefaultConnection();
         // GET: Fitness
         public ActionResult Index()
         {
             if (Request.IsAuthenticated)
             {
-                return View(db.Fitness);
+                return View(_db.Fitness);
             }
-            return RedirectToAction("../Account/Index");
+            return RedirectToAction("Index", "Account");
         }
 
         public ActionResult Create()
@@ -27,7 +29,7 @@
             {
                 return View();
             }
-            return RedirectToAction("../Account/Index");
+            return RedirectToAction("Index", "Account");
         }
         [HttpPost, ValidateInput(false)]
         public ActionResult Create(FitnessModel model)
@@ -40,11 +42,11 @@
                 {
                     
                     var uploadFile = Request.Files[0];
-                    if(uploadFile.ContentLength > (4096 * 1024))
+                    if(uploadFile != null && uploadFile.ContentLength > 4096 * 1024)
                     {
                         ModelState.AddModelError("Filesize", "Image is too big, please select at smaller file");
                     }
-                    if (uploadFile != null && uploadFile.ContentLength > 0 && uploadFile.ContentLength < (4096 * 1024))
+                    if (uploadFile != null && uploadFile.ContentLength > 0 && uploadFile.ContentLength < 4096 * 1024)
                     {
                         var fullPath = Server.MapPath("~/Content/img/user/" + model.Img);
                         var sFullPath = Server.MapPath("~/Content/img/user/sm-" + model.Img);
@@ -61,7 +63,7 @@
                         img.Save(path);
                         if (img.Width > 1000)
                         {
-                            img.Resize(1000, 300, true);
+                            img.Resize(1000, 300);
                         }
                         model.Img = fileId + fileName;
                         img.Save(sPath);
@@ -72,57 +74,52 @@
                 model.Author = UserViewModel.GetCurrentUser().Name;
                 if (ModelState.IsValid)
                 {
-                    db.Fitness.Add(model);
-                    db.SaveChanges();
-                    return RedirectToAction("../Fitness/Edit/" + model.Id);
+                    _db.Fitness.Add(model);
+                    _db.SaveChanges();
+                    return RedirectToAction("Edit", "Fitness", model.Id);
                 }
-                else
-                {
-                    return View(model);
-                }
+                return View(model);
             }
-            return RedirectToAction("../Account/Index");
+            return RedirectToAction("Index", "Account");
         }
-        public ActionResult Edit(string Id)
+        public ActionResult Edit(string id)
         {
             if (Request.IsAuthenticated)
             {
-
-                if (db.Fitness.Find(Id).UserId == UserViewModel.GetCurrentUser().Id)
+                var fitnessModel = _db.Fitness.Find(id);
+                if (fitnessModel != null && fitnessModel.UserId == UserViewModel.GetCurrentUser().Id)
                 {
-                    var s = db.Schedule.ToList().Where(x => x.FitnessId == Id);
-                    var days = db.Days.ToList();
+                    var s = _db.Schedule.ToList().Where(x => x.FitnessId == id);
+                    var days = _db.Days.ToList();
 
                     if (s.Any())
                     {
                         ViewBag.Schedule = s;
                     }
                     ViewBag.Days = days;
-                    return View(db.Fitness.Find(Id));
+                    return View(_db.Fitness.Find(id));
                 }
-                else
-                {
-                    return RedirectToAction("../Fitness/Details/" + Id);
-
-                }
+                return RedirectToAction("Details", "Fitness", id);
             }
-            return RedirectToAction("../Account/Index");
+            return RedirectToAction("Index", "Account");
         }
-        public ActionResult Details(string Id)
+        public ActionResult Details(string id)
         {
             if (Request.IsAuthenticated)
             {
-                FitnessView fv = new FitnessView();
-                fv.Exercises = new List<ExerciseModel>();
-                fv.Fitness = db.Fitness.Find(Id);
-                fv.Schedule = db.Schedule.ToList().Where(x => x.FitnessId == fv.Fitness.Id);
+                FitnessView fv = new FitnessView
+                {
+                    Exercises = new List<ExerciseModel>(),
+                    Fitness = _db.Fitness.Find(id)
+                };
+                fv.Schedule = _db.Schedule.ToList().Where(x => x.FitnessId == fv.Fitness.Id);
                 foreach (var exercise in fv.Schedule)
                 {
-                    fv.Exercises.Add(db.Exercise.Find(exercise.ExerciseId));
+                    fv.Exercises.Add(_db.Exercise.Find(exercise.ExerciseId));
                 }
                 return View(fv);
             }
-            return RedirectToAction("../Account/Index");
+            return RedirectToAction("Index", "Account");
         }
 
 
@@ -130,25 +127,27 @@
         public ActionResult Edit(FitnessModel model)
         {
             var formData = Request.Form.AllKeys.ToList();
-            ScheduleModel sm = new ScheduleModel();
+            var sm = new ScheduleModel();
             var fitnessId = Request.Form["Id"];
-            var scheduleId = Request.Form["scheduleId"];
-            var f = db.Fitness.Find(fitnessId);
+            var f = _db.Fitness.Find(fitnessId);
             if (Request.Files.Count > 0)
             {
                 var uploadFile = Request.Files[0];
-                if(uploadFile.ContentLength > (4096 * 1024))
+                if(uploadFile != null && uploadFile.ContentLength > (4096 * 1024))
                 {
                     ModelState.AddModelError("Filesize", "Image is too big, please try uploading a smaller one");
                 }
-                if (uploadFile != null && uploadFile.ContentLength > 0 && uploadFile.ContentLength < (4096 * 1024))
+                if (uploadFile != null && (uploadFile.ContentLength > 0 && uploadFile.ContentLength < (4096 * 1024)))
                 {
-                    var fullPath = Server.MapPath("~/Content/img/user/" + f.Img);
-                    var sFullPath = Server.MapPath("~/Content/img/user/sm-" + f.Img);
-                    if (System.IO.File.Exists(fullPath))
+                    if (f != null)
                     {
-                        System.IO.File.Delete(fullPath);
-                        System.IO.File.Delete(sFullPath);
+                        var fullPath = Server.MapPath("~/Content/img/user/" + f.Img);
+                        var sFullPath = Server.MapPath("~/Content/img/user/sm-" + f.Img);
+                        if (System.IO.File.Exists(fullPath))
+                        {
+                            System.IO.File.Delete(fullPath);
+                            System.IO.File.Delete(sFullPath);
+                        }
                     }
                     var fileName = Path.GetFileName(uploadFile.FileName);
                     var fileId = Guid.NewGuid().ToString();
@@ -158,19 +157,22 @@
                     img.Save(path);
                     if (img.Width > 1000)
                     {
-                        img.Resize(1000, 300, true);
+                        img.Resize(1000, 300);
                     }
-                    f.Img = fileId + fileName;
+                    if (f != null) f.Img = fileId + fileName;
                     img.Save(sPath);
                 }
             }
             if (ModelState.IsValid)
             {
-                f.Title = model.Title;
-                f.Description = model.Description;
-                f.Tags = model.Tags;
-                db.Entry(f).State = EntityState.Modified;
-                db.SaveChanges();
+                if (f != null)
+                {
+                    f.Title = model.Title;
+                    f.Description = model.Description;
+                    f.Tags = model.Tags;
+                    _db.Entry(f).State = EntityState.Modified;
+                }
+                _db.SaveChanges();
             }
             else
             {
@@ -198,7 +200,9 @@
                         if (key.StartsWith("exerciseId_"))
                         {                            
                             sm.ExerciseId = value[0];
-                            sm.Exercise = db.Exercise.Find(sm.ExerciseId).Name;
+                            var exerciseModel = _db.Exercise.Find(sm.ExerciseId);
+                            if (exerciseModel != null)
+                                sm.Exercise = exerciseModel.Name;
                             int day = Convert.ToInt32(values[3].Replace("d", ""));
                             day = day - 1;
                             sm.Day = day;
@@ -215,13 +219,13 @@
                             if (string.IsNullOrEmpty(sm.Id))
                             {
                                 sm.Id = Guid.NewGuid().ToString();
-                                db.Schedule.Add(sm);
-                                db.SaveChanges();
+                                _db.Schedule.Add(sm);
+                                _db.SaveChanges();
                             }
                             else
                             {
-                                db.Entry(sm).State = EntityState.Modified;
-                                db.SaveChanges();
+                                _db.Entry(sm).State = EntityState.Modified;
+                                _db.SaveChanges();
                             }
                             sm = new ScheduleModel();
                         }

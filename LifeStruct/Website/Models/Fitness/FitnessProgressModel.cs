@@ -1,4 +1,4 @@
-﻿namespace LifeStruct
+﻿namespace LifeStruct.Models.Fitness
 {
     public class FitnessProgressModel
     {

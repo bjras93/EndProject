@@ -1,10 +1,7 @@
-namespace Website.Migrations
-{
-    using System;
-    using System.Data.Entity;
-    using System.Data.Entity.Migrations;
-    using System.Linq;
+using System.Data.Entity.Migrations;
 
+namespace LifeStruct.Migrations
+{
     internal sealed class Configuration : DbMigrationsConfiguration<LifeStruct.Models.DefaultConnection>
     {
         public Configuration()

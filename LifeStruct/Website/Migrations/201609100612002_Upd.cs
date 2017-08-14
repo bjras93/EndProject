@@ -1,8 +1,7 @@
-namespace Website.Migrations
+using System.Data.Entity.Migrations;
+
+namespace LifeStruct.Migrations
 {
-    using System;
-    using System.Data.Entity.Migrations;
-    
     public partial class Upd : DbMigration
     {
         public override void Up()

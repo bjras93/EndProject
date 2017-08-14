@@ -1,6 +1,7 @@
-﻿namespace LifeStruct
+﻿namespace LifeStruct.Controllers
 {
     using System.Web.Mvc;
+
     public class StatisticsController : Controller
     {
         // GET: Statistics

@@ -1,10 +1,13 @@
-﻿namespace LifeStruct
+﻿using System;
+using System.Linq;
+using System.Web.Http;
+using LifeStruct.Models;
+using LifeStruct.Models.Account;
+using LifeStruct.Models.Fitness;
+using Newtonsoft.Json.Linq;
+
+namespace LifeStruct.Controllers.ApiControllers
 {
-    using Models;
-    using Newtonsoft.Json.Linq;
-    using System;
-    using System.Linq;
-    using System.Web.Http;
     public class FitnessApiController : ApiController
     {
         DefaultConnection db = new DefaultConnection();

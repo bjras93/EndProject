@@ -1,8 +1,8 @@
-﻿namespace LifeStruct.Models
+﻿using System.ComponentModel.DataAnnotations;
+using System.Web.Mvc;
+
+namespace LifeStruct.Models.Diet
 {
-    using System.Collections.Generic;
-    using System.ComponentModel.DataAnnotations;
-    using System.Web.Mvc;
     public class DietModel
     {
         public string Id { get; set; }

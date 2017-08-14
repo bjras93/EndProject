@@ -1,6 +1,7 @@
-﻿namespace LifeStruct
+﻿using LifeStruct.Models.Diet;
+
+namespace LifeStruct.Models
 {
-    using Models;
     public class DayViewModel
     {
         public static DaysModel GetDay(int Id)

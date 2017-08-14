@@ -1,4 +1,6 @@
-﻿namespace LifeStruct.Controllers.ApiControllers
+﻿using LifeStruct.Models.Fitness;
+
+namespace LifeStruct.Controllers.ApiControllers
 {
     using System.Collections.Generic;
     using System.Linq;

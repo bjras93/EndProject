@@ -1,12 +1,14 @@
 ﻿using LifeStruct.Models;
 using System;
 using System.Web.Mvc;
+using LifeStruct.Models.Account;
+using LifeStruct.Models.Video;
 
 namespace LifeStruct.Controllers
 {
     public class VideosController : Controller
     {
-        DefaultConnection db = new DefaultConnection();
+        readonly DefaultConnection _db = new DefaultConnection();
         // GET: Video
         public ActionResult Index()
         {
@@ -14,7 +16,7 @@ namespace LifeStruct.Controllers
             {
                 return View();
             }
-            return RedirectToAction("../Account/Index");
+            return RedirectToAction("Index", "Account");
         }
         public ActionResult Create()
         {
@@ -22,20 +24,20 @@ namespace LifeStruct.Controllers
             {
                 return View();
             }
-            return RedirectToAction("../Account/Index");
+            return RedirectToAction("Index", "Account");
         }
         [HttpPost]
-        public ActionResult Create(VideoModel Video)
+        public ActionResult Create(VideoModel video)
         {
             if (Request.IsAuthenticated)
             {
                 if (ModelState.IsValid)
                 {
-                    Video.Id = Guid.NewGuid().ToString();
-                    Video.UserId = UserViewModel.GetCurrentUser().Id;
-                    db.Video.Add(Video);
-                    db.SaveChanges();
-                    return RedirectToAction("../Videos/Index");
+                    video.Id = Guid.NewGuid().ToString();
+                    video.UserId = UserViewModel.GetCurrentUser().Id;
+                    _db.Video.Add(video);
+                    _db.SaveChanges();
+                    return RedirectToAction("Index", "Videos");
                 }
                 if (!ModelState.IsValid)
                 {
@@ -43,18 +45,18 @@ namespace LifeStruct.Controllers
                     return View();
                 }
             }
-            return RedirectToAction("../Account/Index");
+            return RedirectToAction("Index", "Account");
         }
         [HttpGet]
-        public ActionResult Edit(string Id)
+        public ActionResult Edit(string id)
         {
-            VideoModel vm = db.Video.Find(Id);
+            VideoModel vm = _db.Video.Find(id);
             var user = UserViewModel.GetCurrentUser();
-            if (Request.IsAuthenticated && user.Id == vm.UserId)
+            if (vm != null && (Request.IsAuthenticated && user.Id == vm.UserId))
             {
                 return View(vm);
             }
-            return RedirectToAction("../Account/Index");
+            return RedirectToAction("Index", "Account");
         }
         [HttpPost]
         public ActionResult Edit(VideoModel model)
@@ -64,16 +66,13 @@ namespace LifeStruct.Controllers
             {
                 if (ModelState.IsValid)
                 {
-                    db.Entry(model).State = System.Data.Entity.EntityState.Modified;
-                    db.SaveChanges();
-                    return RedirectToAction("../Videos/Index");
+                    _db.Entry(model).State = System.Data.Entity.EntityState.Modified;
+                    _db.SaveChanges();
+                    return RedirectToAction("Index", "Videos");
                 }
-                else
-                {
-                    return View();
-                }
+                return View();
             }
-            return RedirectToAction("../Account/Index");
+            return RedirectToAction("Index", "Account");
         }
     }
 }

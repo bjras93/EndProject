@@ -1,6 +1,7 @@
-﻿namespace LifeStruct.Models
+﻿using System.Collections.Generic;
+
+namespace LifeStruct.Models.Diet
 {
-    using System.Collections.Generic;
     public class MealsModel
     {
         public string Id { get; set; }

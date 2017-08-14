@@ -1,4 +1,4 @@
-﻿namespace LifeStruct.Models
+﻿namespace LifeStruct.Models.Diet
 {
     public class FoodModel
     {

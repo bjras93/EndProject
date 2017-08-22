@@ -10,12 +10,10 @@
 @section Signout{
     @Html.Partial("~/Views/Shared/_logout.cshtml")
 }
-@Html.ActionLink("Return", "Index", "Diets", null, new { @class = "return" })
 <div ng-app="LifeStruct">
 
     <div class="create-diet" ng-controller="dietPostCtrl">
-        <div class="diet">
-
+        <div class="diet bg-green-0">
             @using (Html.BeginForm("Create", "Diets", FormMethod.Post, new { enctype = "multipart/form-data" }))
             {
                 <input type="hidden" id="UserId" name="UserId" value="@user.Id.Replace("-", "")" />

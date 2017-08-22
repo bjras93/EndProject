@@ -16,8 +16,7 @@
     });
 </script>
 <div ng-app="LifeStruct" ng-controller="articleCreateCtrl">
-    @Html.ActionLink("Return", "Index", "Health", null, new { @class = "return" })
-    <div class="create-articles">
+    <div class="create-articles bg-green-0">
         <div class="article">
             @using (Html.BeginForm("Edit", "Health", FormMethod.Post))
             {

@@ -6,8 +6,7 @@
 @section Signout{
     @Html.Partial("~/Views/Shared/_logout.cshtml")
 }
-@Html.ActionLink("Return", "Index", "Fitness", null, new { @class = "return" })
-<div class="content" ng-app="LifeStruct">
+<div class="content bg-green-0" ng-app="LifeStruct">
     <div class="fitness fitness-create" ng-controller="fitnessCreateCtrl">
         @using (Html.BeginForm("Create", "Fitness", FormMethod.Post, new { enctype = "multipart/form-data" }))
         {
@@ -25,7 +24,6 @@
             </ul>
             <ul class="create-picture right">
                 <li>
-                    <h4>Click below to upload an image suggested aspect ratio is 2.2:1</h4>
                     <div class="picture">
                         <label class="btn ib" for="upload-file">Upload image</label>
                         <input ng-model="Img" type="file" accept="image/.png,.jpg,.gif" class="hide" id="upload-file" name="uploadFile" />

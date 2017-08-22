@@ -1,21 +1,16 @@
 ﻿.diet {
-    background-color: $gre-1;
-    color: $w;
     padding: $spd;
-
     .mce-panel {
-        background-color: $w;
+        background-color: $white;
     }
 
     .mce-btn {
-        background-color: $w;
+        background-color: $white;
     }
 }
 
 .create-diet {
-    width: 100%;
-    @extend .ib;
-    color: $w;
+    @extend .inline-block;
     .picture {
         padding: 0;
     }
@@ -32,7 +27,7 @@
         .btn {
             margin: 10px 0;
             width: 100%;
-            color: $w;
+            color: $white;
         }
     }
     .ipt {
@@ -40,14 +35,14 @@
     }
 
     .period {
-        color: $w;
-        background-color: $gre-5;
+        color: $white;
+        background-color: $green-5;
         @include phone {
-            background-color: $gre-2;
+            background-color: $green-2;
         }
 
         a {
-            color: #333;
+            color: $base;
         }
 
         input {
@@ -58,7 +53,7 @@
     .days {
         width: 100%;
         padding: $spd;
-        @extend .ib;
+        @extend .inline-block;
         background-color:$orange-2;
         border: 1px solid rgba(133,133,133,0.2);
         border-bottom: none;
@@ -81,12 +76,12 @@
     .weeks {
         padding: $spd;
         width: 100%;
-        @extend .ib;
+        @extend .inline-block;
         background: $orange-1;
     }
 
     .week {
-        background: $gre-2;
+        background: $green-2;
     }
     }
     .pnl {
@@ -125,14 +120,14 @@
       }
     
     .description-btn {
-        background-color: $gre-1;
+        background-color: $green-1;
     }
     
     .mce-panel {
-        background-color: $w;
+        background-color: $white;
     }
     .mce-btn {
-        background-color: $w;
+        background-color: $white;
     }
 }
 .add-diet {
@@ -149,7 +144,7 @@
     .schedule {
         width:100%;
         margin-bottom: 20px;
-        border-right:1px solid $gre-1;
+        border-right:1px solid $green-1;
         @include phone {
             overflow-x: auto;
         }
@@ -161,22 +156,22 @@
         border-spacing: 0;
 
         thead {
-            background-color: $gre-2;
+            background-color: $green-2;
         }
 
         td, th {
             padding: $spd 15px $spd 15px;
             vertical-align: text-top;
-            border: 1px solid $gre-1;
+            border: 1px solid $green-1;
         }
 
         tr {
             td {
-                background-color: $gre-3;
+                background-color: $green-3;
                 padding: 0;
 
                 &:first-child {
-                    background-color: $gre-2;
+                    background-color: $green-2;
                     padding: $spd 15px $spd 15px;
                 }
             }
@@ -187,22 +182,22 @@
             &:first-child {
                 td {
                     border-top: none;
-                    border-bottom: 1px solid $gre-1;
+                    border-bottom: 1px solid $green-1;
                     
                 }
             }
             &:last-child {
                 
-                    border-bottom: 1px solid $gre-1;
+                    border-bottom: 1px solid $green-1;
             }
             }
             tr {
                 td {
                     border:none;
                     padding: $spd 25px $spd 25px;
-                    border-top: 1px solid $gre-1;
+                    border-top: 1px solid $green-1;
                 &:first-child {
-                    background-color: $gre-3;
+                    background-color: $green-3;
                     padding: $spd 15px $spd 15px;
                 }
                 }
@@ -219,7 +214,7 @@
     }
     .description {
         padding: $spd;
-        @extend .w;
+        @extend .bg-white;
     }
 }
 .diet-overview {

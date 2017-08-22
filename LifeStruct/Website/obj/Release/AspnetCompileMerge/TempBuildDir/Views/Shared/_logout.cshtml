@@ -1,0 +1,8 @@
+﻿<div class="signout right">
+    @using (Html.BeginForm("LogOff", "Account", FormMethod.Post))
+    {
+
+        @Html.AntiForgeryToken()
+        <button class="signout-btn" type="submit"><span class="icon-exit"></span></button>
+    }
+</div>

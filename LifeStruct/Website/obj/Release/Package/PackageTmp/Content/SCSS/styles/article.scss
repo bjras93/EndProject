@@ -1,75 +1,87 @@
 ﻿.articles {
-    width:100%;
+    width: 100%;
+
     .menu-article {
-        float:left;
+        float: left;
+
         .btn {
-            display:inline-block;
+            display: inline-block;
             padding: 10px;
             margin: 5px 0;
-            background: $gre-5;
+            background: $green-5;
         }
-        
-        .selected {
-            background: $gre-3;
 
+        .selected {
+            background: $green-3;
         }
     }
+
     .no-results {
-        float:left;
-        @extend .w;
+        float: left;
+        @extend .bg-white;
         padding: $spd;
-        width:100%;
-        margin: 10px 0 0px 0; 
-    }
-    .article {
-        float:left;
-        @extend .w;
-        padding: $spd;
-        width:100%;
+        width: 100%;
         margin: 10px 0 0px 0;
+    }
+
+    .article {
+        float: left;
+        @extend .bg-white;
+        padding: $spd;
+        width: 100%;
+        margin: 10px 0 0px 0;
+
         .article-content {
             margin: 15px 0;
             max-width: 750px;
         }
+
         .icon {
             cursor: pointer;
             color: $base;
             margin: 0 4px;
         }
+
         .liked {
             color: $red-1;
         }
+
         .item {
             margin-bottom: 25px;
             border-bottom: 1px solid rgb(250,250,255);
         }
-        
     }
 }
+
 .create-articles {
-    float:left;
+    float: left;
     width: 100%;
+
     .article {
         width: 70%;
         padding: $spd;
-        background-color: $gre-3;
-       
+        background-color: $green-3;
+
         table {
             width: 65%;
         }
-        @include phone{
-            width:100%;
-             table {
-                 width:100%;
-             }
+
+        @include phone {
+            width: 100%;
+
+            table {
+                width: 100%;
+            }
         }
     }
 }
+
 .details-article {
     width: 100%;
-    float:left;
+    float: left;
     padding: 15px;
-    @extend .w;
+    @extend .bg-white;
+
     .content-article {
         margin: 25px 0;
         max-width: 850px;

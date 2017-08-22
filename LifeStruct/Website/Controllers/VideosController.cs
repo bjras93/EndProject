@@ -8,7 +8,7 @@ namespace LifeStruct.Controllers
 {
     public class VideosController : Controller
     {
-        readonly DefaultConnection _db = new DefaultConnection();
+        DefaultConnection _db = new DefaultConnection();
         // GET: Video
         public ActionResult Index()
         {

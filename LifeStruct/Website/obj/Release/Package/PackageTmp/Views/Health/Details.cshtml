@@ -9,8 +9,7 @@
 }
 <div ng-app="LifeStruct" ng-controller="articleIndexCtrl">
     <input type="text" class="ipt search right" placeholder="Search" />
-    @Html.ActionLink("Return", "Index", "Health", null, new { @class = "return" })
-    <div class="details-article">
+    <div class="details-article bg-green-0">
         <div class="header"><h1>@Model.Title</h1></div>
         <div class="content-article">@Html.Raw(Model.Content)</div>
         <div class="user-section">Written by: @user.Name</div>

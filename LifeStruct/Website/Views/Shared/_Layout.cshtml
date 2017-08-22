@@ -8,8 +8,8 @@
           type="image/png"
           href="~/Content/img/web/favicon.ico">
 
-        @Scripts.Render("~/bundles/plugins")
-        <script src="~/Content/JS/plugins/tinymce.min.js"></script>
+    @Scripts.Render("~/bundles/plugins")
+    <script src="~/Content/JS/plugins/tinymce.min.js"></script>
     <script>
         tinymce.init({ selector: '.tinymce', menu: 'none', toolbar: 'bold italic underline | bullist numlist | outdent indent', font_formats: 'Roboto' });
     </script>
@@ -18,15 +18,19 @@
 </head>
 <body>
     <div class="overlay">
-        <div class="container">
-
-            @RenderSection("Signout", false)
-            @*<div class="logo">
-                @Html.ActionLink("LifeStruct", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
-            </div>*@
-            <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav"></ul>
+        <div class="main-nav-container">
+            <div class="main-nav">
+                @RenderSection("Signout", false)
+                <div class="logo">
+                    @Html.ActionLink("LifeStruct", "Index", "Home", new { area = "" }, new { @class = "" })
+                </div>
             </div>
+        </div>
+        <div class="side-nav">
+            @if (Request.Url?.AbsolutePath != "/" && Request.IsAuthenticated)
+            {
+                @Html.Partial("~/Views/Shared/_SideNav.cshtml")
+            }
         </div>
         <div class="container">
             @RenderBody()

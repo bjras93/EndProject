@@ -3,6 +3,7 @@ using LifeStruct.Models.Account;
 using LifeStruct.Models.Diet;
 using LifeStruct.Models.Fitness;
 using LifeStruct.Models.Health;
+using LifeStruct.Models.Recipes;
 using LifeStruct.Models.Video;
 using Microsoft.Ajax.Utilities;
 
@@ -28,6 +29,7 @@ namespace LifeStruct.Models
         public DbSet<MoodModel> Mood { get; set; }
         public DbSet<ActivityModel> Activity { get; set; }
         public DbSet<WeightModel> Weight { get; set; }
+        public DbSet<RecipesModel> Recipes { get; set; }
     }
     
 }

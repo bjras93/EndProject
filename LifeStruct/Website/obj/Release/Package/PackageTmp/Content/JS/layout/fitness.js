@@ -236,9 +236,7 @@ var fitness = {
     },
     create: function () {
         app.controller('fitnessCreateCtrl', ['$scope', '$http', '$q', function ($scope, $http, $q) {
-            $scope.tags = []
-
+            $scope.tags = [];
         }]);
-
     }
 }

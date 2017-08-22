@@ -9,7 +9,7 @@
     padding: 50px 15%;
 }
 #modal {
-    background-color: $gre-1;
+    background-color: $green-1;
     padding: $spd;
-    @extend .ib;
+    @extend .inline-block;
 }

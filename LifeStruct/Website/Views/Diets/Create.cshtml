@@ -10,12 +10,10 @@
 @section Signout{
     @Html.Partial("~/Views/Shared/_logout.cshtml")
 }
-@Html.ActionLink("Return", "Index", "Diets", null, new { @class = "return" })
 <div ng-app="LifeStruct">
 
     <div class="create-diet" ng-controller="dietPostCtrl">
-        <div class="diet">
-
+        <div class="diet bg-green-0">
             @using (Html.BeginForm("Create", "Diets", FormMethod.Post, new { enctype = "multipart/form-data" }))
             {
                 <input type="hidden" id="UserId" name="UserId" value="@user.Id.Replace("-", "")" />
@@ -37,7 +35,6 @@
                     <img src="" id="modelImg" />
                 </div>
                 <div class="create-diet-submit">
-                    <h4>Click below to upload an image suggested aspect ratio is 2.2:1</h4>
                     <div class="picture">
                         <label class="btn ib" for="upload-file">Upload image</label>
                         <input ng-model="Img" type="file" accept="image/.png,.jpg,.gif" class="hide" id="upload-file" name="uploadFile" />

@@ -12,7 +12,7 @@
     using System.Web.Mvc;
     public class FitnessController : Controller
     {
-        readonly DefaultConnection _db = new DefaultConnection();
+        DefaultConnection _db = new DefaultConnection();
         // GET: Fitness
         public ActionResult Index()
         {

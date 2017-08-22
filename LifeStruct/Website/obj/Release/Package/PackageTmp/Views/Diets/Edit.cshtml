@@ -6,11 +6,10 @@
     @Html.Partial("~/Views/Shared/_logout.cshtml")
 }
 <div ng-app="LifeStruct">
-    @Html.ActionLink("Return", "Index", "Diets", null, new { @class = "return" })
     @using (Html.BeginForm("Edit", "Diets", FormMethod.Post, new { enctype = "multipart/form-data" }))
     {
         <input type="hidden" id="dietId" name="Id" value="@Model.Id" />
-        <div class="create-diet" ng-controller="dietGetCtrl">
+        <div class="create-diet bg-green-0" ng-controller="dietGetCtrl">
 
             <div class="period">
                 <div class="information">

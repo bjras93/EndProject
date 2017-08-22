@@ -8,14 +8,13 @@
 @section Signout{
     @Html.Partial("~/Views/Shared/_logout.cshtml")
 }
-@Html.ActionLink("Return", "Index", "Home", null, new { @class = "return" })
 <div ng-app="LifeStruct" ng-controller="dietIndexCtrl">
     <input type="text" class="ipt diet-search" ng-model="searchDiets" placeholder="Search diets" />
-    <div class="content g1 left">
+    <div class="content bg-green-0 left">
         @{
             <input type="hidden" ng-init="selected = '@user.DietId'" />
             <div class="diets" ng-repeat="diets in dietData | limitTo: 20 | filter :searchDiets | orderBy: '-Likes'">
-                <div class="overview diet-overview">
+                <div class="overview bg-beige-0 diet-overview">
                     <div ng-if="diets.Img != ''">
                         <a href="/Diets/Details/{{diets.Id}}"><img src="~/Content/img/user/{{'sm-' +diets.Img}}" style="width:100%; height: 270px;" /></a>
                     </div>

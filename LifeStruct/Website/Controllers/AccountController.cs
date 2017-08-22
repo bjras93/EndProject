@@ -16,7 +16,7 @@ namespace LifeStruct.Controllers
     {
         private ApplicationSignInManager _signInManager;
         private ApplicationUserManager _userManager;
-        readonly DefaultConnection _db = new DefaultConnection();
+        DefaultConnection _db = new DefaultConnection();
         public AccountController()
         {
 
@@ -77,7 +77,7 @@ namespace LifeStruct.Controllers
                 model.Goal = _db.Goal.ToList().First(x => x.UserId == user.Id && x.Date == dt.ToString());
                 model.Activity = _db.Activity;
                 user.Weight = model.User.Weight;
-                user.ActiveLevel = model.User.ActiveLevel;
+                user.ActivityLevel = model.User.ActivityLevel;
                 user.Name = model.User.Name;
                 UserManager.Update(user);
                 return View(model);

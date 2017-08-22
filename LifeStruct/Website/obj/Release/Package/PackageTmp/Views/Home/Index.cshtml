@@ -15,25 +15,25 @@
 <input type="hidden" id="dietId" value="@user.DietId" />
 <div class="type-1">
     <a href="/Account/Details">
-        <div class="tile g3">
+        <div class="tile bg-green-3">
             <span class="icon-user"></span>
             <div class="hover hide">Profile - Update your weight</div>
         </div>
     </a>
-    <div id="goal" class="tile g4">
+    <div id="goal" class="tile bg-green-4">
         <span class="icon-checkered-flag"></span>
         <div class="hover hide">What is your goal?</div>
     </div>
     <div class="goal hide">
-        <div onclick="update.set('@(user.Id)_1', 'Goal', this)" id="goal1" class="tile goal-index g2">
+        <div onclick="update.set('@(user.Id)_1', 'Goal', this)" id="goal1" class="tile goal-index bg-green-2">
             <span class="icon-arrow-up"></span>
             <div class="hover hide">To gain weight</div>
         </div>
-        <div onclick="update.set('@(user.Id)_2', 'Goal', this)" id="goal2" class="tile goal-index g2">
+        <div onclick="update.set('@(user.Id)_2', 'Goal', this)" id="goal2" class="tile goal-index bg-green-2">
             <span class="icon-loop2"></span>
             <div class="hover hide">To maintain current weight</div>
         </div>
-        <div onclick="update.set('@(user.Id)_3', 'Goal', this)" id="goal3" class="tile goal-index g2">
+        <div onclick="update.set('@(user.Id)_3', 'Goal', this)" id="goal3" class="tile goal-index bg-green-2">
             <span class="icon-arrow-down"></span>
             <div class="hover hide">To lose weight</div>
         </div>
@@ -41,7 +41,7 @@
 </div>
 <div class="type-2">
     <a href="../Statistics/index">
-        <div class="tile left g6" onmouseover="progress.mouseOver('.intakeHover', '.totalIntake');" onmouseleave="progress.mouseOver('.totalIntake','.intakeHover');">
+        <div class="tile left bg-green-6" onmouseover="progress.mouseOver('.intakeHover', '.totalIntake');" onmouseleave="progress.mouseOver('.totalIntake','.intakeHover');">
             <div class="totalIntake">
                 @if (!string.IsNullOrEmpty(user.DietId))
             {
@@ -59,36 +59,35 @@
         </div>
     </a>
     <a href="/Videos/Index">
-        <div class="tile r2">
+        <div class="tile bg-red-2">
             <span class="icon-play3"></span>
             <div class="hover hide">Submit and find inspirational videos</div>
         </div>
     </a>
     <a href="/Fitness/Index">
-        <div class="tile orange4">
+        <div class="tile bg-orange-4">
             <span class="icon-sports-shoe"></span>
             <div class="hover hide">Create and find workout schedules</div>
         </div>
     </a>
     <a href="/Diets/Index">
-        <div class="tile b1">
+        <div class="tile bg-blue-1">
             <span class="icon-lunch"></span>
             <div class="hover hide">Find your diet</div>
         </div>
     </a>
     <a href="/Health/Index">
-        <div class="tile r1">
+        <div class="tile bg-red-1">
             <span class="icon-pencil"></span>
             <div class="hover hide">Articles written by users</div>
         </div>
     </a>
     @if (!string.IsNullOrEmpty(user.DietId))
     {
-
         TimeSpan dateResult;
         dateResult = DateTime.Now - Convert.ToDateTime(user.DietDate);
         var week = Math.Ceiling(dateResult.TotalDays / 7);
-        <div class="tile-5 b1 border">
+        <div class="tile-5 bg-blue-1 border">
             <div class="explain">
                 <div class="con">
                     <h3>Diet for @DateTime.Now.DayOfWeek</h3>
@@ -99,47 +98,47 @@
 
                 <thead>
                     <tr>
-                        @foreach (var m in Model.Meals)
+                        @foreach (var meal in Model.Meals)
                         {
-                            if (Model.MealCollection.Any(x => x.Meal.ToString() == m.Id && ((DayOfWeek)x.Day) == DateTime.Now.DayOfWeek && x.WeekNo == week))
+                            if (Model.MealCollection.Any(x => x.Meal.ToString() == meal.Id && ((DayOfWeek)x.Day) == DateTime.Now.DayOfWeek && x.WeekNo == week))
                             {
-                                <th>@m.Name</th>
+                                <th>@meal.Name</th>
                             }
                         }
                     </tr>
                 </thead>
                 <tbody>
                     <tr>
-                        @foreach (var m in Model.Meals)
+                        @foreach (var meal in Model.Meals)
                         {
 
-                            if (Model.MealCollection.Any(x => x.Meal.ToString() == m.Id))
+                            if (Model.MealCollection.Any(x => x.Meal.ToString() == meal.Id))
                             {
                                 <td>
-                                    @foreach (var mc in Model.MealCollection.Where(x => ((DayOfWeek)x.Day) == DateTime.Now.DayOfWeek))
+                                    @foreach (var mealCollection in Model.MealCollection.Where(x => ((DayOfWeek)x.Day) == DateTime.Now.DayOfWeek))
                                     {
 
-                                        if (mc.Meal.ToString() == m.Id)
+                                        if (mealCollection.Meal.ToString() == meal.Id)
                                         {
-                                            if (mc.WeekNo == week)
+                                            if (mealCollection.WeekNo == week)
                                             {
-                                                var f = LifeStruct.Controllers.HomeGet.GetFoodById(mc.FoodId);
-                                                var intake = (Convert.ToDouble(f.Calories) / 100) * Convert.ToDouble(mc.Amount);
-                                                var dp = LifeStruct.Controllers.HomeGet.GetProgress(user.Id, mc.DietId, mc.FoodId, intake.ToString(CultureInfo.InvariantCulture), mc.Meal);
+                                                var foodById = LifeStruct.Controllers.HomeGet.GetFoodById(mealCollection.FoodId);
+                                                var intakeValue = (Convert.ToDouble(foodById.Calories) / 100) * Convert.ToDouble(mealCollection.Amount);
+                                                var dietProgress = LifeStruct.Controllers.HomeGet.GetProgress(user.Id, mealCollection.DietId, mealCollection.FoodId, intakeValue.ToString(), mealCollection.Meal);
 
 
-                                                foreach (var d in dp)
+                                                foreach (var d in dietProgress)
                                                 {
                                                     gain += (int)Convert.ToDecimal(d.CalorieIntake);
                                                 }
-                                                <table onclick="progress.addDietProgress(event, '@f.Id', '@mc.DietId', '@intake', '@user.Id', '@mc.Meal')" class="parent @if (dp.Any()) { <text>done</text>}" data-dietprogress="@if (dp.Count() > 0) { <text>@dp.First().Id</text>}" href="" title="Add to day">
+                                                <table onclick="progress.addDietProgress(event, '@foodById.Id', '@mealCollection.DietId', '@intakeValue', '@user.Id', '@mealCollection.Meal')" class="parent @if (dietProgress.Any()) { <text>done</text>}" data-dietprogress="@if (dietProgress.Count() > 0) { <text>@dietProgress.First().Id</text>}" href="" title="Add to day">
                                                     <tr>
                                                         <td>
-                                                            <p>@f.Name</p>
+                                                            <p>@foodById.Name</p>
                                                         </td>
                                                         <td>
-                                                            <div>@Math.Round(intake) kcal</div>
-                                                            <div>@mc.Amount gram</div>
+                                                            <div>@Math.Round(intakeValue) kcal</div>
+                                                            <div>@mealCollection.Amount gram</div>
                                                         </td>
                                                     </tr>
                                                 </table>
@@ -171,7 +170,7 @@
     {
         var dateResult = DateTime.Now - Convert.ToDateTime(user.FitnessDate);
         var week = Math.Ceiling(dateResult.TotalDays / 7);
-        <div class="home-fitness g3 border-no-top border">
+        <div class="home-fitness bg-green-3 border-no-top border">
 
             <div class="explain">
                 <div class="con">

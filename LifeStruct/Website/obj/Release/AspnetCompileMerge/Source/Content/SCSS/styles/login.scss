@@ -1,34 +1,60 @@
-﻿.login {
-    width:250px;
-    height:200px;
-    display:block; 
+﻿$border-color: #b8e4b8;
+
+.login {
+    width: 250px;
+    height: 200px;
+    display: block;
     margin: 15% auto;
+
     a, button {
         @extend .right;
-    }    
+    }
 }
+
 .register {
-    display:inline-block;
-    float:left;
+    display: inline-block;
+    float: left;
     padding: 15px;
-    
-   .text-danger {
-       color: darkred;
-   }
+
+    .text-danger {
+        color: darkred;
+    }
 }
+
 .signout {
-    position:relative;
+    position: relative;
+
     .signout-btn {
-        width:42px;
+        width: 42px;
         padding: 10px;
-        color: $w;
+        color: $white;
         font-size: 1.4em;
-        margin-bottom: 5px;
         background: $red-1;
+
         .icon-exit {
-            display:block;
+            display: block;
             margin: 2px;
         }
     }
-    
+}
+
+.main-nav-container {
+    width: 100%;
+    border-bottom: 1px solid $border-color;
+
+    .main-nav {
+        width: 85%;
+    }
+}
+
+.side-nav {
+    width: 15%;
+    min-height: 1px;
+    float: left;
+
+    .tile {
+        span {
+            margin: 15%;
+        }
+    }
 }

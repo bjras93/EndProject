@@ -13,7 +13,7 @@ namespace LifeStruct.Controllers.ApiControllers
 
     public class DietProgressApiController : ApiController
     {
-        readonly DefaultConnection _db = new DefaultConnection();
+        DefaultConnection _db = new DefaultConnection();
         [Route("api/DietProgressApi/AddProgress")]
         [HttpPost]
         public IHttpActionResult AddProgress(JObject jsonData)
@@ -64,12 +64,12 @@ namespace LifeStruct.Controllers.ApiControllers
             if (user.Gender == 2)
             {
                 bmr = ((10 * Convert.ToDouble(weight)) + (6.25 * Convert.ToDouble(height)) - (5 * age) + 5) *
-                      Convert.ToDouble(user.ActiveLevel);
+                      Convert.ToDouble(user.ActivityLevel);
             }
             else
             {
                 bmr = ((10 * Convert.ToDouble(weight)) + (6.25 * Convert.ToDouble(height)) - (5 * age) + -161) *
-                      Convert.ToDouble(user.ActiveLevel);
+                      Convert.ToDouble(user.ActivityLevel);
             }
             foreach (var goal in _db.Goal.ToList().Where(x => x.UserId == user.Id))
             {

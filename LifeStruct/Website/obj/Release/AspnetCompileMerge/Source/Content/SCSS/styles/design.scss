@@ -11,8 +11,7 @@ body {
 }
 
 .container {
-    @extend .ib;
-    margin: 0 15%;
+    @extend .inline-block;
     width: 70%;
     min-width: 320px;
 
@@ -37,16 +36,18 @@ body {
 .stop-scroll {
     overflow: hidden;
 }
+
 .navbar-brand {
     text-shadow: 1px 1px rgb(130,130,130);
 }
+
 .add {
     position: fixed;
     right: 50px;
     bottom: -100px;
     border-radius: 50px;
     padding: 18px 35px;
-    color: $w;
+    color: $white;
     font-size: 3em;
     background-color: $red-1;
     cursor: pointer;
@@ -99,7 +100,6 @@ body {
 }
 
 .ipt {
-    margin: $smg;
     padding: $spd;
     min-width: $smw;
     box-sizing: border-box;
@@ -107,15 +107,15 @@ body {
 }
 
 .btn {
-    cursor:pointer;
+    cursor: pointer;
     display: block;
     margin: $smg;
     padding: $spd;
     min-width: $smw;
     text-align: center;
     clear: both;
-    background-color: $gre-2;
-    color: $w;
+    background-color: $green-2;
+    color: $white;
     box-sizing: border-box;
 
     @include phone {
@@ -125,7 +125,7 @@ body {
 }
 
 .type-1 {
-    @extend .ib;
+    @extend .inline-block;
     @extend .left;
     width: 100%;
 
@@ -175,7 +175,7 @@ body {
 
 .type-2 {
     @extend .left;
-    @extend .ib;
+    @extend .inline-block;
     width: 100%;
 
     .tile {
@@ -234,7 +234,7 @@ body {
 
     span {
         margin-top: 20%;
-        @extend .ib;
+        @extend .inline-block;
         font-size: 4em;
 
         @include phone {
@@ -258,7 +258,7 @@ body {
         margin-left: -20px;
         position: fixed;
         padding: 5px;
-        background: $w;
+        background: $white;
         color: #333;
     }
 }
@@ -273,7 +273,7 @@ body {
     }
 
     .selected {
-        background-color: $gre-1;
+        background-color: $green-1;
     }
 
     .tile {
@@ -302,7 +302,7 @@ body {
 }
 
 .save-details {
-    background-color: $gre-5;
+    background-color: $green-5;
 }
 
 .user-section {
@@ -310,13 +310,12 @@ body {
 }
 
 .return {
-    display: inline-block;
-    padding: 5px $spd;
-    background-color: $gre-1;
-    color: $w;
-    margin: 10px 0;
-    border-radius: 5px;
-    float: left;
+    @extend .inline-block;
+    width: 100%;
+    text-align: center;
+    background-color: $green-1;
+    color: $white;
+    padding: $spd 0;
 }
 
 .border {
@@ -328,13 +327,12 @@ body {
 }
 
 .overview {
+    @extend .left;
     min-height: 200px;
     width: 49.5%;
     margin-right: 0.5%;
     margin-bottom: 0.5%;
-    float: left;
     padding: $spd;
-    background-color: rgb(32,170,143);
 
     @include phone {
         width: 100%;
@@ -342,10 +340,6 @@ body {
 
     h3 {
         margin-bottom: $spd;
-    }
-
-    a {
-        color: $w;
     }
 
     .description {
@@ -441,7 +435,7 @@ body {
         top: 0;
         padding-top: 25%;
         text-align: center;
-        color: $w;
+        color: $white;
     }
 
     &:hover {
@@ -452,39 +446,45 @@ body {
 }
 
 .mood-overlay {
-    position:absolute;
-    display:none;
+    position: absolute;
+    display: none;
     width: 100%;
     height: 100vh;
-    top:0;
-    left:0;
+    top: 0;
+    left: 0;
     background-color: rgba(22, 160, 133, 0.6);
-    
-        @include vertical {
-            width:100%;
-            }
+
+    @include vertical {
+        width: 100%;
+    }
+
     .mood {
         position: absolute;
         top: 15%;
-        left:35%;
+        left: 35%;
         padding: $spd;
+
         @include phone {
             left: 10%;
         }
+
         @include vertical {
             left: 10px;
         }
-        @extend .b1;
+
+        @extend .bg-blue-1;
+
         p {
             margin-bottom: 10px;
         }
+
         span {
             font-size: 6em;
             cursor: pointer;
             margin: 0 10px;
-            
-        @include vertical {
-            font-size: 4em;
+
+            @include vertical {
+                font-size: 4em;
             }
         }
     }

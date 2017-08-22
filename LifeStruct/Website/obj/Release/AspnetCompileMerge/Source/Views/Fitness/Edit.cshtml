@@ -5,8 +5,7 @@
 @section Signout{
     @Html.Partial("~/Views/Shared/_logout.cshtml")
 }
-@Html.ActionLink("Return", "Index", "Fitness", null, new { @class = "return" })
-<div class="content b1" ng-app="LifeStruct" ng-controller="FitnessCtrl">
+<div class="content bg-green-0" ng-app="LifeStruct" ng-controller="FitnessCtrl">
     <div class="fitness fitness-edit">
         @using (Html.BeginForm("Edit", "Fitness", FormMethod.Post, new { enctype = "multipart/form-data" }))
         {

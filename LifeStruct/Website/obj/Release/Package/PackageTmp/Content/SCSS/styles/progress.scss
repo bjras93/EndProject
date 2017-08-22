@@ -10,11 +10,11 @@
     .parent {
         cursor: pointer;
         border-collapse: collapse;
-        background-color: $gre-2;
+        background-color: $green-2;
         width: 100%;
         max-width: 300px;
-        border-right: 1px solid $gre-1;
-        border-bottom: 1px solid $gre-1;
+        border-right: 1px solid $green-1;
+        border-bottom: 1px solid $green-1;
 
 
         td {
@@ -27,7 +27,7 @@
     }
     
         .done {
-            background-color: $gre-5 !important;
+            background-color: $green-5 !important;
         }
 }
 
@@ -48,11 +48,11 @@
     }
 
     .done {
-        background-color: $gre-5;
+        background-color: $green-5;
     }
 
     .undone {
-        background-color: $gre-2;
+        background-color: $green-2;
     }
 
     .con {

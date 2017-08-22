@@ -7,8 +7,7 @@
 @section Signout{
     @Html.Partial("~/Views/Shared/_logout.cshtml")
 }
-@Html.ActionLink("Return", "Index", "Home", null, new { @class = "return" })
-<div ng-app="LifeStruct" class="video-con" ng-controller="videoIndexCtrl">
+<div ng-app="LifeStruct" class="video-con bg-green-0" ng-controller="videoIndexCtrl">
     <input type="text" placeholder="Search" ng-model="search" class="ipt search right" />
     <div class="menu-video">
         <a class="btn btn-article selected" id="type-2" ng-click="videoList(1, 20, false, 2)" href="">Health</a>

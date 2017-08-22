@@ -1,8 +1,7 @@
-using System.Data.Entity.Migrations;
-
 namespace LifeStruct.Migrations
 {
-    internal sealed class Configuration : DbMigrationsConfiguration<LifeStruct.Models.DefaultConnection>
+    using System.Data.Entity.Migrations;
+    internal sealed class Configuration : DbMigrationsConfiguration<Models.DefaultConnection>
     {
         public Configuration()
         {

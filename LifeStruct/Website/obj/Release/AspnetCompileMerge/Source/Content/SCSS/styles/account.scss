@@ -5,7 +5,7 @@
         list-style: none;
         a {
             font-weight: bold;
-            color: $w;
+            color: $white;
         }
     }
 }
@@ -32,16 +32,15 @@
             font-weight:bold;
         }
         span {
-            color: $w;
-            @extend .ib;
-            width:40%;
+            @extend .inline-block;
+            width:25%;
             @include phone {
                 width: 100%;
                 margin-bottom: 10px;
                 
             }
             a {
-                color: $w;
+                color: $white;
             }
         }
     }

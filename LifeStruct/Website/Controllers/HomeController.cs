@@ -10,7 +10,7 @@
     using Models.Fitness;
     public class HomeController : Controller
     {
-        readonly DefaultConnection _db = new DefaultConnection();
+        DefaultConnection _db = new DefaultConnection();
         public ActionResult Index()
         {
             if (Request.IsAuthenticated)

@@ -8,7 +8,6 @@
     @Html.Partial("~/Views/Shared/_logout.cshtml")
 }
 <div ng-app="LifeStruct" ng-controller="articleIndexCtrl">
-    @Html.ActionLink("Return", "Index", "Home", null, new { @class = "return" })
     <div class="articles left">
         <div class="menu-article">
             <a class="btn btn-article selected" data-type="1" href="">Health</a>
@@ -16,7 +15,7 @@
             <a class="btn btn-article" data-type="3" href="">Personal</a>
         </div>
         <input type="text" class="ipt search right" ng-model="search" placeholder="Search" />
-        <div class="content g3">
+        <div class="content bg-beige-3">
             <div class="item" ng-repeat="article in filterArticles = (articles.Articles | filter: search) | orderBy: '-Likes'">
                 
                 <div ng-if="filterArticles.length != 0" class="article">

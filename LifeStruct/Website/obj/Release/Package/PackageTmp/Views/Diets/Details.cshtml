@@ -7,9 +7,8 @@
 @section Signout{
     @Html.Partial("~/Views/Shared/_logout.cshtml")
 }
-@Html.ActionLink("Return", "Index", "Diets", null, new { @class = "return" })
 
-<div class="diet-information">
+<div class="diet-information bg-green-0">
     <img src="~/Content/img/user/@Model.Img" />
 
     <div class="description">
@@ -19,7 +18,7 @@
 </div>
 @if (Model.MealCollection.Count() > 0)
 {
-    <div class="diet-schedule">
+    <div class="diet-schedule bg-green-0">
        
         @for (var i = 0; i < Model.Weeks; i++)
         {

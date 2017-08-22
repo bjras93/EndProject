@@ -1,119 +1,128 @@
 ﻿$base: #333;
-$w: #fff;
-$blu-1: #73AFAD;
-$blu-2: #34495E;
-$gre-1: #16A085;
-$g1-o6:rgba(22,160,133,0.6);
-$gre-2: #1ABC9C;
-$gre-3: #96D4BF;
-$gre-4: #639C89;
-$gre-5: rgb(90,210,155);
-$gre-6: #A2AB58;
-$orange-1: #EB974E;
+$white: #fff;
+$beige: #f5fae9;
+$blue-1: #73AFAD;
+$blue-2: #34495E;
+$green-0: #bee1c8;
+$green-1: #96D4BF;
+$green-2: rgb(90,210,155);
+$green-3: #A2AB58;
+$green-4: #1ABC9C;
+$green-5: #16A085;
+$green-6: #639C89;
+$green-1-o6:rgba(22, 160, 133, 0.60);
+$orange-1: #FDE3A7;
 $orange-2: #F4B350;
-$orange-3: #FDE3A7;
+$orange-3: #EB974E;
 $orange-4: #D9853C;
 $red-1: #F57979;
 $red-2: #E44424;
 $happy: #00AF5E;
 $sad: #CEB3A8;
 $indifferent: #D4E8D6;
-$fb: #3B5998;
-$ggl: #D34836;
-$twt: #55ACEE;
-$yt: #E52727;
-.b1 {
-    background: $blu-1;
-    color: $w;
+$facebook: #3B5998;
+$google: #D34836;
+$twitter: #55ACEE;
+$youtube: #E52727;
+.bg-beige-0 {
+    background: $beige;
+    color: $base;
 }
-.b2 {
-    background: $blu-2;
-    color: $w;
+.bg-blue-1 {
+    background: $blue-1;
+    color: $white;
 }
-.g1 {
-    background: $gre-1;
-    color: $w;
+.bg-blue-2 {
+    background: $blue-2;
+    color: $white;
 }
-.g1-o6 {
-    background: $g1-o6;
-    color: $w;
+.bg-green-0 {
+    background: $green-0;
+    color: $base;
 }
-.g2 {
-    background: $gre-2;
-    color: $w;
+.bg-green-1 {
+    background: $green-1;
+    color: $white;
 }
-.g3 {
-    background: $gre-3;
-    color: $w;
+.bg-green-1-o6 {
+    background: $green-1-o6;
+    color: $white;
 }
-.g4 {
-    background: $gre-4;
-    color: $w;
+.bg-green-2 {
+    background: $green-2;
+    color: $white;
 }
-.g6 {
-    background: $gre-6;
-    color: $w;
+.bg-green-3 {
+    background: $green-3;
+    color: $white;
 }
-.r1 {
+.bg-green-4 {
+    background: $green-4;
+    color: $white;
+}
+.bg-green-6 {
+    background: $green-6;
+    color: $white;
+}
+.bg-red-1 {
     background: $red-1;
-    color: $w;
+    color: $white;
 }
-.r2 {
+.bg-red-2 {
     background: $red-2;
-    color: $w;
+    color: $white;
 }
-.orange1 {
+.bg-orange-1 {
     background: $orange-1;
-    color: $w;
+    color: $white;
 }
-.orange2 {
+.bg-orange-2 {
     background: $orange-2;
-    color: $w;
+    color: $white;
 }
-.orange3 {
+.bg-orange-3 {
     background: $orange-3;
-    color: $w;
+    color: $white;
 }
-.orange4 {
+.bg-orange-4 {
     background: $orange-4;
-    color: $w;
+    color: $white;
 }
-.w {
-    background-color: $w;
+.bg-white {
+    background-color: $white;
     color: $base;
     border: 1px solid rgb(190,190,190);
 }
-.s {
+.bg-sad {
     background: $sad;
 }
-.h {
+.bg-happy {
     background: $happy;
 }
-.i {
+.bg-indifferent {
     background: $indifferent;
 }
-.yt { 
-    color: $yt;
+.youtube { 
+    color: $youtube;
 }
-.Google {
-    background-color: $ggl !important;
-    color: $w;
+.google {
+    background-color: $google !important;
+    color: $white;
 }
-.Twitter {
-    background-color: $twt !important;
-    color: $w;
+.twitter {
+    background-color: $twitter !important;
+    color: $white;
 }
-.Facebook {
-    background-color: $fb !important;
-    color: $w;
+.facebook {
+    background-color: $facebook !important;
+    color: $white;
 }
-.bsignup {
-    background-color: $gre-1;
-    color: $w;
+.bg-signup {
+    background-color: $green-1;
+    color: $white;
 
 }
-.blogin {
-    background-color: $gre-2;
-    color: $w;
-
+.bg-login {
+    background-color: $green-2;
+    color: $white;
 }

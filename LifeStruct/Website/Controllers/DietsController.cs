@@ -13,7 +13,7 @@ namespace LifeStruct.Controllers
     using System.Web.Helpers;
     public class DietsController : Controller
     {
-        readonly DefaultConnection _db = new DefaultConnection();
+        DefaultConnection _db = new DefaultConnection();
 
         public ActionResult Index()
         {

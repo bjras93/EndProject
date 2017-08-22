@@ -1,63 +1,51 @@
-﻿var clicks = 0
-fEvent = '',
- ac = '';
-anchors = [],
+﻿var clicks = 0,
+    nUntil = '',
+    target = '',
+    items = '',
+    allTargets = [];
+
 autocomplete = {
     init: function () {
         $('body').on('click', function (e) {
-            if ($(e.target).next().hasClass('autocomplete-container')) {
-                ac = e.target;
+            var target = $(e.target);
+            if (target.hasClass('autocomplete-input')) {
+                nUntil = $(e.target).parent().find('.autocomplete-container');
+                $('.autocomplete-container').hide();
+                $(nUntil).show();
+            } else {
+                nUntil = $(e.target).parent().find('.autocomplete-container');
+                $(nUntil).hide();
             }
-            $(ac).next().find('.autocomplete').hide()
-            if (clicks != 0) {
-                $(anchors[clicks - 1].anchor).removeClass('autocomplete-selected');
+            if (target.hasClass('autocomplete-items')) {
+                $('.autocomplete-container').hide();
             }
-            fEvent = '';
             clicks = 0;
-
-            if ($(e.target).next().hasClass('autocomplete-container')) {
-                $(ac).next().find('.autocomplete').show()
-            }
         });
     },
-
+    keyDown: function (event) {
+        if ($(event.target).hasClass('autocomplete-input')) {
+            clicks = 0;
+            target = $(event.target);
+            items = target.parent().find('.autocomplete-items');
+            allTargets = [];
+            allTargets.push(target);
+            for (var i = 0; i < items.length; i++) {
+                allTargets.push($(items[i]));
+            }
+        }
+        if (event.keyCode === 40 && clicks !== items.length) {
+            event.preventDefault();
+            $(allTargets[clicks]).removeClass('autocomplete-selected');
+            clicks++;
+            $(allTargets[clicks]).focus();
+            $(allTargets[clicks]).addClass('autocomplete-selected');
+        }
+        if (event.keyCode === 38 && clicks !== 0) {
+            event.preventDefault();
+            $(allTargets[clicks]).removeClass('autocomplete-selected');
+            clicks = clicks - 1;
+            $(allTargets[clicks]).focus();
+            $(allTargets[clicks]).addClass('autocomplete-selected');
+        }
+    }
 }
-var keyDown = function (event) {
-    anchors = []
-    if (fEvent == '') {
-        fEvent = event.target;
-    }
-    $(fEvent).next().find('a').each(function () {
-        anchors.push({ anchor: this })
-    });
-    if (event.keyCode == 13) {
-        $(anchors[clicks - 1].anchor).removeClass('autocomplete-selected');
-        fEvent = '';
-        clicks = 0;
-    }
-    if (event.keyCode == 38) {
-        clicks = clicks - 1;
-        event.preventDefault();
-        if (clicks != 0) {
-            $(anchors[clicks - 1].anchor).addClass('autocomplete-selected');
-            $(anchors[clicks - 1].anchor).focus()
-        }
-        else {
-            $(anchors[clicks].anchor).removeClass('autocomplete-selected');
-            $(fEvent).focus();
-            fEvent = '';
-        }
-        if (clicks >= 1) {
-            $(anchors[clicks].anchor).removeClass('autocomplete-selected');
-        }
-    }
-    if (event.keyCode == 40 && clicks != anchors.length) {
-        event.preventDefault();
-        $(anchors[clicks].anchor).focus()
-        if (clicks >= 1) {
-            $(anchors[clicks - 1].anchor).removeClass('autocomplete-selected');
-        }
-        $(anchors[clicks].anchor).addClass('autocomplete-selected');
-        clicks++;
-    }
-};

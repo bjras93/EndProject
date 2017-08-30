@@ -1,55 +1,81 @@
-﻿@using LifeStruct.Models.Account
-@model LifeStruct.Models.Diet.DietModel
-
+﻿
 @{
-    ViewBag.Title = "Create your own diet";
-    var user = UserViewModel.GetCurrentUser();
+    ViewBag.Title = "CreateRevised";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-
-@section Signout{
-    @Html.Partial("~/Views/Shared/_logout.cshtml")
-}
-<div ng-app="LifeStruct">
-
-    <div class="create-diet" ng-controller="dietPostCtrl">
-        <div class="diet bg-green-0">
-            @using (Html.BeginForm("Create", "Diets", FormMethod.Post, new { enctype = "multipart/form-data" }))
-            {
-                <input type="hidden" id="UserId" name="UserId" value="@user.Id.Replace("-", "")" />
-                <div class="information">
-                    <input name="Title" class="ipt" type="text" placeholder="Title" />
-                    <div ng-if="!myForm.Title.$valid && isClicked">
-                        <div>This field is required</div>
-                    </div>
-                    <textarea name="Description" placeholder="Description" class="ipt tinymce"></textarea>
-                    <div ng-if="!myForm.Description.$valid && isClicked">
-                        <div>This field is required</div>
-                    </div>
-                    <div>
-                        <tags-input ng-model="tags" placeholder="Tags to find your diet"></tags-input>
-                        <input type="hidden" name="Tags" value="{{tags}}" />
+<div class="diet-container bg-green-0 ng-scope" ng-app="LifeStruct">
+    <div class="content" ng-controller="diet-controller">
+        <h2>CreateRevised</h2>
+        <div>
+            <input type="text" class="ipt" placeholder="Title" ng-model="dietModel.Title" />
+            <div class="error" ng-repeat="error in errors">
+                <b>{{error.Title}}</b>
+            </div>
+        </div>
+        <div>
+            <textarea class="ipt" placeholder="Description" ng-model="dietModel.Description"></textarea>
+            <div ng-repeat="error in errors">
+                <b>{{error.Description}}</b>
+            </div>
+        </div>
+        <div>
+            <input type="file" class="ipt" ng-model="dietModel.Img" />
+        </div>
+        <div>
+            <input type="text" class="ipt" placeholder="Tags" ng-model="dietModel.Tags" />
+            <div ng-repeat="error in errors">
+                <b>{{error.Tags}}</b>
+            </div>
+        </div>
+        <div class="diet-days" ng-repeat="day in days">
+            <div ng-init="dayIndex = $index"></div>
+            <h3 class="accordion">{{day}}</h3>
+            <div class="diet-meals">
+                <div class="diet-meal" ng-repeat="meal in meals">
+                    <div ng-init="mealIndex = $index"></div>
+                    <h4>{{meal}}</h4>
+                    <div class="diet-edibles" ng-repeat="edible in mealsCollectionModel" ng-if="dayIndex == edible.Day && mealIndex === edible.Meal">
+                        <input type="text" ng-keyup="searchFood(edible.Name); keyDown($event);" class="autocomplete-input ipt" ng-model="edible.Name" placeholder="Edible" />
+                        @* Autocomplete start*@
+                        <div class="autocomplete-container" ng-if="edible.Name.length > 0">
+                            <div class="autocomplete">
+                                <div ng-repeat="food in allFood | filter:edible.Name | limitTo: 5 | orderBy: 'Name.length'">
+                                    <a class="autocomplete-items" ng-keyup="keyDown($event)" ng-click="selectFood(edible, food)" href="">
+                                        <span>{{food.Name}}</span>
+                                        <span class="small-font right">
+                                            <b>Cal:</b>
+                                            {{food.Calories}}
+                                        </span>
+                                    </a>
+                                </div>
+                                <div ng-if="allFood.length == 0">
+                                    <a class="open-modal autocomplete-items" data-url="@(Url.Action("_AddNewFood"))" href="">
+                                        Could not find {{edible.Name}} do you wish to create it?
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        @* Autocomplete end *@
+                        <div>
+                            <span remove-me ng-click="addEdible(1, mealIndex, dayIndex, edible.Edible +1)">Add Edible</span>
+                        </div>
                     </div>
                 </div>
-                <div class="diet-showpic right">
-                    <img src="" id="modelImg" />
-                </div>
-                <div class="create-diet-submit">
-                    <div class="picture">
-                        <label class="btn ib" for="upload-file">Upload image</label>
-                        <input ng-model="Img" type="file" accept="image/.png,.jpg,.gif" class="hide" id="upload-file" name="uploadFile" />
-                    </div>
-                    <input type="submit" class="btn ib blogin" value="Create" />
-                </div>
-                @Html.ValidationMessage("Filesize")
-                <div class="clear"></div>
-            }
+            </div>
+        </div>
+        <div>
+            <input type="submit" value="Create" ng-click="createDiet(dietModel, mealsCollectionModel)" class="btn"/>
+        </div>
+    </div>
+    <div class="modal-overlay">
+        <div id="modal">
         </div>
     </div>
 </div>
-<script src="~/Content/JS/layout/diet.js"></script>
-<script src="~/Content/JS/layout/fileupload.js"></script>
+<script src="~/Content/JS/layout/accordion.js"></script>
+<script src="~/Content/JS/layout/dietRevised.js"></script>
+<script src="~/Content/JS/layout/autocomplete.js"></script>
 <script>
-    upload('#upload-file', '#modelImg');
-    diet.pageOne();
+    autocomplete.resize('.autocomplete-input', '.autocomplete')
 </script>

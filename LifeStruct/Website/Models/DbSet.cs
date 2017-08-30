@@ -30,6 +30,7 @@ namespace LifeStruct.Models
         public DbSet<ActivityModel> Activity { get; set; }
         public DbSet<WeightModel> Weight { get; set; }
         public DbSet<RecipesModel> Recipes { get; set; }
+        public DbSet<IngredientsModel> Ingredients { get; set; }
     }
     
 }

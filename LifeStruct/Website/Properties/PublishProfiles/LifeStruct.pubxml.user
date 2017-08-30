@@ -14,16 +14,16 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>08/15/2017 12:23:53</publishTime>
     </File>
     <File Include="bin/Antlr3.Runtime.dll">
-      <publishTime>10/09/2013 16:29:20</publishTime>
+      <publishTime>09/10/2013 16:29:20</publishTime>
     </File>
     <File Include="bin/ApplicationInsights.config">
       <publishTime>08/15/2017 12:23:53</publishTime>
     </File>
     <File Include="bin/App_global.asax.compiled">
-      <publishTime>08/15/2017 14:15:20</publishTime>
+      <publishTime>08/23/2017 10:45:41</publishTime>
     </File>
     <File Include="bin/App_global.asax.dll">
-      <publishTime>08/15/2017 14:15:20</publishTime>
+      <publishTime>08/23/2017 10:45:41</publishTime>
     </File>
     <File Include="bin/EntityFramework.dll">
       <publishTime>08/14/2017 08:18:20</publishTime>
@@ -35,10 +35,10 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>08/14/2017 08:18:20</publishTime>
     </File>
     <File Include="bin/LifeStruct.dll">
-      <publishTime>08/15/2017 14:15:09</publishTime>
+      <publishTime>08/23/2017 10:45:30</publishTime>
     </File>
     <File Include="bin/LifeStruct.dll.config">
-      <publishTime>08/15/2017 12:23:55</publishTime>
+      <publishTime>08/21/2017 15:30:21</publishTime>
     </File>
     <File Include="bin/Microsoft.AI.Agent.Intercept.dll">
       <publishTime>06/27/2017 12:59:34</publishTime>
@@ -77,31 +77,31 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>07/25/2017 16:45:52</publishTime>
     </File>
     <File Include="bin/Microsoft.Owin.dll">
-      <publishTime>04/05/2017 11:53:36</publishTime>
+      <publishTime>05/04/2017 11:53:36</publishTime>
     </File>
     <File Include="bin/Microsoft.Owin.Host.SystemWeb.dll">
-      <publishTime>04/05/2017 11:53:40</publishTime>
+      <publishTime>05/04/2017 11:53:40</publishTime>
     </File>
     <File Include="bin/Microsoft.Owin.Security.Cookies.dll">
-      <publishTime>04/05/2017 11:53:42</publishTime>
+      <publishTime>05/04/2017 11:53:42</publishTime>
     </File>
     <File Include="bin/Microsoft.Owin.Security.dll">
-      <publishTime>04/05/2017 11:53:42</publishTime>
+      <publishTime>05/04/2017 11:53:42</publishTime>
     </File>
     <File Include="bin/Microsoft.Owin.Security.Facebook.dll">
-      <publishTime>04/05/2017 11:53:44</publishTime>
+      <publishTime>05/04/2017 11:53:44</publishTime>
     </File>
     <File Include="bin/Microsoft.Owin.Security.Google.dll">
-      <publishTime>04/05/2017 11:53:44</publishTime>
+      <publishTime>05/04/2017 11:53:44</publishTime>
     </File>
     <File Include="bin/Microsoft.Owin.Security.MicrosoftAccount.dll">
-      <publishTime>04/05/2017 11:53:46</publishTime>
+      <publishTime>05/04/2017 11:53:46</publishTime>
     </File>
     <File Include="bin/Microsoft.Owin.Security.OAuth.dll">
-      <publishTime>04/05/2017 11:53:46</publishTime>
+      <publishTime>05/04/2017 11:53:46</publishTime>
     </File>
     <File Include="bin/Microsoft.Owin.Security.Twitter.dll">
-      <publishTime>04/05/2017 11:53:48</publishTime>
+      <publishTime>05/04/2017 11:53:48</publishTime>
     </File>
     <File Include="bin/Microsoft.Web.Infrastructure.dll">
       <publishTime>08/14/2017 08:18:22</publishTime>
@@ -299,7 +299,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>10/24/2016 09:31:27</publishTime>
     </File>
     <File Include="Content/CSS/main.css">
-      <publishTime>08/15/2017 15:20:56</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="Content/CSS/ng-tags-input.min.css">
       <publishTime>08/14/2017 08:17:21</publishTime>
@@ -335,7 +335,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>08/14/2017 11:14:19</publishTime>
     </File>
     <File Include="Content/JS/layout/autocomplete.js">
-      <publishTime>08/14/2017 08:17:21</publishTime>
+      <publishTime>08/23/2017 10:34:34</publishTime>
     </File>
     <File Include="Content/JS/layout/diet.js">
       <publishTime>08/15/2017 10:05:47</publishTime>
@@ -363,6 +363,9 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     </File>
     <File Include="Content/JS/layout/readmore.js">
       <publishTime>08/14/2017 08:17:21</publishTime>
+    </File>
+    <File Include="Content/JS/layout/recipes.js">
+      <publishTime>08/23/2017 10:15:22</publishTime>
     </File>
     <File Include="Content/JS/layout/statistics.js">
       <publishTime>08/15/2017 10:06:02</publishTime>
@@ -461,7 +464,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>08/15/2017 10:06:39</publishTime>
     </File>
     <File Include="Content/SCSS/main.scss">
-      <publishTime>08/14/2017 08:17:22</publishTime>
+      <publishTime>08/21/2017 15:34:04</publishTime>
     </File>
     <File Include="Content/SCSS/styles/account.scss">
       <publishTime>08/15/2017 13:44:14</publishTime>
@@ -473,19 +476,19 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>08/15/2017 09:51:01</publishTime>
     </File>
     <File Include="Content/SCSS/styles/colors.scss">
-      <publishTime>08/15/2017 14:00:54</publishTime>
+      <publishTime>08/15/2017 14:21:38</publishTime>
     </File>
     <File Include="Content/SCSS/styles/design.scss">
       <publishTime>08/15/2017 14:04:57</publishTime>
     </File>
     <File Include="Content/SCSS/styles/diet.scss">
-      <publishTime>08/15/2017 14:02:09</publishTime>
+      <publishTime>08/15/2017 15:20:56</publishTime>
     </File>
     <File Include="Content/SCSS/styles/fitness.scss">
       <publishTime>08/15/2017 14:01:28</publishTime>
     </File>
     <File Include="Content/SCSS/styles/font.scss">
-      <publishTime>08/15/2017 09:58:16</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="Content/SCSS/styles/login.scss">
       <publishTime>08/15/2017 13:17:20</publishTime>
@@ -498,6 +501,9 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     </File>
     <File Include="Content/SCSS/styles/progress.scss">
       <publishTime>08/15/2017 09:51:49</publishTime>
+    </File>
+    <File Include="Content/SCSS/styles/recipes.scss">
+      <publishTime>08/22/2017 08:19:47</publishTime>
     </File>
     <File Include="Content/SCSS/styles/resets.scss">
       <publishTime>08/15/2017 09:42:08</publishTime>
@@ -512,10 +518,10 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>08/14/2017 08:17:22</publishTime>
     </File>
     <File Include="packages.config">
-      <publishTime>08/15/2017 12:23:54</publishTime>
+      <publishTime>08/21/2017 15:15:10</publishTime>
     </File>
     <File Include="PrecompiledApp.config">
-      <publishTime>08/15/2017 14:15:11</publishTime>
+      <publishTime>08/23/2017 10:45:34</publishTime>
     </File>
     <File Include="Scripts/ai.1.0.11-build00400.js">
       <publishTime>08/15/2017 09:58:17</publishTime>
@@ -605,7 +611,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>08/15/2017 15:22:05</publishTime>
     </File>
     <File Include="Views/Fitness/Details.cshtml">
-      <publishTime>08/15/2017 13:48:00</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="Views/Fitness/Edit.cshtml">
       <publishTime>08/15/2017 13:48:07</publishTime>
@@ -627,6 +633,18 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     </File>
     <File Include="Views/Home/Index.cshtml">
       <publishTime>08/15/2017 12:29:35</publishTime>
+    </File>
+    <File Include="Views/Recipes/Create.cshtml">
+      <publishTime>08/23/2017 10:44:19</publishTime>
+    </File>
+    <File Include="Views/Recipes/Details.cshtml">
+      <publishTime>08/21/2017 15:18:17</publishTime>
+    </File>
+    <File Include="Views/Recipes/Edit.cshtml">
+      <publishTime>08/21/2017 15:18:05</publishTime>
+    </File>
+    <File Include="Views/Recipes/Index.cshtml">
+      <publishTime>08/21/2017 15:00:28</publishTime>
     </File>
     <File Include="Views/Shared/_AddMeals.cshtml">
       <publishTime>08/14/2017 08:17:22</publishTime>
@@ -671,7 +689,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>08/14/2017 08:17:22</publishTime>
     </File>
     <File Include="Web.config">
-      <publishTime>08/15/2017 14:15:10</publishTime>
+      <publishTime>08/23/2017 10:45:32</publishTime>
     </File>
   </ItemGroup>
 </Project>

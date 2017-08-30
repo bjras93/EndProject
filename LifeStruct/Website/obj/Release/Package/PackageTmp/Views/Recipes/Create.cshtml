@@ -1,0 +1,49 @@
+﻿@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div ng-app="LifeStruct" class="recipes-container bg-green-0 ng-scope">
+    <div class="content" ng-controller="recipes-create_controller">
+        <h2>Create</h2>
+        <div><textarea class="ipt" placeholder="Description"></textarea></div>
+        @* Add ingredients section *@
+        <div class="" ng-repeat="ingredient in ingredients">
+            <input autocomplete="off" class="ipt inline-block autocomplete-input" data-id="{{ingredient.Id}}" ng-model-options="{debounce: 50}"
+                   ng-keyup="searchFood(ingredient.Name); keyDown($event);" ng-model="ingredient.Name" data-calories="{{ingredient.Calories}}" type="text" placeholder="Ingredient" />
+            <input type="number" placeholder="Amount" ng-model="ingredient.Amount" class="ipt inline-block number" />
+            {{errors[$index]}}
+            <div class="autocomplete-container" ng-if="ingredient.Name.length > 0">
+                <div class="autocomplete">
+                    <div ng-repeat="food in allFood | filter:ingredient.Name | limitTo: 5 | orderBy: 'Name.length'">
+                        <a class="autocomplete-items" ng-keyup="keyDown($event)" ng-click="selectFood(ingredient, food)" href="">
+                            <span>{{food.Name}}</span>
+                            <span class="small-font right">
+                                <b>Cal:</b>
+                                {{food.Calories}}
+                            </span>
+                        </a>
+                    </div>
+                    <div ng-if="allFood.length == 0">
+                        <a class="open-modal autocomplete-items" data-url="@(Url.Action("_AddNewFood"))" href="">
+                            Could not find {{ingredient.Name}} do you wish to create it?
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        @* Add ingredients section end *@
+        <span ng-click="addIngredient()">Add another ingredient</span>
+        <input ng-click="submitRecipes(ingredients)" ng-if="!success" class="btn" type="submit" value="Create" />
+        <input ng-if="success" class="btn" type="submit" value="Success.. Redirecting" />
+    </div>
+    <div class="modal-overlay">
+        <div id="modal">
+        </div>
+    </div>
+</div>
+<script src="~/Content/JS/layout/autocomplete.js"></script>
+<script src="~/Content/JS/layout/recipes.js"></script>
+<script>
+    autocomplete.resize('.autocomplete-input', '.autocomplete')
+</script>

@@ -14,7 +14,6 @@ namespace LifeStruct.Models.Diet
         public string User { get; set; }
         public string Author { get; set; }
         public int Likes { get; set; }
-        public int Weeks { get; set; }
         public string Tags { get; set; }
         public string Img { get; set; }
     }

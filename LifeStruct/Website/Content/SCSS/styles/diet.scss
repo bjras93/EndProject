@@ -1,4 +1,20 @@
-﻿.diet {
+﻿.diet-container {
+    .diet-days {
+        margin: 15px 0;
+    }
+    .diet-meals {
+        padding: 10px 0;
+        display: none;
+    }
+    .diet-meal {
+        padding: 10px 0;
+    }
+    .diet-edibles {
+        padding: 10px 0;
+    }
+}
+
+.diet {
     padding: $spd;
     .mce-panel {
         background-color: $white;

@@ -27,7 +27,7 @@
             </div>
         </div>
         <div class="side-nav">
-            @if (Request.Url?.AbsolutePath != "/")
+            @if (Request.Url?.AbsolutePath != "/" && Request.IsAuthenticated)
             {
                 @Html.Partial("~/Views/Shared/_SideNav.cshtml")
             }

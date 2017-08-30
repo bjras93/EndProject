@@ -3,6 +3,7 @@
     public class MealCollectionModel
     {
         public string Id { get; set; }
+        public string Name { get; set; }
         public int Meal { get; set; }
         public int Day { get; set; }
         public int Edible { get; set; }

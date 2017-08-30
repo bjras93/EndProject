@@ -3,6 +3,18 @@
     ViewBag.Title = "Details";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+<div class="recipes-container bg-green-0" ng-app="LifeStruct">
+    <div class="content" ng-controller="recipes-create_controller">
+        <div ng-init="getRecipes('@Request.QueryString["recipesId"]')"></div>
+        <h2>Details</h2>
+        <p>{{recipes.Description}}</p>
+        <div ng-repeat="ingredient in ingredients">
+            <div>
+                <span>{{ingredient.Name}}</span>
+                <span>{{ingredient.Amount}}</span>
+            </div>
+        </div>
+    </div>
+</div>
 
-<h2>Details</h2>
-
+<script src="~/Content/JS/layout/recipes.js"></script>

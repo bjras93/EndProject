@@ -334,6 +334,7 @@
     <Compile Include="Models\LikeModel.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\Account\UserViewModel.cs" />
+    <Compile Include="Models\Recipes\IngredientsModel.cs" />
     <Compile Include="Models\Recipes\RecipesModel.cs" />
     <Compile Include="Models\Video\VideoModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -427,9 +428,13 @@
     <Content Include="Content\fonts\icomoon.svg" />
     <Content Include="Content\img\web\pexels-photo.jpg" />
     <Content Include="Content\img\web\youtubeid.png" />
+    <Content Include="Content\JS\errors.js" />
+    <Content Include="Content\JS\globalVars.js" />
+    <Content Include="Content\JS\layout\accordion.js" />
     <Content Include="Content\JS\layout\article.js" />
     <Content Include="Content\JS\layout\autocomplete.js" />
     <Content Include="Content\JS\layout\diet.js" />
+    <Content Include="Content\JS\layout\dietRevised.js" />
     <Content Include="Content\JS\layout\fileupload.js" />
     <Content Include="Content\JS\layout\fitness.js" />
     <Content Include="Content\JS\layout\hover.js" />
@@ -566,7 +571,7 @@
     <Content Include="Content\SCSS\styles\diet.scss" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Views\Diets\Create.cshtml" />
+    <Content Include="Views\OldDiets\Create.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Shared\_AddNewFood.cshtml" />
@@ -575,7 +580,7 @@
     <Content Include="Content\SCSS\styles\modal.scss" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Views\Diets\Details.cshtml" />
+    <Content Include="Views\OldDiets\Details.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\SCSS\styles\autocomplete.scss" />
@@ -602,7 +607,7 @@
     <Content Include="Views\Shared\_ScheduleExist.cshtml" />
     <Content Include="Views\Shared\_AddNewExercise.cshtml" />
     <Content Include="Views\Fitness\Details.cshtml" />
-    <Content Include="Views\Diets\Edit.cshtml" />
+    <Content Include="Views\OldDiets\Edit.cshtml" />
     <Content Include="Views\Videos\Create.cshtml" />
     <Content Include="Views\Shared\_logout.cshtml" />
     <Content Include="Views\Videos\Edit.cshtml" />
@@ -610,6 +615,8 @@
     <Content Include="Views\Health\Edit.cshtml" />
     <Content Include="Views\Health\Details.cshtml" />
     <Content Include="Views\Statistics\Index.cshtml" />
+    <Content Include="Views\Diets\Create.cshtml" />
+    <Content Include="Views\Diets\Edit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201708151007404_Initial.resx">

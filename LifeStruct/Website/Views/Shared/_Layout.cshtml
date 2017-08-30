@@ -9,6 +9,7 @@
           href="~/Content/img/web/favicon.ico">
 
     @Scripts.Render("~/bundles/plugins")
+    <script src="~/Content/JS/globalVars.js"></script>
     <script src="~/Content/JS/plugins/tinymce.min.js"></script>
     <script>
         tinymce.init({ selector: '.tinymce', menu: 'none', toolbar: 'bold italic underline | bullist numlist | outdent indent', font_formats: 'Roboto' });
@@ -36,6 +37,7 @@
             @RenderBody()
         </div>
     </div>
+    <script src="~/Content/JS/errors.js"></script>
     <script src="~/Content/JS/layout/menu.js"></script>
     <script src="~/Content/JS/main.js"></script>
     <script src="~/Content/JS/layout/modal.js"></script>

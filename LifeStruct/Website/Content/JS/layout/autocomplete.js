@@ -21,6 +21,7 @@ autocomplete = {
             }
             clicks = 0;
         });
+
     },
     keyDown: function (event) {
         if ($(event.target).hasClass('autocomplete-input')) {
@@ -47,5 +48,8 @@ autocomplete = {
             $(allTargets[clicks]).focus();
             $(allTargets[clicks]).addClass('autocomplete-selected');
         }
+    },
+    resize: function (input, main) {
+        $(main).css('width',$(input).outerWidth());
     }
 }

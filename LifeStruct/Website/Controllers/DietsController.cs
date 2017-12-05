@@ -1,4 +1,6 @@
-﻿namespace LifeStruct.Controllers
+﻿using System.Linq;
+
+namespace LifeStruct.Controllers
 {
     using Models;
     using Models.Account;
@@ -27,15 +29,28 @@
                 {
                     return View(diet);
                 }
+                TempData["Message"] = "You do not have authority to view " + diet.Author.Split(' ')[0] + "'s diet";
                 return RedirectToAction("Create");
             }
             return RedirectToAction("Create");
 
         }
+        public ActionResult Details()
+        {
+            if (!string.IsNullOrEmpty(Request.QueryString["dietId"]))
+            {
+                var diet = _db.Diet.Find(Request.QueryString["dietId"]);
+                if (diet != null)
+                {
+                        return View();
+                }
+            }
+            TempData["Message"] = "No Diet found when trying to access details, redirected you to Create. Here you'll be able to create a new one.";
+            return RedirectToAction("Create", "Diets");
+        }
         [HttpGet]
         public ActionResult _AddNewFood()
         {
-
             return PartialView("~/Views/Shared/_AddNewFood.cshtml");
         }
 

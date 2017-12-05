@@ -4,8 +4,12 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<div class="diet-container bg-green-0 ng-scope" ng-app="LifeStruct">
+<div class="diet-container clear bg-green-0 ng-scope" ng-app="LifeStruct">
     <div class="content" ng-controller="diet-controller">
+        @if (TempData["Message"] != null)
+        {
+            <h3 class="error">@TempData["Message"].ToString()</h3>
+        }
         <h2>CreateRevised</h2>
         <div>
             <input type="text" class="ipt" placeholder="Title" ng-model="dietModel.Title" />
@@ -65,7 +69,7 @@
             </div>
         </div>
         <div>
-            <input type="submit" value="Create" ng-click="createDiet(dietModel, mealsCollectionModel)" class="btn"/>
+            <input type="submit" value="Create" ng-click="createDiet(dietModel, mealsCollectionModel)" class="btn" />
         </div>
     </div>
     <div class="modal-overlay">

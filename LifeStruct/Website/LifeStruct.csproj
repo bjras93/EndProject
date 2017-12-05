@@ -617,6 +617,7 @@
     <Content Include="Views\Statistics\Index.cshtml" />
     <Content Include="Views\Diets\Create.cshtml" />
     <Content Include="Views\Diets\Edit.cshtml" />
+    <Content Include="Views\Diets\Details.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201708151007404_Initial.resx">

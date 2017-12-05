@@ -24,7 +24,9 @@ button, input[type="submit"] {
     float: left;
 }
 
-.clear {
+.clear:after {
+    content: "";
+    display: table;
     clear: both;
 }
 
